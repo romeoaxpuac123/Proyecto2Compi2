@@ -2,38 +2,209 @@
 <html>
   <head>
     <meta charset="uft-8"/>
-    <title>typescript</title>
-    
-<script type="text/javascript">
+  <title>J#</title>
+  <link rel="stylesheet" href="estilos.css">
+	<link rel="stylesheet" href="font-awesome.css">
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="pestania.js"></script>
+  <script type="text/javascript">
     function pestana(grupo_pesta, id_pesta){
-    var pestanas = document.getElementById(grupo_pesta);
-    var Tpestanas = pestanas.getElementsByTagName("div");
-    for(var i=0; i<Tpestanas.length; i++) {
-    Tpestanas[i].style.zindex="-1000";
-    Tpestanas[i].style.visibility="hidden";
-    }
-    document.getElementById(id_pesta).style.zIndex="1000";
-    document.getElementById(id_pesta).style.visibility="visible";
+      var pestanas = document.getElementById(grupo_pesta);
+      var Tpestanas = pestanas.getElementsByTagName("div");
+      for(var i=0; i<Tpestanas.length; i++) {
+      Tpestanas[i].style.zindex="-1000";
+      Tpestanas[i].style.visibility="hidden";
+      }
+      document.getElementById(id_pesta).style.zIndex="1000";
+      document.getElementById(id_pesta).style.visibility="visible";
     }
 
+    function pestana2(grupo_pesta2, id_pesta2){
+      var pestanas2 = document2.getElementById(grupo_pesta2);
+      var Tpestanas2 = pestanas2.getElementsByTagName("div");
+      for(var i=0; i<Tpestanas2.length; i++) {
+      Tpestanas2[i].style.zindex="-1000";
+      Tpestanas2[i].style.visibility="hidden";
+      }
+      document2.getElementById(id_pesta2).style.zIndex="1000";
+      document2.getElementById(id_pesta2).style.visibility="visible";
+    }
+
+   
+
+
+  
+
     
+  </script>
+
+<script type="text/javascript">
+// Dadas la division que contiene todas las pestañas y la de la pestaña que se 
+// quiere mostrar, la funcion oculta todas las pestañas a excepcion de esa.
+function cambiarPestanna(pestannas,pestanna) {
+    
+    // Obtiene los elementos con los identificadores pasados.
+    pestanna = document.getElementById(pestanna.id);
+    listaPestannas = document.getElementById(pestannas.id);
+    
+    // Obtiene las divisiones que tienen el contenido de las pestañas.
+    cpestanna = document.getElementById('c'+pestanna.id);
+    listacPestannas = document.getElementById('contenido'+pestannas.id);
+    
+    i=0;
+    // Recorre la lista ocultando todas las pestañas y restaurando el
+    // padding de las pestañas.
+  while (typeof listacPestannas.getElementsByTagName('div')[i] != 'undefined'){
+    $(document).ready(function(){
+            $(listacPestannas.getElementsByTagName('div')[i]).css('display','none');
+            $(listaPestannas.getElementsByTagName('li')[i]).css('padding-bottom','');
+        });
+        i += 1;
+    }
+
+    $(document).ready(function(){
+        // Muestra el contenido de la pestaña pasada como parametro a la funcion,
+        // cambia el color de la pestaña y aumenta el padding para que tape el  
+        // borde superior del contenido que esta juesto debajo y se vea de este 
+        // modo que esta seleccionada.
+        $(cpestanna).css('display','');
+        $(pestanna).css('padding-bottom','2px'); 
+    });
+
+}
+
+
+
 </script>
 <style type="text/css">
   .boton_personalizado{
     text-decoration: none;
     padding: 10px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 10px;
     color: #ffffff;
-    background-color: #1883ba;
+    background-color: #01020f;
     border-radius: 6px;
-    border: 2px solid #0016b0;
+    border: 2px solid #01020f;
+  }
+  h1 {
+	color: #ffffff;
+  }
+
+
+
+.contenedor{
+    width: 1080px;
+    margin: auto;
+    background: black;
+    color: bisque;
+    padding: 20px 15px 50px 50px;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.8);
+}
+
+.contenedor .titulo{
+    font-size: 3.5ex;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#pestanas {
+    float: top;
+    font-size: 3ex;
+    font-weight: bold;
+}
+
+#pestanas ul{
+    margin-left: -40px;    
+}
+
+#pestanas li{
+    list-style-type: none;
+    float: left;
+    text-align: center;
+    margin: 0px 2px -2px -0px;
+    background: darkgrey;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid bisque;
+    border-bottom: dimgray;
+    padding: 0px 20px 0px 20px;
+}
+
+#pestanas a:link{
+    text-decoration: none;
+    color: bisque;
+}
+
+#contenidopestanas{
+    clear: both;  
+    background: dimgray;
+    
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border: 2px solid bisque;
+    width: 1025px;
+}
+
+#contenidopestanas div{
+  padding: 20px 0px 20px 20px;
+}
+
+#pestanas #pestana1, #cpestana1{
+  background: #047;
+}
+
+#pestanas #pestana2, #cpestana2{
+  background: #740;
+}
+
+#pestanas #pestana3, #cpestana3{
+  background: #470;
+}
+
+#pestanas #pestana4, #cpestana4{
+  background: #704;
+}
+
+#pestanas #pestana5, #cpestana5{
+  background: #074;
+}
+
+#pestanas #pestana6, #cpestana6{
+  background: #407;
+}
+
+
+
+
+
+</style>
+
+<style type="text/css">
+  .boton_2{
+    text-decoration: none;
+    padding: 20px;
+    font-family: arial;
+    
+    padding-left: 15px;
+    padding-right: 15px;
+    font-weight: 800;
+    font-size: 10px;
+    color: white;
+    background-color: black;
+  }
+  .boton_2:hover{
+    color: black;
+    background-color: black;
+    text-decoration: none;
   }
 </style>
 
-
   </head>
-  <body background="fondo.jpg" bgcolor="FFCECB">
+  <body background="fondo.jpg" bgcolor="0000000">
   
 <center> 
   <img src="titulo.png">
@@ -45,31 +216,94 @@
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta5')" value="pestaña5" />
     <div id="pesta1" style="z-index:1000; visibility:visible; position:absolute">
       <p></p>
-      <textarea name="texto1" id = "texto1" rows="20" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 1
+      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 1
       </textarea>
+      <a href="" class="boton_2" id = "CompilarA" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
+      <a href="" class="boton_2" id = "ArchivoA" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
+      <a href="" class="boton_2" id = "C3DA" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
+      <a href="" class="boton_2" id = "ReportesA" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
     </div>
 
-    <div id="pesta2" style="z-index:-1000; visibility:visible; position:absolute">
+    <div id="pesta2" style="z-index:-1000; visibility:hidden; position:absolute">
       <p></p>
-      <textarea name="texto2" id = "texto2" rows="20" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 2</textarea>
+      <textarea name="texto2" id = "texto2" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 2</textarea>
+      <a href="" class="boton_2" id = "CompilarB" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
+      <a href="" class="boton_2" id = "ArchivoB" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
+      <a href="" class="boton_2" id = "C3DB" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
+      <a href="" class="boton_2" id = "ReportesB" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
     </div>
 
     <div id="pesta3" style="z-index:-1000; visibility:hidden; position:absolute">
       <p></p>
-      <textarea name="texto3" id = "texto3" rows="20" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 3</textarea>
+      <textarea name="texto3" id = "texto3" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 3</textarea>
+      <a href="" class="boton_2" id = "CompilarC" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
+      <a href="" class="boton_2" id = "ArchivoC" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
+      <a href="" class="boton_2" id = "C3DC" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
+      <a href="" class="boton_2" id = "ReportesC" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
+    
     </div>
 
     <div id="pesta4" style="z-index:-1000; visibility:hidden; position:absolute">
       <p></p>
-      <textarea name="texto4" id = "texto4" rows="20" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 4</textarea>
+      <textarea name="texto4" id = "texto4" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 4</textarea>
+      <a href="" class="boton_2" id = "CompilarD" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
+      <a href="" class="boton_2" id = "ArchivoD" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
+      <a href="" class="boton_2" id = "C3DD" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
+      <a href="" class="boton_2" id = "ReportesD" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
+    
     </div>
 
     <div id="pesta5" style="z-index:-1000; visibility:hidden; position:absolute">
       <p></p>
-      <textarea name="texto5" id = "texto5" rows="20" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 5</textarea>
+      <textarea name="texto5" id = "texto5" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 5</textarea>
+      <a href="" class="boton_2" id = "CompilarE" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
+      <a href="" class="boton_2" id = "ArchivoE" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
+      <a href="" class="boton_2" id = "C3DE" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
+      <a href="" class="boton_2" id = "ReportesE" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
+        
     </div>
+    
+</div>
+  
 
-    </div>
+
 </center>
+
+  </body>
+  
+
+  <body>
+    <div class="wrap" style="position:absolute;top:380px;left:405px;z-index:1;">
+      <ul class="tabs">
+        <li><a href="#tab1"><span ></span><span class="tab-text">Consola</span></a></li>
+        <li><a href="#tab2"><span ></span><span class="tab-text">R. Stack</span></a></li>
+        <li><a href="#tab3"><span ></span><span class="tab-text">R. Heap</span></a></li>
+        <li><a href="#tab4"><span ></span><span class="tab-text">Errores</span></a></li>
+        <li><a href="#tab5"><span ></span><span class="tab-text">Simbolos</span></a></li>
+      </ul>
+  
+      <div class="secciones">
+        <article id="tab1">
+          <textarea name="salida" id = "salida" rows="5" cols="70">Salida</textarea>
+        </article>
+
+        <article id="tab2">
+          <textarea name="stack" id = "stack" rows="5" cols="70">Stack</textarea>     
+        </article>
+
+        <article id="tab3">
+          <textarea name="heap" id = "heap" rows="5" cols="70">Heap</textarea>     
+        </article>
+
+
+        <article id="tab4">
+         <textarea name="Errores" id = "Errores" rows="5" cols="70">Errores</textarea>  
+        </article>
+
+        <article id="tab5">
+          <textarea name="Simbolos" id = "Simbolos" rows="5" cols="70">Errores</textarea>  
+         </article>
+      </div>
+    </div>
   </body>
 </html>
