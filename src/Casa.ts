@@ -1,4 +1,4 @@
-export class Casa {
+class Casa {
     // Indico mi variable
 
     direccion:string

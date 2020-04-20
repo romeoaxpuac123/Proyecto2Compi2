@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 var Casa = /** @class */ (function () {
     function Casa() {
         // Le doy un valor
@@ -7,4 +5,3 @@ var Casa = /** @class */ (function () {
     }
     return Casa;
 }());
-exports.Casa = Casa;

@@ -7,7 +7,9 @@
 	<link rel="stylesheet" href="font-awesome.css">
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="pestania.js"></script>
+  <script src="pestania.js"></script>
+  <script src="Casa.js"></script>
+  <script src="Main.js "></script>
   <script type="text/javascript">
     function pestana(grupo_pesta, id_pesta){
       var pestanas = document.getElementById(grupo_pesta);
@@ -31,7 +33,10 @@
       document2.getElementById(id_pesta2).style.visibility="visible";
     }
 
-   
+    function cambiar(){
+    var pdrs = document.getElementById('archivo').files[0].name;
+    //document.getElementById('info').innerHTML = pdrs;
+}
 
 
   
@@ -183,31 +188,19 @@ function cambiarPestanna(pestannas,pestanna) {
 
 </style>
 
-<style type="text/css">
-  .boton_2{
-    text-decoration: none;
-    padding: 20px;
-    font-family: arial;
-    
-    padding-left: 15px;
-    padding-right: 15px;
-    font-weight: 800;
-    font-size: 10px;
-    color: white;
-    background-color: black;
-  }
-  .boton_2:hover{
-    color: black;
-    background-color: black;
-    text-decoration: none;
-  }
-</style>
+
 
   </head>
-  <body background="fondo.jpg" bgcolor="0000000">
+ 
+  
+  
+ 
+
+
   
 <center> 
   <img src="titulo.png">
+  <body background="fondo.jpg" bgcolor="0000000"></body>
 <div id="pestanas">
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta1')" value="pestaña1" />
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta2')" value="pestaña2" />
@@ -216,12 +209,14 @@ function cambiarPestanna(pestannas,pestanna) {
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta5')" value="pestaña5" />
     <div id="pesta1" style="z-index:1000; visibility:visible; position:absolute">
       <p></p>
-      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 1
-      </textarea>
-      <a href="" class="boton_2" id = "CompilarA" style="position:absolute;top:10px;left:325px;z-index:1;">Compilar</a>
-      <a href="" class="boton_2" id = "ArchivoA" style="position:absolute;top:70px;left:326px;z-index:1;">Archivos </a>
-      <a href="" class="boton_2" id = "C3DA" style="position:absolute;top:130px;left:322px;z-index:1;">Ejecucion 3D</a>
-      <a href="" class="boton_2" id = "ReportesA" style="position:absolute;top:205px;left:325px;z-index:1;">Reportes</a>
+      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 1</textarea>
+      <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:10px;left:325px;z-index:1;">
+          
+      <input type="button" class="boton_2" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:73px;left:322px;z-index:1;">
+      <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" style="position:absolute;top:143px;left:325px;z-index:1;">
+
+      <input type="file"   class="custom-input-file2"  onclick="Compilar()" id="archivo" style="position:absolute;top:205px;left:326px;z-index:1;">
+      <p id="datos"></p>
     </div>
 
     <div id="pesta2" style="z-index:-1000; visibility:hidden; position:absolute">
