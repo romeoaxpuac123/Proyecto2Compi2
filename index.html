@@ -10,6 +10,18 @@
   <script src="pestania.js"></script>
   <script src="Casa.js"></script>
   <script src="Main.js "></script>
+  <script src="gramatica.js"></script>
+  <script type="text/javascript">
+      function pegarTexto(input) {
+          gramatica.parse(input);
+      }   
+  </script>
+
+<script src="Entorno.js"></script>
+<script src="NodoAbstracto.js"></script>
+<script src="Nodo.js"></script>
+<script src="Aritmetica.js"></script>
+  
   <script type="text/javascript">
     function pestana(grupo_pesta, id_pesta){
       var pestanas = document.getElementById(grupo_pesta);
@@ -212,7 +224,7 @@ function cambiarPestanna(pestannas,pestanna) {
       <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:10px;left:405px;z-index:1;">Ingresa tu Codigo 1</textarea>
       <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:10px;left:325px;z-index:1;">
           
-      <input type="button" class="boton_2" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:73px;left:322px;z-index:1;">
+      <input type="button" class="boton_2" onclick="pegarTexto(document.getElementById('texto1').value);" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:73px;left:322px;z-index:1;">
       <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" style="position:absolute;top:143px;left:325px;z-index:1;">
 
       <input type="file"   class="custom-input-file2"  onclick="Compilar()" id="archivo" style="position:absolute;top:205px;left:326px;z-index:1;">

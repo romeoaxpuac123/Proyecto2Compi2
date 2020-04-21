@@ -8,27 +8,20 @@ function Compilar() {
     //document.getElementById("caca").innerHTML= "tocino";
     var myTextArea = document.getElementById('salida');
     myTextArea.innerHTML = p1;
-   
 }
-
-
 /// funcion para leer un archivo
 window.addEventListener('load', inicio, false);
-
 function inicio() {
-    document.getElementById('archivo').addEventListener('change', cargar, false);               
+    document.getElementById('archivo').addEventListener('change', cargar, false);
 }
-
 function cargar(ev) {
     //document.getElementById('datos').innerHTML='Nombre del archivo:'+ev.target.files[0].name+'<br>'+
     //                                           'Tamaño del archivo:'+ev.target.files[0].size+'<br>'+  
     //                                           'Tipo MIME:'+ev.target.files[0].type;
-    var arch=new FileReader();
-    arch.addEventListener('load',leer,false);
+    var arch = new FileReader();
+    arch.addEventListener('load', leer, false);
     arch.readAsText(ev.target.files[0]);
 }
-
 function leer(ev) {
-    document.getElementById('texto1').value=ev.target.result;
+    document.getElementById('texto1').value = ev.target.result;
 }
-
