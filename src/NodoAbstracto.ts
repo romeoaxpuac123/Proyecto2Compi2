@@ -17,5 +17,5 @@ abstract class NodoAbstracto {
     }
     
    
-    abstract Ejecutar(entorno: Entorno):NodoAbstracto;
+    abstract Ejecutar(entorno: Casa):NodoAbstracto;
 }

@@ -11,12 +11,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Nodo = /** @class */ (function (_super) {
-    __extends(Nodo, _super);
-    function Nodo() {
+var Imprimir = /** @class */ (function (_super) {
+    __extends(Imprimir, _super);
+    function Imprimir() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Nodo.prototype.Nodo = function (val) {
+    Imprimir.prototype.Imprimir = function (val) {
         this.Nombre = val;
         this.id = 0;
         this.linea = 0;
@@ -24,11 +24,14 @@ var Nodo = /** @class */ (function (_super) {
         this.Hijos = new Array();
         this.TipoDato = "";
     };
-    Nodo.prototype.Ejecutar = function (entorno) {
-        console.log("EJECUTANDO NODO");
-        var Nodo1 = new Nodo(this.Nombre);
-        console.log("El Nombre:" + Nodo1.Nombre);
-        return Nodo1;
+    Imprimir.prototype.Ejecutar = function (entorno) {
+        console.log("Entro a Imprimir");
+        console.log("TOALT->" + entorno.numero);
+        var respuesta = this.Hijos[0].Hijos[0].Nombre;
+        document.getElementById("salida").innerHTML = respuesta;
+        var nuevo = new Nodo("Imprimir");
+        nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
+        return nuevo;
     };
-    return Nodo;
+    return Imprimir;
 }(NodoAbstracto));

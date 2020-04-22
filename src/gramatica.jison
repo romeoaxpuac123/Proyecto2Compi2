@@ -7,6 +7,10 @@
 /* Definición Léxica */
 %{
 	var respuesta = "";
+	var Entorno1 = new Casa();
+	//console.log("hola") ;
+	//console.log(Entorno1);
+	//console.log("fin");
 	
 %}
 
@@ -51,12 +55,16 @@
 %left 'POR' 'DIVIDIDO'
 %left UMENOS
 
+
+
 %start ini
 
 %% /* Definición de la gramática */
 
 ini
-	: instrucciones EOF
+	: instrucciones EOF{{
+		
+	}}
 ;
 
 instrucciones
@@ -68,9 +76,15 @@ instrucciones
 
 instruccion
 	: IMPRMIR PARIZQ expresion PARDER PTCOMA {
-		console.log('El valor de la expresión es: ' + $3.Nombre);
-		respuesta = respuesta + '->' + $3.Ejecutar() + "\n";
-        document.getElementById("salida").innerHTML = respuesta;
+		
+		//console.log('El valor de la expresión es: ' + $3.Nombre);
+		//respuesta = respuesta + '->' + $3.Ejecutar() + "\n";
+        //document.getElementById("salida").innerHTML = respuesta;
+		var nuevo = new Imprimir("Imprimir");
+		nuevo.Hijos[0] = $3;
+		nuevo.Ejecutar(Entorno1);
+		$$ = nuevo;
+		
 	}
 ;
 
@@ -92,7 +106,7 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
-										$$ =  nuevo.Ejecutar();
+										$$ =  nuevo.Ejecutar(Entorno1);
 										//$$ = nuevo;
 									}
 	| expresion MENOS expresion		{ 

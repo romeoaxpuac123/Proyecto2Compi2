@@ -9,7 +9,7 @@ class Nodo extends NodoAbstracto{
         this.TipoDato = "";
     }
 
-    Ejecutar(entorno: Entorno):NodoAbstracto{
+    Ejecutar(entorno: Casa):NodoAbstracto{
         console.log("EJECUTANDO NODO");
         let Nodo1 = new Nodo(this.Nombre);
         console.log("El Nombre:" + Nodo1.Nombre);
