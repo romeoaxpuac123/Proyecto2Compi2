@@ -27,8 +27,18 @@ var Imprimir = /** @class */ (function (_super) {
     Imprimir.prototype.Ejecutar = function (entorno) {
         console.log("Entro a Imprimir");
         console.log("TOALT->" + entorno.numero);
+        var TipoAImprimir = "";
+        console.log(this.Hijos[0].CadenaDe3D);
+        console.log("DG->" + this.Hijos[0].TipoDato);
         var respuesta = this.Hijos[0].Hijos[0].Nombre;
+        if (this.Hijos[0].TipoDato == "Entero") {
+            TipoAImprimir = "\"%e\", ";
+        }
+        else if (this.Hijos[0].TipoDato == "Decimal") {
+            TipoAImprimir = "\"%d\", ";
+        }
         document.getElementById("salida").innerHTML = respuesta;
+        document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );" + "\n";
         var nuevo = new Nodo("Imprimir");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         return nuevo;

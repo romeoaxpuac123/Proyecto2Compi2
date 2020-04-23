@@ -72,12 +72,12 @@
   }
 */
 var gramatica = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,13],$V3=[1,10],$V4=[1,11],$V5=[1,12],$V6=[1,16],$V7=[1,15],$V8=[1,17],$V9=[1,18],$Va=[10,12,13,14,15],$Vb=[10,12,13];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4],$V1=[1,5],$V2=[1,14],$V3=[1,10],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[1,17],$V8=[1,16],$V9=[1,18],$Va=[1,19],$Vb=[10,12,13,14,15],$Vc=[10,12,13];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"instruccion":6,"IMPRMIR":7,"PARIZQ":8,"expresion":9,"PARDER":10,"PTCOMA":11,"MENOS":12,"MAS":13,"POR":14,"DIVIDIDO":15,"ENTERO":16,"DECIMAL":17,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"IMPRMIR",8:"PARIZQ",10:"PARDER",11:"PTCOMA",12:"MENOS",13:"MAS",14:"POR",15:"DIVIDIDO",16:"ENTERO",17:"DECIMAL"},
-productions_: [0,[3,2],[4,2],[4,1],[4,1],[6,5],[9,2],[9,3],[9,3],[9,3],[9,3],[9,1],[9,1],[9,3]],
+symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"instruccion":6,"IMPRMIR":7,"PARIZQ":8,"expresion":9,"PARDER":10,"PTCOMA":11,"MENOS":12,"MAS":13,"POR":14,"DIVIDIDO":15,"ENTERO":16,"DECIMAL":17,"CARACTER":18,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"IMPRMIR",8:"PARIZQ",10:"PARDER",11:"PTCOMA",12:"MENOS",13:"MAS",14:"POR",15:"DIVIDIDO",16:"ENTERO",17:"DECIMAL",18:"CARACTER"},
+productions_: [0,[3,2],[4,2],[4,1],[4,1],[6,5],[9,2],[9,3],[9,3],[9,3],[9,3],[9,1],[9,1],[9,1],[9,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -85,7 +85,23 @@ var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
 
-		
+		//Vamos a mostra tooodos los cosos
+		var Cadena_Inicio = "var ";
+		for (var i = 1; i <= Entorno1.numero; i++) {
+			if(i == Entorno1.numero){
+				Cadena_Inicio = Cadena_Inicio + " t" + i + ";\n";
+			}else{
+				Cadena_Inicio = Cadena_Inicio + " t" + i + ",";
+			}
+			
+		}
+		if(Entorno1.numero == 0){
+			Cadena_Inicio = "";
+		}
+		Cadena_Inicio = Cadena_Inicio + "var Stack[]; \nvar Heap[];\nvar P = 0;\nvar H = 0;\n"
+		//console.log("CIRUGIA->" + Cadena_Inicio);
+		document.getElementById("texto1C3D").innerHTML = Cadena_Inicio + document.getElementById("texto1C3D").value;
+		Entorno1.numero = 0;
 	
 break;
 case 4:
@@ -115,41 +131,47 @@ case 6:
 break;
 case 7:
  
-										//this.$ = $$[$0-2] + $$[$0];
-										//var nuevo = Nodo("Hola");
-										//this.$ = $$[$0-2];
-										//console.log("SUMA"); 
+										//this.$ = $$[$0-2] + $$[$0];										
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($$[$0-1]);
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
 										this.$ =  nuevo.Ejecutar(Entorno1);
-										//this.$ = nuevo;
+										
 									
 break;
 case 8:
  
 										//this.$ = $$[$0-2] - $$[$0]; 
-										//var nuevo = Nodo("Hola");
-										//this.$ = nuevo;
-										//console.log("DUA LIPA");
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
 case 9:
  
 										//this.$ = $$[$0-2] * $$[$0]; 
-										//var nuevo = Nodo("Hola");
-										//this.$ = nuevo;
-										//console.log("DUA LIPA");
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
 case 10:
  
-										//this.$ = $$[$0-2] / $$[$0];
-										//var nuevo = Nodo("Hola");
-										//this.$ = nuevo; 
-										//console.log("DUA LIPA");
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
 case 11:
@@ -159,30 +181,44 @@ case 11:
 										var nuevovalor = new Nodo($$[$0]);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Entero";
+										nuevo.CadenaDe3D = $$[$0];
 										this.$ = nuevo;
-										console.log("Leimos un Entero->" + $$[$0]);
+									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
 case 12:
  
 										//this.$ = Number($$[$0]); 
-										var nuevo = new Nodo("Decimal");
+										var nuevo = new Nodo("Entero");
 										var nuevovalor = new Nodo($$[$0]);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Decimal";
+										nuevo.CadenaDe3D = $$[$0];
 										this.$ = nuevo;
-										console.log("Leimos un Decial->" + $$[$0]);
+									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
 case 13:
  
+										//this.$ = Number($$[$0]); 
+										var nuevo = new Nodo("Entero");
+										var nuevovalor = new Nodo($$[$0]);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "Caracter";
+										nuevo.CadenaDe3D = $$[$0];
+										this.$ = nuevo;
+										console.log("Leimos un Caracter->" + $$[$0]);
+									
+break;
+case 14:
+ 
 										this.$ = $$[$0-1];  
-										console.log("DUA LIPA");
+										//console.log("DUA LIPA");
 									
 break;
 }
 },
-table: [{2:$V0,3:1,4:2,6:3,7:$V1},{1:[3]},{5:[1,6]},{2:$V0,4:7,5:[2,3],6:3,7:$V1},{5:[2,4]},{8:[1,8]},{1:[2,1]},{5:[2,2]},{8:$V2,9:9,12:$V3,16:$V4,17:$V5},{10:[1,14],12:$V6,13:$V7,14:$V8,15:$V9},{8:$V2,9:19,12:$V3,16:$V4,17:$V5},o($Va,[2,11]),o($Va,[2,12]),{8:$V2,9:20,12:$V3,16:$V4,17:$V5},{11:[1,21]},{8:$V2,9:22,12:$V3,16:$V4,17:$V5},{8:$V2,9:23,12:$V3,16:$V4,17:$V5},{8:$V2,9:24,12:$V3,16:$V4,17:$V5},{8:$V2,9:25,12:$V3,16:$V4,17:$V5},o($Va,[2,6]),{10:[1,26],12:$V6,13:$V7,14:$V8,15:$V9},o([2,5,7],[2,5]),o($Vb,[2,7],{14:$V8,15:$V9}),o($Vb,[2,8],{14:$V8,15:$V9}),o($Va,[2,9]),o($Va,[2,10]),o($Va,[2,13])],
+table: [{2:$V0,3:1,4:2,6:3,7:$V1},{1:[3]},{5:[1,6]},{2:$V0,4:7,5:[2,3],6:3,7:$V1},{5:[2,4]},{8:[1,8]},{1:[2,1]},{5:[2,2]},{8:$V2,9:9,12:$V3,16:$V4,17:$V5,18:$V6},{10:[1,15],12:$V7,13:$V8,14:$V9,15:$Va},{8:$V2,9:20,12:$V3,16:$V4,17:$V5,18:$V6},o($Vb,[2,11]),o($Vb,[2,12]),o($Vb,[2,13]),{8:$V2,9:21,12:$V3,16:$V4,17:$V5,18:$V6},{11:[1,22]},{8:$V2,9:23,12:$V3,16:$V4,17:$V5,18:$V6},{8:$V2,9:24,12:$V3,16:$V4,17:$V5,18:$V6},{8:$V2,9:25,12:$V3,16:$V4,17:$V5,18:$V6},{8:$V2,9:26,12:$V3,16:$V4,17:$V5,18:$V6},o($Vb,[2,6]),{10:[1,27],12:$V7,13:$V8,14:$V9,15:$Va},o([2,5,7],[2,5]),o($Vc,[2,7],{14:$V9,15:$Va}),o($Vc,[2,8],{14:$V9,15:$Va}),o($Vb,[2,9]),o($Vb,[2,10]),o($Vb,[2,14])],
 defaultActions: {4:[2,4],6:[2,1],7:[2,2]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
@@ -794,15 +830,17 @@ case 12:return 17;
 break;
 case 13:return 16;
 break;
-case 14:return 5;
+case 14:return "CARACTER";
 break;
-case 15: alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column);
+case 15:return 5;
+break;
+case 16: alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column);
        console.error('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column); 
 break;
 }
 },
-rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:$)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"inclusive":true}}
+rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:$)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],"inclusive":true}}
 });
 return lexer;
 })();

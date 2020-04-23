@@ -40,6 +40,7 @@
 
 [0-9]+("."[0-9]+)\b  	return 'DECIMAL';
 [0-9]+\b				return 'ENTERO';
+("'"[a-zA-Z0-9_]"'")				return "CARACTER";
 
 <<EOF>>				return 'EOF';
 
@@ -63,7 +64,23 @@
 
 ini
 	: instrucciones EOF{{
-		
+		//Vamos a mostra tooodos los cosos
+		var Cadena_Inicio = "var ";
+		for (var i = 1; i <= Entorno1.numero; i++) {
+			if(i == Entorno1.numero){
+				Cadena_Inicio = Cadena_Inicio + " t" + i + ";\n";
+			}else{
+				Cadena_Inicio = Cadena_Inicio + " t" + i + ",";
+			}
+			
+		}
+		if(Entorno1.numero == 0){
+			Cadena_Inicio = "";
+		}
+		Cadena_Inicio = Cadena_Inicio + "var Stack[]; \nvar Heap[];\nvar P = 0;\nvar H = 0;\n"
+		//console.log("CIRUGIA->" + Cadena_Inicio);
+		document.getElementById("texto1C3D").innerHTML = Cadena_Inicio + document.getElementById("texto1C3D").value;
+		Entorno1.numero = 0;
 	}}
 ;
 
@@ -97,35 +114,41 @@ expresion
 										//console.log("DUA LIPA");
 									}
 	| expresion MAS expresion		{ 
-										//$$ = $1 + $3;
-										//var nuevo = Nodo("Hola");
-										//$$ = $1;
-										//console.log("SUMA"); 
+										//$$ = $1 + $3;										
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($2);
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
 										$$ =  nuevo.Ejecutar(Entorno1);
-										//$$ = nuevo;
+										
 									}
 	| expresion MENOS expresion		{ 
 										//$$ = $1 - $3; 
-										//var nuevo = Nodo("Hola");
-										//$$ = nuevo;
-										//console.log("DUA LIPA");
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion POR expresion		{ 
 										//$$ = $1 * $3; 
-										//var nuevo = Nodo("Hola");
-										//$$ = nuevo;
-										//console.log("DUA LIPA");
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion DIVIDIDO expresion	{ 
-										//$$ = $1 / $3;
-										//var nuevo = Nodo("Hola");
-										//$$ = nuevo; 
-										//console.log("DUA LIPA");
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| ENTERO						{ 
 										//$$ = Number($1); 
@@ -133,20 +156,32 @@ expresion
 										var nuevovalor = new Nodo($1);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Entero";
+										nuevo.CadenaDe3D = $1;
 										$$ = nuevo;
-										console.log("Leimos un Entero->" + $1);
+									//	console.log("Leimos un Entero->" + $1);
 									}
 	| DECIMAL						{ 
 										//$$ = Number($1); 
-										var nuevo = new Nodo("Decimal");
+										var nuevo = new Nodo("Entero");
 										var nuevovalor = new Nodo($1);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Decimal";
+										nuevo.CadenaDe3D = $1;
 										$$ = nuevo;
-										console.log("Leimos un Decial->" + $1);
+									//	console.log("Leimos un Entero->" + $1);
+									}
+	| CARACTER						{ 
+										//$$ = Number($1); 
+										var nuevo = new Nodo("Entero");
+										var nuevovalor = new Nodo($1);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "Caracter";
+										nuevo.CadenaDe3D = $1;
+										$$ = nuevo;
+										console.log("Leimos un Caracter->" + $1);
 									}
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  
-										console.log("DUA LIPA");
+										//console.log("DUA LIPA");
 									}
 ;

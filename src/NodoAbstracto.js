@@ -6,6 +6,7 @@ var NodoAbstracto = /** @class */ (function () {
         this.columna = 0;
         this.TipoDato = "";
         this.Hijos = new Array();
+        this.CadenaDe3D = "";
     }
     return NodoAbstracto;
 }());

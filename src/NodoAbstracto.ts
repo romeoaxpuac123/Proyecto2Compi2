@@ -5,6 +5,7 @@ abstract class NodoAbstracto {
     public linea:number;
     public columna: number;
     public TipoDato: string;
+    public CadenaDe3D : string;
     public Hijos: Array<NodoAbstracto>;
     
     constructor(name : string){
@@ -14,6 +15,7 @@ abstract class NodoAbstracto {
         this.columna=0;
         this.TipoDato = "";
         this.Hijos = new Array();
+        this.CadenaDe3D = "";
     }
     
    

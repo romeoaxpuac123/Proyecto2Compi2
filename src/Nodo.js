@@ -23,12 +23,16 @@ var Nodo = /** @class */ (function (_super) {
         this.columna = 0;
         this.Hijos = new Array();
         this.TipoDato = "";
+        this.CadenaDe3D = val;
     };
     Nodo.prototype.Ejecutar = function (entorno) {
         console.log("EJECUTANDO NODO");
         var Nodo1 = new Nodo(this.Nombre);
         console.log("El Nombre:" + Nodo1.Nombre);
         return Nodo1;
+    };
+    Nodo.prototype.ModificarCadena = function (cadenax) {
+        this.CadenaDe3D = cadenax;
     };
     return Nodo;
 }(NodoAbstracto));

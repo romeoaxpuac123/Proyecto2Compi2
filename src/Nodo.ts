@@ -7,6 +7,7 @@ class Nodo extends NodoAbstracto{
         this.columna=0;
         this.Hijos = new Array();
         this.TipoDato = "";
+        this.CadenaDe3D = val;
     }
 
     Ejecutar(entorno: Casa):NodoAbstracto{
@@ -14,5 +15,9 @@ class Nodo extends NodoAbstracto{
         let Nodo1 = new Nodo(this.Nombre);
         console.log("El Nombre:" + Nodo1.Nombre);
         return Nodo1;
+    }
+
+    ModificarCadena(cadenax:string){
+       this.CadenaDe3D = cadenax;
     }
 }
