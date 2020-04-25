@@ -31,6 +31,8 @@
 "-"					return 'MENOS';
 "*"					return 'POR';
 "/"					return 'DIVIDIDO';
+"^^"				return 'POTENCIA';
+"%"				return 'MODULO';
 
 
 /* Espacios en blanco */
@@ -52,8 +54,10 @@
 
 /* Asociación de operadores y precedencia */
 
+
 %left 'MAS' 'MENOS'
-%left 'POR' 'DIVIDIDO'
+%left 'POR' 'DIVIDIDO' 'MODULO'
+%left 'POTENCIA' 
 %left UMENOS
 
 
@@ -112,6 +116,20 @@ expresion
 										//var nuevo = Nodo("Hola");
 										//$$ = nuevo;
 										//console.log("DUA LIPA");
+										//$$ = $1 * $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo("*");
+
+										var nuevo2 = new Nodo("Entero");
+										var nuevovalor2 = new Nodo("-1");
+										nuevo2.Hijos[0] = nuevovalor2;
+										nuevo2.TipoDato = "Entero";
+										nuevo2.CadenaDe3D = "-1";
+
+										nuevo.Hijos[0] = $2;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] =  nuevo2;
+										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MAS expresion		{ 
 										//$$ = $1 + $3;										
@@ -142,6 +160,24 @@ expresion
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion DIVIDIDO expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+									}
+	| expresion POTENCIA expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+									}
+	| expresion MODULO expresion	{ 
 										//$$ = $1 / $3; 
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($2);

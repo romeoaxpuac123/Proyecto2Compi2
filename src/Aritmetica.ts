@@ -71,29 +71,81 @@ Aritmetica(val : string){
                     var C3DFinal = C3D1 + " + "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                break; 
+                
+                    break; 
                 } 
                 case "-": { 
                     Total = +Valor1 - +Valor2
                     var C3DFinal = C3D1 + " - "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                break; 
+                
+                    break; 
                 }
                 case "*": { 
                     Total = +Valor1 * +Valor2
                     var C3DFinal = C3D1 + " * "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                break; 
+                
+                    break; 
                 }
                 case "/": { 
                     Total = +Valor1 / +Valor2
                     var C3DFinal = C3D1 + " / "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                break; 
-                }    
+                    TipoFinal  = "Decimal";
+                    break; 
+                }
+                case "%": { 
+                    Total = +Valor1 % +Valor2
+                    var C3DFinal = C3D1 + " % "+ C3D2;
+                    var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //TipoFinal  = "Decimal";
+                    break; 
+                }  
+                case "^^": {
+                    //Creacion de etiquetas
+                    entorno.etiquetas +=1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas +=1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas +=1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    //Fin etiquetas
+
+                    //Creacion de Temporales
+                    var C3DFinal = "\n\nt" + entorno.numero + " = " + C3D1 + ";\n";
+                    var Temporal1 = "t" + entorno.numero;
+                    entorno.numero += 1; 
+                    C3DFinal = C3DFinal + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    var Temporal2 = "t" + entorno.numero;
+                    entorno.numero += 1; 
+                    C3DFinal = C3DFinal + "t" + entorno.numero + " = " + "0" + ";\n";
+                    var Temporal3 = "t" + entorno.numero;
+                    entorno.numero += 1; 
+                    C3DFinal = C3DFinal + "t" + entorno.numero + " = " + "1" + ";\n";
+                    var Temporal4 = "t" + entorno.numero;
+                    //entorno.numero += 1;
+                    //fin de Temporales
+
+                    //Creando el for
+                    C3DFinal = C3DFinal +"L"+ Etiqueta3 + ":		#\n";
+                    C3DFinal = C3DFinal + "if(" + Temporal3 + " < " + Temporal2 + ") goto L" + Etiqueta1 + ";\n";
+                    C3DFinal = C3DFinal + "goto L" + Etiqueta2 + ";\n";
+                    C3DFinal = C3DFinal +"L"+ Etiqueta1 + ":		#\n";
+                    C3DFinal = C3DFinal + Temporal4 + "=" + Temporal4 + " * " + Temporal1 + ";\n"
+                    C3DFinal = C3DFinal + Temporal3 + "=" + Temporal3 + " + " + "1" + ";\n"
+                    C3DFinal = C3DFinal + "goto L" + Etiqueta3 + ";\n";
+                    C3DFinal = C3DFinal +"L"+ Etiqueta2 + ":		#\n";
+                    TipoFinal  = "Entero";
+                    var respuesta =  C3DFinal;
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    Total = Math.pow(+Valor1,+Valor2);
+                    break; 
+                }       
                 default: { 
                 //statements; 
                 break; 

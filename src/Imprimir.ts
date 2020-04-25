@@ -18,13 +18,13 @@ class Imprimir extends NodoAbstracto{
         console.log("DG->"+ this.Hijos[0].TipoDato);
         var respuesta =  this.Hijos[0].Hijos[0].Nombre;
         if(this.Hijos[0].TipoDato == "Entero"){
-            TipoAImprimir = "\"%e\", ";
+            TipoAImprimir = "\"%i\", ";
         }
         else if(this.Hijos[0].TipoDato == "Decimal"){
             TipoAImprimir = "\"%d\", ";
         }
         document.getElementById("salida").innerHTML = respuesta;
-        document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );"+ "\n";
+        document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
 
         var nuevo = new Nodo("Imprimir");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
