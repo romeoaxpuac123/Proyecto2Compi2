@@ -32,7 +32,7 @@
 "*"					return 'POR';
 "/"					return 'DIVIDIDO';
 "^^"				return 'POTENCIA';
-"%"				return 'MODULO';
+"%"					return 'MODULO';
 
 
 /* Espacios en blanco */
@@ -42,7 +42,8 @@
 
 [0-9]+("."[0-9]+)\b  	return 'DECIMAL';
 [0-9]+\b				return 'ENTERO';
-("'"[a-zA-Z0-9_]"'")				return "CARACTER";
+("'"[a-zA-Z0-9_]"'")	return "CARACTER";
+("\""[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
 
 <<EOF>>				return 'EOF';
 
@@ -85,6 +86,7 @@ ini
 		//console.log("CIRUGIA->" + Cadena_Inicio);
 		document.getElementById("texto1C3D").innerHTML = Cadena_Inicio + document.getElementById("texto1C3D").value;
 		Entorno1.numero = 0;
+		Entorno1.etiquetas = 0;
 	}}
 ;
 
@@ -215,6 +217,16 @@ expresion
 										nuevo.CadenaDe3D = $1;
 										$$ = nuevo;
 										console.log("Leimos un Caracter->" + $1);
+									}
+	| CADENA						{ 
+										//$$ = Number($1); 
+										var nuevo = new Nodo("Cadena");
+										var nuevovalor = new Nodo($1);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "Cadena";
+										nuevo.CadenaDe3D = $1;
+										$$ = nuevo;
+										console.log("Leimos una cadena->" + $1);
 									}
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  
