@@ -65,7 +65,67 @@ var Aritmetica = /** @class */ (function (_super) {
             Valor1 = Valor1.charCodeAt(1).toString();
             C3D1 = Valor1;
         }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "+")) {
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.charAt(1);
+            Valor2 = Valor2.charAt(1);
+        }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "-")) {
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString();
+            C3D1 = Valor1;
+            Valor2 = Valor2.charCodeAt(1).toString();
+            C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "*")) {
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString();
+            C3D1 = Valor1;
+            Valor2 = Valor2.charCodeAt(1).toString();
+            C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "/")) {
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString();
+            C3D1 = Valor1;
+            Valor2 = Valor2.charCodeAt(1).toString();
+            C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Cadena")) {
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.charAt(1);
+            Valor2 = Valor2.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Cadena") && (Tipo2 == "Caracter") && (Operador == "+")) {
+            TipoFinal = "Cadena";
+            Valor2 = Valor2.charAt(1);
+            Valor1 = Valor1.replace("\"", "");
+            Valor1 = Valor1.replace("\"", "");
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
         else if ((Tipo1 == "Cadena") && (Tipo2 == "Cadena")) {
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.replace("\"", "");
+            Valor1 = Valor1.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+        }
+        else if ((Tipo1 == "Entero" || Tipo1 == "Decimal") && (Tipo2 == "Cadena")) {
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.replace("\"", "");
+            Valor1 = Valor1.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+        }
+        else if ((Tipo1 == "Cadena") && (Tipo2 == "Entero" || Tipo2 == "Decimal")) {
             TipoFinal = "Cadena";
             Valor1 = Valor1.replace("\"", "");
             Valor1 = Valor1.replace("\"", "");
@@ -167,75 +227,79 @@ var Aritmetica = /** @class */ (function (_super) {
             }
         }
         else if (TipoFinal == "Cadena") {
-            Total = Valor1 + Valor2;
-            var respuesta = "";
-            if (elid == 0) {
-                respuesta = "t" + entorno.numero + " = H;\n";
-                for (var i = 0; i < Valor1.length; i++) {
-                    respuesta = respuesta + "Heap[H] = " + Valor1.charCodeAt(i).toString() + ";\n";
+            switch (Operador) {
+                case "+": {
+                    Total = Valor1 + Valor2;
+                    var respuesta = "";
+                    if (elid == 0) {
+                        respuesta = "t" + entorno.numero + " = H;\n";
+                        for (var i = 0; i < Valor1.length; i++) {
+                            respuesta = respuesta + "Heap[H] = " + Valor1.charCodeAt(i).toString() + ";\n";
+                            respuesta = respuesta + "H = H + 1;\n";
+                        }
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                        entorno.numero += 1;
+                    }
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    for (var i = 0; i < Valor2.length; i++) {
+                        respuesta = respuesta + "Heap[H] = " + Valor2.charCodeAt(i).toString() + ";\n";
+                        respuesta = respuesta + "H = H + 1;\n";
+                    }
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    Cadena3dxD = "t" + entorno.numero;
+                    entorno.etiquetas += 1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    entorno.numero += 1;
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 3) + "];\n";
+                    }
+                    else {
+                        respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
+                    }
+                    respuesta = respuesta + "if (t" + entorno.numero + " == -1) goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
                     respuesta = respuesta + "H = H + 1;\n";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 3) + " + 1;\n";
+                    }
+                    else {
+                        respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
+                    }
+                    respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 2) + ";\n";
+                    }
+                    else {
+                        respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = t" + (entorno.numero - 2) + ";\n";
+                    }
+                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 3) + "];\n";
+                    }
+                    else {
+                        respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
+                    }
+                    respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
+                    respuesta = respuesta + "H = H + 1;\n";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 3) + " + 1;\n";
+                    }
+                    else {
+                        respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
+                    }
+                    respuesta = respuesta + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta2 + ";\n";
+                    elid = 1;
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                 }
-                respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
-                entorno.numero += 1;
             }
-            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
-            for (var i = 0; i < Valor2.length; i++) {
-                respuesta = respuesta + "Heap[H] = " + Valor2.charCodeAt(i).toString() + ";\n";
-                respuesta = respuesta + "H = H + 1;\n";
-            }
-            respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
-            entorno.numero += 1;
-            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
-            Cadena3dxD = "t" + entorno.numero;
-            entorno.etiquetas += 1;
-            var Etiqueta1 = entorno.etiquetas;
-            entorno.etiquetas += 1;
-            var Etiqueta2 = entorno.etiquetas;
-            entorno.etiquetas += 1;
-            var Etiqueta3 = entorno.etiquetas;
-            respuesta = respuesta + "L" + Etiqueta1 + ":\n";
-            entorno.numero += 1;
-            if (elid == 0) {
-                respuesta = respuesta + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 3) + "];\n";
-            }
-            else {
-                respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
-            }
-            respuesta = respuesta + "if (t" + entorno.numero + " == -1) goto L" + Etiqueta3 + ";\n";
-            respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
-            respuesta = respuesta + "H = H + 1;\n";
-            if (elid == 0) {
-                respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 3) + " + 1;\n";
-            }
-            else {
-                respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
-            }
-            respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
-            respuesta = respuesta + "L" + Etiqueta3 + ":\n";
-            if (elid == 0) {
-                respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 2) + ";\n";
-            }
-            else {
-                respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = t" + (entorno.numero - 2) + ";\n";
-            }
-            respuesta = respuesta + "L" + Etiqueta2 + ":\n";
-            if (elid == 0) {
-                respuesta = respuesta + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 3) + "];\n";
-            }
-            else {
-                respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
-            }
-            respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
-            respuesta = respuesta + "H = H + 1;\n";
-            if (elid == 0) {
-                respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 3) + " + 1;\n";
-            }
-            else {
-                respuesta = respuesta + this.Hijos[0].CadenaDe3D + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
-            }
-            respuesta = respuesta + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta2 + ";\n";
-            elid = 1;
-            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
         }
         //console.log("Tipo1: " + Tipo1);
         //console.log("Tipo2: " + Tipo2);

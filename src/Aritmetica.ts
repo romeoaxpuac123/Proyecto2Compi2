@@ -22,7 +22,7 @@ Aritmetica(val : string){
 
         var C3D1 = this.Hijos[0].CadenaDe3D;
         var C3D2 = this.Hijos[2].CadenaDe3D
-
+      
         /*DTERMINANDO EL TIPO*/
         var TipoFinal = "";
         if(Tipo1 == "Entero" && Tipo2 == "Entero"){
@@ -48,7 +48,69 @@ Aritmetica(val : string){
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
         }
+        else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "+")){
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.charAt(1);
+            Valor2 = Valor2.charAt(1);
+     
+        }
+        else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "-")){
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString(); 
+            C3D1 = Valor1; 
+            Valor2 = Valor2.charCodeAt(1).toString(); 
+            C3D2 = Valor2; 
+        }
+        else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "*")){
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString(); 
+            C3D1 = Valor1; 
+            Valor2 = Valor2.charCodeAt(1).toString(); 
+            C3D2 = Valor2; 
+        }
+        else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "/")){
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString(); 
+            C3D1 = Valor1; 
+            Valor2 = Valor2.charCodeAt(1).toString(); 
+            C3D2 = Valor2; 
+        }
+        else if( (Tipo1 == "Caracter") && (Tipo2 == "Cadena")){
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.charAt(1);
+              Valor2 = Valor2.replace("\"","");
+            Valor2 = Valor2.replace("\"","");
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
+        else if( (Tipo1 == "Cadena") && (Tipo2 == "Caracter") && (Operador == "+")){
+            TipoFinal = "Cadena";
+            Valor2 = Valor2.charAt(1);
+            Valor1 = Valor1.replace("\"","");
+            Valor1 = Valor1.replace("\"","");
+           
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
         else if( (Tipo1 == "Cadena") && (Tipo2 == "Cadena")){
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.replace("\"","");
+            Valor1 = Valor1.replace("\"","");
+            Valor2 = Valor2.replace("\"","");
+            Valor2 = Valor2.replace("\"","");
+        }
+        else if( (Tipo1 == "Entero" || Tipo1 == "Decimal") && (Tipo2 == "Cadena")){
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.replace("\"","");
+            Valor1 = Valor1.replace("\"","");
+            Valor2 = Valor2.replace("\"","");
+            Valor2 = Valor2.replace("\"","");
+        }
+        else if( (Tipo1 == "Cadena") && (Tipo2 == "Entero" ||Tipo2 == "Decimal")){
             TipoFinal = "Cadena";
             Valor1 = Valor1.replace("\"","");
             Valor1 = Valor1.replace("\"","");
@@ -160,6 +222,8 @@ Aritmetica(val : string){
                 } 
             } 
         }else if(TipoFinal == "Cadena"){
+            switch(Operador) { 
+                case "+": { 
                 Total = Valor1 + Valor2;
                 var respuesta = "";
                 if(elid == 0){
@@ -230,8 +294,9 @@ Aritmetica(val : string){
                 respuesta = respuesta + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta2 + ";\n";
                 elid = 1;
                 document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                
+            }
         }
+    }
         
 
         //console.log("Tipo1: " + Tipo1);
