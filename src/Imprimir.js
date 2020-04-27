@@ -53,31 +53,21 @@ var Imprimir = /** @class */ (function (_super) {
             ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
             ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
             document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida + "print( \"%c\",10);" + "\n";
-            /*var respuestax = "t" + entorno.numero + " = H;\n";
-                for(var i = 0; i < respuesta.length ; i++){
-                    respuestax = respuestax + "Heap[H] = " + respuesta.charCodeAt(i).toString() + ";\n";
-                    respuestax = respuestax + "H = H + 1;\n";
-                }
-                respuestax  = respuestax + "Heap[H] = -1;\nH = H + 1;\n";
-                
-                entorno.etiquetas +=1;
-                var Etiqueta1 = entorno.etiquetas;
-                entorno.etiquetas +=1;
-                var Etiqueta2 = entorno.etiquetas;
-                entorno.etiquetas +=1;
-                var Etiqueta3 = entorno.etiquetas;
-                respuestax  = respuestax + "L" + Etiqueta3 + ":\n";
-                entorno.numero += 1;
-                respuestax  = respuestax + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 1) + "];\n";
-                respuestax = respuestax + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta1 + ";\n";
-                respuestax = respuestax + "goto L" + Etiqueta2 + ";\n";
-                respuestax = respuestax + "L" +Etiqueta1 + ":\n";
-                respuestax = respuestax + "print(\"%c\",t" + entorno.numero + ");\n";
-                respuestax = respuestax + "t" + (entorno.numero-1) + " = t" +  (entorno.numero-1) + " + 1;\n";
-                respuestax = respuestax + "goto L" + Etiqueta3 + ";\n";
-                respuestax = respuestax +"L" + Etiqueta2 + ":\nprint(\"%c\",10);\n";
-                document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuestax + "\n";
-                */
+        }
+        else if (this.Hijos[0].TipoDato == "Booleano") {
+            entorno.etiquetas += 1;
+            var Etiqueta1 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta2 = entorno.etiquetas;
+            var ResuladoSalida = "L" + Etiqueta2 + ":\n";
+            entorno.numero += 1;
+            ResuladoSalida = ResuladoSalida + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
+            ResuladoSalida = ResuladoSalida + "if( t" + entorno.numero + " ==  -1)" + " goto L" + Etiqueta1 + ";\n";
+            ResuladoSalida = ResuladoSalida + "print( \"%c\",t" + entorno.numero + ");\n";
+            ResuladoSalida = ResuladoSalida + this.Hijos[0].CadenaDe3D + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
+            ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
+            ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
+            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
         document.getElementById("salida").innerHTML = document.getElementById("salida").value + respuesta + "\n";
         var nuevo = new Nodo("Imprimir");

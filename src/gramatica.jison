@@ -33,6 +33,11 @@
 "/"					return 'DIVIDIDO';
 "^^"				return 'POTENCIA';
 "%"					return 'MODULO';
+">="				return 'MAYORIGUAL';
+"<="				return 'MENORIGUAL';
+">"					return 'MAYOR';
+"<"					return 'MENOR';
+
 
 
 /* Espacios en blanco */
@@ -55,7 +60,7 @@
 
 /* Asociación de operadores y precedencia */
 
-
+%left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
 %left 'MAS' 'MENOS'
 %left 'POR' 'DIVIDIDO' 'MODULO'
 %left 'POTENCIA' 
@@ -188,6 +193,42 @@ expresion
 										nuevo.Hijos[2] = $3;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
+	| expresion MAYOR expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
+	| expresion MENOR expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
+	| expresion MENORIGUAL expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
+	| expresion MAYORIGUAL expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
 	| ENTERO						{ 
 										//$$ = Number($1); 
 										var nuevo = new Nodo("Entero");
