@@ -37,6 +37,11 @@
 "<="				return 'MENORIGUAL';
 ">"					return 'MAYOR';
 "<"					return 'MENOR';
+"&&"				return 'AND';
+"||"				return 'OR';
+"^"					return 'XOR';
+"true"				return 'VERDADERO';
+"false"				return 'FALSO';
 
 
 
@@ -59,7 +64,7 @@
 
 
 /* Asociación de operadores y precedencia */
-
+%left 'AND' 'OR' 'XOR'
 %left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
 %left 'MAS' 'MENOS'
 %left 'POR' 'DIVIDIDO' 'MODULO'
@@ -229,6 +234,33 @@ expresion
 										nuevo.Hijos[2] = $3;
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
+	| expresion AND expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
+	| expresion OR expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+								}
+	| expresion XOR expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+	}
 	| ENTERO						{ 
 										//$$ = Number($1); 
 										var nuevo = new Nodo("Entero");
@@ -258,6 +290,26 @@ expresion
 										nuevo.CadenaDe3D = $1;
 										$$ = nuevo;
 										console.log("Leimos un Caracter->" + $1);
+									}
+	| VERDADERO   					{ 
+										//$$ = Number($1); 
+										var nuevo = new Nodo("Booleano");
+										var nuevovalor = new Nodo($1);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "Booleano";
+										nuevo.CadenaDe3D = $1;
+										$$ = nuevo;
+										console.log("Leimos un Booleano->" + $1);
+									}
+	| FALSO 						{ 
+										//$$ = Number($1); 
+										var nuevo = new Nodo("Booleano");
+										var nuevovalor = new Nodo($1);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "Booleano";
+										nuevo.CadenaDe3D = $1;
+										$$ = nuevo;
+										console.log("Leimos un Booleano->" + $1);
 									}
 	| CADENA						{ 
 										//$$ = Number($1); 
