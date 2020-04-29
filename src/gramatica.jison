@@ -37,9 +37,12 @@
 "<="				return 'MENORIGUAL';
 ">"					return 'MAYOR';
 "<"					return 'MENOR';
+"=="				return 'IGUALDAD';
+"!="				return 'DESIGUALDAD';
 "&&"				return 'AND';
 "||"				return 'OR';
 "^"					return 'XOR';
+"!"					return 'NOT';
 "true"				return 'VERDADERO';
 "false"				return 'FALSO';
 
@@ -65,7 +68,9 @@
 
 /* Asociación de operadores y precedencia */
 %left 'AND' 'OR' 'XOR'
+%left 'IGUALDAD' 'DESIGUALDAD'
 %left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
+%left 'NOT'
 %left 'MAS' 'MENOS'
 %left 'POR' 'DIVIDIDO' 'MODULO'
 %left 'POTENCIA' 
@@ -141,6 +146,14 @@ expresion
 										nuevo.Hijos[0] = $2;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] =  nuevo2;
+										$$ =  nuevo.Ejecutar(Entorno1);
+									}
+	|NOT expresion 					{ 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($1);
+										nuevo.Hijos[0] = $2;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $2;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MAS expresion		{ 
@@ -253,6 +266,24 @@ expresion
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion XOR expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+	}
+	| expresion IGUALDAD expresion	{ 
+										//$$ = $1 / $3; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($2);
+										nuevo.Hijos[0] = $1;
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $3;
+										$$ =  nuevo.Ejecutar(Entorno1);
+	}
+	| expresion DESIGUALDAD expresion	{ 
 										//$$ = $1 / $3; 
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($2);

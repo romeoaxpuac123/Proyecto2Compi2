@@ -112,6 +112,20 @@ var Aritmetica = /** @class */ (function (_super) {
             Valor2 = Valor2.charCodeAt(1).toString();
             C3D2 = Valor2;
         }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "==")) {
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString();
+            C3D1 = Valor1;
+            Valor2 = Valor2.charCodeAt(1).toString();
+            C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "!=")) {
+            TipoFinal = "Entero";
+            Valor1 = Valor1.charCodeAt(1).toString();
+            C3D1 = Valor1;
+            Valor2 = Valor2.charCodeAt(1).toString();
+            C3D2 = Valor2;
+        }
         else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "<")) {
             TipoFinal = "Entero";
             Valor1 = Valor1.charCodeAt(1).toString();
@@ -429,6 +443,104 @@ var Aritmetica = /** @class */ (function (_super) {
                     TipoFinal = "Booleano";
                     break;
                 }
+                case "==": {
+                    if (Valor1 == Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    var respuesta = "";
+                    //haciendo los casteos a ver que pedo 
+                    entorno.etiquetas += 1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == t" + (entorno.numero) + ") goto L" + Etiqueta1 + ";\n";
+                    //parte 2
+                    respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = 0;\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    //parte 3
+                    entorno.etiquetas += 1;
+                    var Etiqueta4 = entorno.etiquetas;
+                    respuesta = respuesta + "if(t" + entorno.numero + " == 1) goto L" + Etiqueta4 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    entorno.etiquetas += 1;
+                    var Etiqueta5 = entorno.etiquetas;
+                    respuesta = respuesta + "goto L" + Etiqueta5 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + Etiqueta5 + ":\n";
+                    //parte 4 = 
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    TipoFinal = "Booleano";
+                    break;
+                }
+                case "!=": {
+                    if (Valor1 != Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    entorno.etiquetas += 1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " <> t" + (entorno.numero) + ") goto L" + Etiqueta1 + ";\n";
+                    //parte 2
+                    respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = 0;\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    //parte 3
+                    entorno.etiquetas += 1;
+                    var Etiqueta4 = entorno.etiquetas;
+                    respuesta = respuesta + "if(t" + entorno.numero + " == 1) goto L" + Etiqueta4 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    entorno.etiquetas += 1;
+                    var Etiqueta5 = entorno.etiquetas;
+                    respuesta = respuesta + "goto L" + Etiqueta5 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + Etiqueta5 + ":\n";
+                    //parte 4 = 
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    TipoFinal = "Booleano";
+                    break;
+                }
                 default: {
                     //statements; 
                     break;
@@ -438,17 +550,21 @@ var Aritmetica = /** @class */ (function (_super) {
         else if (TipoFinal == "Cadena") {
             switch (Operador) {
                 case "+": {
+                    console.log("SUMA DE CANEDAS");
                     Total = Valor1 + Valor2;
                     var respuesta = "";
                     if (elid == 0) {
-                        respuesta = "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
                         for (var i = 0; i < Valor1.length; i++) {
+                            console.log("fin caden1");
                             respuesta = respuesta + "Heap[H] = " + Valor1.charCodeAt(i).toString() + ";\n";
                             respuesta = respuesta + "H = H + 1;\n";
                         }
                         respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
                         entorno.numero += 1;
+                        //break;
                     }
+                    console.log("fin caden2");
                     respuesta = respuesta + "t" + entorno.numero + " = H;\n";
                     for (var i = 0; i < Valor2.length; i++) {
                         respuesta = respuesta + "Heap[H] = " + Valor2.charCodeAt(i).toString() + ";\n";
@@ -507,26 +623,195 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta2 + ";\n";
                     elid = 1;
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    break;
+                }
+                case "==": {
+                    if (Valor1 == Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    var respuesta = "";
+                    var Auxiliar1 = "";
+                    var Auxiliar2 = "";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        Auxiliar1 = "t" + entorno.numero;
+                        for (var i = 0; i < Valor1.length; i++) {
+                            console.log("fin caden1");
+                            respuesta = respuesta + "Heap[H] = " + Valor1.charCodeAt(i).toString() + ";\n";
+                            respuesta = respuesta + "H = H + 1;\n";
+                        }
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                        entorno.numero += 1;
+                        //break;
+                    }
+                    else {
+                        Auxiliar1 = C3D1;
+                    }
+                    console.log("fin caden2");
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    Auxiliar2 = "t" + entorno.numero;
+                    for (var i = 0; i < Valor2.length; i++) {
+                        respuesta = respuesta + "Heap[H] = " + Valor2.charCodeAt(i).toString() + ";\n";
+                        respuesta = respuesta + "H = H + 1;\n";
+                    }
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    entorno.etiquetas += 1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta4 = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[" + Auxiliar1 + "]" + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[" + Auxiliar2 + "];\n";
+                    //respuesta = respuesta + "if(t" + (entorno.numero) +" != t"+ (entorno.numero-1) +") goto Lx" + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == " + "-1" + ") goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == " + "-1" + ") goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " <> " + "t" + (entorno.numero - 1) + ") goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + Auxiliar1 + " = " + Auxiliar1 + " + 1;\n";
+                    respuesta = respuesta + Auxiliar2 + " = " + Auxiliar2 + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 3) + " = " + "t" + (entorno.numero - 3) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    //respuesta = respuesta + "CODIGO DIFERNTES\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta4 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " <> " + "t" + (entorno.numero - 2) + ") goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+                    elid = 1;
+                    Cadena3dxD = "t" + entorno.numero;
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    break;
+                }
+                case "!=": {
+                    if (Valor1 != Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    var respuesta = "";
+                    var Auxiliar1 = "";
+                    var Auxiliar2 = "";
+                    if (elid == 0) {
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        Auxiliar1 = "t" + entorno.numero;
+                        for (var i = 0; i < Valor1.length; i++) {
+                            console.log("fin caden1");
+                            respuesta = respuesta + "Heap[H] = " + Valor1.charCodeAt(i).toString() + ";\n";
+                            respuesta = respuesta + "H = H + 1;\n";
+                        }
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                        entorno.numero += 1;
+                        //break;
+                    }
+                    else {
+                        Auxiliar1 = C3D1;
+                    }
+                    console.log("fin caden2");
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    Auxiliar2 = "t" + entorno.numero;
+                    for (var i = 0; i < Valor2.length; i++) {
+                        respuesta = respuesta + "Heap[H] = " + Valor2.charCodeAt(i).toString() + ";\n";
+                        respuesta = respuesta + "H = H + 1;\n";
+                    }
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    entorno.etiquetas += 1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta4 = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[" + Auxiliar1 + "]" + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[" + Auxiliar2 + "];\n";
+                    //respuesta = respuesta + "if(t" + (entorno.numero) +" != t"+ (entorno.numero-1) +") goto Lx" + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == " + "-1" + ") goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == " + "-1" + ") goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " <> " + "t" + (entorno.numero - 1) + ") goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + Auxiliar1 + " = " + Auxiliar1 + " + 1;\n";
+                    respuesta = respuesta + Auxiliar2 + " = " + Auxiliar2 + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 3) + " = " + "t" + (entorno.numero - 3) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    //respuesta = respuesta + "CODIGO DIFERNTES\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta4 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " <> " + "t" + (entorno.numero - 2) + ") goto L" + Etiqueta3 + ";\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+                    elid = 1;
+                    Cadena3dxD = "t" + entorno.numero;
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    break;
                 }
             }
         }
         else if (TipoFinal == "Booleano") {
             switch (Operador) {
                 case "&&": {
-                    Total = (Valor1 && Valor2);
+                    //Total = (Valor1 && Valor2);
+                    var c3x = "";
+                    var c3x2 = "";
+                    if (Valor1 == "true" && Valor2 == "true") {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
                     console.log("EL LC31ES.->" + C3D1);
                     console.log("EL LC32ES.->" + C3D2);
                     if (C3D1 == "true") {
                         C3D1 = "1";
+                        c3x = "1";
                     }
                     else if (C3D1 == "false") {
                         C3D1 = "0";
+                        c3x = "0";
                     }
                     if (C3D2 == "true") {
                         C3D2 = "1";
+                        c3x2 = "1";
                     }
                     else if (C3D2 == "false") {
                         C3D2 = "0";
+                        c3x2 = "0";
                     }
                     var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
                     entorno.numero += 1;
@@ -538,7 +823,12 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x2 == "1" || c3x2 == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -559,7 +849,12 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x == "1" || c3x == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -579,26 +874,59 @@ var Aritmetica = /** @class */ (function (_super) {
                     var Etiqueta1 = entorno.etiquetas;
                     entorno.etiquetas += 1;
                     var Etiqueta2 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3 = entorno.etiquetas;
                     entorno.numero += 1;
-                    respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D1 + "];\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = 0;\n";
                     entorno.numero += 1;
-                    respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D2 + "];\n";
-                    respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == t" + entorno.numero + ") goto L" + Etiqueta1 + ";\n";
-                    entorno.numero += 1;
-                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
-                    C3D2 = "t" + entorno.numero;
-                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
-                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
-                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
-                    //parte 3
-                    respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    var Auxiliar1 = "t" + entorno.numero;
                     respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = Heap[" + Auxiliar1 + "];\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta2 + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "" + Auxiliar1 + " = " + Auxiliar1 + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
+                    respuesta = respuesta + "L" + (Etiqueta2) + ":\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 2) + " == 5) goto L" + Etiqueta3 + ";\n";
+                    entorno.numero += 1;
+                    //probando el segundo numero
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = 0;\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    var Auxiliar2 = "t" + entorno.numero;
+                    entorno.etiquetas += 1;
+                    var Etiqueta4 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta5 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta6 = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = Heap[" + Auxiliar2 + "];\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta5 + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "" + Auxiliar2 + " = " + Auxiliar2 + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta4 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta5 + ":\n";
+                    respuesta = respuesta + "if(t" + (entorno.numero - 2) + " == 5) goto L" + Etiqueta3 + ";\n";
+                    //TREU
+                    entorno.numero += 1;
                     respuesta = respuesta + "t" + entorno.numero + " = H;\n";
                     respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
-                    respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    respuesta = respuesta + "goto L" + Etiqueta6 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + Etiqueta6 + ":\n";
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    break;
                 }
                 case "||": {
                     if (Valor2 == "false" && Valor1 == "false") {
@@ -609,17 +937,23 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                     console.log("EL LC31ES.->" + C3D1);
                     console.log("EL LC32ES.->" + C3D2);
+                    var c3x = "";
+                    var c3x2 = "";
                     if (C3D1 == "true") {
                         C3D1 = "1";
+                        c3x = "1";
                     }
                     else if (C3D1 == "false") {
                         C3D1 = "0";
+                        c3x = "0";
                     }
                     if (C3D2 == "true") {
                         C3D2 = "1";
+                        c3x2 = "1";
                     }
                     else if (C3D2 == "false") {
                         C3D2 = "0";
+                        c3x2 = "0";
                     }
                     var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
                     entorno.numero += 1;
@@ -631,7 +965,13 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x2 == "1" || c3x2 == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        // respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -652,7 +992,13 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x == "1" || c3x == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -716,9 +1062,10 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "L" + (Etiqueta6) + ":\n";
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    break;
                 }
                 case "^": {
-                    Total = (Valor1 && Valor2);
+                    //Total = (Valor1 && Valor2);
                     if (Valor1 == Valor2) {
                         Total = "false";
                     }
@@ -727,17 +1074,23 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                     console.log("EL LC31ES.->" + C3D1);
                     console.log("EL LC32ES.->" + C3D2);
+                    var c3x = "";
+                    var c3x2 = "";
                     if (C3D1 == "true") {
                         C3D1 = "1";
+                        c3x = "1";
                     }
                     else if (C3D1 == "false") {
                         C3D1 = "0";
+                        c3x = "0";
                     }
                     if (C3D2 == "true") {
                         C3D2 = "1";
+                        c3x2 = "1";
                     }
                     else if (C3D2 == "false") {
                         C3D2 = "0";
+                        c3x2 = "0";
                     }
                     var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
                     entorno.numero += 1;
@@ -749,7 +1102,13 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x2 == "1" || c3x2 == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -770,7 +1129,13 @@ var Aritmetica = /** @class */ (function (_super) {
                         var Etiqueta1 = entorno.etiquetas;
                         entorno.etiquetas += 1;
                         var Etiqueta2 = entorno.etiquetas;
-                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        if (c3x == "1" || c3x == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
                         //parte 2
                         entorno.numero += 1;
                         respuesta = respuesta + "t" + entorno.numero + " = H;\n";
@@ -814,6 +1179,383 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "L" + Etiqueta2 + ":\n";
                     document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    break;
+                }
+                case "!": {
+                    if (Valor1 == "true") {
+                        Total = "false";
+                    }
+                    else {
+                        Total = "true";
+                    }
+                    if (C3D1 == "true") {
+                        C3D1 = "1";
+                    }
+                    var respuesta = "//nodo not\n";
+                    respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    entorno.numero += 1;
+                    if (C3D1 == "1" || C3D1 == "0") {
+                        entorno.etiquetas += 1;
+                        var Etiqueta1 = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2 = entorno.etiquetas;
+                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        //parte 2
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        C3D1 = "t" + entorno.numero;
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                        respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    }
+                    else {
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                        entorno.etiquetas += 1;
+                        var Etiqueta1x = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2x = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta3x = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta4x = entorno.etiquetas;
+                        entorno.numero += 1;
+                        respuesta = respuesta + "L" + Etiqueta1x + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D1 + "];\n";
+                        respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta2x + ";\n";
+                        respuesta = respuesta + "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                        respuesta = respuesta + "" + C3D1 + " = " + "" + C3D1 + " + 1;\n";
+                        respuesta = respuesta + "goto L" + Etiqueta1x + ";\n";
+                        respuesta = respuesta + "L" + (Etiqueta2x) + ":\n";
+                        respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 4" + ") goto L" + Etiqueta3x + ";\n";
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "goto L" + Etiqueta4x + ";\n";
+                        respuesta = respuesta + "L" + (Etiqueta3x) + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + (Etiqueta4x) + ":\n";
+                    }
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    TipoFinal = "Booleano";
+                    break;
+                }
+                case "==": {
+                    var c3x = "";
+                    var c3x2 = "";
+                    if (Valor1 == Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    if (C3D1 == "true") {
+                        C3D1 = "1";
+                        c3x = "1";
+                    }
+                    else if (C3D1 == "false") {
+                        C3D1 = "0";
+                        c3x = "0";
+                    }
+                    if (C3D2 == "true") {
+                        C3D2 = "1";
+                        c3x2 = "1";
+                    }
+                    else if (C3D2 == "false") {
+                        C3D2 = "0";
+                        c3x2 = "0";
+                    }
+                    var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    var lat1;
+                    var lat2;
+                    if (C3D1 == "1" || C3D1 == "0") {
+                        entorno.etiquetas += 1;
+                        var Etiqueta1 = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2 = entorno.etiquetas;
+                        if (c3x2 == "1" || c3x2 == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
+                        //parte 2
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        C3D1 = "t" + entorno.numero;
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                        respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    }
+                    if (C3D2 == "1" || C3D2 == "0") {
+                        entorno.etiquetas += 1;
+                        var Etiqueta1 = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2 = entorno.etiquetas;
+                        if (c3x == "1" || c3x == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
+                        //parte 2
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        C3D2 = "t" + entorno.numero;
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                        respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    }
+                    entorno.numero += 1;
+                    var auxiliar11x = "";
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    auxiliar11x = "t" + entorno.numero;
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "0" +  ";\n"
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + C3D2 + ";\n"
+                    entorno.etiquetas += 1;
+                    var Etiqueta1x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta4x = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta1x + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[t" + (entorno.numero - 1) + "]" + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "Heap[t" + (entorno.numero-2) + "]" + ";\n"
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta2x + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta1x + ";\n";
+                    respuesta = respuesta + "L" + (Etiqueta2x) + ":\n";
+                    // respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 4" + ") goto L" + Etiqueta3x + ";\n" ;
+                    entorno.numero += 1;
+                    var auxiliar11x2 = "";
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    auxiliar11x2 = "t" + entorno.numero;
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3x + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[t" + (entorno.numero - 1) + "]" + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "Heap[t" + (entorno.numero-2) + "]" + ";\n"
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta4x + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta3x + ";\n";
+                    respuesta = respuesta + "L" + (Etiqueta4x) + ":\n";
+                    //CONCLUSION FINAL 
+                    entorno.etiquetas += 1;
+                    var EtiquetaF1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var EtiquetaF2 = entorno.etiquetas;
+                    respuesta = respuesta + "if(" + (auxiliar11x) + " == " + (auxiliar11x2) + ") goto L" + EtiquetaF1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    C3D2 = "t" + entorno.numero;
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    //parte 3
+                    respuesta = respuesta + "goto L" + EtiquetaF2 + ";\n";
+                    respuesta = respuesta + "L" + EtiquetaF1 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + EtiquetaF2 + ":\n";
+                    //a comparar esa onda :( )
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    TipoFinal = "Booleano";
+                    break;
+                }
+                case "!=": {
+                    var c3x = "";
+                    var c3x2 = "";
+                    if (Valor1 != Valor2) {
+                        Total = "true";
+                    }
+                    else {
+                        Total = "false";
+                    }
+                    if (C3D1 == "true") {
+                        C3D1 = "1";
+                        c3x = "1";
+                    }
+                    else if (C3D1 == "false") {
+                        C3D1 = "0";
+                        c3x = "0";
+                    }
+                    if (C3D2 == "true") {
+                        C3D2 = "1";
+                        c3x2 = "1";
+                    }
+                    else if (C3D2 == "false") {
+                        C3D2 = "0";
+                        c3x2 = "0";
+                    }
+                    var respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    var lat1;
+                    var lat2;
+                    if (C3D1 == "1" || C3D1 == "0") {
+                        entorno.etiquetas += 1;
+                        var Etiqueta1 = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2 = entorno.etiquetas;
+                        if (c3x2 == "1" || c3x2 == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
+                        //parte 2
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        C3D1 = "t" + entorno.numero;
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                        respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    }
+                    if (C3D2 == "1" || C3D2 == "0") {
+                        entorno.etiquetas += 1;
+                        var Etiqueta1 = entorno.etiquetas;
+                        entorno.etiquetas += 1;
+                        var Etiqueta2 = entorno.etiquetas;
+                        if (c3x == "1" || c3x == "0") {
+                            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        else {
+                            respuesta = respuesta + "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                        }
+                        //respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
+                        //parte 2
+                        entorno.numero += 1;
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        C3D2 = "t" + entorno.numero;
+                        respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+                        respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+                        respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                        respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+                    }
+                    entorno.numero += 1;
+                    var auxiliar11x = "";
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    auxiliar11x = "t" + entorno.numero;
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "0" +  ";\n"
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + C3D2 + ";\n"
+                    entorno.etiquetas += 1;
+                    var Etiqueta1x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta2x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta3x = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var Etiqueta4x = entorno.etiquetas;
+                    respuesta = respuesta + "L" + Etiqueta1x + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[t" + (entorno.numero - 1) + "]" + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "Heap[t" + (entorno.numero-2) + "]" + ";\n"
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta2x + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta1x + ";\n";
+                    respuesta = respuesta + "L" + (Etiqueta2x) + ":\n";
+                    // respuesta = respuesta + "if(t" + (entorno.numero-1) + " == 4" + ") goto L" + Etiqueta3x + ";\n" ;
+                    entorno.numero += 1;
+                    var auxiliar11x2 = "";
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "0" + ";\n";
+                    auxiliar11x2 = "t" + entorno.numero;
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+                    respuesta = respuesta + "L" + Etiqueta3x + ":\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = " + "Heap[t" + (entorno.numero - 1) + "]" + ";\n";
+                    //entorno.numero += 1;
+                    //respuesta = respuesta + "t" + entorno.numero +" = " + "Heap[t" + (entorno.numero-2) + "]" + ";\n"
+                    respuesta = respuesta + "if(t" + (entorno.numero) + " == - 1" + ") goto L" + Etiqueta4x + ";\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                    respuesta = respuesta + "t" + (entorno.numero - 2) + " = " + "t" + (entorno.numero - 2) + " + 1;\n";
+                    respuesta = respuesta + "goto L" + Etiqueta3x + ";\n";
+                    respuesta = respuesta + "L" + (Etiqueta4x) + ":\n";
+                    //CONCLUSION FINAL 
+                    entorno.etiquetas += 1;
+                    var EtiquetaF1 = entorno.etiquetas;
+                    entorno.etiquetas += 1;
+                    var EtiquetaF2 = entorno.etiquetas;
+                    respuesta = respuesta + "if(" + (auxiliar11x) + " == " + (auxiliar11x2) + ") goto L" + EtiquetaF1 + ";\n";
+                    entorno.numero += 1;
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    C3D2 = "t" + entorno.numero;
+                    respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    //parte 3
+                    respuesta = respuesta + "goto L" + EtiquetaF2 + ";\n";
+                    respuesta = respuesta + "L" + EtiquetaF1 + ":\n";
+                    respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+                    respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+                    respuesta = respuesta + "L" + EtiquetaF2 + ":\n";
+                    //a comparar esa onda :( )
+                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    TipoFinal = "Booleano";
+                    break;
                 }
             }
         }
