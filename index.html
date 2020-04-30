@@ -3,8 +3,14 @@
   <head>
     <meta charset="uft-8"/>
   <title>J#</title>
-  <link rel="stylesheet" href="estilos.css">
-	<link rel="stylesheet" href="font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="estilos.css">
+  <link rel="stylesheet" href="font-awesome.css">
+
+  <script src = "codemirror/lib/codemirror.js"></script>
+  <link href="codemirror/lib/codemirror.css" rel = "stylesheet">
+  <script src = "codemirror/mode/javascript/javascript.js"></script>
+  <link href="codemirror/theme/dracula.css" rel = "stylesheet">
+
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="pestania.js"></script>
@@ -28,7 +34,59 @@
       }
       document.getElementById(id_pesta).style.zIndex="1000";
       document.getElementById(id_pesta).style.visibility="visible";
+      /*
+      var Editor = CodeMirror.fromTextArea(
+            document.getElementById('texto1'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor.setSize("260","250");
+
+        var Editor2 = CodeMirror.fromTextArea(
+            document.getElementById('texto2'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor2.setSize("260","250");
+
+        var Editor3 = CodeMirror.fromTextArea(
+            document.getElementById('texto3'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor3.setSize("260","250");
+
+        var Editor4 = CodeMirror.fromTextArea(
+            document.getElementById('texto4'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor4.setSize("260","250");
+
+        var Editor5 = CodeMirror.fromTextArea(
+            document.getElementById('texto5'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor5.setSize("260","250");
+    */
     }
+    
 
     function pestana2(grupo_pesta2, id_pesta2){
       var pestanas2 = document2.getElementById(grupo_pesta2);
@@ -58,6 +116,8 @@
         document.getElementById("texto1C3D").innerHTML = "";
         document.getElementById("salida").innerHTML = "";
           gramatica.parse(input);
+          Salida.setValue(document.getElementById("texto1C3D").value);
+          SalidaAT.setValue(document.getElementById("salida").value);
       }   
   </script>
 
@@ -209,30 +269,250 @@ function cambiarPestanna(pestannas,pestanna) {
 
   </head>
  
-  
+  <body background="fondo.jpg" bgcolor="0000000"></body>
   
  
 
 
+<script>
+   function showDiv1() {
+    document.getElementById('welcomeDiv1').style.visibility = "visible";
+    document.getElementById('welcomeDiv2').style.visibility = "hidden";
+    document.getElementById('welcomeDiv3').style.visibility = "hidden";
+    document.getElementById('welcomeDiv4').style.visibility = "hidden";
+  }
+  function showDiv2() {
+    document.getElementById('welcomeDiv2').style.visibility = "visible";
+    document.getElementById('welcomeDiv1').style.visibility = "hidden";
+    document.getElementById('welcomeDiv3').style.visibility = "hidden";
+    document.getElementById('welcomeDiv4').style.visibility = "hidden";
+  }
+  function showDiv3() {
+    document.getElementById('welcomeDiv3').style.visibility = "visible";
+    document.getElementById('welcomeDiv1').style.visibility = "hidden";
+    document.getElementById('welcomeDiv2').style.visibility = "hidden";
+    document.getElementById('welcomeDiv4').style.visibility = "hidden";
+  }
+  function showDiv4() {
+    document.getElementById('welcomeDiv4').style.visibility = "visible";
+    document.getElementById('welcomeDiv1').style.visibility = "hidden";
+    document.getElementById('welcomeDiv2').style.visibility = "hidden";
+    document.getElementById('welcomeDiv3').style.visibility = "hidden";
+  }
+</script>
+<div id="general1" style="position:absolute; top:0; left:0; width:1310px; height: 650px; ">
+  <div id = "titulo" style="position:absolute;top:0px;left:535px;z-index:1; ">
+    <img src="titulo.png">
+  </div>
+  <div id = "botones" style="position:absolute;top:100px;left:265px;z-index:1; width:900px;">
+    <input type="button"class="boton_personalizado"  onClick="showDiv1()" value="pestaña1"   />
+    <input type="button"class="boton_personalizado"  onClick="showDiv2()" value="pestaña2"   />
+    <input type="button"class="boton_personalizado"  onClick="showDiv3()" value="pestaña3"   />
+    <input type="button"class="boton_personalizado"  onClick="showDiv4()" value="pestaña4"   />
   
-  <center>
+  </div>
+
+  <div id = "welcomeDiv2" style="position:absolute;top:150px;left:165px;z-index:1; width:500px; background-color:blue;">
+    <textarea name="texto2" id = "texto2">Ingresa tu codigo 2</textarea>
+    <script>
+      var Editor2 = CodeMirror.fromTextArea(
+           document.getElementById('texto2'),{
+           mode: "javascript",
+           theme: "dracula",
+           lineNumbers: true,
+           undoDepth : 200
+         }
+       );
+       Editor2.setSize("500","250"); 
+       
+    </script>
+</div>
+<div id = "welcomeDiv3" style="position:absolute;top:150px;left:165px;z-index:1; width:500px; ">
+  <textarea name="texto3" id = "texto3">Ingresa tu codigo 3</textarea>
+  <script>
+    var Editor3 = CodeMirror.fromTextArea(
+         document.getElementById('texto3'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     Editor3.setSize("500","250"); 
+     
+  </script>
+</div>
+<div id = "welcomeDiv4" style="position:absolute;top:150px;left:165px;z-index:1; width:500px; ">
+  <textarea name="texto4" id = "texto4">Ingresa tu codigo 4</textarea>
+  <script>
+    var Editor4 = CodeMirror.fromTextArea(
+         document.getElementById('texto4'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     Editor4.setSize("500","250"); 
+     
+  </script>
+</div>
+<div id = "welcomeDiv1" style="position:absolute;top:150px;left:165px;z-index:1; width:500px; ">
+  <textarea name="texto1" id = "texto1">Ingresa tu codigo 1</textarea>
+  <script>
+    var Editor = CodeMirror.fromTextArea(
+         document.getElementById('texto1'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     Editor.setSize("500","250"); 
+     
+  </script>
+</div>
+<div id = "C3CCuadro4" style="position:absolute;top:150px;left:705px;z-index:1; width:500px;">
+  <textarea name="texto1C3D" id = "texto1C3D" >CODIGO TRES DIRECCIONES</textarea>
+  <textarea name="salida" id = "salida" >CODIGO TRES DIRECCIONES</textarea>
+</div>
+<div id = "C3CCuadro" style="position:absolute;top:150px;left:705px;z-index:1; width:500px;">
+  
+  <textarea name="texto1C3D2" id = "texto1C3D2" >CODIGO TRES DIRECCIONES</textarea>
+  <script>
+    var Salida = CodeMirror.fromTextArea(
+         document.getElementById('texto1C3D2'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     Salida.setSize("500","250"); 
+     
+  </script>
+
+</div>
+<div id = "Bontoesmenu1P" style="position:absolute;top:150px;left:80px;z-index:1; width:100px; height: 250px; background-color:black">
+   <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()">
+          
+  <input type="button" class="boton_2" onclick="pegarTexto(Editor.getValue());" Value = "Ejec C3D" id = "C3DA" >
+  <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" >
+
+  <input type="file"   class="custom-input-file2"  id="archivo" >
+</div>
+<div id = "Bontoesmenu2" style="position:absolute;top:430px;left:80px;z-index:1; width:580px; height: 50px; ">
+  <div class="wrap" >
+    <ul class="tabs">
+      <li><a href="#tab1"><span ></span><span class="tab-text">Consola</span></a></li>
+      <li><a href="#tab2"><span ></span><span class="tab-text">R. Stack</span></a></li>
+      <li><a href="#tab3"><span ></span><span class="tab-text">R. Heap</span></a></li>
+      <li><a href="#tab4"><span ></span><span class="tab-text">Errores</span></a></li>
+      <li><a href="#tab5"><span ></span><span class="tab-text">Simbolos</span></a></li>
+    </ul>
+
+    <div class="secciones">
+      <article id="tab1">
+        <textarea name="salida2" id = "salida2" rows="4" cols="60">Salida</textarea>
+        <script>
+          var SalidaAT = CodeMirror.fromTextArea(
+               document.getElementById('salida2'),{
+               mode: "javascript",
+               theme: "dracula",
+               lineNumbers: true,
+               undoDepth : 200
+             }
+           );
+           SalidaAT.setSize("500","85"); 
+           
+        </script>
+      </article>
+
+      <article id="tab2">
+        <textarea name="stack" id = "stack" rows="5" cols="70">Stack</textarea>     
+      </article>
+
+      <article id="tab3">
+        <textarea name="heap" id = "heap" rows="5" cols="70">Heap</textarea>     
+      </article>
+
+
+      <article id="tab4">
+       <textarea name="Errores" id = "Errores" rows="5" cols="70">Errores</textarea>  
+      </article>
+
+      <article id="tab5">
+        <textarea name="Simbolos" id = "Simbolos" rows="5" cols="70">Errores</textarea>  
+       </article>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<!--
+  <body background="fondo.jpg" bgcolor="0000000">
   <img src="titulo.png">
-  
-  <body background="fondo.jpg" bgcolor="0000000"></body>
-  <textarea name="texto1C3D" id = "texto1C3D" rows="18" cols="73"   style="position:absolute;top:128px;left:705px;z-index:1;">CODIGO TRES DIRECCIONES</textarea>
-</center>
+   <textarea name="texto1C3D" id = "texto1C3D" rows="18" cols="73"   style="position:absolute;top:128px;left:705px;z-index:1;">CODIGO TRES DIRECCIONES</textarea>
+
+  <div id="botones">
+    <input type="button"class="boton_personalizado"  onClick="showDiv1()" value="pestaña1" style="position:absolute;top:80px;left:125px;z-index:1;"  />
+   <input type="button"class="boton_personalizado"  onClick="showDiv2()" value="pestaña2" style="position:absolute;top:80px;left:225px;z-index:1;"  />
+   <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:50px;left:25px;z-index:1;">
+   
+  </div>
+
+ <div>
+
+ </div>
+ 
+  <div id="welcomeDiv1" style=" position:absolute;  top:-10;   right:-10;  width:-600px;">
+     
+  <textarea name="texto1" id = "texto1">Ingresa tu codigo 1</textarea>
+  <script>
+    var Editor = CodeMirror.fromTextArea(
+         document.getElementById('texto1'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     Editor.setSize("500","250"); 
+     
+  </script>
+
+</div>
+
+-->
+
+<!--
 <div id="pestanas">
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta1')" value="pestaña1" style="position:absolute;top:80px;left:125px;z-index:1;"  />
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta2')" value="pestaña2" style="position:absolute;top:80px;left:225px;z-index:1;" />
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta3')" value="pestaña3" style="position:absolute;top:80px;left:325px;z-index:1;"/>
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta4')" value="pestaña4" style="position:absolute;top:80px;left:425px;z-index:1;"/>
     <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta5')" value="pestaña5" style="position:absolute;top:80px;left:525px;z-index:1;"/>
-    <div id="pesta1" style="z-index:1000; visibility:visible; position:absolute">
+    <div id="pesta1" style="z-index:1000; visibility:hidden; position:absolute">
       <p></p>
-      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu Codigo 1</textarea>
+      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu codigo 1</textarea>
+     <script>
+      /* var Editor = CodeMirror.fromTextArea(
+            document.getElementById('texto1'),{
+            mode: "javascript",
+            theme: "dracula",
+            lineNumbers: true,
+            undoDepth : 200
+          }
+        );
+        Editor.setSize("260","250"); 
+        */
+     </script>
       <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:50px;left:25px;z-index:1;">
           
-      <input type="button" class="boton_2" onclick="pegarTexto(document.getElementById('texto1').value);" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:113px;left:22px;z-index:1;">
+      <input type="button" class="boton_2" onclick="pegarTexto(Editor.getValue());" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:113px;left:22px;z-index:1;">
       <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" style="position:absolute;top:178px;left:25px;z-index:1;">
 
       <input type="file"   class="custom-input-file2"  onclick="Compilar()" id="archivo" style="position:absolute;top:245px;left:26px;z-index:1;">
@@ -285,8 +565,11 @@ function cambiarPestanna(pestannas,pestanna) {
 
 
   </body>
-  
 
+
+-->
+
+<!--
   <body>
     <div class="wrap" style="position:absolute;top:380px;left:105px;z-index:1;">
       <ul class="tabs">
@@ -321,4 +604,5 @@ function cambiarPestanna(pestannas,pestanna) {
       </div>
     </div>
   </body>
+-->
 </html>
