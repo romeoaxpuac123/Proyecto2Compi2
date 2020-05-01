@@ -9,7 +9,7 @@ class Casa {
     constructor() {
         // Le doy un valor
 
-        this.direccion = 'San Bartolomoe'
+        this.direccion = "";
         this.numero = 0;
         this.etiquetas = 0;
         this.paso = 0;

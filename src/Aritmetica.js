@@ -201,36 +201,41 @@ var Aritmetica = /** @class */ (function (_super) {
                     Total = +Valor1 + +Valor2;
                     var C3DFinal = C3D1 + " + " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "-": {
                     Total = +Valor1 - +Valor2;
                     var C3DFinal = C3D1 + " - " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "*": {
                     Total = +Valor1 * +Valor2;
                     var C3DFinal = C3D1 + " * " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "/": {
                     Total = +Valor1 / +Valor2;
                     var C3DFinal = C3D1 + " / " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Decimal";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "%": {
                     Total = +Valor1 % +Valor2;
                     var C3DFinal = C3D1 + " % " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     //TipoFinal  = "Decimal";
                     break;
                 }
@@ -268,8 +273,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     C3DFinal = C3DFinal + "L" + Etiqueta2 + ":		#\n";
                     TipoFinal = "Entero";
                     var respuesta = C3DFinal;
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     Total = Math.pow(+Valor1, +Valor2);
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case ">": {
@@ -310,7 +316,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -353,7 +360,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //parte 4 = 
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -396,7 +404,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //parte 4 = 
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -439,7 +448,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //parte 4 = 
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -489,7 +499,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //parte 4 = 
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -537,7 +548,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //parte 4 = 
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     TipoFinal = "Booleano";
                     break;
                 }
@@ -622,7 +634,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                     respuesta = respuesta + "if (t" + entorno.numero + " <> -1) goto L" + Etiqueta2 + ";\n";
                     elid = 1;
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "==": {
@@ -700,7 +713,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "L" + Etiqueta4 + ":\n";
                     elid = 1;
                     Cadena3dxD = "t" + entorno.numero;
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "!=": {
@@ -778,7 +792,8 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "L" + Etiqueta4 + ":\n";
                     elid = 1;
                     Cadena3dxD = "t" + entorno.numero;
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
             }
@@ -924,8 +939,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
                     respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta6 + ":\n";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "||": {
@@ -1060,8 +1076,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + (Etiqueta6) + ":\n";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "^": {
@@ -1177,8 +1194,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
                     //fin
                     respuesta = respuesta + "L" + Etiqueta2 + ":\n";
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "!": {
@@ -1247,8 +1265,9 @@ var Aritmetica = /** @class */ (function (_super) {
                         respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
                         respuesta = respuesta + "L" + (Etiqueta4x) + ":\n";
                     }
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "==": {
@@ -1400,8 +1419,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + EtiquetaF2 + ":\n";
                     //a comparar esa onda :( )
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    // document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
                 case "!=": {
@@ -1553,8 +1573,9 @@ var Aritmetica = /** @class */ (function (_super) {
                     respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + EtiquetaF2 + ":\n";
                     //a comparar esa onda :( )
-                    document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal = "Booleano";
+                    entorno.direccion = entorno.direccion + respuesta + "\n";
                     break;
                 }
             }

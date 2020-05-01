@@ -280,8 +280,8 @@ function cambiarPestanna(pestannas,pestanna) {
 
 
 <script>
-   document.getElementById('numero1x').style.visibility = "hidden";
-    document.getElementById('numero2x').style.visibility = "hidden";
+   //document.getElementById('numero1x').style.visibility = "hidden";
+   // document.getElementById('numero2x').style.visibility = "hidden";
    function showDiv1() {
     document.getElementById('welcomeDiv1').style.visibility = "visible";
     document.getElementById('welcomeDiv2').style.visibility = "hidden";
@@ -416,14 +416,14 @@ function cambiarPestanna(pestannas,pestanna) {
     
     <form action="http://localhost:3080/CodigoDOT" method="post">
       Ingrese numero inferior:
-      <textarea type="text" name="numero1" id = "numero1x"  size="10" visibility="hidden" style="position:absolute;top:150px;left:705px;z-index:1;"></textarea>
+      <textarea type="text" name="numero1" id = "numero1x"  size="10" style="visibility:hidden" style="position:absolute;top:150px;left:705px;z-index:1;"></textarea>
       Ingrese numero superior:
-      <input type="text" name="numero2" id = "numero2x" visibility="hidden" size="10"style="position:absolute;top:150px;left:705px;z-index:1;" ><br>
+      <input type="text" name="numero2" id = "numero2x" style="visibility:hidden" size="10"style="position:absolute;top:150px;left:705px;z-index:1;" ><br>
       
       <input type="submit" class="boton_2" Value = "Reportes" id = "ReportesA"  style="position:absolute;top:130px;left:00px;z-index:1;"  >
     </form>
     
-  <input type="file"   class="custom-input-file2"  id="archivo" >
+  <input type="file"   class="custom-input-file2"  id="archivo" style="position:absolute;top:192px;left:00px;z-index:1;">
 
   
 </div>

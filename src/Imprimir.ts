@@ -19,13 +19,13 @@ class Imprimir extends NodoAbstracto{
         var respuesta =  this.Hijos[0].Hijos[0].Nombre;
         if(this.Hijos[0].TipoDato == "Entero"){
             TipoAImprimir = "\"%i\", ";
-            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion  + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
         }
         else if(this.Hijos[0].TipoDato == "Decimal"){
             TipoAImprimir = "\"%d\", ";
-            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
         }else if(this.Hijos[0].TipoDato == "Cadena"){
 
             entorno.etiquetas +=1;
@@ -40,8 +40,8 @@ class Imprimir extends NodoAbstracto{
             ResuladoSalida = ResuladoSalida + this.Hijos[0].CadenaDe3D  + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
             ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
             ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
-            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-            
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
         }
         else if(this.Hijos[0].TipoDato == "Booleano"){
 
@@ -57,10 +57,13 @@ class Imprimir extends NodoAbstracto{
             ResuladoSalida = ResuladoSalida + this.Hijos[0].CadenaDe3D  + " = " + this.Hijos[0].CadenaDe3D + " + 1;\n";
             ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
             ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
-            document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-            
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
         }
+        document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
+        entorno.direccion = ""; 
         document.getElementById("salida").innerHTML = document.getElementById("salida").value + respuesta + "\n";
+        //entorno.direccion = entorno.direccion + respuesta + "\n";
        
         var nuevo = new Nodo("Imprimir");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];

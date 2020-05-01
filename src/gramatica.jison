@@ -87,6 +87,16 @@
 
 ini
 	: instrucciones EOF{{
+			var nuevo = new Nodo("INICIO");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "INICIO" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+		
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+
 		//Vamos a mostra tooodos los cosos
 		var Cadena_Inicio = "var ";
 		for (var i = 1; i <= Entorno1.numero; i++) {
@@ -112,12 +122,63 @@ ini
 		console.log("fin DOT");
 		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
 		GraficasDOT.Renovar();
+		Entorno1.direccion = "";
 	}}
 ;
 
 instrucciones
-	: instruccion instrucciones
-	| instruccion
+	: instrucciones instruccion{
+			
+
+			var nuevo = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var nuevo2 = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+			
+
+			$$ = nuevo2;
+			
+	}
+	| instruccion{
+			var nuevo = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var nuevo2 = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+
+			$$ = nuevo2;
+	}
 	| error {alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
         console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
