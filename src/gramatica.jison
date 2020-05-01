@@ -11,6 +11,9 @@
 	//console.log("hola") ;
 	//console.log(Entorno1);
 	//console.log("fin");
+	var GraficasDOT = new Graficas();
+	var contador = 0;
+	
 	
 %}
 
@@ -102,6 +105,13 @@ ini
 		document.getElementById("texto1C3D").innerHTML = Cadena_Inicio + document.getElementById("texto1C3D").value;
 		Entorno1.numero = 0;
 		Entorno1.etiquetas = 0;
+
+		console.log("RESULTADO CODIGO DOT");
+		GraficasDOT.anadir("}");
+		console.log(GraficasDOT.ResultCadena());
+		console.log("fin DOT");
+		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
+		GraficasDOT.Renovar();
 	}}
 ;
 
@@ -121,9 +131,24 @@ instruccion
 		var nuevo = new Imprimir("Imprimir");
 		nuevo.Hijos[0] = $3;
 		nuevo.Ejecutar(Entorno1);
-		$$ = nuevo;
 		
-	}
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IMP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo1);	
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + "EXP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo2);	
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1);
+
+		var Conexion2 = "node_" + contador + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion2);
+
+		$$ = nuevo;
+		}
 ;
 
 
@@ -163,6 +188,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+										
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										
 										$$ =  nuevo.Ejecutar(Entorno1);
 										
 									}
@@ -173,6 +209,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion POR expresion		{ 
@@ -182,6 +230,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion DIVIDIDO expresion	{ 
@@ -191,6 +251,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion POTENCIA expresion	{ 
@@ -200,6 +271,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MODULO expresion	{ 
@@ -209,6 +291,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MAYOR expresion	{ 
@@ -218,6 +311,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion MENOR expresion	{ 
@@ -227,6 +332,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion MENORIGUAL expresion	{ 
@@ -236,6 +353,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion MAYORIGUAL expresion	{ 
@@ -245,6 +374,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion AND expresion	{ 
@@ -254,6 +395,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion OR expresion	{ 
@@ -263,6 +416,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion XOR expresion	{ 
@@ -272,6 +436,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 	}
 	| expresion IGUALDAD expresion	{ 
@@ -281,6 +457,18 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 	}
 	| expresion DESIGUALDAD expresion	{ 
@@ -290,6 +478,17 @@ expresion
 										nuevo.Hijos[0] = $1;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $3;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $1.NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 	}
 	| ENTERO						{ 
@@ -299,7 +498,16 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Entero";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);									
+
+
+
 										$$ = nuevo;
+										
 									//	console.log("Leimos un Entero->" + $1);
 									}
 	| DECIMAL						{ 
@@ -309,6 +517,13 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Decimal";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+										
+
 										$$ = nuevo;
 									//	console.log("Leimos un Entero->" + $1);
 									}
@@ -319,6 +534,13 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Caracter";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("'","").replace("'","") + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+
 										$$ = nuevo;
 										console.log("Leimos un Caracter->" + $1);
 									}
@@ -329,6 +551,13 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Booleano";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+
 										$$ = nuevo;
 										console.log("Leimos un Booleano->" + $1);
 									}
@@ -339,6 +568,13 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Booleano";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+
 										$$ = nuevo;
 										console.log("Leimos un Booleano->" + $1);
 									}
@@ -349,8 +585,16 @@ expresion
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Cadena";
 										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("\"","").replace("\"","") + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+										
 										$$ = nuevo;
 										console.log("Leimos una cadena->" + $1);
+										
 									}
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  

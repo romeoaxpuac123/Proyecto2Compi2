@@ -8,6 +8,7 @@ class Nodo extends NodoAbstracto{
         this.Hijos = new Array();
         this.TipoDato = "";
         this.CadenaDe3D = val;
+        
     }
 
     Ejecutar(entorno: Casa):NodoAbstracto{

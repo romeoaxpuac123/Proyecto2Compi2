@@ -14,7 +14,9 @@
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="pestania.js"></script>
+  <script src="Graficas.js"></script>
   <script src="Casa.js"></script>
+  
   <script src="Main.js "></script>
   <script src="gramatica.js"></script>
  
@@ -25,6 +27,7 @@
 <script src="Aritmetica.js"></script>
 <script src="Imprimir.js"></script>
   <script type="text/javascript">
+ 
     function pestana(grupo_pesta, id_pesta){
       var pestanas = document.getElementById(grupo_pesta);
       var Tpestanas = pestanas.getElementsByTagName("div");
@@ -118,6 +121,8 @@
           gramatica.parse(input);
           Salida.setValue(document.getElementById("texto1C3D").value);
           SalidaAT.setValue(document.getElementById("salida").value);
+          //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
+          //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
       }   
   </script>
 
@@ -275,29 +280,39 @@ function cambiarPestanna(pestannas,pestanna) {
 
 
 <script>
+   document.getElementById('numero1x').style.visibility = "hidden";
+    document.getElementById('numero2x').style.visibility = "hidden";
    function showDiv1() {
     document.getElementById('welcomeDiv1').style.visibility = "visible";
     document.getElementById('welcomeDiv2').style.visibility = "hidden";
     document.getElementById('welcomeDiv3').style.visibility = "hidden";
     document.getElementById('welcomeDiv4').style.visibility = "hidden";
+    document.getElementById('numero1x').style.visibility = "hidden";
+    document.getElementById('numero2x').style.visibility = "hidden";
   }
   function showDiv2() {
     document.getElementById('welcomeDiv2').style.visibility = "visible";
     document.getElementById('welcomeDiv1').style.visibility = "hidden";
     document.getElementById('welcomeDiv3').style.visibility = "hidden";
     document.getElementById('welcomeDiv4').style.visibility = "hidden";
+    document.getElementById('numero1x').style.visibility = "hidden";
+    document.getElementById('numero2x').style.visibility = "hidden";
   }
   function showDiv3() {
     document.getElementById('welcomeDiv3').style.visibility = "visible";
     document.getElementById('welcomeDiv1').style.visibility = "hidden";
     document.getElementById('welcomeDiv2').style.visibility = "hidden";
     document.getElementById('welcomeDiv4').style.visibility = "hidden";
+    document.getElementById('numero1x').style.visibility = "hidden";
+    document.getElementById('numero2x').style.visibility = "hidden";
   }
   function showDiv4() {
     document.getElementById('welcomeDiv4').style.visibility = "visible";
     document.getElementById('welcomeDiv1').style.visibility = "hidden";
     document.getElementById('welcomeDiv2').style.visibility = "hidden";
     document.getElementById('welcomeDiv3').style.visibility = "hidden";
+    document.getElementById('numero1x').style.visibility = "hidden";
+    document.getElementById('numero2x').style.visibility = "hidden";
   }
 </script>
 <div id="general1" style="position:absolute; top:0; left:0; width:1310px; height: 650px; ">
@@ -397,9 +412,20 @@ function cambiarPestanna(pestannas,pestanna) {
    <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()">
           
   <input type="button" class="boton_2" onclick="pegarTexto(Editor.getValue());" Value = "Ejec C3D" id = "C3DA" >
-  <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" >
-
+  
+    
+    <form action="http://localhost:3080/CodigoDOT" method="post">
+      Ingrese numero inferior:
+      <textarea type="text" name="numero1" id = "numero1x"  size="10" visibility="hidden" style="position:absolute;top:150px;left:705px;z-index:1;"></textarea>
+      Ingrese numero superior:
+      <input type="text" name="numero2" id = "numero2x" visibility="hidden" size="10"style="position:absolute;top:150px;left:705px;z-index:1;" ><br>
+      
+      <input type="submit" class="boton_2" Value = "Reportes" id = "ReportesA"  style="position:absolute;top:130px;left:00px;z-index:1;"  >
+    </form>
+    
   <input type="file"   class="custom-input-file2"  id="archivo" >
+
+  
 </div>
 <div id = "Bontoesmenu2" style="position:absolute;top:430px;left:80px;z-index:1; width:580px; height: 50px; ">
   <div class="wrap" >

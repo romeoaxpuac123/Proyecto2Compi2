@@ -7,6 +7,8 @@ abstract class NodoAbstracto {
     public TipoDato: string;
     public CadenaDe3D : string;
     public Hijos: Array<NodoAbstracto>;
+    public NumeroDeNodo: number;
+    public CadenaDot : string;
     
     constructor(name : string){
         this.Nombre = name;
@@ -16,6 +18,8 @@ abstract class NodoAbstracto {
         this.TipoDato = "";
         this.Hijos = new Array();
         this.CadenaDe3D = "";
+        this.NumeroDeNodo = 0;
+        this.CadenaDot = "";
     }
     
    

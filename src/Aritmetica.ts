@@ -1700,6 +1700,7 @@ Aritmetica(val : string){
 		nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = TipoFinal;
         nuevo.id = elid;
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
         if(elid == 1){
             nuevo.ModificarCadena(Cadena3dxD);
         }else{

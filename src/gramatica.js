@@ -103,6 +103,13 @@ case 1:
 		document.getElementById("texto1C3D").innerHTML = Cadena_Inicio + document.getElementById("texto1C3D").value;
 		Entorno1.numero = 0;
 		Entorno1.etiquetas = 0;
+
+		console.log("RESULTADO CODIGO DOT");
+		GraficasDOT.anadir("}");
+		console.log(GraficasDOT.ResultCadena());
+		console.log("fin DOT");
+		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
+		GraficasDOT.Renovar();
 	
 break;
 case 4:
@@ -118,9 +125,24 @@ case 5:
 		var nuevo = new Imprimir("Imprimir");
 		nuevo.Hijos[0] = $$[$0-2];
 		nuevo.Ejecutar(Entorno1);
+		
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IMP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo1);	
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + "EXP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo2);	
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1);
+
+		var Conexion2 = "node_" + contador + "->" + "node_" + $$[$0-2].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion2);
+
 		this.$ = nuevo;
 		
-	
 break;
 case 6:
  
@@ -162,6 +184,17 @@ case 8:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+										
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										
 										this.$ =  nuevo.Ejecutar(Entorno1);
 										
 									
@@ -174,6 +207,18 @@ case 9:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
@@ -185,6 +230,18 @@ case 10:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
@@ -196,10 +253,21 @@ case 11: case 12: case 13:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 14: case 15: case 16: case 17: case 18: case 19:
+case 14: case 15: case 16: case 17: case 18:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -207,10 +275,22 @@ case 14: case 15: case 16: case 17: case 18: case 19:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
 break;
-case 20: case 21: case 22:
+case 19:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -218,6 +298,62 @@ case 20: case 21: case 22:
 										nuevo.Hijos[0] = $$[$0-2];
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+								
+break;
+case 20: case 21:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+	
+break;
+case 22:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
 										this.$ =  nuevo.Ejecutar(Entorno1);
 	
 break;
@@ -229,7 +365,16 @@ case 23:
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Entero";
 										nuevo.CadenaDe3D = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);									
+
+
+
 										this.$ = nuevo;
+										
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
@@ -241,6 +386,13 @@ case 24:
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Decimal";
 										nuevo.CadenaDe3D = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+										
+
 										this.$ = nuevo;
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
@@ -253,6 +405,13 @@ case 25:
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Caracter";
 										nuevo.CadenaDe3D = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0].replace("'","").replace("'","") + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+
 										this.$ = nuevo;
 										console.log("Leimos un Caracter->" + $$[$0]);
 									
@@ -265,6 +424,13 @@ case 26: case 27:
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Booleano";
 										nuevo.CadenaDe3D = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+
 										this.$ = nuevo;
 										console.log("Leimos un Booleano->" + $$[$0]);
 									
@@ -277,8 +443,16 @@ case 28:
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Cadena";
 										nuevo.CadenaDe3D = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0].replace("\"","").replace("\"","") + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+										
 										this.$ = nuevo;
 										console.log("Leimos una cadena->" + $$[$0]);
+										
 									
 break;
 case 29:
@@ -544,6 +718,9 @@ _handle_error:
 	//console.log("hola") ;
 	//console.log(Entorno1);
 	//console.log("fin");
+	var GraficasDOT = new Graficas();
+	var contador = 0;
+	
 	
 /* generated by jison-lex 0.3.4 */
 var lexer = (function(){
