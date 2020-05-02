@@ -24,11 +24,13 @@
 %%
 
 "print"			return 'IMPRMIR';
-";"					return 'PTCOMA';
+";"					return 'PTyCOMA';
 "("					return 'PARIZQ';
 ")"					return 'PARDER';
 "["					return 'CORIZQ';
 "]"					return 'CORDER';
+"{"					return 'LLAVIZQ';
+"}"					return 'LLAVDER';
 
 "+"					return 'MAS';
 "-"					return 'MENOS';
@@ -48,6 +50,8 @@
 "!"					return 'NOT';
 "true"				return 'VERDADERO';
 "false"				return 'FALSO';
+"public"			return 'PUBLIC';
+"void"				return 'VOID';
 
 
 
@@ -60,6 +64,7 @@
 [0-9]+\b				return 'ENTERO';
 ("'"[a-zA-Z0-9_]"'")	return "CARACTER";
 ("\""[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
+([a-zA-Z0-9_]+([a-zA-Z0-9_]+))	return "ID";
 
 <<EOF>>				return 'EOF';
 
@@ -125,7 +130,9 @@ ini
 		Entorno1.direccion = "";
 	}}
 ;
-
+PTCOMA
+	:PTyCOMA
+	|;
 instrucciones
 	: instrucciones instruccion{
 			
@@ -151,7 +158,8 @@ instrucciones
 
 			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion3);
-			
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
 
 			$$ = nuevo2;
 			
@@ -176,7 +184,8 @@ instrucciones
 
 			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion2);
-
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
 			$$ = nuevo2;
 	}
 	| error {alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
@@ -184,8 +193,98 @@ instrucciones
 ;
 
 instruccion
-	: IMPRMIR PARIZQ expresion PARDER PTCOMA {
+	:   PUBLIC VOID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
+				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
+				var nuevo = new Funciones("Funciones");
+				var NombreFuncion = new Nodo($3);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				
+
+				
+				contador = contador + 1;
+				var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $3 + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo3);
+
+				var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion2);
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $7.NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+				
+
+				$$ =  nuevo.Ejecutar(Entorno1);
+				document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        		Entorno1.direccion = ""; 
+				Entorno1.direccion = ""; 
+		}
+	| ID PARIZQ PARDER PTCOMA
+;
+
+lista_instrucciones
+	: lista_instrucciones instruccion2{
 		
+			var nuevo = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var nuevo2 = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
+
+			$$ = nuevo2;
+	}
+	|instruccion2{
+		var nuevo = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var nuevo2 = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
+			$$ = nuevo2;
+		console.log("hola lista2");
+	};
+
+instruccion2
+	: IMPRMIR PARIZQ expresion PARDER PTCOMA {
+		console.log("PASO POR IMPRIMIR");
 		//console.log('El valor de la expresión es: ' + $3.Nombre);
 		//respuesta = respuesta + '->' + $3.Ejecutar() + "\n";
         //document.getElementById("salida").innerHTML = respuesta;
@@ -207,10 +306,10 @@ instruccion
 
 		var Conexion2 = "node_" + contador + "->" + "node_" + $3.NumeroDeNodo + "\n";
 		GraficasDOT.anadir(Conexion2);
-
+		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
+        //entorno.direccion = ""; 
 		$$ = nuevo;
-		}
-;
+		};
 
 
 expresion

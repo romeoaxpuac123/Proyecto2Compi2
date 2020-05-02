@@ -73,8 +73,8 @@ var Imprimir = /** @class */ (function (_super) {
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
             entorno.direccion = entorno.direccion + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
-        document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + entorno.direccion + "\n";
-        entorno.direccion = "";
+        //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
+        //entorno.direccion = ""; 
         document.getElementById("salida").innerHTML = document.getElementById("salida").value + respuesta + "\n";
         //entorno.direccion = entorno.direccion + respuesta + "\n";
         var nuevo = new Nodo("Imprimir");

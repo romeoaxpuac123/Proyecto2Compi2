@@ -72,12 +72,12 @@
   }
 */
 var gramatica = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[5,7],$V2=[1,18],$V3=[1,10],$V4=[1,11],$V5=[1,12],$V6=[1,13],$V7=[1,14],$V8=[1,15],$V9=[1,16],$Va=[1,17],$Vb=[1,21],$Vc=[1,20],$Vd=[1,22],$Ve=[1,23],$Vf=[1,24],$Vg=[1,25],$Vh=[1,26],$Vi=[1,27],$Vj=[1,28],$Vk=[1,29],$Vl=[1,30],$Vm=[1,31],$Vn=[1,32],$Vo=[1,33],$Vp=[1,34],$Vq=[10,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27],$Vr=[10,19,20,21,22,23,24,25,26,27],$Vs=[10,12,14,19,20,21,22,23,24,25,26,27],$Vt=[10,12,14,15,16,18,19,20,21,22,23,24,25,26,27],$Vu=[10,23,24,25],$Vv=[10,23,24,25,26,27];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[5,9,11],$V3=[2,3],$V4=[1,15],$V5=[1,20],$V6=[16,18],$V7=[1,33],$V8=[1,25],$V9=[1,26],$Va=[1,27],$Vb=[1,28],$Vc=[1,29],$Vd=[1,30],$Ve=[1,31],$Vf=[1,32],$Vg=[1,36],$Vh=[1,35],$Vi=[1,37],$Vj=[1,38],$Vk=[1,39],$Vl=[1,40],$Vm=[1,41],$Vn=[1,42],$Vo=[1,43],$Vp=[1,44],$Vq=[1,45],$Vr=[1,46],$Vs=[1,47],$Vt=[1,48],$Vu=[1,49],$Vv=[13,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35],$Vw=[13,27,28,29,30,31,32,33,34,35],$Vx=[13,20,22,27,28,29,30,31,32,33,34,35],$Vy=[13,20,22,23,24,26,27,28,29,30,31,32,33,34,35],$Vz=[13,31,32,33],$VA=[13,31,32,33,34,35];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"instruccion":6,"IMPRMIR":7,"PARIZQ":8,"expresion":9,"PARDER":10,"PTCOMA":11,"MENOS":12,"NOT":13,"MAS":14,"POR":15,"DIVIDIDO":16,"POTENCIA":17,"MODULO":18,"MAYOR":19,"MENOR":20,"MENORIGUAL":21,"MAYORIGUAL":22,"AND":23,"OR":24,"XOR":25,"IGUALDAD":26,"DESIGUALDAD":27,"ENTERO":28,"DECIMAL":29,"CARACTER":30,"VERDADERO":31,"FALSO":32,"CADENA":33,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"IMPRMIR",8:"PARIZQ",10:"PARDER",11:"PTCOMA",12:"MENOS",13:"NOT",14:"MAS",15:"POR",16:"DIVIDIDO",17:"POTENCIA",18:"MODULO",19:"MAYOR",20:"MENOR",21:"MENORIGUAL",22:"MAYORIGUAL",23:"AND",24:"OR",25:"XOR",26:"IGUALDAD",27:"DESIGUALDAD",28:"ENTERO",29:"DECIMAL",30:"CARACTER",31:"VERDADERO",32:"FALSO",33:"CADENA"},
-productions_: [0,[3,2],[4,2],[4,1],[4,1],[6,5],[9,2],[9,2],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,3],[9,1],[9,1],[9,1],[9,1],[9,1],[9,1],[9,3]],
+symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"PTCOMA":6,"PTyCOMA":7,"instruccion":8,"PUBLIC":9,"VOID":10,"ID":11,"PARIZQ":12,"PARDER":13,"LLAVIZQ":14,"lista_instrucciones":15,"LLAVDER":16,"instruccion2":17,"IMPRMIR":18,"expresion":19,"MENOS":20,"NOT":21,"MAS":22,"POR":23,"DIVIDIDO":24,"POTENCIA":25,"MODULO":26,"MAYOR":27,"MENOR":28,"MENORIGUAL":29,"MAYORIGUAL":30,"AND":31,"OR":32,"XOR":33,"IGUALDAD":34,"DESIGUALDAD":35,"ENTERO":36,"DECIMAL":37,"CARACTER":38,"VERDADERO":39,"FALSO":40,"CADENA":41,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"PTyCOMA",9:"PUBLIC",10:"VOID",11:"ID",12:"PARIZQ",13:"PARDER",14:"LLAVIZQ",16:"LLAVDER",18:"IMPRMIR",20:"MENOS",21:"NOT",22:"MAS",23:"POR",24:"DIVIDIDO",25:"POTENCIA",26:"MODULO",27:"MAYOR",28:"MENOR",29:"MENORIGUAL",30:"MAYORIGUAL",31:"AND",32:"OR",33:"XOR",34:"IGUALDAD",35:"DESIGUALDAD",36:"ENTERO",37:"DECIMAL",38:"CARACTER",39:"VERDADERO",40:"FALSO",41:"CADENA"},
+productions_: [0,[3,2],[6,1],[6,0],[4,2],[4,1],[4,1],[8,8],[8,4],[15,2],[15,1],[17,5],[19,2],[19,2],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,1],[19,1],[19,1],[19,1],[19,1],[19,1],[19,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -123,7 +123,7 @@ case 1:
 		Entorno1.direccion = "";
 	
 break;
-case 2:
+case 4:
 
 			
 
@@ -148,13 +148,14 @@ case 2:
 
 			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion3);
-			
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
 
 			this.$ = nuevo2;
 			
 	
 break;
-case 3:
+case 5:
 
 			var nuevo = new Nodo("SENTENCIAS");
 			contador = contador + 1;
@@ -175,17 +176,108 @@ case 3:
 
 			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion2);
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
+			this.$ = nuevo2;
+	
+break;
+case 6:
+alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
+        console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
+break;
+case 7:
+
+				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
+				var nuevo = new Funciones("Funciones");
+				var NombreFuncion = new Nodo($$[$0-5]);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				
+
+				
+				contador = contador + 1;
+				var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-5] + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo3);
+
+				var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion2);
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+				
+
+				this.$ =  nuevo.Ejecutar(Entorno1);
+				document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        		Entorno1.direccion = ""; 
+				Entorno1.direccion = ""; 
+		
+break;
+case 9:
+
+		
+			var nuevo = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var nuevo2 = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
 
 			this.$ = nuevo2;
 	
 break;
-case 4:
-alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
-        console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
-break;
-case 5:
+case 10:
 
-		
+		var nuevo = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var nuevo2 = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	Entorno1.direccion = ""; 
+			this.$ = nuevo2;
+		console.log("hola lista2");
+	
+break;
+case 11:
+
+		console.log("PASO POR IMPRIMIR");
 		//console.log('El valor de la expresión es: ' + $$[$0-2].Nombre);
 		//respuesta = respuesta + '->' + $$[$0-2].Ejecutar() + "\n";
         //document.getElementById("salida").innerHTML = respuesta;
@@ -207,11 +299,12 @@ case 5:
 
 		var Conexion2 = "node_" + contador + "->" + "node_" + $$[$0-2].NumeroDeNodo + "\n";
 		GraficasDOT.anadir(Conexion2);
-
+		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
+        //entorno.direccion = ""; 
 		this.$ = nuevo;
 		
 break;
-case 6:
+case 12:
  
 										//this.$ = $$[$0] *-1;
 										//var nuevo = Nodo("Hola");
@@ -233,7 +326,7 @@ case 6:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 7:
+case 13:
  
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($$[$0-1]);
@@ -243,7 +336,7 @@ case 7:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 8:
+case 14:
  
 										//this.$ = $$[$0-2] + $$[$0];										
 										var nuevo = new Aritmetica("Aritmetica");
@@ -266,7 +359,7 @@ case 8:
 										
 									
 break;
-case 9:
+case 15:
  
 										//this.$ = $$[$0-2] - $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -289,7 +382,7 @@ case 9:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 10:
+case 16:
  
 										//this.$ = $$[$0-2] * $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -312,7 +405,7 @@ case 10:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 11: case 12: case 13:
+case 17: case 18: case 19:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -334,7 +427,7 @@ case 11: case 12: case 13:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 14: case 15: case 16: case 17: case 18:
+case 20: case 21: case 22: case 23: case 24:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -357,7 +450,7 @@ case 14: case 15: case 16: case 17: case 18:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
 break;
-case 19:
+case 25:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -379,7 +472,7 @@ case 19:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
 break;
-case 20: case 21:
+case 26: case 27:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -402,7 +495,7 @@ case 20: case 21:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 	
 break;
-case 22:
+case 28:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -424,7 +517,7 @@ case 22:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 	
 break;
-case 23:
+case 29:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -445,7 +538,7 @@ case 23:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 24:
+case 30:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -464,7 +557,7 @@ case 24:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 25:
+case 31:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -483,7 +576,7 @@ case 25:
 										console.log("Leimos un Caracter->" + $$[$0]);
 									
 break;
-case 26: case 27:
+case 32: case 33:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Booleano");
@@ -502,7 +595,7 @@ case 26: case 27:
 										console.log("Leimos un Booleano->" + $$[$0]);
 									
 break;
-case 28:
+case 34:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Cadena");
@@ -522,7 +615,7 @@ case 28:
 										
 									
 break;
-case 29:
+case 35:
  
 										this.$ = $$[$0-1];  
 										//console.log("DUA LIPA");
@@ -530,8 +623,8 @@ case 29:
 break;
 }
 },
-table: [{2:[1,4],3:1,4:2,6:3,7:$V0},{1:[3]},{5:[1,6],6:7,7:$V0},o($V1,[2,3]),o($V1,[2,4]),{8:[1,8]},{1:[2,1]},o($V1,[2,2]),{8:$V2,9:9,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{10:[1,19],12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk,23:$Vl,24:$Vm,25:$Vn,26:$Vo,27:$Vp},{8:$V2,9:35,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:36,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},o($Vq,[2,23]),o($Vq,[2,24]),o($Vq,[2,25]),o($Vq,[2,26]),o($Vq,[2,27]),o($Vq,[2,28]),{8:$V2,9:37,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{11:[1,38]},{8:$V2,9:39,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:40,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:41,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:42,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:43,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:44,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:45,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:46,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:47,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:48,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:49,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:50,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:51,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:52,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},{8:$V2,9:53,12:$V3,13:$V4,28:$V5,29:$V6,30:$V7,31:$V8,32:$V9,33:$Va},o($Vq,[2,6]),o($Vr,[2,7],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg}),{10:[1,54],12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk,23:$Vl,24:$Vm,25:$Vn,26:$Vo,27:$Vp},o($V1,[2,5]),o($Vs,[2,8],{15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vs,[2,9],{15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vt,[2,10],{17:$Vf}),o($Vt,[2,11],{17:$Vf}),o($Vq,[2,12]),o($Vt,[2,13],{17:$Vf}),o($Vr,[2,14],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vr,[2,15],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vr,[2,16],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vr,[2,17],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg}),o($Vu,[2,18],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk,26:$Vo,27:$Vp}),o($Vu,[2,19],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk,26:$Vo,27:$Vp}),o($Vu,[2,20],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk,26:$Vo,27:$Vp}),o($Vv,[2,21],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk}),o($Vv,[2,22],{12:$Vb,14:$Vc,15:$Vd,16:$Ve,17:$Vf,18:$Vg,19:$Vh,20:$Vi,21:$Vj,22:$Vk}),o($Vq,[2,29])],
-defaultActions: {6:[2,1]},
+table: [{2:[1,4],3:1,4:2,8:3,9:$V0,11:$V1},{1:[3]},{5:[1,7],8:8,9:$V0,11:$V1},o($V2,[2,5]),o($V2,[2,6]),{10:[1,9]},{12:[1,10]},{1:[2,1]},o($V2,[2,4]),{11:[1,11]},{13:[1,12]},{12:[1,13]},o($V2,$V3,{6:14,7:$V4}),{13:[1,16]},o($V2,[2,8]),o([5,9,11,16,18],[2,2]),{14:[1,17]},{15:18,17:19,18:$V5},{16:[1,21],17:22,18:$V5},o($V6,[2,10]),{12:[1,23]},o($V2,[2,7]),o($V6,[2,9]),{12:$V7,19:24,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{13:[1,34],20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,31:$Vq,32:$Vr,33:$Vs,34:$Vt,35:$Vu},{12:$V7,19:50,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:51,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($Vv,[2,29]),o($Vv,[2,30]),o($Vv,[2,31]),o($Vv,[2,32]),o($Vv,[2,33]),o($Vv,[2,34]),{12:$V7,19:52,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($V6,$V3,{6:53,7:$V4}),{12:$V7,19:54,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:55,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:56,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:57,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:58,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:59,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:60,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:61,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:62,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:63,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:64,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:65,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:66,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:67,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:68,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($Vv,[2,12]),o($Vw,[2,13],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),{13:[1,69],20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,31:$Vq,32:$Vr,33:$Vs,34:$Vt,35:$Vu},o($V6,[2,11]),o($Vx,[2,14],{23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vx,[2,15],{23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vy,[2,16],{25:$Vk}),o($Vy,[2,17],{25:$Vk}),o($Vv,[2,18]),o($Vy,[2,19],{25:$Vk}),o($Vw,[2,20],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,21],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,22],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,23],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vz,[2,24],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($Vz,[2,25],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($Vz,[2,26],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($VA,[2,27],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp}),o($VA,[2,28],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp}),o($Vv,[2,35])],
+defaultActions: {7:[2,1]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -1117,13 +1210,13 @@ options: {"case-insensitive":true},
 performAction: function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
-case 0:return 7;
+case 0:return 18;
 break;
-case 1:return 11;
+case 1:return 7;
 break;
-case 2:return 8;
+case 2:return 12;
 break;
-case 3:return 10;
+case 3:return 13;
 break;
 case 4:return 'CORIZQ';
 break;
@@ -1131,61 +1224,71 @@ case 5:return 'CORDER';
 break;
 case 6:return 14;
 break;
-case 7:return 12;
+case 7:return 16;
 break;
-case 8:return 15;
+case 8:return 22;
 break;
-case 9:return 16;
+case 9:return 20;
 break;
-case 10:return 17;
+case 10:return 23;
 break;
-case 11:return 18;
+case 11:return 24;
 break;
-case 12:return 22;
+case 12:return 25;
 break;
-case 13:return 21;
+case 13:return 26;
 break;
-case 14:return 19;
+case 14:return 30;
 break;
-case 15:return 20;
+case 15:return 29;
 break;
-case 16:return 26;
+case 16:return 27;
 break;
-case 17:return 27;
+case 17:return 28;
 break;
-case 18:return 23;
+case 18:return 34;
 break;
-case 19:return 24;
+case 19:return 35;
 break;
-case 20:return 25;
+case 20:return 31;
 break;
-case 21:return 13;
+case 21:return 32;
 break;
-case 22:return 31;
+case 22:return 33;
 break;
-case 23:return 32;
+case 23:return 21;
 break;
-case 24:
+case 24:return 39;
 break;
-case 25:
+case 25:return 40;
 break;
-case 26:return 29;
+case 26:return 9;
 break;
-case 27:return 28;
+case 27:return 10;
 break;
-case 28:return "CARACTER";
+case 28:
 break;
-case 29:return "CADENA";
+case 29:
 break;
-case 30:return 5;
+case 30:return 37;
 break;
-case 31: alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column);
+case 31:return 36;
+break;
+case 32:return "CARACTER";
+break;
+case 33:return "CADENA";
+break;
+case 34:return "ID";
+break;
+case 35:return 5;
+break;
+case 36: alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column);
        console.error('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column); 
 break;
 }
 },
-rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:("[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"))/i,/^(?:$)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],"inclusive":true}}
+rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:void\b)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:("[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"))/i,/^(?:([a-zA-Z0-9_]+([a-zA-Z0-9_]+)))/i,/^(?:$)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36],"inclusive":true}}
 });
 return lexer;
 })();
