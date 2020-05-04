@@ -8,11 +8,9 @@
 %{
 	var respuesta = "";
 	var Entorno1 = new Casa();
-	//console.log("hola") ;
-	//console.log(Entorno1);
-	//console.log("fin");
 	var GraficasDOT = new Graficas();
 	var contador = 0;
+	
 	
 	
 %}
@@ -31,7 +29,7 @@
 "]"					return 'CORDER';
 "{"					return 'LLAVIZQ';
 "}"					return 'LLAVDER';
-
+","					return 'COMA';
 "+"					return 'MAS';
 "-"					return 'MENOS';
 "*"					return 'POR';
@@ -51,7 +49,7 @@
 "true"				return 'VERDADERO';
 "false"				return 'FALSO';
 "public"			return 'PUBLIC';
-"void"				return 'VOID';
+
 
 
 
@@ -128,6 +126,7 @@ ini
 		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
 		GraficasDOT.Renovar();
 		Entorno1.direccion = "";
+		Entorno1.SIMBOLOS.splice(0, Entorno1.SIMBOLOS.length);
 	}}
 ;
 PTCOMA
@@ -193,13 +192,18 @@ instrucciones
 ;
 
 instruccion
-	:   PUBLIC VOID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
+	:   PUBLIC ID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
+				//declaramos una funcion de la forma public void nombre(){}
+
 				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
 				nuevo.Hijos[0] = NombreFuncion;
 				contador = contador + 1;
 				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
 
 				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
 				GraficasDOT.anadir(Hijo1);
@@ -224,8 +228,134 @@ instruccion
         		Entorno1.direccion = ""; 
 				Entorno1.direccion = ""; 
 		}
-	| ID PARIZQ PARDER PTCOMA
+	|   PUBLIC ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
+				var nuevo = new Funciones("Funciones");
+				var NombreFuncion = new Nodo($3);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				
+
+				
+				contador = contador + 1;
+				var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $3 + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo3);
+
+				var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion2);
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $8.NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $5.NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion3);
+
+
+				$$ =  nuevo.Ejecutar(Entorno1);
+				
+	}
 ;
+lista_Parametros
+	: lista_Parametros COMA ID ID{
+			var nuevo = new Parametros ("PARAMETROS");
+			var nuevovalor2 = new Nodo($4);
+			nuevo.Hijos[0] = nuevovalor2;
+		    nuevo.TipoDato = $3;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $3 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			contador = contador + 1;
+			var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $4 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo3);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1)+ "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" +  contador + "\n";
+			GraficasDOT.anadir(Conexion2);
+			//nuevo.Ejecutar(Entorno1);
+			
+
+			var nuevo2 = new Parametros ("PARAMETROS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo1x = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "LISTA_PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1x);
+			
+			var Conexion2X = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" +  nuevo.NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion2X);
+			
+			var Conexion2XX = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" +  $1.NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion2XX);
+			nuevo.Ejecutar(Entorno1);
+
+			
+			$$ =  nuevo2;
+	}
+	| ID ID{
+			//Entorno1.numero += 1;
+			Entorno1.valordep = Entorno1.numero += 1;
+			var nuevo = new Parametros ("PARAMETROS");
+			var nuevovalor2 = new Nodo($2);
+			nuevo.Hijos[0] = nuevovalor2;
+		    nuevo.TipoDato = $1;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			contador = contador + 1;
+			var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo3);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1)+ "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" +  contador + "\n";
+			GraficasDOT.anadir(Conexion2);
+			nuevo.Ejecutar(Entorno1);
+			//$$ =  nuevo.Ejecutar(Entorno1);
+			var nuevop = new Parametros ("LISTA_PARAMETROS");
+			contador = contador + 1;
+			nuevop.NumeroDeNodo =  contador;
+
+			var Hijo1x = "node_"+ nuevop.NumeroDeNodo + "[shape=circle label=\"" + "LISTA_PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1x);
+
+			var Conexion1x = "node_" + nuevop.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			$$ = nuevop;
+			
+	};
+
 
 lista_instrucciones
 	: lista_instrucciones instruccion2{
@@ -251,8 +381,8 @@ lista_instrucciones
 
 			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion3);
-			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
-        	Entorno1.direccion = ""; 
+			//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	//Entorno1.direccion = ""; 
 
 			$$ = nuevo2;
 	}
@@ -276,8 +406,8 @@ lista_instrucciones
 
 			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion2);
-			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
-        	Entorno1.direccion = ""; 
+			//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	//Entorno1.direccion = ""; 
 			$$ = nuevo2;
 		console.log("hola lista2");
 	};
@@ -309,7 +439,36 @@ instruccion2
 		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
         //entorno.direccion = ""; 
 		$$ = nuevo;
-		};
+	}
+
+	| ID PARIZQ PARDER PTCOMA{
+		//llamada de funcion principal();
+				var nuevo = new LLamadas("LLamada");
+				var NombreFuncion = new Nodo($1);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
+				
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LLAMADA_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador = contador + 1;
+				var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo2);	
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+
+				$$ =  nuevo.Ejecutar(Entorno1);
+
+	}
+		
+		;
 
 
 expresion

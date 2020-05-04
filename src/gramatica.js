@@ -72,12 +72,12 @@
   }
 */
 var gramatica = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[1,6],$V2=[5,9,11],$V3=[2,3],$V4=[1,15],$V5=[1,20],$V6=[16,18],$V7=[1,33],$V8=[1,25],$V9=[1,26],$Va=[1,27],$Vb=[1,28],$Vc=[1,29],$Vd=[1,30],$Ve=[1,31],$Vf=[1,32],$Vg=[1,36],$Vh=[1,35],$Vi=[1,37],$Vj=[1,38],$Vk=[1,39],$Vl=[1,40],$Vm=[1,41],$Vn=[1,42],$Vo=[1,43],$Vp=[1,44],$Vq=[1,45],$Vr=[1,46],$Vs=[1,47],$Vt=[1,48],$Vu=[1,49],$Vv=[13,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35],$Vw=[13,27,28,29,30,31,32,33,34,35],$Vx=[13,20,22,27,28,29,30,31,32,33,34,35],$Vy=[13,20,22,23,24,26,27,28,29,30,31,32,33,34,35],$Vz=[13,31,32,33],$VA=[13,31,32,33,34,35];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[5,9],$V2=[1,21],$V3=[1,20],$V4=[12,17],$V5=[10,15,19],$V6=[1,39],$V7=[1,31],$V8=[1,32],$V9=[1,33],$Va=[1,34],$Vb=[1,35],$Vc=[1,36],$Vd=[1,37],$Ve=[1,38],$Vf=[1,44],$Vg=[1,43],$Vh=[1,45],$Vi=[1,46],$Vj=[1,47],$Vk=[1,48],$Vl=[1,49],$Vm=[1,50],$Vn=[1,51],$Vo=[1,52],$Vp=[1,53],$Vq=[1,54],$Vr=[1,55],$Vs=[1,56],$Vt=[1,57],$Vu=[12,21,23,24,25,26,27,28,29,30,31,32,33,34,35,36],$Vv=[2,3],$Vw=[1,62],$Vx=[12,28,29,30,31,32,33,34,35,36],$Vy=[12,21,23,28,29,30,31,32,33,34,35,36],$Vz=[12,21,23,24,25,27,28,29,30,31,32,33,34,35,36],$VA=[12,32,33,34],$VB=[12,32,33,34,35,36];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"PTCOMA":6,"PTyCOMA":7,"instruccion":8,"PUBLIC":9,"VOID":10,"ID":11,"PARIZQ":12,"PARDER":13,"LLAVIZQ":14,"lista_instrucciones":15,"LLAVDER":16,"instruccion2":17,"IMPRMIR":18,"expresion":19,"MENOS":20,"NOT":21,"MAS":22,"POR":23,"DIVIDIDO":24,"POTENCIA":25,"MODULO":26,"MAYOR":27,"MENOR":28,"MENORIGUAL":29,"MAYORIGUAL":30,"AND":31,"OR":32,"XOR":33,"IGUALDAD":34,"DESIGUALDAD":35,"ENTERO":36,"DECIMAL":37,"CARACTER":38,"VERDADERO":39,"FALSO":40,"CADENA":41,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"PTyCOMA",9:"PUBLIC",10:"VOID",11:"ID",12:"PARIZQ",13:"PARDER",14:"LLAVIZQ",16:"LLAVDER",18:"IMPRMIR",20:"MENOS",21:"NOT",22:"MAS",23:"POR",24:"DIVIDIDO",25:"POTENCIA",26:"MODULO",27:"MAYOR",28:"MENOR",29:"MENORIGUAL",30:"MAYORIGUAL",31:"AND",32:"OR",33:"XOR",34:"IGUALDAD",35:"DESIGUALDAD",36:"ENTERO",37:"DECIMAL",38:"CARACTER",39:"VERDADERO",40:"FALSO",41:"CADENA"},
-productions_: [0,[3,2],[6,1],[6,0],[4,2],[4,1],[4,1],[8,8],[8,4],[15,2],[15,1],[17,5],[19,2],[19,2],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,3],[19,1],[19,1],[19,1],[19,1],[19,1],[19,1],[19,3]],
+symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"PTCOMA":6,"PTyCOMA":7,"instruccion":8,"PUBLIC":9,"ID":10,"PARIZQ":11,"PARDER":12,"LLAVIZQ":13,"lista_instrucciones":14,"LLAVDER":15,"lista_Parametros":16,"COMA":17,"instruccion2":18,"IMPRMIR":19,"expresion":20,"MENOS":21,"NOT":22,"MAS":23,"POR":24,"DIVIDIDO":25,"POTENCIA":26,"MODULO":27,"MAYOR":28,"MENOR":29,"MENORIGUAL":30,"MAYORIGUAL":31,"AND":32,"OR":33,"XOR":34,"IGUALDAD":35,"DESIGUALDAD":36,"ENTERO":37,"DECIMAL":38,"CARACTER":39,"VERDADERO":40,"FALSO":41,"CADENA":42,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"PTyCOMA",9:"PUBLIC",10:"ID",11:"PARIZQ",12:"PARDER",13:"LLAVIZQ",15:"LLAVDER",17:"COMA",19:"IMPRMIR",21:"MENOS",22:"NOT",23:"MAS",24:"POR",25:"DIVIDIDO",26:"POTENCIA",27:"MODULO",28:"MAYOR",29:"MENOR",30:"MENORIGUAL",31:"MAYORIGUAL",32:"AND",33:"OR",34:"XOR",35:"IGUALDAD",36:"DESIGUALDAD",37:"ENTERO",38:"DECIMAL",39:"CARACTER",40:"VERDADERO",41:"FALSO",42:"CADENA"},
+productions_: [0,[3,2],[6,1],[6,0],[4,2],[4,1],[4,1],[8,8],[8,9],[16,4],[16,2],[14,2],[14,1],[18,5],[18,4],[20,2],[20,2],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,3],[20,1],[20,1],[20,1],[20,1],[20,1],[20,1],[20,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -121,6 +121,7 @@ case 1:
 		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
 		GraficasDOT.Renovar();
 		Entorno1.direccion = "";
+		Entorno1.SIMBOLOS.splice(0, Entorno1.SIMBOLOS.length);
 	
 break;
 case 4:
@@ -187,12 +188,17 @@ alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.fi
 break;
 case 7:
 
+				//declaramos una funcion de la forma public void nombre(){}
+
 				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($$[$0-5]);
 				nuevo.Hijos[0] = NombreFuncion;
 				contador = contador + 1;
 				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
 
 				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
 				GraficasDOT.anadir(Hijo1);
@@ -218,7 +224,138 @@ case 7:
 				Entorno1.direccion = ""; 
 		
 break;
+case 8:
+
+				var nuevo = new Funciones("Funciones");
+				var NombreFuncion = new Nodo($$[$0-6]);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				
+
+				
+				contador = contador + 1;
+				var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-6] + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo3);
+
+				var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion2);
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-4].NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion3);
+
+
+				this.$ =  nuevo.Ejecutar(Entorno1);
+				
+	
+break;
 case 9:
+
+			var nuevo = new Parametros ("PARAMETROS");
+			var nuevovalor2 = new Nodo($$[$0]);
+			nuevo.Hijos[0] = nuevovalor2;
+		    nuevo.TipoDato = $$[$0-1];
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			contador = contador + 1;
+			var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $$[$0] + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo3);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1)+ "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" +  contador + "\n";
+			GraficasDOT.anadir(Conexion2);
+			//nuevo.Ejecutar(Entorno1);
+			
+
+			var nuevo2 = new Parametros ("PARAMETROS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo1x = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "LISTA_PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1x);
+			
+			var Conexion2X = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" +  nuevo.NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion2X);
+			
+			var Conexion2XX = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" +  $$[$0-3].NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion2XX);
+			nuevo.Ejecutar(Entorno1);
+
+			
+			this.$ =  nuevo2;
+	
+break;
+case 10:
+
+			//Entorno1.numero += 1;
+			Entorno1.valordep = Entorno1.numero += 1;
+			var nuevo = new Parametros ("PARAMETROS");
+			var nuevovalor2 = new Nodo($$[$0]);
+			nuevo.Hijos[0] = nuevovalor2;
+		    nuevo.TipoDato = $$[$0-1];
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			contador = contador + 1;
+			var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $$[$0] + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo3);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1)+ "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" +  contador + "\n";
+			GraficasDOT.anadir(Conexion2);
+			nuevo.Ejecutar(Entorno1);
+			//this.$ =  nuevo.Ejecutar(Entorno1);
+			var nuevop = new Parametros ("LISTA_PARAMETROS");
+			contador = contador + 1;
+			nuevop.NumeroDeNodo =  contador;
+
+			var Hijo1x = "node_"+ nuevop.NumeroDeNodo + "[shape=circle label=\"" + "LISTA_PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1x);
+
+			var Conexion1x = "node_" + nuevop.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo+ "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			this.$ = nuevop;
+			
+	
+break;
+case 11:
 
 		
 			var nuevo = new Nodo("SENTENCIA");
@@ -242,13 +379,13 @@ case 9:
 
 			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion3);
-			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
-        	Entorno1.direccion = ""; 
+			//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	//Entorno1.direccion = ""; 
 
 			this.$ = nuevo2;
 	
 break;
-case 10:
+case 12:
 
 		var nuevo = new Nodo("SENTENCIAS");
 			contador = contador + 1;
@@ -269,13 +406,13 @@ case 10:
 
 			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
 			GraficasDOT.anadir(Conexion2);
-			document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
-        	Entorno1.direccion = ""; 
+			//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	//Entorno1.direccion = ""; 
 			this.$ = nuevo2;
 		console.log("hola lista2");
 	
 break;
-case 11:
+case 13:
 
 		console.log("PASO POR IMPRIMIR");
 		//console.log('El valor de la expresión es: ' + $$[$0-2].Nombre);
@@ -302,9 +439,37 @@ case 11:
 		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
         //entorno.direccion = ""; 
 		this.$ = nuevo;
-		
+	
 break;
-case 12:
+case 14:
+
+		//llamada de funcion principal();
+				var nuevo = new LLamadas("LLamada");
+				var NombreFuncion = new Nodo($$[$0-3]);
+				nuevo.Hijos[0] = NombreFuncion;
+				contador = contador + 1;
+				nuevo.NumeroDeNodo = contador;
+
+				nuevo.linea = this._$.first_line;
+				nuevo.columna = this._$.first_column;
+				
+
+				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LLAMADA_FUNCION" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador = contador + 1;
+				var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-3] + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo2);	
+
+				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+				GraficasDOT.anadir(Conexion1);
+
+
+				this.$ =  nuevo.Ejecutar(Entorno1);
+
+	
+break;
+case 15:
  
 										//this.$ = $$[$0] *-1;
 										//var nuevo = Nodo("Hola");
@@ -326,7 +491,7 @@ case 12:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 13:
+case 16:
  
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($$[$0-1]);
@@ -336,7 +501,7 @@ case 13:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 14:
+case 17:
  
 										//this.$ = $$[$0-2] + $$[$0];										
 										var nuevo = new Aritmetica("Aritmetica");
@@ -359,7 +524,7 @@ case 14:
 										
 									
 break;
-case 15:
+case 18:
  
 										//this.$ = $$[$0-2] - $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -382,7 +547,7 @@ case 15:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 16:
+case 19:
  
 										//this.$ = $$[$0-2] * $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -405,7 +570,7 @@ case 16:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 17: case 18: case 19:
+case 20: case 21: case 22:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -427,7 +592,7 @@ case 17: case 18: case 19:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 20: case 21: case 22: case 23: case 24:
+case 23: case 24: case 25: case 26: case 27:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -449,51 +614,6 @@ case 20: case 21: case 22: case 23: case 24:
 
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
-break;
-case 25:
- 
-										//this.$ = $$[$0-2] / $$[$0]; 
-										var nuevo = new Aritmetica("Aritmetica");
-										var operador = new Nodo($$[$0-1]);
-										nuevo.Hijos[0] = $$[$0-2];
-										nuevo.Hijos[1] = operador;
-										nuevo.Hijos[2] = $$[$0];
-
-										contador = contador + 1;
-										nuevo.NumeroDeNodo = contador;
-										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
-										GraficasDOT.anadir(Hijo1);	
-
-										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
-										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
-										GraficasDOT.anadir(Conexion1);	
-										GraficasDOT.anadir(Conexion2);	
-
-										this.$ =  nuevo.Ejecutar(Entorno1);
-								
-break;
-case 26: case 27:
- 
-										//this.$ = $$[$0-2] / $$[$0]; 
-										var nuevo = new Aritmetica("Aritmetica");
-										var operador = new Nodo($$[$0-1]);
-										nuevo.Hijos[0] = $$[$0-2];
-										nuevo.Hijos[1] = operador;
-										nuevo.Hijos[2] = $$[$0];
-
-										contador = contador + 1;
-										nuevo.NumeroDeNodo = contador;
-										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
-										GraficasDOT.anadir(Hijo1);	
-
-										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
-										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
-										GraficasDOT.anadir(Conexion1);	
-										GraficasDOT.anadir(Conexion2);	
-
-
-										this.$ =  nuevo.Ejecutar(Entorno1);
-	
 break;
 case 28:
  
@@ -515,9 +635,54 @@ case 28:
 										GraficasDOT.anadir(Conexion2);	
 
 										this.$ =  nuevo.Ejecutar(Entorno1);
+								
+break;
+case 29: case 30:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
 	
 break;
-case 29:
+case 31:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica("Aritmetica");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+	
+break;
+case 32:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -538,7 +703,7 @@ case 29:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 30:
+case 33:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -557,7 +722,7 @@ case 30:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 31:
+case 34:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -576,7 +741,7 @@ case 31:
 										console.log("Leimos un Caracter->" + $$[$0]);
 									
 break;
-case 32: case 33:
+case 35: case 36:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Booleano");
@@ -595,7 +760,7 @@ case 32: case 33:
 										console.log("Leimos un Booleano->" + $$[$0]);
 									
 break;
-case 34:
+case 37:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Cadena");
@@ -615,7 +780,7 @@ case 34:
 										
 									
 break;
-case 35:
+case 38:
  
 										this.$ = $$[$0-1];  
 										//console.log("DUA LIPA");
@@ -623,8 +788,8 @@ case 35:
 break;
 }
 },
-table: [{2:[1,4],3:1,4:2,8:3,9:$V0,11:$V1},{1:[3]},{5:[1,7],8:8,9:$V0,11:$V1},o($V2,[2,5]),o($V2,[2,6]),{10:[1,9]},{12:[1,10]},{1:[2,1]},o($V2,[2,4]),{11:[1,11]},{13:[1,12]},{12:[1,13]},o($V2,$V3,{6:14,7:$V4}),{13:[1,16]},o($V2,[2,8]),o([5,9,11,16,18],[2,2]),{14:[1,17]},{15:18,17:19,18:$V5},{16:[1,21],17:22,18:$V5},o($V6,[2,10]),{12:[1,23]},o($V2,[2,7]),o($V6,[2,9]),{12:$V7,19:24,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{13:[1,34],20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,31:$Vq,32:$Vr,33:$Vs,34:$Vt,35:$Vu},{12:$V7,19:50,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:51,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($Vv,[2,29]),o($Vv,[2,30]),o($Vv,[2,31]),o($Vv,[2,32]),o($Vv,[2,33]),o($Vv,[2,34]),{12:$V7,19:52,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($V6,$V3,{6:53,7:$V4}),{12:$V7,19:54,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:55,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:56,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:57,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:58,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:59,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:60,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:61,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:62,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:63,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:64,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:65,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:66,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:67,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},{12:$V7,19:68,20:$V8,21:$V9,36:$Va,37:$Vb,38:$Vc,39:$Vd,40:$Ve,41:$Vf},o($Vv,[2,12]),o($Vw,[2,13],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),{13:[1,69],20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,31:$Vq,32:$Vr,33:$Vs,34:$Vt,35:$Vu},o($V6,[2,11]),o($Vx,[2,14],{23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vx,[2,15],{23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vy,[2,16],{25:$Vk}),o($Vy,[2,17],{25:$Vk}),o($Vv,[2,18]),o($Vy,[2,19],{25:$Vk}),o($Vw,[2,20],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,21],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,22],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vw,[2,23],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl}),o($Vz,[2,24],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($Vz,[2,25],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($Vz,[2,26],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp,34:$Vt,35:$Vu}),o($VA,[2,27],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp}),o($VA,[2,28],{20:$Vg,22:$Vh,23:$Vi,24:$Vj,25:$Vk,26:$Vl,27:$Vm,28:$Vn,29:$Vo,30:$Vp}),o($Vv,[2,35])],
-defaultActions: {7:[2,1]},
+table: [{2:[1,4],3:1,4:2,8:3,9:$V0},{1:[3]},{5:[1,6],8:7,9:$V0},o($V1,[2,5]),o($V1,[2,6]),{10:[1,8]},{1:[2,1]},o($V1,[2,4]),{10:[1,9]},{11:[1,10]},{10:[1,13],12:[1,11],16:12},{13:[1,14]},{12:[1,15],17:[1,16]},{10:[1,17]},{10:$V2,14:18,18:19,19:$V3},{13:[1,22]},{10:[1,23]},o($V4,[2,10]),{10:$V2,15:[1,24],18:25,19:$V3},o($V5,[2,12]),{11:[1,26]},{11:[1,27]},{10:$V2,14:28,18:19,19:$V3},{10:[1,29]},o($V1,[2,7]),o($V5,[2,11]),{11:$V6,20:30,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{12:[1,40]},{10:$V2,15:[1,41],18:25,19:$V3},o($V4,[2,9]),{12:[1,42],21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo,32:$Vp,33:$Vq,34:$Vr,35:$Vs,36:$Vt},{11:$V6,20:58,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:59,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},o($Vu,[2,32]),o($Vu,[2,33]),o($Vu,[2,34]),o($Vu,[2,35]),o($Vu,[2,36]),o($Vu,[2,37]),{11:$V6,20:60,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},o($V5,$Vv,{6:61,7:$Vw}),o($V1,[2,8]),o($V5,$Vv,{6:63,7:$Vw}),{11:$V6,20:64,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:65,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:66,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:67,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:68,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:69,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:70,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:71,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:72,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:73,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:74,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:75,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:76,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:77,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},{11:$V6,20:78,21:$V7,22:$V8,37:$V9,38:$Va,39:$Vb,40:$Vc,41:$Vd,42:$Ve},o($Vu,[2,15]),o($Vx,[2,16],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk}),{12:[1,79],21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo,32:$Vp,33:$Vq,34:$Vr,35:$Vs,36:$Vt},o($V5,[2,14]),o($V5,[2,2]),o($V5,[2,13]),o($Vy,[2,17],{24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($Vy,[2,18],{24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($Vz,[2,19],{26:$Vj}),o($Vz,[2,20],{26:$Vj}),o($Vu,[2,21]),o($Vz,[2,22],{26:$Vj}),o($Vx,[2,23],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($Vx,[2,24],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($Vx,[2,25],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($Vx,[2,26],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk}),o($VA,[2,27],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo,35:$Vs,36:$Vt}),o($VA,[2,28],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo,35:$Vs,36:$Vt}),o($VA,[2,29],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo,35:$Vs,36:$Vt}),o($VB,[2,30],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo}),o($VB,[2,31],{21:$Vf,23:$Vg,24:$Vh,25:$Vi,26:$Vj,27:$Vk,28:$Vl,29:$Vm,30:$Vn,31:$Vo}),o($Vu,[2,38])],
+defaultActions: {6:[2,1]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -875,11 +1040,9 @@ _handle_error:
 
 	var respuesta = "";
 	var Entorno1 = new Casa();
-	//console.log("hola") ;
-	//console.log(Entorno1);
-	//console.log("fin");
 	var GraficasDOT = new Graficas();
 	var contador = 0;
+	
 	
 	
 /* generated by jison-lex 0.3.4 */
@@ -1210,27 +1373,27 @@ options: {"case-insensitive":true},
 performAction: function anonymous(yy,yy_,$avoiding_name_collisions,YY_START) {
 var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
-case 0:return 18;
+case 0:return 19;
 break;
 case 1:return 7;
 break;
-case 2:return 12;
+case 2:return 11;
 break;
-case 3:return 13;
+case 3:return 12;
 break;
 case 4:return 'CORIZQ';
 break;
 case 5:return 'CORDER';
 break;
-case 6:return 14;
+case 6:return 13;
 break;
-case 7:return 16;
+case 7:return 15;
 break;
-case 8:return 22;
+case 8:return 17;
 break;
-case 9:return 20;
+case 9:return 23;
 break;
-case 10:return 23;
+case 10:return 21;
 break;
 case 11:return 24;
 break;
@@ -1238,41 +1401,41 @@ case 12:return 25;
 break;
 case 13:return 26;
 break;
-case 14:return 30;
+case 14:return 27;
 break;
-case 15:return 29;
+case 15:return 31;
 break;
-case 16:return 27;
+case 16:return 30;
 break;
 case 17:return 28;
 break;
-case 18:return 34;
+case 18:return 29;
 break;
 case 19:return 35;
 break;
-case 20:return 31;
+case 20:return 36;
 break;
 case 21:return 32;
 break;
 case 22:return 33;
 break;
-case 23:return 21;
+case 23:return 34;
 break;
-case 24:return 39;
+case 24:return 22;
 break;
 case 25:return 40;
 break;
-case 26:return 9;
+case 26:return 41;
 break;
-case 27:return 10;
+case 27:return 9;
 break;
 case 28:
 break;
 case 29:
 break;
-case 30:return 37;
+case 30:return 38;
 break;
-case 31:return 36;
+case 31:return 37;
 break;
 case 32:return "CARACTER";
 break;
@@ -1287,7 +1450,7 @@ case 36: alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + y
 break;
 }
 },
-rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:void\b)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:("[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"))/i,/^(?:([a-zA-Z0-9_]+([a-zA-Z0-9_]+)))/i,/^(?:$)/i,/^(?:.)/i],
+rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:,)/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:("[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"))/i,/^(?:([a-zA-Z0-9_]+([a-zA-Z0-9_]+)))/i,/^(?:$)/i,/^(?:.)/i],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36],"inclusive":true}}
 });
 return lexer;

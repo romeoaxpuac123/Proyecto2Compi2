@@ -6,6 +6,10 @@ class Casa {
     etiquetas : number;
     paso = 0;
     public SIMBOLOS: Array<simbolo>;
+    valordep = 0;
+    public Tipo =  new Array();
+    public Variable = new Array();
+    public Tes = new Array();
     constructor() {
         // Le doy un valor
 
@@ -13,10 +17,11 @@ class Casa {
         this.numero = 0;
         this.etiquetas = 0;
         this.paso = 0;
+        this.valordep = 0;
         this.SIMBOLOS = new Array();
     }
     anadirSimbolo(nombre1:string,ambito1:string,funcion1:string,tamanio1:number,posicion1:number,tipo1:string,posicionT1:string,parametros:number){
-        var NuevoSimbolo = new simbolo(nombre1,ambito1,funcion1,tamanio1,posicion1,tipo1,posicionT1,parametrostsc );
+        var NuevoSimbolo = new simbolo(nombre1,ambito1,funcion1,tamanio1,posicion1,tipo1,posicionT1,parametros );
         this.SIMBOLOS.push(NuevoSimbolo);
     }
     mostrarSimboos(){
@@ -27,6 +32,14 @@ class Casa {
     existefuncion(nombre:string):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             if(this.SIMBOLOS[i].nombre == nombre){
+                return true;
+            }
+        }
+        return false;
+    }
+    totalparametros(nombre:string, parametros:number):boolean{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre  && this.SIMBOLOS[i].parametros == parametros){
                 return true;
             }
         }

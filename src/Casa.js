@@ -2,10 +2,15 @@ var Casa = /** @class */ (function () {
     function Casa() {
         // Le doy un valor
         this.paso = 0;
+        this.valordep = 0;
+        this.Tipo = new Array();
+        this.Variable = new Array();
+        this.Tes = new Array();
         this.direccion = "";
         this.numero = 0;
         this.etiquetas = 0;
         this.paso = 0;
+        this.valordep = 0;
         this.SIMBOLOS = new Array();
     }
     Casa.prototype.anadirSimbolo = function (nombre1, ambito1, funcion1, tamanio1, posicion1, tipo1, posicionT1, parametros) {
@@ -20,6 +25,14 @@ var Casa = /** @class */ (function () {
     Casa.prototype.existefuncion = function (nombre) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
             if (this.SIMBOLOS[i].nombre == nombre) {
+                return true;
+            }
+        }
+        return false;
+    };
+    Casa.prototype.totalparametros = function (nombre, parametros) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros == parametros) {
                 return true;
             }
         }
