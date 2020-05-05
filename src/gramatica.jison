@@ -49,6 +49,11 @@
 "true"				return 'VERDADERO';
 "false"				return 'FALSO';
 "public"			return 'PUBLIC';
+"var"				return 'VAR';
+"const"				return 'CONST';
+"global"			return 'GLOBAL';
+":"					return 'DOSP';
+"="					return 'IGUAL';
 
 
 
@@ -229,6 +234,7 @@ instruccion
 				Entorno1.direccion = ""; 
 		}
 	|   PUBLIC ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
+				Entorno1.nombreentorno = $3;
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
 				nuevo.Hijos[0] = NombreFuncion;
@@ -259,11 +265,12 @@ instruccion
 
 
 				$$ =  nuevo.Ejecutar(Entorno1);
-				
+			
 	}
 ;
 lista_Parametros
 	: lista_Parametros COMA ID ID{
+			//Entorno1.tamanioentorno += 1;
 			var nuevo = new Parametros ("PARAMETROS");
 			var nuevovalor2 = new Nodo($4);
 			nuevo.Hijos[0] = nuevovalor2;
@@ -313,6 +320,7 @@ lista_Parametros
 	| ID ID{
 			//Entorno1.numero += 1;
 			Entorno1.valordep = Entorno1.numero += 1;
+			//Entorno1.tamanioentorno += 1;
 			var nuevo = new Parametros ("PARAMETROS");
 			var nuevovalor2 = new Nodo($2);
 			nuevo.Hijos[0] = nuevovalor2;
@@ -440,7 +448,7 @@ instruccion2
         //entorno.direccion = ""; 
 		$$ = nuevo;
 	}
-
+	
 	| ID PARIZQ PARDER PTCOMA{
 		//llamada de funcion principal();
 				var nuevo = new LLamadas("LLamada");
@@ -467,9 +475,127 @@ instruccion2
 				$$ =  nuevo.Ejecutar(Entorno1);
 
 	}
-		
-		;
+	|TIPOS ID_LISTA DOSP IGUAL expresion PTCOMA	{
+		console.log("DEC1");
+		var nuevo = new Variables ("VARIABLES");
+		//var Tipo = new Nodo($1);
+		nuevo.Hijos[0] = $1;
+		nuevo.Hijos[1] = $5;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+			
 
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZ);
+
+		var Conexion1xZx = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $5.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZx);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|TIPOS ID_LISTA PTCOMA {
+		
+	}
+	;
+
+ID_LISTA:
+	ID_LISTA COMA ID{
+		Entorno1.VariableVariables.push($3);
+			var nuevo = new Nodo("ID_LISTA");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "ID_LISTA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $3 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+			
+			var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador+ "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			$$ = nuevo ;
+	}
+	|ID{
+			Entorno1.VariableVariables.push($1);
+			var nuevo = new Nodo("ID_LISTA");
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "ID_LISTA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			
+			contador = contador + 1;
+			var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			
+			var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador+ "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			$$ = nuevo ;
+
+	}
+;
+
+TIPOS:
+	VAR{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "VAR" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	|CONST{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "CONST" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	|GLOBAL{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "GLOBAL" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	|ID{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+;
 
 expresion
 	: MENOS expresion %prec UMENOS	{ 

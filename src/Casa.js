@@ -1,11 +1,19 @@
 var Casa = /** @class */ (function () {
     function Casa() {
-        // Le doy un valor
         this.paso = 0;
         this.valordep = 0;
         this.Tipo = new Array();
         this.Variable = new Array();
         this.Tes = new Array();
+        this.TipoVariables = new Array();
+        this.VariableVariables = new Array();
+        this.TesVariables = new Array();
+        this.TipoVariablesFUNCION = new Array();
+        this.VariableVariablesFUNCION = new Array();
+        this.TesVariablesFUNCION = new Array();
+        this.tamanioentorno = 0;
+        // Le doy un valor
+        this.nombreentorno = "Global";
         this.direccion = "";
         this.numero = 0;
         this.etiquetas = 0;
@@ -19,7 +27,13 @@ var Casa = /** @class */ (function () {
     };
     Casa.prototype.mostrarSimboos = function () {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
-            console.log("Nombre->" + this.SIMBOLOS[i].nombre + " Tipo->" + this.SIMBOLOS[i].tipo);
+            console.log("Nombre->" + this.SIMBOLOS[i].nombre +
+                " Tipo->" + this.SIMBOLOS[i].tipo +
+                " Ambito->" + this.SIMBOLOS[i].ambito +
+                " Nombre_Funcion->" + this.SIMBOLOS[i].funcion +
+                " Tamanio_Funcion->" + this.SIMBOLOS[i].tamanio +
+                " Valor_T->" + this.SIMBOLOS[i].posicionT +
+                " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion);
         }
     };
     Casa.prototype.existefuncion = function (nombre) {
@@ -37,6 +51,15 @@ var Casa = /** @class */ (function () {
             }
         }
         return false;
+    };
+    Casa.prototype.totalparametrosFuncion = function (nombre) {
+        var total = 0;
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].nombre == nombre) {
+                return this.SIMBOLOS[i].simbolo_tamanio();
+            }
+        }
+        return total;
     };
     return Casa;
 }());

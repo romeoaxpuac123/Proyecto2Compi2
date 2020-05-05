@@ -29,7 +29,22 @@ var Parametros = /** @class */ (function (_super) {
         var nombre = this.Hijos[0].Nombre;
         var TParametros = 0;
         console.log("El parametro se llama de:->" + nombre);
+        console.log("La funcion se llama de:->" + entorno.nombreentorno);
         console.log("de Tipo->" + this.TipoDato.toUpperCase());
+        for (var x = 0; x < entorno.VariableVariablesFUNCION.length; x++) {
+            if (nombre.toUpperCase() == entorno.VariableVariablesFUNCION[x].toUpperCase()) {
+                alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                break;
+            }
+        }
+        for (var x = 0; x < entorno.Variable.length; x++) {
+            if (nombre.toUpperCase() == entorno.Variable[x].toUpperCase()) {
+                alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                break;
+            }
+        }
         if (this.TipoDato.toUpperCase() == "INTEGER" || this.TipoDato.toUpperCase() == "DOUBLE"
             || this.TipoDato.toUpperCase() == "CHAR" || this.TipoDato.toUpperCase() == "BOOLEAN"
             || this.TipoDato.toUpperCase() == "VAR" || this.TipoDato.toUpperCase() == "CONST") {
@@ -38,6 +53,8 @@ var Parametros = /** @class */ (function (_super) {
             entorno.numero += 1;
             var Tex = "t" + entorno.numero;
             entorno.Tes.push(Tex);
+            entorno.tamanioentorno += 1;
+            //entorno.anadirSimbolo(nombre,"local",entorno.nombreentorno,0,entorno.Tes.length,this.TipoDato,Tex,0);
         }
         else {
             alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);

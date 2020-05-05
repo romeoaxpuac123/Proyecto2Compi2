@@ -1,6 +1,6 @@
 class Casa {
     // Indico mi variable
-
+    nombreentorno:string;
     direccion:string
     numero: number;
     etiquetas : number;
@@ -10,9 +10,19 @@ class Casa {
     public Tipo =  new Array();
     public Variable = new Array();
     public Tes = new Array();
+
+    public TipoVariables =  new Array();
+    public VariableVariables = new Array();
+    public TesVariables = new Array();
+
+    public TipoVariablesFUNCION =  new Array();
+    public VariableVariablesFUNCION = new Array();
+    public TesVariablesFUNCION = new Array();
+
+    public tamanioentorno = 0;
     constructor() {
         // Le doy un valor
-
+        this.nombreentorno = "Global";
         this.direccion = "";
         this.numero = 0;
         this.etiquetas = 0;
@@ -26,7 +36,14 @@ class Casa {
     }
     mostrarSimboos(){
         for(var i = 0; i < this.SIMBOLOS.length;i++){
-            console.log("Nombre->" + this.SIMBOLOS[i].nombre + " Tipo->" + this.SIMBOLOS[i].tipo);
+            console.log("Nombre->" + this.SIMBOLOS[i].nombre + 
+                        " Tipo->" + this.SIMBOLOS[i].tipo +
+                        " Ambito->"+ this.SIMBOLOS[i].ambito +
+                        " Nombre_Funcion->" + this.SIMBOLOS[i].funcion + 
+                        " Tamanio_Funcion->" + this.SIMBOLOS[i].tamanio +
+                        " Valor_T->" + this.SIMBOLOS[i].posicionT +
+                        " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion
+                        );
         }
     }
     existefuncion(nombre:string):boolean{
@@ -37,6 +54,7 @@ class Casa {
         }
         return false;
     }
+   
     totalparametros(nombre:string, parametros:number):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             if(this.SIMBOLOS[i].nombre == nombre  && this.SIMBOLOS[i].parametros == parametros){
@@ -44,5 +62,14 @@ class Casa {
             }
         }
         return false;
+    }
+    totalparametrosFuncion(nombre:string):number{
+        var total = 0; 
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre){
+                return this.SIMBOLOS[i].simbolo_tamanio();
+            }
+        }
+        return total;
     }
 }
