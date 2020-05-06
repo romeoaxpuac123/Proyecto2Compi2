@@ -11,12 +11,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var Variables = /** @class */ (function (_super) {
-    __extends(Variables, _super);
-    function Variables() {
+var Variables2 = /** @class */ (function (_super) {
+    __extends(Variables2, _super);
+    function Variables2() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Variables.prototype.Variables = function (val) {
+    Variables2.prototype.Variables2 = function (val) {
         this.Nombre = val;
         this.id = 0;
         this.linea = 0;
@@ -24,10 +24,10 @@ var Variables = /** @class */ (function (_super) {
         this.Hijos = new Array();
         this.TipoDato = "";
     };
-    Variables.prototype.Ejecutar = function (entorno) {
+    Variables2.prototype.Ejecutar = function (entorno) {
         console.log("-----------ENTRO A VARIABLES------");
         var ElTipo = this.Hijos[0].Nombre;
-        var LaTRespuesta = this.Hijos[1].CadenaDe3D;
+        var LaTRespuesta = "";
         var ElvalordeP = "t" + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
@@ -35,6 +35,15 @@ var Variables = /** @class */ (function (_super) {
         //public TipoVariables =  new Array();
         //public VariableVariables = new Array();
         //public TesVariables = new Array();
+        if (ElTipo.toUpperCase() == "INTEGER") {
+            LaTRespuesta = "0";
+        }
+        else if (ElTipo.toUpperCase() == "DOUBLE") {
+            LaTRespuesta = "0.0";
+        }
+        else if (ElTipo.toUpperCase() == "CHAR") {
+            LaTRespuesta = "00";
+        }
         if (ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "DOUBLE"
             || ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "BOOLEAN"
             || ElTipo.toUpperCase() == "VAR" || ElTipo.toUpperCase() == "CONST") {
@@ -91,5 +100,5 @@ var Variables = /** @class */ (function (_super) {
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     };
-    return Variables;
+    return Variables2;
 }(NodoAbstracto));

@@ -4,6 +4,7 @@
     <meta charset="uft-8"/>
   <title>J#</title>
   <link rel="stylesheet" type="text/css" href="estilos.css">
+  <link rel="stylesheet" type="text/css" href="tablas.css">
   <link rel="stylesheet" href="font-awesome.css">
 
   <script src = "codemirror/lib/codemirror.js"></script>
@@ -30,6 +31,7 @@
 <script src="Llamadas.js"></script>
 <script src="Par.js"></script>
 <script src="Variables.js"></script>
+<script src="Variables2.js"></script>
   <script type="text/javascript">
  
     function pestana(grupo_pesta, id_pesta){
@@ -127,7 +129,8 @@
           SalidaAT.setValue(document.getElementById("salida").value);
           //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
           //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
-      }   
+      }  
+     
   </script>
 
 <script type="text/javascript">
@@ -421,7 +424,7 @@ function cambiarPestanna(pestannas,pestanna) {
     <form action="http://localhost:3080/CodigoDOT" method="post">
       Ingrese numero inferior:
       <textarea type="text" name="numero1" id = "numero1x"  size="10" style="visibility:hidden" style="position:absolute;top:150px;left:705px;z-index:1;"></textarea>
-      Ingrese numero superior:
+      
       <input type="text" name="numero2" id = "numero2x" style="visibility:hidden" size="10"style="position:absolute;top:150px;left:705px;z-index:1;" ><br>
       
       <input type="submit" class="boton_2" Value = "Reportes" id = "ReportesA"  style="position:absolute;top:130px;left:00px;z-index:1;"  >
@@ -459,20 +462,25 @@ function cambiarPestanna(pestannas,pestanna) {
       </article>
 
       <article id="tab2">
-        <textarea name="stack" id = "stack" rows="5" cols="70">Stack</textarea>     
+        <textarea name="stack" id = "stack" rows="5" cols="67">Stack</textarea>     
       </article>
 
       <article id="tab3">
-        <textarea name="heap" id = "heap" rows="5" cols="70">Heap</textarea>     
+        <textarea name="heap" id = "heap" rows="5" cols="67">Heap</textarea>     
       </article>
 
 
       <article id="tab4">
-       <textarea name="Errores" id = "Errores" rows="5" cols="70">Errores</textarea>  
+       <textarea name="Errores" id = "Errores" rows="5" cols="67">Errores</textarea>  
       </article>
 
       <article id="tab5">
-        <textarea name="Simbolos" id = "Simbolos" rows="5" cols="70">Errores</textarea>  
+        
+        <div id="Reporte_Simbolos">
+
+         
+        </div> 
+      
        </article>
     </div>
   </div>

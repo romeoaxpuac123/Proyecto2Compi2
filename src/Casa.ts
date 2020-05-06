@@ -10,7 +10,7 @@ class Casa {
     public Tipo =  new Array();
     public Variable = new Array();
     public Tes = new Array();
-
+    public Salida = "";
     public TipoVariables =  new Array();
     public VariableVariables = new Array();
     public TesVariables = new Array();
@@ -35,6 +35,11 @@ class Casa {
         this.SIMBOLOS.push(NuevoSimbolo);
     }
     mostrarSimboos(){
+        document.getElementById("Reporte_Simbolos").innerHTML = "";
+        this.Salida = "<!DOCTYPE html><html lang=\"en\"><head>	<meta charset=\"UTF-8\">	<title>Dando estilo a tablas</title><link rel=\"stylesheet\" type=\"text/css\" href=\"tablas.css\"></head><body><div id=\"main-container\">";
+        this.Salida += "<table><thead><tr><th>IDENTIFICADOR</th><th>ROL</th><th>TIPO</th><th>TAMANIO</th><th>AMBITO</th><th>POSICION</th></tr></thead>";
+        var elcoso = "";
+        var elcoso2 = "";
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             console.log("Nombre->" + this.SIMBOLOS[i].nombre + 
                         " Tipo->" + this.SIMBOLOS[i].tipo +
@@ -44,8 +49,29 @@ class Casa {
                         " Valor_T->" + this.SIMBOLOS[i].posicionT +
                         " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion
                         );
+                        var Rol ="VARIABLE";
+                        if(this.SIMBOLOS[i].posicionT == "NO TIENE"){
+                            Rol = "FUNCION";
+                        }
+                        
+                        elcoso = "";
+                        elcoso = "<tr>" + "<td>" + this.SIMBOLOS[i].nombre + "</td>"
+                                 + "<td>" + Rol + "</td>"
+                                 + "<td>" + this.SIMBOLOS[i].tipo + "</td>"
+                                 + "<td>" + this.SIMBOLOS[i].tamanio + "</td>"
+                                 + "<td>" + this.SIMBOLOS[i].ambito + "</td>"
+                                 + "<td>" + this.SIMBOLOS[i].posicion+ "</td>"
+                                 + "</tr>";                     
+                        elcoso2 +=   elcoso;
         }
+       this.Salida += elcoso2 + "</table></div></body></html>";
+       //document.getElementById('Simbolos').innerHTML = this.Salida;	
+       document.getElementById("Reporte_Simbolos").innerHTML = this.Salida;
+       this.Salida = "";
+         
     }
+
+    
     existefuncion(nombre:string):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             if(this.SIMBOLOS[i].nombre == nombre){
@@ -71,5 +97,14 @@ class Casa {
             }
         }
         return total;
+    }
+
+    FuncionExistenteBayron(nombre:string):boolean{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].simbolo_funcion() == nombre){
+                return true;
+            }
+        }
+        return false;
     }
 }

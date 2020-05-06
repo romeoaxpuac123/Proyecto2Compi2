@@ -5,6 +5,7 @@ var Casa = /** @class */ (function () {
         this.Tipo = new Array();
         this.Variable = new Array();
         this.Tes = new Array();
+        this.Salida = "";
         this.TipoVariables = new Array();
         this.VariableVariables = new Array();
         this.TesVariables = new Array();
@@ -26,6 +27,11 @@ var Casa = /** @class */ (function () {
         this.SIMBOLOS.push(NuevoSimbolo);
     };
     Casa.prototype.mostrarSimboos = function () {
+        document.getElementById("Reporte_Simbolos").innerHTML = "";
+        this.Salida = "<!DOCTYPE html><html lang=\"en\"><head>	<meta charset=\"UTF-8\">	<title>Dando estilo a tablas</title><link rel=\"stylesheet\" type=\"text/css\" href=\"tablas.css\"></head><body><div id=\"main-container\">";
+        this.Salida += "<table><thead><tr><th>IDENTIFICADOR</th><th>ROL</th><th>TIPO</th><th>TAMANIO</th><th>AMBITO</th><th>POSICION</th></tr></thead>";
+        var elcoso = "";
+        var elcoso2 = "";
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
             console.log("Nombre->" + this.SIMBOLOS[i].nombre +
                 " Tipo->" + this.SIMBOLOS[i].tipo +
@@ -34,7 +40,24 @@ var Casa = /** @class */ (function () {
                 " Tamanio_Funcion->" + this.SIMBOLOS[i].tamanio +
                 " Valor_T->" + this.SIMBOLOS[i].posicionT +
                 " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion);
+            var Rol = "VARIABLE";
+            if (this.SIMBOLOS[i].posicionT == "NO TIENE") {
+                Rol = "FUNCION";
+            }
+            elcoso = "";
+            elcoso = "<tr>" + "<td>" + this.SIMBOLOS[i].nombre + "</td>"
+                + "<td>" + Rol + "</td>"
+                + "<td>" + this.SIMBOLOS[i].tipo + "</td>"
+                + "<td>" + this.SIMBOLOS[i].tamanio + "</td>"
+                + "<td>" + this.SIMBOLOS[i].ambito + "</td>"
+                + "<td>" + this.SIMBOLOS[i].posicion + "</td>"
+                + "</tr>";
+            elcoso2 += elcoso;
         }
+        this.Salida += elcoso2 + "</table></div></body></html>";
+        //document.getElementById('Simbolos').innerHTML = this.Salida;	
+        document.getElementById("Reporte_Simbolos").innerHTML = this.Salida;
+        this.Salida = "";
     };
     Casa.prototype.existefuncion = function (nombre) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
@@ -60,6 +83,14 @@ var Casa = /** @class */ (function () {
             }
         }
         return total;
+    };
+    Casa.prototype.FuncionExistenteBayron = function (nombre) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].simbolo_funcion() == nombre) {
+                return true;
+            }
+        }
+        return false;
     };
     return Casa;
 }());

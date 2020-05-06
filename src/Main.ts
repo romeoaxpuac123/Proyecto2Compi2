@@ -8,6 +8,8 @@ function Compilar() {
     //document.getElementById("caca").innerHTML= "tocino";
     var myTextArea = document.getElementById('salida');
     myTextArea.innerHTML = p1;
+    //var pats = "/mostrartabla"+ "?valor=" + document.getElementById('Simbolos').value;
+    parent.open("/mostrartabla"+ "?valor=romeo");
    
 }
 

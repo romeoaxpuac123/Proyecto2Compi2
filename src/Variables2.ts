@@ -1,6 +1,6 @@
-class Variables extends NodoAbstracto{
+class Variables2 extends NodoAbstracto{
 
-    Variables(val : string){
+    Variables2(val : string){
         this.Nombre = val;
         this.id=0;
         this.linea=0;
@@ -11,7 +11,7 @@ class Variables extends NodoAbstracto{
     Ejecutar(entorno: Casa):NodoAbstracto{
         console.log("-----------ENTRO A VARIABLES------");
         var ElTipo= this.Hijos[0].Nombre;
-        var LaTRespuesta  = this.Hijos[1].CadenaDe3D;
+        var LaTRespuesta  = "";
         var ElvalordeP = "t" + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
@@ -19,7 +19,13 @@ class Variables extends NodoAbstracto{
         //public TipoVariables =  new Array();
         //public VariableVariables = new Array();
         //public TesVariables = new Array();
-
+        if(ElTipo.toUpperCase() == "INTEGER"){
+            LaTRespuesta  = "0";
+        }else if (ElTipo.toUpperCase() == "DOUBLE"){
+            LaTRespuesta  = "0.0";
+        }else if (ElTipo.toUpperCase() == "CHAR"){
+            LaTRespuesta  = "00";
+        }
         if(ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "DOUBLE"
         || ElTipo.toUpperCase() == "CHAR"    || ElTipo.toUpperCase() == "BOOLEAN" 
         || ElTipo.toUpperCase() == "VAR"     || ElTipo.toUpperCase() == "CONST"){

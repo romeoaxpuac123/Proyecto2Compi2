@@ -66,8 +66,9 @@
 [0-9]+("."[0-9]+)\b  	return 'DECIMAL';
 [0-9]+\b				return 'ENTERO';
 ("'"[a-zA-Z0-9_]"'")	return "CARACTER";
-("\""[a-zA-Z0-9_]+([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
-([a-zA-Z0-9_]+([a-zA-Z0-9_]+))	return "ID";
+//("\""([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
+\"[^\"]*\"				return "CADENA";
+([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+))	return "ID";
 
 <<EOF>>				return 'EOF';
 
@@ -197,9 +198,9 @@ instrucciones
 ;
 
 instruccion
-	:   PUBLIC ID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
+	/*:   PUBLIC ID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
 				//declaramos una funcion de la forma public void nombre(){}
-
+				Entorno1.nombreentorno = $3;
 				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
@@ -232,12 +233,13 @@ instruccion
 				document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
         		Entorno1.direccion = ""; 
 				Entorno1.direccion = ""; 
-		}
-	|   PUBLIC ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
+		} */
+	:   PUBLIC ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
 				Entorno1.nombreentorno = $3;
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
 				nuevo.Hijos[0] = NombreFuncion;
+				nuevo.TipoDato = $2;
 				contador = contador + 1;
 				nuevo.NumeroDeNodo = contador;
 
@@ -362,7 +364,22 @@ lista_Parametros
 
 			$$ = nuevop;
 			
-	};
+	}
+	|{	Entorno1.valordep = Entorno1.numero += 1;
+			//Entorno1.tamanioentorno += 1;
+			var nuevo = new Nodo ("PARAMETROS");
+			
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			//Entorno1.valordep = Entorno1.numero += 1;
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SIN_PARAMETROS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+		};
 
 
 lista_instrucciones
@@ -504,7 +521,29 @@ instruccion2
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	|TIPOS ID_LISTA PTCOMA {
+		var nuevo = new Variables2 ("VARIABLES");
+		//var Tipo = new Nodo($1);
+		nuevo.Hijos[0] = $1;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+			
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
 		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZ);
+
+	
+
+		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	;
 
@@ -1039,6 +1078,24 @@ expresion
 										
 										$$ = nuevo;
 										console.log("Leimos una cadena->" + $1);
+										
+									}
+	|ID								{ 
+										//$$ = Number($1); 
+										var nuevo = new Nodo("ID");
+										var nuevovalor = new Nodo($1);
+										nuevo.Hijos[0] = nuevovalor;
+										nuevo.TipoDato = "ID";
+										nuevo.CadenaDe3D = $1;
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("\"","").replace("\"","") + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);
+
+										
+										$$ = nuevo;
+										console.log("ID->" + $1);
 										
 									}
 	| PARIZQ expresion PARDER		{ 

@@ -2,13 +2,16 @@
 //var miCasa = new Casa();
 // Mostramos por consola el contenido de la variable 'direccion' del documento
 //console.log(miCasa.direccion);
+
+
 function Compilar() {
-    var p1 = Editor.getValue();
+    var p1 = document.getElementById("texto1").value;
     //console.log(p1);
     //document.getElementById("caca").innerHTML= "tocino";
-    //var myTextArea = document.getElementById('salida');
-    //myTextArea.innerHTML = p1;
-    SalidaAT.setValue(p1);
+    var myTextArea = document.getElementById('salida');
+    myTextArea.innerHTML = p1;
+    var pats = "/mostrartabla" + "?valor=" + document.getElementById('Simbolos').value;
+    parent.open("/mostrartabla" + "?valor=" + document.getElementById('Simbolos').value);
 }
 /// funcion para leer un archivo
 window.addEventListener('load', inicio, false);
@@ -24,7 +27,5 @@ function cargar(ev) {
     arch.readAsText(ev.target.files[0]);
 }
 function leer(ev) {
-    //document.getElementById("textox").value = ev.target.result;
-    Editor.setValue(ev.target.result);
-    
+    document.getElementById('texto1').value = ev.target.result;
 }
