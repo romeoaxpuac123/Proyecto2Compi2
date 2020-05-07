@@ -49,10 +49,11 @@ var Funciones = /** @class */ (function (_super) {
                 console.log("SIMBOLOS--->");
                 entorno.mostrarSimboos();
                 console.log("fin simbolos");
-                var Auxiliar = "t" + entorno.valordep;
-                var Parametrosc3d = Auxiliar + " = P;\n";
+                //var Auxiliar = "P" ; //+ entorno.valordep;
+                //var Parametrosc3d = Auxiliar + " = P;\n";
+                //var Parametrosc3d = Auxiliar; //+ " = P;\n";
                 var esomero = "goto L" + Etiqueta1x + ";\n";
-                entorno.direccion = esomero + "proc " + nombre + "_" + this.TipoDato + "_" + TParametros + " begin\n\n\t" + Parametrosc3d + "\t" + entorno.direccion.replace(/\n/g, '\n\t');
+                entorno.direccion = esomero + "proc " + nombre + "_" + this.TipoDato + "_" + TParametros + " begin\n\n\t" + "\t" + entorno.direccion.replace(/\n/g, '\n\t');
                 entorno.direccion = entorno.direccion + "\n" + "end" + "\n" + "L" + Etiqueta1x + ":\n";
                 entorno.TipoVariables.splice(0, entorno.TipoVariables.length);
                 entorno.VariableVariables.splice(0, entorno.VariableVariables.length);
@@ -70,8 +71,8 @@ var Funciones = /** @class */ (function (_super) {
                 console.log("->" + entorno.Tes.length);
                 console.log("fin vacios");
                 entorno.anadirSimbolo(nombre, "global", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, totaltmanio, 0, this.TipoDato, "NO TIENE", TParametros);
-                var Auxiliar = "t" + entorno.valordep;
-                var Parametrosc3d = Auxiliar + " = P;\n";
+                var Auxiliar = "P"; // + entorno.valordep;
+                var Parametrosc3d = "";
                 for (var i = 0; i < entorno.Variable.length; i++) {
                     console.log(entorno.Variable[i] + "->" + entorno.Tipo[i]);
                     var Parametrosc3dx = "## PARAMETRO->" + entorno.Variable[i] + "\n";
@@ -124,11 +125,17 @@ var Funciones = /** @class */ (function (_super) {
                 //ya existe una función con la misma cantidad de parametros reportar error
                 alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "Funcion: " + nombre + " Existente" + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
             }
             else {
                 //no existe una función con la misma cantidad de parametros
                 //alert('POS SI SE AÑADE');
-                entorno.etiquetas += 1;
+                //entorno.etiquetas +=1;
                 var Etiqueta1x = entorno.etiquetas;
                 if (TParametros == 0) {
                     entorno.anadirSimbolo(nombre, "global", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, 0, this.TipoDato, "NO TIENE", TParametros);
@@ -145,10 +152,10 @@ var Funciones = /** @class */ (function (_super) {
                     console.log("SIMBOLOS--->");
                     entorno.mostrarSimboos();
                     console.log("fin simbolos");
-                    var Auxiliar = "t" + entorno.valordep;
-                    var Parametrosc3d = Auxiliar + " = P;\n";
+                    var Auxiliar = "P"; // + entorno.valordep;
+                    //var Parametrosc3d = Auxiliar + " = P;\n";
                     var esomero = "goto L" + Etiqueta1x + ";\n";
-                    entorno.direccion = esomero + "proc " + nombre + "_" + this.TipoDato + "_" + TParametros + " begin\n\n\t" + Parametrosc3d + "\t" + entorno.direccion.replace(/\n/g, '\n\t');
+                    entorno.direccion = esomero + "proc " + nombre + "_" + this.TipoDato + "_" + TParametros + " begin\n\n\t" + "\t" + entorno.direccion.replace(/\n/g, '\n\t');
                     entorno.direccion = entorno.direccion + "\n" + "end" + "\n" + "L" + Etiqueta1x + ":\n";
                     entorno.TipoVariables.splice(0, entorno.TipoVariables.length);
                     entorno.VariableVariables.splice(0, entorno.VariableVariables.length);
@@ -166,8 +173,8 @@ var Funciones = /** @class */ (function (_super) {
                     console.log("->" + entorno.Tes.length);
                     console.log("fin vacios");
                     entorno.anadirSimbolo(nombre, "global", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, totaltmanio, 0, this.TipoDato, "NO TIENE", TParametros);
-                    var Auxiliar = "t" + entorno.valordep;
-                    var Parametrosc3d = Auxiliar + " = P;\n";
+                    var Auxiliar = "P"; // + entorno.valordep;
+                    var Parametrosc3d = ""; //Auxiliar + " = P;\n";""
                     for (var i = 0; i < entorno.Variable.length; i++) {
                         console.log(entorno.Variable[i] + "->" + entorno.Tipo[i]);
                         var Parametrosc3dx = "## PARAMETRO->" + entorno.Variable[i] + "\n";

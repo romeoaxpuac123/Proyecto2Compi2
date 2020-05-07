@@ -1712,7 +1712,7 @@ Aritmetica(val : string){
         console.log("RESULTADO FINAL:->" + Total);
        
 
-        var nuevo = new Nodo(TipoFinal);
+        var nuevo = new Nodo("Aritmetica");
         var nuevovalor = new Nodo(Total.toString());
 		nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = TipoFinal;

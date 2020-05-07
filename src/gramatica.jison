@@ -72,8 +72,16 @@
 
 <<EOF>>				return 'EOF';
 
-.					{ alert('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column);
-       console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column); }
+.					{ 
+					alert('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column);
+       					console.error('Este es un error léxico: ' + yytext + ', en la linea: ' + yylloc.first_line + ', en la columna: ' + yylloc.first_column); 
+					Entorno1.LosErrores +="<tr>";
+					Entorno1.LosErrores += "<td>" + "Sintáctico" + "  </td>" ;
+					Entorno1.LosErrores += "<td>" + "Caracter no perteneciente" + yytext + " </td>";
+					Entorno1.LosErrores += "<td>" + yylloc.first_line  + "</td>";
+					Entorno1.LosErrores += "<td>" + yylloc.first_column+ "</td>";
+					Entorno1.LosErrores += "</tr>";	   
+					}
 /lex
 
 
@@ -96,6 +104,16 @@
 
 ini
 	: instrucciones EOF{{
+			document.getElementById("Reporte_Errores").innerHTML = "";
+			var ReporteErrores = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Dando estilo a tablas</title>";
+			ReporteErrores += "<link rel=\"stylesheet\" type=\"text/css\" href=\"tablas.css\"></head><body><div id=\"main-container\">";
+			ReporteErrores += "<table><thead><tr><th>TIPO</th><th>DESCRIPCION</th><th>LINEA</th><th>COLUMNA</th></tr></thead>";
+
+			ReporteErrores += Entorno1.LosErrores;
+			ReporteErrores += "</table></div></body></html>"
+
+			document.getElementById("Reporte_Errores").innerHTML = ReporteErrores;
+
 			var nuevo = new Nodo("INICIO");
 			contador = contador + 1;
 			nuevo.NumeroDeNodo = contador;
@@ -193,8 +211,17 @@ instrucciones
         	Entorno1.direccion = ""; 
 			$$ = nuevo2;
 	}
-	| error {alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
-        console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
+	| error {
+		alert('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column);
+        console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
+		Entorno1.LosErrores +="<tr>";
+		Entorno1.LosErrores += "<td>" + "sintáctico" + "  </td>" ;
+		Entorno1.LosErrores += "<td>" +  "Expresion incorrecta"  + " </td>";
+		Entorno1.LosErrores += "<td>" + this._$.first_line  + "</td>";
+		Entorno1.LosErrores += "<td>" + this._$.first_column + "</td>";
+		Entorno1.LosErrores += "</tr>";
+
+		}
 ;
 
 instruccion
@@ -321,7 +348,7 @@ lista_Parametros
 	}
 	| ID ID{
 			//Entorno1.numero += 1;
-			Entorno1.valordep = Entorno1.numero += 1;
+			//Entorno1.valordep = Entorno1.numero += 1;
 			//Entorno1.tamanioentorno += 1;
 			var nuevo = new Parametros ("PARAMETROS");
 			var nuevovalor2 = new Nodo($2);
@@ -365,7 +392,7 @@ lista_Parametros
 			$$ = nuevop;
 			
 	}
-	|{	Entorno1.valordep = Entorno1.numero += 1;
+	|{	     //Entorno1.valordep = Entorno1.numero += 1;
 			//Entorno1.tamanioentorno += 1;
 			var nuevo = new Nodo ("PARAMETROS");
 			
@@ -380,6 +407,7 @@ lista_Parametros
 			GraficasDOT.anadir(Hijo1);
 			$$ = nuevo;
 		};
+
 
 
 lista_instrucciones
@@ -466,18 +494,18 @@ instruccion2
 		$$ = nuevo;
 	}
 	
-	| ID PARIZQ PARDER PTCOMA{
+	| ID PARIZQ lista_Expresiones PARDER PTCOMA{
 		//llamada de funcion principal();
 				var nuevo = new LLamadas("LLamada");
 				var NombreFuncion = new Nodo($1);
 				nuevo.Hijos[0] = NombreFuncion;
 				contador = contador + 1;
 				nuevo.NumeroDeNodo = contador;
-
+				
 				nuevo.linea = this._$.first_line;
 				nuevo.columna = this._$.first_column;
 				
-
+				
 				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LLAMADA_FUNCION" + "\"]" +"\n";									
 				GraficasDOT.anadir(Hijo1);
 
@@ -488,6 +516,9 @@ instruccion2
 				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
 				GraficasDOT.anadir(Conexion1);
 
+				var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+				GraficasDOT.anadir(Conexion1xZ);
+				
 
 				$$ =  nuevo.Ejecutar(Entorno1);
 
@@ -546,6 +577,62 @@ instruccion2
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	;
+
+lista_Expresiones
+	:lista_Expresiones COMA expresion{
+			var nuevo = new Nodo("lista_Expresiones");
+			
+		    nuevo.TipoDato = $1;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "lista_Expresiones" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			$$ = nuevo;
+	}
+	|expresion{
+		
+			var nuevo = new Nodo("lista_Expresiones");
+			
+		    nuevo.TipoDato = $1;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "lista_Expresiones" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			$$ = nuevo;
+	}
+	|{
+			var nuevo = new Nodo ("lista_Expresiones");
+			
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			//Entorno1.valordep = Entorno1.numero += 1;
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SIN_EXPRESIONES" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	};
 
 ID_LISTA:
 	ID_LISTA COMA ID{
@@ -933,7 +1020,7 @@ expresion
 
 
 										$$ =  nuevo.Ejecutar(Entorno1);
-	}
+										}
 	| expresion IGUALDAD expresion	{ 
 										//$$ = $1 / $3; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -954,7 +1041,7 @@ expresion
 
 
 										$$ =  nuevo.Ejecutar(Entorno1);
-	}
+										}
 	| expresion DESIGUALDAD expresion	{ 
 										//$$ = $1 / $3; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -974,7 +1061,7 @@ expresion
 										GraficasDOT.anadir(Conexion2);	
 
 										$$ =  nuevo.Ejecutar(Entorno1);
-	}
+										}
 	| ENTERO						{ 
 										//$$ = Number($1); 
 										var nuevo = new Nodo("Entero");

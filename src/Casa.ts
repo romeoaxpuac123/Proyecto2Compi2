@@ -20,6 +20,8 @@ class Casa {
     public TesVariablesFUNCION = new Array();
 
     public tamanioentorno = 0;
+
+    public LosErrores = "";
     constructor() {
         // Le doy un valor
         this.nombreentorno = "Global";
