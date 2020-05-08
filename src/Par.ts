@@ -47,7 +47,8 @@ class Parametros extends NodoAbstracto{
 
         if(this.TipoDato.toUpperCase() == "INTEGER" || this.TipoDato.toUpperCase() == "DOUBLE"
         || this.TipoDato.toUpperCase() == "CHAR"    || this.TipoDato.toUpperCase() == "BOOLEAN" 
-        || this.TipoDato.toUpperCase() == "VAR"     || this.TipoDato.toUpperCase() == "CONST"){
+        || this.TipoDato.toUpperCase() == "VAR"     || this.TipoDato.toUpperCase() == "CONST"
+        || this.TipoDato.toUpperCase() == "STRING"){
                 entorno.Tipo.push(this.TipoDato);
                 entorno.Variable.push(nombre);
                 entorno.numero += 1;

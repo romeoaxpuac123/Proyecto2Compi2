@@ -25,7 +25,8 @@ class Imprimir extends NodoAbstracto{
                     C3dT = entorno.TesVariablesFUNCION[i];
                 }
             }
-
+            
+            console.log("imprmir tipo->" + TipoAImprimir);
             if(TipoAImprimir.toUpperCase() == "INTEGER"){
                 TipoAImprimir = "\"%i\", ";
                 entorno.numero += 1;
@@ -138,6 +139,107 @@ class Imprimir extends NodoAbstracto{
                 //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
                 entorno.direccion = entorno.direccion + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
            
+            }
+            else{
+                for(var i = 0; i < entorno.Variable.length;i++){
+                    if(this.Hijos[0].CadenaDe3D == entorno.Variable[i]){
+                        TipoAImprimir =  entorno.Tipo[i];
+                        C3dT = entorno.Tes[i];
+                    }
+                }
+                //entorno.numero += 1;
+                //entorno.direccion = entorno.direccion + "t" + entorno.numero + " = stack[" + C3dT + "];\n"; ;
+                //C3dT = "t" + entorno.numero ;
+                if(TipoAImprimir.toUpperCase() == "INTEGER"){
+                    TipoAImprimir = "\"%i\", ";
+                    entorno.numero += 1;
+                    var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT  + "]" ;
+                    //TipoAImprimir = "\"%i\", ";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+                    entorno.direccion = entorno.direccion  + auxiliar + ";\n" +"print( " + TipoAImprimir  + "t" + entorno.numero   + " );\n"+ "print( \"%c\",10);"+ "\n";
+                } 
+                else  if(TipoAImprimir.toUpperCase() == "DOUBLE"){
+                    TipoAImprimir = "\"%d\", ";
+                    entorno.numero += 1;
+                    var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT  + "]" ;
+                    //TipoAImprimir = "\"%i\", ";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+                    entorno.direccion = entorno.direccion  + auxiliar + ";\n" +"print( " + TipoAImprimir  + "t" + entorno.numero   + " );\n"+ "print( \"%c\",10);"+ "\n";
+                }
+                else  if(TipoAImprimir.toUpperCase() == "CHAR"){
+                    TipoAImprimir = "\"%c\", ";
+                    entorno.numero += 1;
+                    var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT  + "]" ;
+                    //TipoAImprimir = "\"%i\", ";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+                    entorno.direccion = entorno.direccion  + auxiliar + ";\n" +"print( " + TipoAImprimir  + "t" + entorno.numero   + " );\n"+ "print( \"%c\",10);"+ "\n";
+                }   
+                else if(TipoAImprimir.toUpperCase() == "BOOLEAN"){
+
+                    entorno.etiquetas +=1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas +=1;
+                    var Etiqueta2 = entorno.etiquetas;
+
+                        entorno.numero += 1;
+                        entorno.direccion += "t" + entorno.numero + " = " + "stack[" + C3dT  + "];\n" ;
+                        var el_aux = "t" + entorno.numero;
+                        entorno.direccion +=  "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n" ; 
+                     
+                       
+                        entorno.numero += 1; 
+                        entorno.direccion +=  "t" +  entorno.numero + " = H;\n"
+                        //var C3D1 = "t" +  entorno.numero;
+                        entorno.direccion +=  "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                        entorno.direccion +=  "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                        entorno.direccion +=  "Heap[H] = -1;\nH = H + 1;\n";
+                        //parte 3
+                        entorno.direccion +=  "goto L" + Etiqueta2 + ";\n";
+                        entorno.direccion +=  "L" + Etiqueta1 + ":\n" 
+                        entorno.direccion +=  "t" +  entorno.numero + " = H;\n"
+                        entorno.direccion +=  "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                        entorno.direccion +=  "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                        entorno.direccion +=  "L" + Etiqueta2 + ":\n";
+
+                        entorno.etiquetas +=1;
+                        var Etiqueta1x = entorno.etiquetas;
+                        entorno.etiquetas +=1;
+                        var Etiqueta2x = entorno.etiquetas;
+                        entorno.direccion += "L" + Etiqueta2x + ":\n";
+                        entorno.numero += 1;
+                        entorno.direccion +=   "t" + entorno.numero + " = Heap[t" + (entorno.numero-1) + "];\n";
+                        entorno.direccion +=   "if( t" +  entorno.numero + " ==  -1)" + " goto L" + Etiqueta1x + ";\n";
+                        entorno.direccion +=   "print( \"%c\",t" + entorno.numero + ");\n";
+                        entorno.direccion +=  "t" + (entorno.numero-1)  + " = t" + (entorno.numero-1) + " + 1;\n";
+                        entorno.direccion +=  "goto L" + Etiqueta2x + ";\n";
+                        entorno.direccion +=   "L" + Etiqueta1x + ":\n";
+                        entorno.direccion = entorno.direccion + "print( \"%c\",10);"+ "\n";
+                    
+                }
+                else if(TipoAImprimir.toUpperCase() == "STRING"){
+                    entorno.etiquetas +=1;
+                    var Etiqueta1 = entorno.etiquetas;
+                    entorno.etiquetas +=1;
+                    var Etiqueta2 = entorno.etiquetas;
+                    
+                    entorno.numero += 1;
+                    var ResuladoSalida =  "##IMPRIMIENDO UN STRING-> \n";
+                    var ResuladoSalida = ResuladoSalida + "t" + entorno.numero + " = stack[" + C3dT + "];\n";
+                    var auxp =  "t" + entorno.numero;
+                    ResuladoSalida = ResuladoSalida + "L" + Etiqueta2 + ":\n";
+                    entorno.numero += 1;
+                   
+                    ResuladoSalida = ResuladoSalida + "t" + entorno.numero + " = Heap[" + auxp + "];\n";
+                    ResuladoSalida = ResuladoSalida + "if( t" +  entorno.numero + " ==  -1)" + " goto L" + Etiqueta1 + ";\n";
+                    ResuladoSalida = ResuladoSalida + "print( \"%c\",t" + entorno.numero + ");\n";
+                    ResuladoSalida = ResuladoSalida + auxp  + " = " +auxp + " + 1;\n";
+                    ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
+                    ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
+                    //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
+                    entorno.direccion = entorno.direccion + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
+                }    
+                
+
             }
 
             

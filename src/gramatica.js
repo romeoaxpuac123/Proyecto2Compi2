@@ -533,6 +533,7 @@ case 16:
 break;
 case 17:
 
+			Entorno1.ListaParametrosFuncion.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
 			
 		    nuevo.TipoDato = $$[$0-2];
@@ -556,7 +557,7 @@ case 17:
 break;
 case 18:
 
-		
+			Entorno1.ListaParametrosFuncion.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
 			
 		    nuevo.TipoDato = $$[$0];
@@ -942,7 +943,7 @@ break;
 case 45:
  
 										//this.$ = Number($$[$0]); 
-										var nuevo = new Nodo("Entero");
+										var nuevo = new Nodo("Caracter");
 										var nuevovalor = new Nodo($$[$0]);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Caracter";
@@ -1705,7 +1706,7 @@ case 41:
 break;
 }
 },
-rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:,)/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:var\b)/i,/^(?:const\b)/i,/^(?:global\b)/i,/^(?::)/i,/^(?:=)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:"[^\"]*")/i,/^(?:([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+)))/i,/^(?:$)/i,/^(?:.)/i],
+rules: [/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:,)/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:var\b)/i,/^(?:const\b)/i,/^(?:global\b)/i,/^(?::)/i,/^(?:=)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:"([^\\\"]|\\"|\\t|\\n|\\r|\\)*")/i,/^(?:([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+)))/i,/^(?:$)/i,/^(?:.)/i],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41],"inclusive":true}}
 });
 return lexer;

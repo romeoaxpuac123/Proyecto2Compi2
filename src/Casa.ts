@@ -22,8 +22,13 @@ class Casa {
     public tamanioentorno = 0;
 
     public LosErrores = "";
+
+    public ListaParametrosFuncion: Array<NodoAbstracto>;
+
+
     constructor() {
         // Le doy un valor
+        this.ListaParametrosFuncion = new Array();
         this.nombreentorno = "Global";
         this.direccion = "";
         this.numero = 0;
@@ -81,6 +86,32 @@ class Casa {
             }
         }
         return false;
+    }
+
+    existefuncion2(nombre:string,parametros:number):boolean{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros == parametros){
+                return true;
+            }
+        }
+        return false;
+    }
+    tamaniofuncion(nombre:string,parametros:number):number{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros){
+                return this.SIMBOLOS[i].tamanio;
+            }
+        }
+        return 0;
+    }
+
+    existefuncion3(nombre:string,parametros:number):string{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros){
+                return this.SIMBOLOS[i].funcion;
+            }
+        }
+        return "";
     }
    
     totalparametros(nombre:string, parametros:number):boolean{

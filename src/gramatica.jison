@@ -67,7 +67,7 @@
 [0-9]+\b				return 'ENTERO';
 ("'"[a-zA-Z0-9_]"'")	return "CARACTER";
 //("\""([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
-\"[^\"]*\"				return "CADENA";
+\"([^\\\"]|\\\"|\\t|\\n|\\r|\\)*\"				return "CADENA";
 ([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+))	return "ID";
 
 <<EOF>>				return 'EOF';
@@ -580,6 +580,7 @@ instruccion2
 
 lista_Expresiones
 	:lista_Expresiones COMA expresion{
+			Entorno1.ListaParametrosFuncion.push($3);
 			var nuevo = new Nodo("lista_Expresiones");
 			
 		    nuevo.TipoDato = $1;
@@ -601,7 +602,7 @@ lista_Expresiones
 			$$ = nuevo;
 	}
 	|expresion{
-		
+			Entorno1.ListaParametrosFuncion.push($1);
 			var nuevo = new Nodo("lista_Expresiones");
 			
 		    nuevo.TipoDato = $1;
@@ -1100,7 +1101,7 @@ expresion
 									}
 	| CARACTER						{ 
 										//$$ = Number($1); 
-										var nuevo = new Nodo("Entero");
+										var nuevo = new Nodo("Caracter");
 										var nuevovalor = new Nodo($1);
 										nuevo.Hijos[0] = nuevovalor;
 										nuevo.TipoDato = "Caracter";
