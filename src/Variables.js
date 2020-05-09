@@ -28,6 +28,7 @@ var Variables = /** @class */ (function (_super) {
         console.log("-----------ENTRO A VARIABLES------");
         var ElTipo = this.Hijos[0].Nombre;
         var LaTRespuesta = this.Hijos[1].CadenaDe3D;
+        var TipoRespuesta = this.Hijos[1].TipoDato;
         var ElvalordeP = "P"; // + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
@@ -81,6 +82,57 @@ var Variables = /** @class */ (function (_super) {
             }
             entorno.direccion = entorno.direccion + "Heap[H] = -1;\n";
             entorno.direccion = entorno.direccion + "H = H + 1;\n";
+        }
+        if ((ElTipo.toUpperCase() == "CADENA" || ElTipo.toUpperCase() == "STRING")) {
+            if (!(TipoRespuesta.toUpperCase() == "CADENA" || TipoRespuesta.toUpperCase() == "STRING")) {
+                alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
+        }
+        else if ((ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "ENTERO")) {
+            if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR")) {
+                alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
+        }
+        else if ((ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "CARACTER")) {
+            if (!(TipoRespuesta.toUpperCase() == "CHAR" || TipoRespuesta.toUpperCase() == "CARACTER")) {
+                alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
+        }
+        else if ((ElTipo.toUpperCase() == "DOUBLE" || ElTipo.toUpperCase() == "DECIMAL")) {
+            if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR"
+                || TipoRespuesta.toUpperCase() == "DOUBLE" || TipoRespuesta.toUpperCase() == "DECIMAL")) {
+                alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
         }
         for (var i = 0; i < entorno.VariableVariables.length; i++) {
             Tamanio = entorno.tamanioentorno;

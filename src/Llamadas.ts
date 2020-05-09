@@ -22,6 +22,72 @@ class LLamadas extends NodoAbstracto{
             console.log("parametro C3D->" + x + " " + entorno.ListaParametrosFuncion[x].CadenaDe3D); 
             totalparametros +=1; 
         }
+
+        //verificando los tipos xD
+    if(entorno.existefuncion2(nombre,totalparametros)== true){
+        for(var x = 0; x < totalparametros; x++){
+            var Par1 = entorno.existefuncion3(nombre,totalparametros);
+            console.log("VAMOOOOOOOOOOS->" + Par1);
+            var Par2 = x;
+            var TipoResultante = entorno.buscarParametros(Par1,Par2);
+            var TipoParametro = entorno.ListaParametrosFuncion[x].TipoDato; 
+            console.log("Dejo TP->" + TipoParametro + "<-TR->" + TipoResultante);
+            if((TipoResultante.toUpperCase() == "CADENA" || TipoResultante.toUpperCase() == "STRING"))
+            {
+                if(!(TipoParametro.toUpperCase() == "STRING" || TipoParametro.toUpperCase() == "CADENA")){
+                    alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "Parametro: "+ (x+1) + " en funcion"+ nombre +" no coincide"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }else  if((TipoResultante.toUpperCase() == "INTEGER" || TipoResultante.toUpperCase() == "ENTERO"))
+            {   
+                 if(!(TipoParametro.toUpperCase() == "INTEGER" || TipoParametro.toUpperCase() == "ENTERO"
+                    || TipoParametro.toUpperCase() == "CHAR"   || TipoParametro.toUpperCase() == "CARACTER"
+                    )){
+                    alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "Parametro: "+ (x+1) + " en funcion"+ nombre +" no coincide"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }else  if((TipoResultante.toUpperCase() == "CHAR" || TipoResultante.toUpperCase() == "CARACTER"))
+            {
+                if(!(TipoParametro.toUpperCase() == "CHAR" || TipoParametro.toUpperCase() == "CARACTER")){
+                    alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "Parametro: "+ (x+1) + " en funcion"+ nombre +" no coincide"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }else  if((TipoResultante.toUpperCase() == "DOUBLE" || TipoResultante.toUpperCase() == "DECIMAL"))
+            {   
+                 if(!(TipoParametro.toUpperCase() == "INTEGER" || TipoParametro.toUpperCase() == "ENTERO"
+                    || TipoParametro.toUpperCase() == "CHAR"   || TipoParametro.toUpperCase() == "CARACTER"
+                    || TipoParametro.toUpperCase() == "DOUBLE"   || TipoParametro.toUpperCase() == "DECIMAL"
+                    )){
+                    alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "Parametro: "+ (x+1) + " en funcion"+ nombre +" no coincide"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            
+        }
+    }
         console.log("Sus parametros: fin" + totalparametros);
         if(entorno.existefuncion2(nombre,totalparametros)== true){
                 var NombreCall = entorno.existefuncion3(nombre,totalparametros);
@@ -77,6 +143,14 @@ class LLamadas extends NodoAbstracto{
         }else{
             alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
             entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+            //alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+            //entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+            entorno.LosErrores +="<tr>";
+            entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+            entorno.LosErrores += "<td>" +  "Funcion: "+ nombre + " NO Existe"  + " </td>";
+            entorno.LosErrores += "<td>" + this.linea + "</td>";
+            entorno.LosErrores += "<td>" + this.columna + "</td>";
+            entorno.LosErrores += "</tr>";
         }
         entorno.ListaParametrosFuncion.splice(0,entorno.ListaParametrosFuncion.length);
         var nuevo = new Nodo("LLamada_Funciones");

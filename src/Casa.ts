@@ -87,7 +87,15 @@ class Casa {
         }
         return false;
     }
-
+    buscarParametros(nombre:string,numparametro:number):string{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].funcion == nombre && this.SIMBOLOS[i].posicion == numparametro
+                && this.SIMBOLOS[i].posicionT != "NO TIENE"){
+                return this.SIMBOLOS[i].tipo;
+            }
+        }
+        return "nullXD";
+    }
     existefuncion2(nombre:string,parametros:number):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             if(this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros == parametros){

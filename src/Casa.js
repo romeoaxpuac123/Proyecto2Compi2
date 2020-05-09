@@ -69,6 +69,15 @@ var Casa = /** @class */ (function () {
         }
         return false;
     };
+    Casa.prototype.buscarParametros = function (nombre, numparametro) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].funcion == nombre && this.SIMBOLOS[i].posicion == numparametro
+                && this.SIMBOLOS[i].posicionT != "NO TIENE") {
+                return this.SIMBOLOS[i].tipo;
+            }
+        }
+        return "nullXD";
+    };
     Casa.prototype.existefuncion2 = function (nombre, parametros) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
             if (this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].parametros == parametros) {

@@ -43,7 +43,7 @@ var Funciones = /** @class */ (function (_super) {
                     if (entorno.TipoVariablesFUNCION[i].toUpperCase() == "GLOBAL") {
                     }
                     else {
-                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", entorno.nombreentorno, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
                     }
                 }
                 console.log("SIMBOLOS--->");
@@ -81,7 +81,7 @@ var Funciones = /** @class */ (function (_super) {
                     // entorno.numero +=1;
                     // Parametrosc3d = Parametrosc3d + "t" + entorno.numero + " = stack[t" + (entorno.numero-1) + "];\n\n";
                     Parametrosc3d = Parametrosc3d + Parametrosc3dx;
-                    entorno.anadirSimbolo(entorno.Variable[i], "local", entorno.nombreentorno, 0, i, entorno.Tipo[i], entorno.Tes[i], 0);
+                    entorno.anadirSimbolo(entorno.Variable[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, i, entorno.Tipo[i], entorno.Tes[i], 0);
                 }
                 console.log("salida de variables->");
                 //añadiendo las variables a la tabla de simbolos
@@ -90,7 +90,7 @@ var Funciones = /** @class */ (function (_super) {
                     if (entorno.TipoVariablesFUNCION[i].toUpperCase() == "GLOBAL") {
                     }
                     else {
-                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", entorno.nombreentorno, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
                     }
                 }
                 console.log("FIN TIENE ESTOS PARAMETROAS->");
@@ -135,7 +135,7 @@ var Funciones = /** @class */ (function (_super) {
             else {
                 //no existe una función con la misma cantidad de parametros
                 //alert('POS SI SE AÑADE');
-                //entorno.etiquetas +=1;
+                entorno.etiquetas += 1;
                 var Etiqueta1x = entorno.etiquetas;
                 if (TParametros == 0) {
                     entorno.anadirSimbolo(nombre, "global", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, 0, this.TipoDato, "NO TIENE", TParametros);
@@ -146,7 +146,7 @@ var Funciones = /** @class */ (function (_super) {
                         if (entorno.TipoVariablesFUNCION[i].toUpperCase() == "GLOBAL") {
                         }
                         else {
-                            entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", entorno.nombreentorno, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                            entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
                         }
                     }
                     console.log("SIMBOLOS--->");
@@ -183,7 +183,7 @@ var Funciones = /** @class */ (function (_super) {
                         // entorno.numero +=1;
                         // Parametrosc3d = Parametrosc3d + "t" + entorno.numero + " = stack[t" + (entorno.numero-1) + "];\n\n";
                         Parametrosc3d = Parametrosc3d + Parametrosc3dx;
-                        entorno.anadirSimbolo(entorno.Variable[i], "local", entorno.nombreentorno, 0, i, entorno.Tipo[i], entorno.Tes[i], 0);
+                        entorno.anadirSimbolo(entorno.Variable[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, i, entorno.Tipo[i], entorno.Tes[i], 0);
                     }
                     console.log("salida de variables->");
                     //añadiendo las variables a la tabla de simbolos
@@ -192,7 +192,7 @@ var Funciones = /** @class */ (function (_super) {
                         if (entorno.TipoVariablesFUNCION[i].toUpperCase() == "GLOBAL") {
                         }
                         else {
-                            entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", entorno.nombreentorno, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                            entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
                         }
                     }
                     console.log("FIN TIENE ESTOS PARAMETROAS->");

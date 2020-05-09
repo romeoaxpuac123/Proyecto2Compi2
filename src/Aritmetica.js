@@ -153,6 +153,26 @@ var Aritmetica = /** @class */ (function (_super) {
             //C3D1 = Valor1; 
             //C3D2 = Valor2;
         }
+        else if ((Tipo1 == "Cadena") && (Tipo2 == "Booleano") && (Operador == "+")) {
+            TipoFinal = "Cadena";
+            Valor2 = Valor2.toLocaleLowerCase();
+            Valor1 = Valor1.replace("\"", "");
+            Valor1 = Valor1.replace("\"", "");
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
+        else if ((Tipo1 == "Booleano") && (Tipo2 == "Cadena") && (Operador == "+")) {
+            TipoFinal = "Cadena";
+            Valor1 = Valor1.toLocaleLowerCase();
+            Valor2 = Valor2.replace("\"", "");
+            Valor2 = Valor2.replace("\"", "");
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
+            //Valor2 = Valor2.charCodeAt(1).toString(); 
+            //C3D1 = Valor1; 
+            //C3D2 = Valor2;
+        }
         else if ((Tipo1 == "Cadena") && (Tipo2 == "Cadena")) {
             TipoFinal = "Cadena";
             Valor1 = Valor1.replace("\"", "");

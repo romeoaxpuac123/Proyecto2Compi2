@@ -20,7 +20,8 @@
 %options case-insensitive
 
 %%
-
+"//".*				{}						// comentario simple línea
+[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]		{}		// comentario multiple líneas
 "print"			return 'IMPRMIR';
 ";"					return 'PTyCOMA';
 "("					return 'PARIZQ';
@@ -61,6 +62,7 @@
 /* Espacios en blanco */
 [ \r\t]+			{}
 \n					{}
+
 
 
 [0-9]+("."[0-9]+)\b  	return 'DECIMAL';
