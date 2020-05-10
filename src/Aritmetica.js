@@ -59,7 +59,7 @@ var Aritmetica = /** @class */ (function (_super) {
             else if (Tipo1.toUpperCase() == "CHAR") {
                 Tipo1 = "DON";
             }
-            else if (Tipo1.toUpperCase() == "BOOLEANO") {
+            else if (Tipo1.toUpperCase() == "BOOLEAN") {
                 Tipo1 = "Booleano";
             }
             else if (Tipo1.toUpperCase() == "STRING") {
@@ -89,7 +89,7 @@ var Aritmetica = /** @class */ (function (_super) {
             else if (Tipo2.toUpperCase() == "CHAR") {
                 Tipo2 = "DON";
             }
-            else if (Tipo2.toUpperCase() == "BOOLEANO") {
+            else if (Tipo2.toUpperCase() == "BOOLEAN") {
                 Tipo2 = "Booleano";
             }
             else if (Tipo2.toUpperCase() == "STRING") {
@@ -274,6 +274,14 @@ var Aritmetica = /** @class */ (function (_super) {
         }
         else if ((Tipo1 == "DON") && (Tipo2 == "DON")) {
             TipoFinal = "DON";
+        }
+        else if ((Tipo1 == "DON") && (Tipo2 == "Decimal" || Tipo2 == "Entero")) {
+            Valor1 = C3D1;
+            TipoFinal = Tipo2;
+        }
+        else if ((Tipo2 == "DON") && (Tipo1 == "Decimal" || Tipo1 == "Entero")) {
+            Valor1 = C3D2;
+            TipoFinal = Tipo1;
         }
         console.log("Valor1: " + Valor1);
         console.log("Valor2: " + Valor2);
