@@ -28,7 +28,7 @@ Aritmetica(val : string){
       
         if(Tipo1 == "ID"){
             //alert("el valor 1 es un id");
-            var don1 = "";
+            var don1 = "ERROR";
             for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
                 if(this.Hijos[0].CadenaDe3D == entorno.VariableVariablesFUNCION[i]){
                     Tipo1 =  entorno.TipoVariablesFUNCION[i];
@@ -36,6 +36,17 @@ Aritmetica(val : string){
                     don1 = C3D1;
                 }
             }
+            if(don1 == "ERROR"){
+                alert('Este es un semantico: ' + this.Hijos[0].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[0].CadenaDe3D + "No Existe"  + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
+
             entorno.numero += 1;
             var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D1  + "];\n" ;
             C3D1 = "t" + entorno.numero ;
@@ -59,13 +70,23 @@ Aritmetica(val : string){
         }
         if(Tipo2 == "ID"){
             //alert("el valor 2 es un id");
-            var don2 = "";
+            var don2 = "ERROR";
             for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
                 if(this.Hijos[2].CadenaDe3D == entorno.VariableVariablesFUNCION[i]){
                     Tipo2 =  entorno.TipoVariablesFUNCION[i];
                     C3D2 = entorno.TesVariablesFUNCION[i];
                     don2 = C3D2;
                 }
+            }
+            if(don2 == "ERROR"){
+                alert('Este es un semantico: ' + this.Hijos[2].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[2].CadenaDe3D + "No Existe"  + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
             }
             entorno.numero += 1;
             var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2  + "];\n" ;
@@ -260,6 +281,8 @@ Aritmetica(val : string){
         /*OPERANDO SEGÚN EL SIMBOLO*/
         var Total; 
 
+        var EntroAUnaOperacion = "FALSE";
+
         
         var elid = this.Hijos[0].id;
         var Cadena3dxD = "";
@@ -271,6 +294,7 @@ Aritmetica(val : string){
         
         //console.log("FINCONSOLE->");
         if(TipoFinal == "Entero" || TipoFinal == "Decimal"){
+            EntroAUnaOperacion = "TRUE";
             switch(Operador) { 
                 case "+": { 
                     Total = +Valor1 + +Valor2
@@ -653,8 +677,10 @@ Aritmetica(val : string){
             } 
         }
         else if(TipoFinal == "Cadena"){
+            
             switch(Operador) { 
                 case "+": { 
+                    EntroAUnaOperacion = "TRUE";
                 console.log("SUMA DE CANEDAS");
                 Total = Valor1 + Valor2;
                 var respuesta = "";
@@ -740,6 +766,7 @@ Aritmetica(val : string){
                 break;
                 }
                 case "==":{
+                    EntroAUnaOperacion = "TRUE";
                     if(Valor1 == Valor2){
                         Total = "true";
                     }else{
@@ -835,6 +862,7 @@ Aritmetica(val : string){
                 
                 }
                 case "!=":{
+                    EntroAUnaOperacion = "TRUE";
                     if(Valor1 != Valor2){
                         Total = "true";
                     }else{
@@ -938,6 +966,7 @@ Aritmetica(val : string){
             }
         }
         else if(TipoFinal == "Booleano"){
+            EntroAUnaOperacion = "TRUE";
             switch(Operador) { 
                 case "&&":{
                     //Total = (Valor1 && Valor2);
@@ -1808,6 +1837,7 @@ Aritmetica(val : string){
       
 
         else if(TipoFinal == "Celular" && Operador == "+"){
+            EntroAUnaOperacion = "TRUE";
                 var respuesta = "##stringid + stringid\n";
                 //entorno.numero += 1;
                 //respuesta = respuesta + "t" + entorno.numero + " = H;\n"
@@ -1865,6 +1895,7 @@ Aritmetica(val : string){
                 entorno.direccion = entorno.direccion  + respuesta + "\n"; 
         }
         else if(TipoFinal == "DON" && Operador == "+"){
+            EntroAUnaOperacion = "TRUE";
             var respuesta = "##carid chard\n";
             entorno.etiquetas +=1;
             var Etiqueta1 = entorno.etiquetas;
@@ -1902,6 +1933,17 @@ Aritmetica(val : string){
         }
         console.log("RESULTADO FINAL:->" + Total);
         Total = 1;
+
+        if(EntroAUnaOperacion == "FALSE"){
+                alert('Este es un semantico: ' + this.Hijos[2].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[2].CadenaDe3D + " y " + this.Hijos[2].CadenaDe3D + " Tipos no permitidos"  + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+        }
 
         var nuevo = new Nodo("Aritmetica");
         //nuevo.Nombre = "Aritmetica";

@@ -580,6 +580,31 @@ instruccion2
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
+	| ID IGUAL expresion PTyCOMA{
+		var nuevo = new ModificarVariables ("VARIABLES");
+		var identificador = new Nodo($1);
+		nuevo.Hijos[0] = identificador;
+		nuevo.Hijos[1] = $3;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "MOD_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
 	;
 
 lista_Expresiones
@@ -747,6 +772,8 @@ expresion
 										nuevo.Hijos[0] = $2;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] =  nuevo2;
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	|NOT expresion 					{ 
@@ -756,6 +783,8 @@ expresion
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $2;
 										nuevo.TipoDato = "Booleano";
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MAS expresion		{ 
@@ -775,7 +804,8 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
-										
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										$$ =  nuevo.Ejecutar(Entorno1);
 										
 									}
@@ -796,7 +826,8 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
-
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
@@ -817,7 +848,8 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
-
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
@@ -838,7 +870,8 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
-
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion POTENCIA expresion	{ 
@@ -859,6 +892,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MODULO expresion	{ 
@@ -878,6 +913,9 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
@@ -899,6 +937,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
@@ -920,6 +960,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
@@ -941,6 +983,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
@@ -963,6 +1007,9 @@ expresion
 										GraficasDOT.anadir(Conexion2);	
 
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion AND expresion	{ 
@@ -984,6 +1031,9 @@ expresion
 										GraficasDOT.anadir(Conexion2);	
 
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
 	| expresion OR expresion	{ 
@@ -1003,6 +1053,9 @@ expresion
 										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $3.NumeroDeNodo +"\n";
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 								}
@@ -1024,6 +1077,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 										}
@@ -1045,6 +1100,8 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ =  nuevo.Ejecutar(Entorno1);
 										}
@@ -1066,6 +1123,9 @@ expresion
 										GraficasDOT.anadir(Conexion1);	
 										GraficasDOT.anadir(Conexion2);	
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
 										$$ =  nuevo.Ejecutar(Entorno1);
 										}
 	| ENTERO						{ 
@@ -1081,7 +1141,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);									
 
-
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ = nuevo;
 										
@@ -1099,7 +1160,9 @@ expresion
 										nuevo.NumeroDeNodo = contador;
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
-										
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;	
 
 										$$ = nuevo;
 									//	console.log("Leimos un Entero->" + $1);
@@ -1117,6 +1180,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("'","").replace("'","") + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ = nuevo;
 										console.log("Leimos un Caracter->" + $1);
@@ -1134,6 +1199,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ = nuevo;
 										console.log("Leimos un Booleano->" + $1);
@@ -1151,6 +1218,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 
 										$$ = nuevo;
 										console.log("Leimos un Booleano->" + $1);
@@ -1168,6 +1237,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("\"","").replace("\"","") + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										
 										$$ = nuevo;
 										console.log("Leimos una cadena->" + $1);
@@ -1186,6 +1257,8 @@ expresion
 										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1.replace("\"","").replace("\"","") + "\"]" +"\n";									
 										GraficasDOT.anadir(Hijo1);
 
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										
 										$$ = nuevo;
 										console.log("ID->" + $1);
@@ -1193,6 +1266,9 @@ expresion
 									}
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
 										//console.log("DUA LIPA");
 									}
 ;
