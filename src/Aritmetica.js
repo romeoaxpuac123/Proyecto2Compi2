@@ -27,6 +27,8 @@ var Aritmetica = /** @class */ (function (_super) {
     Aritmetica.prototype.Ejecutar = function (entorno) {
         console.log("EJECUTANDO NODO ARITMETICA");
         console.log("Casa->" + entorno.numero);
+        var ElPrimerIDCadena = "";
+        var ElSegundoIDCadnea = "";
         var Tipo1 = this.Hijos[0].TipoDato;
         var Tipo2 = this.Hijos[2].TipoDato;
         var Operador = this.Hijos[1].Nombre;
@@ -34,6 +36,66 @@ var Aritmetica = /** @class */ (function (_super) {
         var Valor2 = this.Hijos[2].Hijos[0].Nombre;
         var C3D1 = this.Hijos[0].CadenaDe3D;
         var C3D2 = this.Hijos[2].CadenaDe3D;
+        if (Tipo1 == "ID") {
+            //alert("el valor 1 es un id");
+            var don1 = "";
+            for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {
+                if (this.Hijos[0].CadenaDe3D == entorno.VariableVariablesFUNCION[i]) {
+                    Tipo1 = entorno.TipoVariablesFUNCION[i];
+                    C3D1 = entorno.TesVariablesFUNCION[i];
+                    don1 = C3D1;
+                }
+            }
+            entorno.numero += 1;
+            var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D1 + "];\n";
+            C3D1 = "t" + entorno.numero;
+            entorno.direccion = entorno.direccion + "##ide2\n" + auxiliar;
+            if (Tipo1.toUpperCase() == "INTEGER") {
+                Tipo1 = "Entero";
+            }
+            else if (Tipo1.toUpperCase() == "DOUBLE") {
+                Tipo1 = "Decimal";
+            }
+            else if (Tipo1.toUpperCase() == "CHAR") {
+                Tipo1 = "DON";
+            }
+            else if (Tipo1.toUpperCase() == "BOOLEANO") {
+                Tipo1 = "Booleano";
+            }
+            else if (Tipo1.toUpperCase() == "STRING") {
+                Tipo1 = "Celular";
+            }
+        }
+        if (Tipo2 == "ID") {
+            //alert("el valor 2 es un id");
+            var don2 = "";
+            for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {
+                if (this.Hijos[2].CadenaDe3D == entorno.VariableVariablesFUNCION[i]) {
+                    Tipo2 = entorno.TipoVariablesFUNCION[i];
+                    C3D2 = entorno.TesVariablesFUNCION[i];
+                    don2 = C3D2;
+                }
+            }
+            entorno.numero += 1;
+            var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2 + "];\n";
+            C3D2 = "t" + entorno.numero;
+            entorno.direccion = entorno.direccion + "##ide2\n" + auxiliar;
+            if (Tipo2.toUpperCase() == "INTEGER") {
+                Tipo2 = "Entero";
+            }
+            else if (Tipo2.toUpperCase() == "DOUBLE") {
+                Tipo2 = "Decimal";
+            }
+            else if (Tipo2.toUpperCase() == "CHAR") {
+                Tipo2 = "DON";
+            }
+            else if (Tipo2.toUpperCase() == "BOOLEANO") {
+                Tipo2 = "Booleano";
+            }
+            else if (Tipo2.toUpperCase() == "STRING") {
+                Tipo2 = "Celular";
+            }
+        }
         /*DTERMINANDO EL TIPO*/
         var TipoFinal = "";
         if (Tipo1 == "Entero" && Tipo2 == "Entero") {
@@ -69,6 +131,8 @@ var Aritmetica = /** @class */ (function (_super) {
             TipoFinal = "Cadena";
             Valor1 = Valor1.charAt(1);
             Valor2 = Valor2.charAt(1);
+            //console.log("<->>>>>>>>>> don dliabox B1->" + Valor1);
+            //console.log("<->>>>>>>>>> don dliabox B2->" + Valor2);
         }
         else if ((Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "-")) {
             TipoFinal = "Entero";
@@ -204,8 +268,17 @@ var Aritmetica = /** @class */ (function (_super) {
         else if ((Tipo1 == "Booleano") && (Tipo2 == "Booleano")) {
             TipoFinal = "Booleano";
         }
+        //aca comienzan las cosas con ids :P
+        else if ((Tipo1 == "Celular") && (Tipo2 == "Celular")) {
+            TipoFinal = "Celular";
+        }
+        else if ((Tipo1 == "DON") && (Tipo2 == "DON")) {
+            TipoFinal = "DON";
+        }
         console.log("Valor1: " + Valor1);
         console.log("Valor2: " + Valor2);
+        console.log("ValorC3D1: " + C3D1);
+        console.log("ValorC3D2: " + C3D2);
         /*OPERANDO SEGÚN EL SIMBOLO*/
         var Total;
         var elid = this.Hijos[0].id;
@@ -614,12 +687,14 @@ var Aritmetica = /** @class */ (function (_super) {
                     var Etiqueta3 = entorno.etiquetas;
                     respuesta = respuesta + "L" + Etiqueta1 + ":\n";
                     entorno.numero += 1;
+                    //aca 1
                     if (elid == 0) {
                         respuesta = respuesta + "t" + entorno.numero + " = Heap[t" + (entorno.numero - 3) + "];\n";
                     }
                     else {
                         respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
                     }
+                    //aca 1
                     respuesta = respuesta + "if (t" + entorno.numero + " == -1) goto L" + Etiqueta3 + ";\n";
                     respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
                     respuesta = respuesta + "H = H + 1;\n";
@@ -631,6 +706,7 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                     respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
                     respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+                    //aca 1
                     if (elid == 0) {
                         respuesta = respuesta + "t" + (entorno.numero - 3) + " = t" + (entorno.numero - 2) + ";\n";
                     }
@@ -644,6 +720,7 @@ var Aritmetica = /** @class */ (function (_super) {
                     else {
                         respuesta = respuesta + "t" + entorno.numero + " = Heap[" + this.Hijos[0].CadenaDe3D + "];\n";
                     }
+                    //aca 1
                     respuesta = respuesta + "Heap[H] = t" + entorno.numero + ";\n";
                     respuesta = respuesta + "H = H + 1;\n";
                     if (elid == 0) {
@@ -1220,6 +1297,7 @@ var Aritmetica = /** @class */ (function (_super) {
                     break;
                 }
                 case "!": {
+                    console.log("entro a negacion_>");
                     if (Valor1 == "true") {
                         Total = "false";
                     }
@@ -1229,6 +1307,10 @@ var Aritmetica = /** @class */ (function (_super) {
                     if (C3D1 == "true") {
                         C3D1 = "1";
                     }
+                    else {
+                        C3D1 = "0";
+                    }
+                    console.log("entro a negacion_>" + Valor1);
                     var respuesta = "//nodo not\n";
                     respuesta = "t" + entorno.numero + " = " + C3D1 + ";\n";
                     entorno.numero += 1;
@@ -1600,8 +1682,89 @@ var Aritmetica = /** @class */ (function (_super) {
                 }
             }
         }
+        //opercioens del ida
+        else if (TipoFinal == "Celular" && Operador == "+") {
+            var respuesta = "##stringid + stringid\n";
+            //entorno.numero += 1;
+            //respuesta = respuesta + "t" + entorno.numero + " = H;\n"
+            entorno.etiquetas += 1;
+            var Etiqueta1 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta2 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta3 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta4 = entorno.etiquetas;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+            Cadena3dxD = "t" + entorno.numero;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+            C3D1 = "t" + entorno.numero;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+            C3D2 = "t" + entorno.numero;
+            respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D1 + "];\n";
+            respuesta = respuesta + "if (t" + entorno.numero + " == -1) goto L" + Etiqueta2 + ";\n";
+            respuesta = respuesta + "Heap[H] = " + "t" + entorno.numero + ";\n";
+            respuesta = respuesta + C3D1 + " = " + C3D1 + " + 1;\n";
+            respuesta = respuesta + "H = H + 1;\n";
+            respuesta = respuesta + "goto L" + Etiqueta1 + ";\n";
+            respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+            respuesta = respuesta + "L" + Etiqueta3 + ":\n";
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D2 + "];\n";
+            respuesta = respuesta + "if (t" + entorno.numero + " == -1) goto L" + Etiqueta4 + ";\n";
+            respuesta = respuesta + "Heap[H] = " + "t" + entorno.numero + ";\n";
+            respuesta = respuesta + C3D2 + " = " + C3D2 + " + 1;\n";
+            respuesta = respuesta + "H = H + 1;\n";
+            respuesta = respuesta + "goto L" + Etiqueta3 + ";\n";
+            respuesta = respuesta + "L" + Etiqueta4 + ":\n";
+            respuesta = respuesta + "Heap[H] = -1;\n" + "H = H + 1;\n";
+            elid = 1;
+            Total = "hola";
+            TipoFinal = "Cadena";
+            entorno.direccion = entorno.direccion + respuesta + "\n";
+        }
+        else if (TipoFinal == "DON" && Operador == "+") {
+            var respuesta = "##carid chard\n";
+            entorno.etiquetas += 1;
+            var Etiqueta1 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta2 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta3 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta4 = entorno.etiquetas;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+            Cadena3dxD = "t" + entorno.numero;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+            C3D1 = "t" + entorno.numero;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+            C3D2 = "t" + entorno.numero;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D1 + ";\n";
+            respuesta = respuesta + "Heap[H] = " + "t" + entorno.numero + ";\n";
+            respuesta = respuesta + "H = H + 1;\n";
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = " + C3D2 + ";\n";
+            respuesta = respuesta + "Heap[H] = " + "t" + entorno.numero + ";\n";
+            respuesta = respuesta + "H = H + 1;\n";
+            respuesta = respuesta + "Heap[H] = -1;\n" + "H = H + 1;\n";
+            elid = 1;
+            Total = "hola";
+            TipoFinal = "Cadena";
+            entorno.direccion = entorno.direccion + respuesta + "\n";
+        }
         console.log("RESULTADO FINAL:->" + Total);
+        Total = 1;
         var nuevo = new Nodo("Aritmetica");
+        //nuevo.Nombre = "Aritmetica";
         var nuevovalor = new Nodo(Total.toString());
         nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = TipoFinal;

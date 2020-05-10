@@ -92,11 +92,13 @@
 %left 'AND' 'OR' 'XOR'
 %left 'IGUALDAD' 'DESIGUALDAD'
 %left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
-%left 'NOT'
+
 %left 'MAS' 'MENOS'
 %left 'POR' 'DIVIDIDO' 'MODULO'
 %left 'POTENCIA' 
+%left 'NOT'
 %left UMENOS
+
 
 
 
@@ -753,6 +755,7 @@ expresion
 										nuevo.Hijos[0] = $2;
 										nuevo.Hijos[1] = operador;
 										nuevo.Hijos[2] = $2;
+										nuevo.TipoDato = "Booleano";
 										$$ =  nuevo.Ejecutar(Entorno1);
 									}
 	| expresion MAS expresion		{ 
@@ -1170,7 +1173,7 @@ expresion
 										console.log("Leimos una cadena->" + $1);
 										
 									}
-	|ID								{ 
+	| ID							{ 
 										//$$ = Number($1); 
 										var nuevo = new Nodo("ID");
 										var nuevovalor = new Nodo($1);

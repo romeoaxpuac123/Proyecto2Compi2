@@ -246,7 +246,26 @@ var Imprimir = /** @class */ (function (_super) {
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
             entorno.direccion = entorno.direccion + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
         }
+        else if (this.Hijos[0].TipoDato == "Caracter") {
+            TipoAImprimir = "\"%c\", ";
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D.charCodeAt(1).toString() + " );\n" + "print( \"%c\",10);" + "\n";
+        }
         else if (this.Hijos[0].TipoDato == "Cadena") {
+            if (this.Hijos[0].Nombre == "Cadena") {
+                console.log("ENTRO A IMPGIMIR CADANEA :(");
+                this.Hijos[0].CadenaDe3D = this.Hijos[0].CadenaDe3D.substring(1, this.Hijos[0].CadenaDe3D.length - 1);
+                entorno.numero += 1;
+                entorno.direccion = entorno.direccion + "t" + entorno.numero + " = H;\n";
+                var Romeaxu = "t" + entorno.numero;
+                for (var i = 0; i < this.Hijos[0].CadenaDe3D.length; i++) {
+                    console.log("fin caden1");
+                    entorno.direccion = entorno.direccion + "Heap[H] = " + this.Hijos[0].CadenaDe3D.charCodeAt(i).toString() + ";\n";
+                    entorno.direccion = entorno.direccion + "H = H + 1;\n";
+                }
+                entorno.direccion = entorno.direccion + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                this.Hijos[0].CadenaDe3D = Romeaxu;
+            }
             entorno.etiquetas += 1;
             var Etiqueta1 = entorno.etiquetas;
             entorno.etiquetas += 1;
@@ -263,6 +282,38 @@ var Imprimir = /** @class */ (function (_super) {
             entorno.direccion = entorno.direccion + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
         else if (this.Hijos[0].TipoDato == "Booleano") {
+            var C3D1 = "";
+            entorno.direccion = entorno.direccion + "##IMPRIMIENDO BOOLEN\n";
+            if (this.Hijos[0].Nombre == "Booleano") {
+                if (this.Hijos[0].CadenaDe3D == "true") {
+                    C3D1 = "1";
+                }
+                else {
+                    C3D1 = "0";
+                }
+                entorno.numero += 1;
+                entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                entorno.numero += 1;
+                entorno.etiquetas += 1;
+                var Etiqueta1 = entorno.etiquetas;
+                entorno.etiquetas += 1;
+                var Etiqueta2 = entorno.etiquetas;
+                entorno.direccion = entorno.direccion + "if(t" + (entorno.numero - 1) + " == 0" + ") goto L" + Etiqueta1 + ";\n";
+                //parte 2
+                entorno.numero += 1;
+                entorno.direccion = entorno.direccion + "t" + entorno.numero + " = H;\n";
+                this.Hijos[0].CadenaDe3D = "t" + entorno.numero;
+                entorno.direccion = entorno.direccion + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                entorno.direccion = entorno.direccion + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                //parte 3
+                entorno.direccion = entorno.direccion + "goto L" + Etiqueta2 + ";\n";
+                entorno.direccion = entorno.direccion + "L" + Etiqueta1 + ":\n";
+                entorno.direccion = entorno.direccion + "t" + entorno.numero + " = H;\n";
+                entorno.direccion = entorno.direccion + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                entorno.direccion = entorno.direccion + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                entorno.direccion = entorno.direccion + "Heap[H] = -1;\nH = H + 1;\n";
+                entorno.direccion = entorno.direccion + "L" + Etiqueta2 + ":\n";
+            }
             entorno.etiquetas += 1;
             var Etiqueta1 = entorno.etiquetas;
             entorno.etiquetas += 1;
