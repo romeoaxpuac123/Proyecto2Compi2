@@ -43,6 +43,19 @@ var ModificarVariables = /** @class */ (function (_super) {
                 ElTipo = entorno.TipoVariablesFUNCION[i];
             }
         }
+        //BUSCANDO EN PARAMETROS
+        if (don1 == "ERROR") {
+            for (var i = 0; i < entorno.Variable.length; i++) {
+                if (LaVariable == entorno.Variable[i]) {
+                    don1 = "TRUE";
+                }
+            }
+            for (var i = 0; i < entorno.Variable.length; i++) {
+                if (LaVariable == entorno.Variable[i]) {
+                    ElTipo = entorno.Tipo[i];
+                }
+            }
+        }
         //explorando los tipos
         if ((ElTipo.toUpperCase() == "CADENA" || ElTipo.toUpperCase() == "STRING")) {
             if (!(TipoRespuesta.toUpperCase() == "CADENA" || TipoRespuesta.toUpperCase() == "STRING")) {
@@ -97,9 +110,19 @@ var ModificarVariables = /** @class */ (function (_super) {
         }
         //fin te tipos
         if (don1 == "TRUE") {
+            var bandera1 = "FALSE";
             for (var x = 0; x < entorno.VariableVariablesFUNCION.length; x++) {
                 if (LaVariable.toUpperCase() == entorno.VariableVariablesFUNCION[x].toUpperCase()) {
                     LaViejaT = entorno.TesVariablesFUNCION[x];
+                    bandera1 = "TRUE";
+                }
+            }
+            if (bandera1 == "FALSE") {
+                for (var x = 0; x < entorno.Variable.length; x++) {
+                    if (LaVariable.toUpperCase() == entorno.Variable[x].toUpperCase()) {
+                        LaViejaT = entorno.Tes[x];
+                        bandera1 = "TRUE";
+                    }
                 }
             }
             LaNuevaT = C3DExpresion;

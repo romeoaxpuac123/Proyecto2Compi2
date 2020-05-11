@@ -47,6 +47,15 @@ var Aritmetica = /** @class */ (function (_super) {
                 }
             }
             if (don1 == "ERROR") {
+                for (var i = 0; i < entorno.Variable.length; i++) {
+                    if (this.Hijos[0].CadenaDe3D == entorno.Variable[i]) {
+                        Tipo1 = entorno.Tipo[i];
+                        C3D1 = entorno.Tes[i];
+                        don1 = C3D1;
+                    }
+                }
+            }
+            if (don1 == "ERROR") {
                 alert('Este es un semantico: ' + this.Hijos[0].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 entorno.direccion = "ERROR NO SE GENERO C3D;\n";
                 entorno.LosErrores += "<tr>";
@@ -84,6 +93,15 @@ var Aritmetica = /** @class */ (function (_super) {
                     Tipo2 = entorno.TipoVariablesFUNCION[i];
                     C3D2 = entorno.TesVariablesFUNCION[i];
                     don2 = C3D2;
+                }
+            }
+            if (don2 == "ERROR") {
+                for (var i = 0; i < entorno.Variable.length; i++) {
+                    if (this.Hijos[2].CadenaDe3D == entorno.Variable[i]) {
+                        Tipo2 = entorno.Tipo[i];
+                        C3D2 = entorno.Tes[i];
+                        don2 = C3D2;
+                    }
                 }
             }
             if (don2 == "ERROR") {
