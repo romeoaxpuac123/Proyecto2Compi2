@@ -16,6 +16,7 @@ var Casa = /** @class */ (function () {
         this.LosErrores = "";
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
+        this.ListaParametrosFuncion2 = new Array();
         this.nombreentorno = "Global";
         this.direccion = "";
         this.numero = 0;
@@ -60,6 +61,14 @@ var Casa = /** @class */ (function () {
         //document.getElementById('Simbolos').innerHTML = this.Salida;	
         document.getElementById("Reporte_Simbolos").innerHTML = this.Salida;
         this.Salida = "";
+    };
+    Casa.prototype.Tipofuncion = function (nombre) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].nombre == nombre) {
+                return this.SIMBOLOS[i].tipo;
+            }
+        }
+        return "NOP";
     };
     Casa.prototype.existefuncion = function (nombre) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {
@@ -126,6 +135,15 @@ var Casa = /** @class */ (function () {
             }
         }
         return false;
+    };
+    Casa.prototype.FuncionTdeVariable = function (nombreFuncion, nombreParametro) {
+        var Resutlado = "NoTiene";
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].funcion == nombreFuncion && this.SIMBOLOS[i].nombre == nombreParametro) {
+                return this.SIMBOLOS[i].posicionT;
+            }
+        }
+        return Resutlado;
     };
     return Casa;
 }());

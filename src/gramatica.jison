@@ -53,6 +53,7 @@
 "var"				return 'VAR';
 "const"				return 'CONST';
 "global"			return 'GLOBAL';
+"return"			return 'RETORNO';
 ":"					return 'DOSP';
 "="					return 'IGUAL';
 
@@ -580,7 +581,7 @@ instruccion2
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
-	| ID IGUAL expresion PTyCOMA{
+	| ID IGUAL expresion PTCOMA {
 		var nuevo = new ModificarVariables ("VARIABLES");
 		var identificador = new Nodo($1);
 		nuevo.Hijos[0] = identificador;
@@ -602,6 +603,23 @@ instruccion2
 
 		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
 		GraficasDOT.anadir(Conexion1x);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	| RETORNO expresion PTCOMA {
+		var nuevo = new Retorno("RETORNO"); 
+        nuevo.Hijos[0] = $2;
+
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "RETORNO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1);
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
@@ -752,6 +770,63 @@ TIPOS:
 			$$ = nuevo;
 	}
 ;
+
+lista_Expresiones2
+	:lista_Expresiones2 COMA expresion{
+			Entorno1.ListaParametrosFuncion2.push($3);
+			var nuevo = new Nodo("lista_Expresiones");
+			
+		    nuevo.TipoDato = $1;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "lista_Expresiones" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1x);
+
+			$$ = nuevo;
+	}
+	|expresion{
+			Entorno1.ListaParametrosFuncion2.push($1);
+			var nuevo = new Nodo("lista_Expresiones");
+			
+		    nuevo.TipoDato = $1;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "lista_Expresiones" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			$$ = nuevo;
+	}
+	|{
+			var nuevo = new Nodo ("lista_Expresiones");
+			
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			//Entorno1.valordep = Entorno1.numero += 1;
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SIN_EXPRESIONES" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	};
 
 expresion
 	: MENOS expresion %prec UMENOS	{ 
@@ -1264,6 +1339,31 @@ expresion
 										console.log("ID->" + $1);
 										
 									}
+	| ID PARIZQ lista_Expresiones2 PARDER{
+											var nuevo = new Nodo("FuncionRetornoXD");
+											var nuevovalor = new Nodo($1);
+											nuevo.Hijos[0] = nuevovalor;
+											nuevo.TipoDato = "Funcion";
+											contador = contador + 1;
+											nuevo.NumeroDeNodo = contador;
+											var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "Llamar_Funcion" + "\"]" +"\n";									
+											GraficasDOT.anadir(Hijo1);
+
+											nuevo.linea = this._$.first_line;
+											nuevo.columna = this._$.first_column;
+
+											contador = contador + 1;
+											var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+											GraficasDOT.anadir(Hijo2);
+
+											var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+											GraficasDOT.anadir(Conexion1x);
+
+											var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+											GraficasDOT.anadir(Conexion1x);
+
+
+											$$ = nuevo.Ejecutar(Entorno1);}				
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  
 

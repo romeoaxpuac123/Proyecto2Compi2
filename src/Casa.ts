@@ -24,11 +24,12 @@ class Casa {
     public LosErrores = "";
 
     public ListaParametrosFuncion: Array<NodoAbstracto>;
-
+    public ListaParametrosFuncion2: Array<NodoAbstracto>;
 
     constructor() {
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
+        this.ListaParametrosFuncion2 = new Array();
         this.nombreentorno = "Global";
         this.direccion = "";
         this.numero = 0;
@@ -78,6 +79,15 @@ class Casa {
          
     }
 
+    Tipofuncion(nombre:string):string{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre){
+                return this.SIMBOLOS[i].tipo;
+
+            }
+        }
+        return "NOP";
+    }
     
     existefuncion(nombre:string):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
@@ -147,5 +157,16 @@ class Casa {
             }
         }
         return false;
+    }
+
+    FuncionTdeVariable(nombreFuncion:string,nombreParametro:string):string{
+        var Resutlado= "NoTiene";
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].funcion == nombreFuncion && this.SIMBOLOS[i].nombre == nombreParametro
+                ){
+                return this.SIMBOLOS[i].posicionT;
+            }
+        }
+        return Resutlado;
     }
 }

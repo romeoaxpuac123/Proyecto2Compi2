@@ -31,6 +31,19 @@ var ModificarVariables = /** @class */ (function (_super) {
         var TipoRespuesta = this.Hijos[1].TipoDato;
         var LaViejaT = "";
         var LaNuevaT = "";
+        if (TipoRespuesta == "ID") {
+            for (var x = 0; x < entorno.VariableVariablesFUNCION.length; x++) {
+                if (this.Hijos[1].Hijos[0].Nombre.toUpperCase() ==
+                    entorno.VariableVariablesFUNCION[x].toUpperCase()) {
+                    entorno.direccion += "##modificando var\n";
+                    TipoRespuesta = entorno.TipoVariablesFUNCION[x];
+                    C3DExpresion = entorno.TesVariablesFUNCION[x];
+                    entorno.numero += 1;
+                    entorno.direccion += "t" + entorno.numero + " = stack[" + C3DExpresion + "];\n";
+                    C3DExpresion = "t" + entorno.numero;
+                }
+            }
+        }
         var ElTipo = "";
         var don1 = "ERROR";
         for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {

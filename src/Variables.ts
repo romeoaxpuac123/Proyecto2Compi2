@@ -21,6 +21,19 @@ class Variables extends NodoAbstracto{
         //public VariableVariables = new Array();
         //public 
         //alert('Anhelo->' + this.Hijos[1].Nombre);
+        if(TipoRespuesta == "ID"){
+            for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
+                if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
+                entorno.VariableVariablesFUNCION[x].toUpperCase() ){
+                    TipoRespuesta = entorno.TipoVariablesFUNCION[x];
+                    
+                    LaTRespuesta =  entorno.TesVariablesFUNCION[x];
+                    entorno.numero += 1;
+                    entorno.direccion += "t" + entorno.numero + " = stack["+ LaTRespuesta + "];\n";
+                    LaTRespuesta = "t" + entorno.numero;
+                }
+            }
+        }
         if(LaTRespuesta.toUpperCase() == "TRUE" && ElTipo.toUpperCase() == "BOOLEAN" ){
             LaTRespuesta = "1";
         }else if(LaTRespuesta.toUpperCase() == "FALSE" && ElTipo.toUpperCase() == "BOOLEAN"){
