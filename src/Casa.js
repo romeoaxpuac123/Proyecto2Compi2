@@ -14,6 +14,9 @@ var Casa = /** @class */ (function () {
         this.TesVariablesFUNCION = new Array();
         this.tamanioentorno = 0;
         this.LosErrores = "";
+        this.TipoVariablesFUNCIONGLOBAL = new Array();
+        this.VariableVariablesFUNCIONGLOBAL = new Array();
+        this.TesVariablesFUNCIONGLOBAL = new Array();
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
         this.ListaParametrosFuncion2 = new Array();

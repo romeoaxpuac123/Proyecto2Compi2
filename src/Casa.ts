@@ -26,6 +26,10 @@ class Casa {
     public ListaParametrosFuncion: Array<NodoAbstracto>;
     public ListaParametrosFuncion2: Array<NodoAbstracto>;
 
+    public TipoVariablesFUNCIONGLOBAL =  new Array();
+    public VariableVariablesFUNCIONGLOBAL = new Array();
+    public TesVariablesFUNCIONGLOBAL = new Array();
+
     constructor() {
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();

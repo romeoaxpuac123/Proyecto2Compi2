@@ -87,7 +87,7 @@ class Nodo extends NodoAbstracto{
 
 
             }else{
-                alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                alert('Este es un semantico_: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 entorno.direccion = "ERROR NO SE GENERO C3D;\n"
                 //alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 //entorno.direccion = "ERROR NO SE GENERO C3D;\n"
@@ -123,12 +123,13 @@ class Nodo extends NodoAbstracto{
                 }
             }
 
-           
+            entorno.ListaParametrosFuncion2.splice(0,entorno.ListaParametrosFuncion2.length);
 
             var nuevo = new Nodo("ID");
 			var nuevovalor = new Nodo(NombreGlobal + "return");
 			nuevo.Hijos[0] = nuevovalor;
-			nuevo.TipoDato = "ID";
+            nuevo.TipoDato = "ID";
+            nuevo.NumeroDeNodo = this.NumeroDeNodo;
             nuevo.CadenaDe3D = NombreGlobal + "return";
             return nuevo;
         }else{

@@ -50,6 +50,7 @@
 "true"				return 'VERDADERO';
 "false"				return 'FALSO';
 "public"			return 'PUBLIC';
+"private"			return 'PRIVATE';
 "var"				return 'VAR';
 "const"				return 'CONST';
 "global"			return 'GLOBAL';
@@ -266,7 +267,7 @@ instruccion
         		Entorno1.direccion = ""; 
 				Entorno1.direccion = ""; 
 		} */
-	:   PUBLIC ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
+	:   VISIBILIDAD ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
 				Entorno1.nombreentorno = $3;
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
@@ -298,10 +299,86 @@ instruccion
 				GraficasDOT.anadir(Conexion3);
 
 
-				$$ =  nuevo.Ejecutar(Entorno1);
+				$$ =  nuevo.Ejecutar(Entorno1); }
+	|TIPOS2 ID_LISTA DOSP IGUAL expresion PTCOMA{
+		
+		console.log("DEC1 globales");
+		var nuevo = new VariablesGlobales("VARIABLES");
+		//var Tipo = new Nodo($1);
+		nuevo.Hijos[0] = $1;
+		nuevo.Hijos[1] = $5;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
 			
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZ);
+
+		var Conexion1xZx = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $5.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZx);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+		
 	}
 ;
+TIPOS2:
+	VAR{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "VAR" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	|CONST{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "CONST" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	|GLOBAL{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "GLOBAL" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	}
+	/*
+	|ID{
+			var nuevo = new Nodo($1);
+			contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			
+
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+			$$ = nuevo;
+	} */
+;
+
+VISIBILIDAD:
+	PUBLIC
+	|PRIVATE
+	|;
 lista_Parametros
 	: lista_Parametros COMA ID ID{
 			//Entorno1.tamanioentorno += 1;
