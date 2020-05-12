@@ -107,12 +107,29 @@ var Nodo = /** @class */ (function (_super) {
                 entorno.LosErrores += "<td>" + this.columna + "</td>";
                 entorno.LosErrores += "</tr>";
             }
-            var LaTeFinal = entorno.FuncionTdeVariable(NombreGlobal, "return");
-            console.log("-->" + LaTeFinal);
-            entorno.TesVariablesFUNCION.push(LaTeFinal);
-            entorno.TipoVariablesFUNCION.push(entorno.Tipofuncion(nombre));
-            entorno.VariableVariablesFUNCION.push(NombreGlobal + "return");
-            console.log("FIN DEL FUNCION RETORNO--------->");
+            var banderax = "false";
+            for (var y = 0; y < entorno.VariableVariablesFUNCION.length; y++) {
+                if ((NombreGlobal + "return") == entorno.VariableVariablesFUNCION[y]) {
+                    banderax = "true";
+                }
+            }
+            if (banderax == "false") {
+                var LaTeFinal = entorno.FuncionTdeVariable(NombreGlobal, "return");
+                console.log("-->" + LaTeFinal);
+                entorno.TesVariablesFUNCION.push(LaTeFinal);
+                entorno.TipoVariablesFUNCION.push(entorno.Tipofuncion(nombre));
+                entorno.VariableVariablesFUNCION.push(NombreGlobal + "return");
+                console.log("FIN DEL FUNCION RETORNO--------->");
+            }
+            else {
+                var LaTeFinal = entorno.FuncionTdeVariable(NombreGlobal, "return");
+                for (var y = 0; y < entorno.VariableVariablesFUNCION.length; y++) {
+                    if ((NombreGlobal + "return") == entorno.VariableVariablesFUNCION[y]) {
+                        entorno.TipoVariablesFUNCION[y] = entorno.Tipofuncion(nombre);
+                        entorno.TesVariablesFUNCION[y] = LaTeFinal;
+                    }
+                }
+            }
             var nuevo = new Nodo("ID");
             var nuevovalor = new Nodo(NombreGlobal + "return");
             nuevo.Hijos[0] = nuevovalor;

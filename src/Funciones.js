@@ -30,6 +30,69 @@ var Funciones = /** @class */ (function (_super) {
         var TParametros = entorno.Variable.length;
         var totaltmanio = entorno.VariableVariablesFUNCION.length + entorno.Variable.length;
         console.log("La funcion tiene nombre de:->" + nombre);
+        //VERIFICANDO SI EL RETURN ES IGUAL A LA FUNCION Xd xd
+        for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {
+            if (entorno.VariableVariablesFUNCION[i].toUpperCase() == "RETURN") {
+                console.log("holaaaaaaaa-->");
+                console.log("Tipo return->" + entorno.TipoVariablesFUNCION[i]);
+                console.log("tipo funcion->" + this.TipoDato);
+                var ElTipo = this.TipoDato;
+                var TipoRespuesta = entorno.TipoVariablesFUNCION[i];
+                if ((ElTipo.toUpperCase() == "CADENA" || ElTipo.toUpperCase() == "STRING")) {
+                    if (!(TipoRespuesta.toUpperCase() == "CADENA" || TipoRespuesta.toUpperCase() == "STRING")) {
+                        alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        entorno.LosErrores += "<tr>";
+                        entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                        entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                        entorno.LosErrores += "<td>" + this.linea + "</td>";
+                        entorno.LosErrores += "<td>" + this.columna + "</td>";
+                        entorno.LosErrores += "</tr>";
+                    }
+                }
+                else if ((ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "ENTERO")) {
+                    if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                        || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR")) {
+                        alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        entorno.LosErrores += "<tr>";
+                        entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                        entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                        entorno.LosErrores += "<td>" + this.linea + "</td>";
+                        entorno.LosErrores += "<td>" + this.columna + "</td>";
+                        entorno.LosErrores += "</tr>";
+                    }
+                }
+                else if ((ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "CARACTER")) {
+                    if (!(TipoRespuesta.toUpperCase() == "CHAR" || TipoRespuesta.toUpperCase() == "CARACTER")) {
+                        alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        entorno.LosErrores += "<tr>";
+                        entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                        entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                        entorno.LosErrores += "<td>" + this.linea + "</td>";
+                        entorno.LosErrores += "<td>" + this.columna + "</td>";
+                        entorno.LosErrores += "</tr>";
+                    }
+                }
+                else if ((ElTipo.toUpperCase() == "DOUBLE" || ElTipo.toUpperCase() == "DECIMAL")) {
+                    if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                        || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR"
+                        || TipoRespuesta.toUpperCase() == "DOUBLE" || TipoRespuesta.toUpperCase() == "DECIMAL")) {
+                        alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        entorno.LosErrores += "<tr>";
+                        entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                        entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                        entorno.LosErrores += "<td>" + this.linea + "</td>";
+                        entorno.LosErrores += "<td>" + this.columna + "</td>";
+                        entorno.LosErrores += "</tr>";
+                    }
+                }
+                break;
+            }
+        }
+        //FIN DE ESE VERIFICACION
         if (entorno.existefuncion(nombre) == false) {
             //no existe la funcion
             entorno.etiquetas += 1;
