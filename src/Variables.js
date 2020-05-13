@@ -31,6 +31,7 @@ var Variables = /** @class */ (function (_super) {
         var TipoRespuesta = this.Hijos[1].TipoDato;
         var ElvalordeP = "P"; // + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
+        //alert("ENTRO A BUSCAR un id" + TipoRespuesta);
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
         //console.log("La T A LA QUE HACE REF->" + LaTRespuesta);
         //public TipoVariables =  new Array();
@@ -130,15 +131,44 @@ var Variables = /** @class */ (function (_super) {
             return nuevo;
         }
         if (TipoRespuesta == "ID") {
+            // alert("ENTRO A BUSCAR un id");
+            var bandera1 = "false";
             for (var x = 0; x < entorno.VariableVariablesFUNCION.length; x++) {
                 if (this.Hijos[1].Hijos[0].Nombre.toUpperCase() ==
                     entorno.VariableVariablesFUNCION[x].toUpperCase()) {
+                    alert("ENTRO A BUSCAR un id locales");
                     TipoRespuesta = entorno.TipoVariablesFUNCION[x];
                     LaTRespuesta = entorno.TesVariablesFUNCION[x];
                     entorno.numero += 1;
                     entorno.direccion += "t" + entorno.numero + " = stack[" + LaTRespuesta + "];\n";
                     LaTRespuesta = "t" + entorno.numero;
+                    bandera1 = "true";
+                    break;
                 }
+            }
+            if (bandera1 == "false") {
+                // alert("ENTRO A BUSCAR EN GLOBALES");
+                for (var x = 0; x < entorno.VariableVariablesFUNCIONGLOBAL.length; x++) {
+                    if (this.Hijos[1].Hijos[0].Nombre.toUpperCase() ==
+                        entorno.VariableVariablesFUNCIONGLOBAL[x].toUpperCase()) {
+                        TipoRespuesta = entorno.TipoVariablesFUNCIONGLOBAL[x];
+                        LaTRespuesta = entorno.TesVariablesFUNCIONGLOBAL[x];
+                        entorno.numero += 1;
+                        entorno.direccion += "t" + entorno.numero + " = Heap[" + LaTRespuesta + "];\n";
+                        LaTRespuesta = "t" + entorno.numero;
+                        bandera1 = "true";
+                    }
+                }
+            }
+            if (bandera1 == "false") {
+                //alert('Este es un semantico: ' + this.Hijos[1].Hijos[0].Nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                entorno.LosErrores += "<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                entorno.LosErrores += "<td>" + "La Variable " + this.Hijos[1].Hijos[0].Nombre + "No Existente" + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
             }
         }
         if (LaTRespuesta.toUpperCase() == "TRUE" && ElTipo.toUpperCase() == "BOOLEAN") {

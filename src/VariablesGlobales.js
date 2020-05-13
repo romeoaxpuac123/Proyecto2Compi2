@@ -33,18 +33,70 @@ var VariablesGlobales = /** @class */ (function (_super) {
         var Tamanio = entorno.tamanioentorno;
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
         //console.log("La T A LA QUE HACE REF->" + LaTRespuesta);
-        //public TipoVariables =  new Array();
-        //public VariableVariables = new Array();
-        //public 
-        //alert('Anhelo->' + this.Hijos[1].Nombre);
-        //entorno.TesVariablesFUNCIONGLOBAL.push
-        //entorno.TipoVariablesFUNCIONGLOBAL.push(TipoRespuesta)
-        //entorno.VariableVariablesFUNCIONGLOBAL.push();
+        if (ElTipo.toUpperCase() != "GLOBAL") {
+            if ((ElTipo.toUpperCase() == "CADENA" || ElTipo.toUpperCase() == "STRING")) {
+                if (!(TipoRespuesta.toUpperCase() == "CADENA" || TipoRespuesta.toUpperCase() == "STRING")) {
+                    alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                    entorno.LosErrores += "<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                    entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }
+            else if ((ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "ENTERO")) {
+                if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                    || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR")) {
+                    alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                    entorno.LosErrores += "<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                    entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }
+            else if ((ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "CARACTER")) {
+                if (!(TipoRespuesta.toUpperCase() == "CHAR" || TipoRespuesta.toUpperCase() == "CARACTER")) {
+                    alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                    entorno.LosErrores += "<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                    entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }
+            else if ((ElTipo.toUpperCase() == "DOUBLE" || ElTipo.toUpperCase() == "DECIMAL")) {
+                if (!(TipoRespuesta.toUpperCase() == "INTEGER" || TipoRespuesta.toUpperCase() == "ENTERO"
+                    || TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR"
+                    || TipoRespuesta.toUpperCase() == "DOUBLE" || TipoRespuesta.toUpperCase() == "DECIMAL")) {
+                    alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                    entorno.LosErrores += "<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                    entorno.LosErrores += "<td>" + "Variables de Diferentes tipos " + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+            }
+        }
         for (var i = 0; i < entorno.VariableVariables.length; i++) {
-            if (LaTRespuesta.toUpperCase() == "TRUE" && ElTipo.toUpperCase() == "GLOBAL") {
+            if (LaTRespuesta.toUpperCase() == "TRUE" && ElTipo.toUpperCase() == "BOOLEANO") {
                 LaTRespuesta = "1";
             }
-            else if (LaTRespuesta.toUpperCase() == "FALSE" && ElTipo.toUpperCase() == "GLOBAL") {
+            else if (LaTRespuesta.toUpperCase() == "FALSE" && ElTipo.toUpperCase() == "BOOLEANO") {
+                LaTRespuesta = "0";
+            }
+            if (LaTRespuesta.toUpperCase() == "TRUE" && TipoRespuesta.toUpperCase() == "BOOLEANO") {
+                LaTRespuesta = "1";
+            }
+            else if (LaTRespuesta.toUpperCase() == "FALSE" && TipoRespuesta.toUpperCase() == "BOOLEANO") {
                 LaTRespuesta = "0";
             }
             if (TipoRespuesta.toUpperCase() == "CHAR" || TipoRespuesta.toUpperCase() == "CARACTER") {

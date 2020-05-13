@@ -6,6 +6,19 @@
   <link rel="stylesheet" type="text/css" href="estilos.css">
   <link rel="stylesheet" type="text/css" href="tablas.css">
   <link rel="stylesheet" href="font-awesome.css">
+  <script src="FileSaver.js"></script>
+    <script>
+
+		function saveDynamicDataToFile() {
+
+            var userInput = Editor.getValue();
+			
+            var blob = new Blob([userInput], { type: "text/plain;charset=utf-8" });
+            saveAs(blob, "romeo.txt");
+            
+        }
+
+    </script>
 
   <script src = "codemirror/lib/codemirror.js"></script>
   <link href="codemirror/lib/codemirror.css" rel = "stylesheet">
@@ -419,7 +432,7 @@ function cambiarPestanna(pestannas,pestanna) {
 
 </div>
 <div id = "Bontoesmenu1P" style="position:absolute;top:150px;left:80px;z-index:1; width:100px; height: 250px; background-color:black">
-   <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()">
+   <input type="button" class="boton_2" value="Descargar"  id = "CompilarA"  onclick="saveDynamicDataToFile();">
           
   <input type="button" class="boton_2" onclick="pegarTexto(Editor.getValue());" Value = "Ejec C3D" id = "C3DA" >
   

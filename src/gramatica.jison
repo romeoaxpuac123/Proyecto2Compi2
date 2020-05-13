@@ -157,6 +157,9 @@ ini
 		GraficasDOT.Renovar();
 		Entorno1.direccion = "";
 		Entorno1.SIMBOLOS.splice(0, Entorno1.SIMBOLOS.length);
+		Entorno1.TipoVariablesFUNCIONGLOBAL.splice(0, Entorno1.TipoVariablesFUNCIONGLOBAL.length);
+        Entorno1.VariableVariablesFUNCIONGLOBAL.splice(0, Entorno1.VariableVariablesFUNCIONGLOBAL.length);
+        Entorno1.TesVariablesFUNCIONGLOBAL.splice(0,Entorno1.TesVariablesFUNCIONGLOBAL.length);
 	}}
 ;
 PTCOMA
@@ -267,7 +270,8 @@ instruccion
         		Entorno1.direccion = ""; 
 				Entorno1.direccion = ""; 
 		} */
-	:   VISIBILIDAD ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
+	:   
+	VISIBILIDAD ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
 				Entorno1.nombreentorno = $3;
 				var nuevo = new Funciones("Funciones");
 				var NombreFuncion = new Nodo($3);
@@ -328,8 +332,9 @@ instruccion
 		GraficasDOT.anadir(Conexion1xZx);
 
 		$$ = nuevo.Ejecutar(Entorno1);
-		
+			
 	}
+
 ;
 TIPOS2:
 	VAR{
@@ -362,7 +367,7 @@ TIPOS2:
 			GraficasDOT.anadir(Hijo1);
 			$$ = nuevo;
 	}
-	/*
+	
 	|ID{
 			var nuevo = new Nodo($1);
 			contador = contador + 1;
@@ -372,13 +377,13 @@ TIPOS2:
 			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
 			GraficasDOT.anadir(Hijo1);
 			$$ = nuevo;
-	} */
+	} 
 ;
 
 VISIBILIDAD:
 	PUBLIC
-	|PRIVATE
-	|;
+	|PRIVATE;
+	//|;
 lista_Parametros
 	: lista_Parametros COMA ID ID{
 			//Entorno1.tamanioentorno += 1;

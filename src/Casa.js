@@ -60,6 +60,18 @@ var Casa = /** @class */ (function () {
                 + "</tr>";
             elcoso2 += elcoso;
         }
+        for (var i = 0; i < this.VariableVariablesFUNCIONGLOBAL.length; i++) {
+            var Rol = "VARIABLE";
+            elcoso = "";
+            elcoso = "<tr>" + "<td>" + this.VariableVariablesFUNCIONGLOBAL[i] + "</td>"
+                + "<td>" + Rol + "</td>"
+                + "<td>" + this.TipoVariablesFUNCIONGLOBAL[i] + "</td>"
+                + "<td>" + "0" + "</td>"
+                + "<td>" + "Global" + "</td>"
+                + "<td>" + i + "</td>"
+                + "</tr>";
+            elcoso2 += elcoso;
+        }
         this.Salida += elcoso2 + "</table></div></body></html>";
         //document.getElementById('Simbolos').innerHTML = this.Salida;	
         document.getElementById("Reporte_Simbolos").innerHTML = this.Salida;

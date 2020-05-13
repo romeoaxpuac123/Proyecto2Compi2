@@ -17,6 +17,7 @@ class ModificarVariables extends NodoAbstracto{
         var LaNuevaT = "";
         
         if(TipoRespuesta == "ID"){
+            var bandera1 = "false";
             for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
                 if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
                 entorno.VariableVariablesFUNCION[x].toUpperCase() ){
@@ -27,7 +28,34 @@ class ModificarVariables extends NodoAbstracto{
                     entorno.numero += 1;
                     entorno.direccion += "t" + entorno.numero + " = stack["+ C3DExpresion + "];\n";
                     C3DExpresion = "t" + entorno.numero;
+                    bandera1 = "true";
                 }
+            }
+            if( bandera1 == "false"){
+                for(var x = 0; x < entorno.VariableVariablesFUNCIONGLOBAL.length;x++){
+                    if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
+                    entorno.VariableVariablesFUNCIONGLOBAL[x].toUpperCase() ){
+                        entorno.direccion += "##modificando var\n";
+                        TipoRespuesta = entorno.TipoVariablesFUNCIONGLOBAL[x];
+                        
+                        C3DExpresion =  entorno.TesVariablesFUNCIONGLOBAL[x];
+                        entorno.numero += 1;
+                        entorno.direccion += "t" + entorno.numero + " = Heap["+ C3DExpresion + "];\n";
+                        C3DExpresion = "t" + entorno.numero;
+                        bandera1 = "true";
+                    }
+                }
+            }
+            if( bandera1 == "false"){
+                alert('Este es un semantico: ' + this.Hijos[1].Hijos[0].Nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +  "La Variable "+  this.Hijos[1].Hijos[0].Nombre + "No Existente"  + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
             }
         }
 
@@ -57,6 +85,19 @@ class ModificarVariables extends NodoAbstracto{
             for(var i = 0; i < entorno.Variable.length;i++){
                 if(LaVariable== entorno.Variable[i]){
                     ElTipo = entorno.Tipo[i];
+                }
+            }
+        }
+        if(don1 == "ERROR"){
+            for(var i = 0; i < entorno.VariableVariablesFUNCIONGLOBAL.length;i++){
+                if(LaVariable== entorno.VariableVariablesFUNCIONGLOBAL[i]){
+                    don1 = "TRUE";
+                }
+            }
+    
+            for(var i = 0; i < entorno.VariableVariablesFUNCIONGLOBAL.length;i++){
+                if(LaVariable== entorno.VariableVariablesFUNCIONGLOBAL[i]){
+                    ElTipo = entorno.TipoVariablesFUNCIONGLOBAL[i];
                 }
             }
         }
@@ -126,6 +167,7 @@ class ModificarVariables extends NodoAbstracto{
 
         if(don1 == "TRUE"){
             var bandera1 = "FALSE";
+            var bandera12 = "FALSE";
             for(var x = 0; x < entorno.VariableVariablesFUNCION.length; x++){
                 if(LaVariable.toUpperCase() == entorno.VariableVariablesFUNCION[x].toUpperCase()){
                     LaViejaT = entorno.TesVariablesFUNCION[x];
@@ -140,12 +182,27 @@ class ModificarVariables extends NodoAbstracto{
                     }
                 }
             }
+            if(bandera1 == "FALSE"){
+                for(var x = 0; x < entorno.VariableVariablesFUNCIONGLOBAL.length; x++){
+                    if(LaVariable.toUpperCase() == entorno.VariableVariablesFUNCIONGLOBAL[x].toUpperCase()){
+                        LaViejaT = entorno.TesVariablesFUNCIONGLOBAL[x];
+                        bandera1 = "TRUE";
+                        bandera12 = "TRUE";
+                    }
+                }
+            }
 
             LaNuevaT = C3DExpresion;
             //var nuevosimbolo = LaViejaT.replace("t","");
             //var hola = +nuevosimbolo - 1;
-            entorno.direccion += "stack[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
+            if(bandera12 == "TRUE"){
+                entorno.direccion += "Heap[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
 
+            }else{
+                entorno.direccion += "stack[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
+
+            }
+           
             //for(var x = 0; x < entorno.VariableVariablesFUNCION.length; x++){
             //    if(LaVariable.toUpperCase() == entorno.VariableVariablesFUNCION[x].toUpperCase()){
             //         entorno.TesVariablesFUNCION[x] = LaNuevaT ;

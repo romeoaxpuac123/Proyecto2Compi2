@@ -55,6 +55,17 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                 }
             }
+            var bandera1 = "false";
+            if (don1 == "ERROR") {
+                for (var i = 0; i < entorno.VariableVariablesFUNCIONGLOBAL.length; i++) {
+                    if (this.Hijos[0].CadenaDe3D == entorno.VariableVariablesFUNCIONGLOBAL[i]) {
+                        Tipo1 = entorno.TipoVariablesFUNCIONGLOBAL[i];
+                        C3D1 = entorno.TesVariablesFUNCIONGLOBAL[i];
+                        don1 = C3D1;
+                        bandera1 = "true";
+                    }
+                }
+            }
             if (don1 == "ERROR") {
                 alert('Este es un semantico: ' + this.Hijos[0].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 entorno.direccion = "ERROR NO SE GENERO C3D;\n";
@@ -66,7 +77,13 @@ var Aritmetica = /** @class */ (function (_super) {
                 entorno.LosErrores += "</tr>";
             }
             entorno.numero += 1;
-            var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D1 + "];\n";
+            var auxiliar = ""; // "t" + entorno.numero + " = " + "stack[" + C3D1  + "];\n" ;
+            if (bandera1 == "true") {
+                auxiliar = "t" + entorno.numero + " = " + "Heap[" + C3D1 + "];\n";
+            }
+            else {
+                auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D1 + "];\n";
+            }
             C3D1 = "t" + entorno.numero;
             entorno.direccion = entorno.direccion + "##ide2\n" + auxiliar;
             if (Tipo1.toUpperCase() == "INTEGER") {
@@ -104,6 +121,17 @@ var Aritmetica = /** @class */ (function (_super) {
                     }
                 }
             }
+            var bandera1 = "false";
+            if (don2 == "ERROR") {
+                for (var i = 0; i < entorno.VariableVariablesFUNCIONGLOBAL.length; i++) {
+                    if (this.Hijos[2].CadenaDe3D == entorno.VariableVariablesFUNCIONGLOBAL[i]) {
+                        Tipo2 = entorno.TipoVariablesFUNCIONGLOBAL[i];
+                        C3D2 = entorno.TesVariablesFUNCIONGLOBAL[i];
+                        don2 = C3D2;
+                        bandera1 = "true";
+                    }
+                }
+            }
             if (don2 == "ERROR") {
                 alert('Este es un semantico: ' + this.Hijos[2].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
                 entorno.direccion = "ERROR NO SE GENERO C3D;\n";
@@ -115,7 +143,14 @@ var Aritmetica = /** @class */ (function (_super) {
                 entorno.LosErrores += "</tr>";
             }
             entorno.numero += 1;
-            var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2 + "];\n";
+            var auxiliar = ""; // "t" + entorno.numero + " = " + "stack[" + C3D1  + "];\n" ;
+            if (bandera1 == "true") {
+                auxiliar = "t" + entorno.numero + " = " + "Heap[" + C3D2 + "];\n";
+            }
+            else {
+                auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2 + "];\n";
+            }
+            //var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2  + "];\n" ;
             C3D2 = "t" + entorno.numero;
             entorno.direccion = entorno.direccion + "##ide2\n" + auxiliar;
             if (Tipo2.toUpperCase() == "INTEGER") {
