@@ -93,7 +93,8 @@ class LLamadas extends NodoAbstracto{
                 var NombreCall = entorno.existefuncion3(nombre,totalparametros);
                 entorno.numero += 1;
                 entorno.direccion +=  "## CAMBIO DE AMBITO SIMULADO\n";
-                entorno.direccion += "t" + entorno.numero +  " = P" + " + " + entorno.tamaniofuncion(nombre,totalparametros)+ ";\n\n"
+                //entorno.direccion += "t" + entorno.numero +  " = P" + " + " + entorno.tamaniofuncion(nombre,totalparametros)+ ";\n\n"
+                entorno.direccion += "t" + entorno.numero +  " = P" + " + " + entorno.VariableVariablesFUNCION.length +";\n";
                 var auxi1 = "t" + entorno.numero;
                 for(var y = 0; y < totalparametros; y++){
                     if(entorno.ListaParametrosFuncion[y].Nombre == "Caracter"){
@@ -137,9 +138,10 @@ class LLamadas extends NodoAbstracto{
                 }
                     
                 entorno.direccion +=  "## CAMBIO DE AMBITO REAL\n";
-                entorno.direccion +=  "P = P + " + entorno.tamaniofuncion(nombre,totalparametros) + ";\n";
+                //entorno.direccion +=  "P = P + " + entorno.tamaniofuncion(nombre,totalparametros) + ";\n";
+                entorno.direccion +=  "P = P + " + entorno.VariableVariablesFUNCION.length + ";\n";
                 entorno.direccion += "call " +   NombreCall.replace("funcionbayron_","") + ";\n";
-
+                entorno.direccion +=  "P = P - " + entorno.VariableVariablesFUNCION.length + ";\n";
         }else{
             alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
             entorno.direccion = "ERROR NO SE GENERO C3D;\n"
@@ -158,4 +160,9 @@ class LLamadas extends NodoAbstracto{
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     }
+    var nuevo = new Nodo("LLamada_Funciones");
+        nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
+        return nuevo;
+}
 }
