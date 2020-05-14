@@ -308,7 +308,7 @@ class Variables extends NodoAbstracto{
             entorno.numero +=1;
             entorno.direccion = entorno.direccion + "## ASIGANDNO VARIABLE->" +  entorno.VariableVariables[i] + "\n";
             entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + LaTRespuesta + ";\n";
-            if(LaTRespuesta == "0" || LaTRespuesta == "1" ){
+            if((LaTRespuesta == "0" || LaTRespuesta == "1") && (ElTipo.toUpperCase() == "BOOLEAN" || ElTipo.toUpperCase() == "BOOLEANO") ){
                 var ResuladoSalida =  "";
                 entorno.etiquetas +=1;
                 var Etiqueta1 = entorno.etiquetas;

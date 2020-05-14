@@ -2,6 +2,7 @@ class Casa {
     // Indico mi variable
     nombreentorno:string;
     direccion:string
+    direccionIF:string
     numero: number;
     etiquetas : number;
     paso = 0;
@@ -25,6 +26,7 @@ class Casa {
 
     public ListaParametrosFuncion: Array<NodoAbstracto>;
     public ListaParametrosFuncion2: Array<NodoAbstracto>;
+    //public ListaSentencias: Array<NodoAbstracto>;
 
     public TipoVariablesFUNCIONGLOBAL =  new Array();
     public VariableVariablesFUNCIONGLOBAL = new Array();
@@ -34,8 +36,10 @@ class Casa {
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
         this.ListaParametrosFuncion2 = new Array();
+       // this.ListaSentencias = new Array();
         this.nombreentorno = "Global";
         this.direccion = "";
+        this.direccionIF ="";
         this.numero = 0;
         this.etiquetas = 0;
         this.paso = 0;

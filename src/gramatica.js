@@ -72,12 +72,12 @@
   }
 */
 var gramatica = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,12],$V1=[1,9],$V2=[1,10],$V3=[1,11],$V4=[1,7],$V5=[1,8],$V6=[5,10,22,23,24,25,26],$V7=[1,17],$V8=[1,20],$V9=[7,10,16,19,22,23,24,27,29,32],$Va=[13,27],$Vb=[1,35],$Vc=[1,36],$Vd=[1,27],$Ve=[1,28],$Vf=[1,29],$Vg=[1,30],$Vh=[1,31],$Vi=[1,32],$Vj=[1,33],$Vk=[1,34],$Vl=[2,3],$Vm=[1,56],$Vn=[1,42],$Vo=[1,41],$Vp=[1,43],$Vq=[1,44],$Vr=[1,45],$Vs=[1,46],$Vt=[1,47],$Vu=[1,48],$Vv=[1,49],$Vw=[1,50],$Vx=[1,51],$Vy=[1,52],$Vz=[1,53],$VA=[1,54],$VB=[1,55],$VC=[5,7,10,13,16,22,23,24,25,26,27,29,32,34,36,37,38,39,40,41,42,43,44,45,46,47,48,49],$VD=[1,84],$VE=[1,87],$VF=[1,88],$VG=[1,89],$VH=[1,83],$VI=[1,86],$VJ=[5,7,10,13,16,22,23,24,25,26,27,29,32,34,36,41,42,43,44,45,46,47,48,49],$VK=[5,7,10,13,16,22,23,24,25,26,27,29,32,34,36,37,38,40,41,42,43,44,45,46,47,48,49],$VL=[5,7,10,13,16,22,23,24,25,26,27,29,32,41,42,43,44,45,46,47,48,49],$VM=[5,7,10,13,16,22,23,24,25,26,27,29,32,45,46,47],$VN=[5,7,10,13,16,22,23,24,25,26,27,29,32,45,46,47,48,49],$VO=[10,16,22,23,24,29,32];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,12],$V1=[1,9],$V2=[1,10],$V3=[1,11],$V4=[1,7],$V5=[1,8],$V6=[5,10,22,23,24,25,26],$V7=[1,17],$V8=[1,20],$V9=[7,10,16,19,22,23,24,27,29,32,33,37],$Va=[13,27],$Vb=[1,35],$Vc=[1,36],$Vd=[1,27],$Ve=[1,28],$Vf=[1,29],$Vg=[1,30],$Vh=[1,31],$Vi=[1,32],$Vj=[1,33],$Vk=[1,34],$Vl=[2,3],$Vm=[1,56],$Vn=[1,42],$Vo=[1,41],$Vp=[1,43],$Vq=[1,44],$Vr=[1,45],$Vs=[1,46],$Vt=[1,47],$Vu=[1,48],$Vv=[1,49],$Vw=[1,50],$Vx=[1,51],$Vy=[1,52],$Vz=[1,53],$VA=[1,54],$VB=[1,55],$VC=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,42,44,45,46,47,48,49,50,51,52,53,54,55,56,57],$VD=[1,84],$VE=[1,89],$VF=[1,90],$VG=[1,91],$VH=[1,83],$VI=[1,86],$VJ=[1,87],$VK=[1,88],$VL=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,42,44,49,50,51,52,53,54,55,56,57],$VM=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,42,44,45,46,48,49,50,51,52,53,54,55,56,57],$VN=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,49,50,51,52,53,54,55,56,57],$VO=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,53,54,55],$VP=[5,7,10,13,16,22,23,24,25,26,27,29,32,33,37,53,54,55,56,57],$VQ=[10,16,22,23,24,29,32,33,37],$VR=[1,122],$VS=[1,123],$VT=[1,114],$VU=[1,115],$VV=[1,116],$VW=[1,117],$VX=[1,118],$VY=[1,119],$VZ=[1,120],$V_=[1,121],$V$=[1,132],$V01=[1,131],$V11=[1,133],$V21=[1,134],$V31=[1,135],$V41=[1,136],$V51=[1,137],$V61=[1,138],$V71=[1,139],$V81=[1,140],$V91=[1,141],$Va1=[1,142],$Vb1=[1,143],$Vc1=[1,144],$Vd1=[1,145],$Ve1=[7,10,13,16,29,42,44,45,46,47,48,49,50,51,52,53,54,55,56,57],$Vf1=[1,177],$Vg1=[1,176],$Vh1=[7,10,13,16,29,42,44,49,50,51,52,53,54,55,56,57],$Vi1=[7,10,13,16,29,42,44,45,46,48,49,50,51,52,53,54,55,56,57],$Vj1=[7,10,13,16,29,49,50,51,52,53,54,55,56,57],$Vk1=[7,10,13,16,29,53,54,55],$Vl1=[7,10,13,16,29,53,54,55,56,57],$Vm1=[10,16,29],$Vn1=[1,193],$Vo1=[10,16,22,23,24,29,32,33,37,39];
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"PTCOMA":6,"PTyCOMA":7,"instruccion":8,"VISIBILIDAD":9,"ID":10,"PARIZQ":11,"lista_Parametros":12,"PARDER":13,"LLAVIZQ":14,"lista_instrucciones":15,"LLAVDER":16,"TIPOS2":17,"ID_LISTA":18,"DOSP":19,"IGUAL":20,"expresion":21,"VAR":22,"CONST":23,"GLOBAL":24,"PUBLIC":25,"PRIVATE":26,"COMA":27,"instruccion2":28,"IMPRMIR":29,"lista_Expresiones":30,"TIPOS":31,"RETORNO":32,"lista_Expresiones2":33,"MENOS":34,"NOT":35,"MAS":36,"POR":37,"DIVIDIDO":38,"POTENCIA":39,"MODULO":40,"MAYOR":41,"MENOR":42,"MENORIGUAL":43,"MAYORIGUAL":44,"AND":45,"OR":46,"XOR":47,"IGUALDAD":48,"DESIGUALDAD":49,"ENTERO":50,"DECIMAL":51,"CARACTER":52,"VERDADERO":53,"FALSO":54,"CADENA":55,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"PTyCOMA",10:"ID",11:"PARIZQ",13:"PARDER",14:"LLAVIZQ",16:"LLAVDER",19:"DOSP",20:"IGUAL",22:"VAR",23:"CONST",24:"GLOBAL",25:"PUBLIC",26:"PRIVATE",27:"COMA",29:"IMPRMIR",32:"RETORNO",34:"MENOS",35:"NOT",36:"MAS",37:"POR",38:"DIVIDIDO",39:"POTENCIA",40:"MODULO",41:"MAYOR",42:"MENOR",43:"MENORIGUAL",44:"MAYORIGUAL",45:"AND",46:"OR",47:"XOR",48:"IGUALDAD",49:"DESIGUALDAD",50:"ENTERO",51:"DECIMAL",52:"CARACTER",53:"VERDADERO",54:"FALSO",55:"CADENA"},
-productions_: [0,[3,2],[6,1],[6,0],[4,2],[4,1],[4,1],[8,9],[8,6],[17,1],[17,1],[17,1],[17,1],[9,1],[9,1],[12,4],[12,2],[12,0],[15,2],[15,1],[28,5],[28,5],[28,6],[28,3],[28,4],[28,3],[30,3],[30,1],[30,0],[18,3],[18,1],[31,1],[31,1],[31,1],[31,1],[33,3],[33,1],[33,0],[21,2],[21,2],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,1],[21,1],[21,1],[21,1],[21,1],[21,1],[21,1],[21,4],[21,3]],
+symbols_: {"error":2,"ini":3,"instrucciones":4,"EOF":5,"PTCOMA":6,"PTyCOMA":7,"instruccion":8,"VISIBILIDAD":9,"ID":10,"PARIZQ":11,"lista_Parametros":12,"PARDER":13,"LLAVIZQ":14,"lista_instrucciones":15,"LLAVDER":16,"TIPOS2":17,"ID_LISTA":18,"DOSP":19,"IGUAL":20,"expresion":21,"VAR":22,"CONST":23,"GLOBAL":24,"PUBLIC":25,"PRIVATE":26,"COMA":27,"instruccion2":28,"IMPRMIR":29,"lista_Expresiones":30,"TIPOS":31,"RETORNO":32,"ELIF":33,"lista_instrucciones3":34,"LISTA_ELSE":35,"EL_COSOELSE":36,"ELWHILE":37,"expresion2":38,"ELELSE":39,"instruccion3":40,"lista_Expresiones2":41,"MENOS":42,"NOT":43,"MAS":44,"POR":45,"DIVIDIDO":46,"POTENCIA":47,"MODULO":48,"MAYOR":49,"MENOR":50,"MENORIGUAL":51,"MAYORIGUAL":52,"AND":53,"OR":54,"XOR":55,"IGUALDAD":56,"DESIGUALDAD":57,"ENTERO":58,"DECIMAL":59,"CARACTER":60,"VERDADERO":61,"FALSO":62,"CADENA":63,"lista_expresion2es2":64,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"PTyCOMA",10:"ID",11:"PARIZQ",13:"PARDER",14:"LLAVIZQ",16:"LLAVDER",19:"DOSP",20:"IGUAL",22:"VAR",23:"CONST",24:"GLOBAL",25:"PUBLIC",26:"PRIVATE",27:"COMA",29:"IMPRMIR",32:"RETORNO",33:"ELIF",37:"ELWHILE",39:"ELELSE",42:"MENOS",43:"NOT",44:"MAS",45:"POR",46:"DIVIDIDO",47:"POTENCIA",48:"MODULO",49:"MAYOR",50:"MENOR",51:"MENORIGUAL",52:"MAYORIGUAL",53:"AND",54:"OR",55:"XOR",56:"IGUALDAD",57:"DESIGUALDAD",58:"ENTERO",59:"DECIMAL",60:"CARACTER",61:"VERDADERO",62:"FALSO",63:"CADENA",64:"lista_expresion2es2"},
+productions_: [0,[3,2],[6,1],[6,0],[4,2],[4,1],[4,1],[8,9],[8,6],[17,1],[17,1],[17,1],[17,1],[9,1],[9,1],[12,4],[12,2],[12,0],[15,2],[15,1],[28,5],[28,5],[28,6],[28,3],[28,4],[28,3],[28,9],[28,8],[28,8],[28,7],[28,7],[36,4],[35,9],[35,8],[34,2],[34,1],[40,5],[40,4],[30,3],[30,1],[30,0],[18,3],[18,1],[31,1],[31,1],[31,1],[31,1],[41,3],[41,1],[41,0],[21,2],[21,2],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,3],[21,1],[21,1],[21,1],[21,1],[21,1],[21,1],[21,1],[21,4],[21,3],[38,2],[38,2],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,3],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,1],[38,4],[38,3]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -275,7 +275,7 @@ case 8:
 			
 	
 break;
-case 9: case 31:
+case 9: case 43:
 
 			var nuevo = new Nodo($$[$0]);
 			contador = contador + 1;
@@ -287,7 +287,7 @@ case 9: case 31:
 			this.$ = nuevo;
 	
 break;
-case 10: case 32:
+case 10: case 44:
 
 			var nuevo = new Nodo($$[$0]);
 			contador = contador + 1;
@@ -299,7 +299,7 @@ case 10: case 32:
 			this.$ = nuevo;
 	
 break;
-case 11: case 33:
+case 11: case 45:
 
 			var nuevo = new Nodo($$[$0]);
 			contador = contador + 1;
@@ -311,7 +311,7 @@ case 11: case 33:
 			this.$ = nuevo;
 	
 break;
-case 12: case 34:
+case 12: case 46:
 
 			var nuevo = new Nodo($$[$0]);
 			contador = contador + 1;
@@ -660,6 +660,333 @@ case 25:
 break;
 case 26:
 
+		//IFELSEIFELSE
+		//if muchs if elses
+		Entorno1.direccionIF = "";
+		var nuevo = new IFELSEIFELSE("IF");
+		nuevo.TipoDato = $$[$0-8];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		nuevo.Hijos[0] = $$[$0-3];
+		nuevo.Hijos[1] = $$[$0-1];
+		nuevo.Hijos[2] = $$[$0-6];
+		nuevo.Hijos[3] = $$[$0];
+
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-6].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-3].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3); 
+
+		this.$ = nuevo.Ejecutar(Entorno1);
+
+	
+break;
+case 27:
+
+		//if muchs if elses
+		Entorno1.direccionIF = "";
+		var nuevo = new IfElseIF("IF");
+		nuevo.TipoDato = $$[$0-7];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		nuevo.Hijos[0] = $$[$0-2];
+		nuevo.Hijos[1] = $$[$0];
+		nuevo.Hijos[2] = $$[$0-5];
+
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-5].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-2].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+				var Conexion3 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+		this.$ = nuevo.Ejecutar(Entorno1);
+	
+break;
+case 28:
+
+		Entorno1.direccionIF = "";
+		var nuevo = new IFELSE("IF");
+		nuevo.TipoDato = $$[$0-7];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $$[$0-5];
+		nuevo.Hijos[1] = $$[$0-2];
+		//nuevo.Hijos[1].ListaSentencias = $$[$0-2].ListaSentencias;
+		nuevo.Hijos[2] = $$[$0];
+		nuevo.Hijos[2].ListaSentencias = $$[$0].ListaSentencias;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-5].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-2].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xXY = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xXY);
+
+		this.$ = nuevo.Ejecutar(Entorno1);
+	
+break;
+case 29:
+
+		var nuevo = new EL_IF("IF");
+		nuevo.TipoDato = $$[$0-6];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $$[$0-4];
+		nuevo.Hijos[1] = $$[$0-1];
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-4].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		this.$ = nuevo.Ejecutar(Entorno1);
+
+	
+break;
+case 30:
+
+		var nuevo = new EL_WHILE("WHILE");
+		nuevo.TipoDato = $$[$0-6];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $$[$0-4];
+		nuevo.Hijos[1] = $$[$0-1];
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-4].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		this.$ = nuevo.Ejecutar(Entorno1);
+	
+break;
+case 31:
+
+		Entorno1.direccionIF += "##ELSE\n";
+		var nuevo = new ELSE("IF");
+		nuevo.TipoDato = $$[$0-3];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $$[$0-1];
+		nuevo.ListaSentencias = $$[$0-1].ListaSentencias;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "ELSE" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		
+
+		this.$ = nuevo;
+	
+break;
+case 32:
+
+			var nuevo = new Nodo("ELSE_IF");
+			var Hijo2 = new Nodo("Nodo");
+			Hijo2.ListaSentencias = $$[$0-1].ListaSentencias;
+			nuevo.Hijos[0] = $$[$0-4];
+			nuevo.Hijos[1] = Hijo2;
+
+			var nuevo2 = new Nodo("ELSE_IF");
+			nuevo2.ListaSentencias = $$[$0-8].ListaSentencias;
+			nuevo2.ListaSentencias.push(nuevo);
+
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "ELSE IF" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-8].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-4].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+			this.$ = nuevo2;	
+		
+break;
+case 33:
+
+		var nuevo = new Nodo("ELSE_IF");
+		var Hijo2 = new Nodo("Nodo");
+		Hijo2.ListaSentencias = $$[$0-1].ListaSentencias;
+		nuevo.Hijos[0] = $$[$0-4];
+		nuevo.Hijos[1] = Hijo2;
+
+		var nuevo2 = new Nodo("ELSE_IF");
+		nuevo2.ListaSentencias.push(nuevo);
+
+		contador = contador + 1;
+		nuevo2.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "ELSE IF" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-4].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+		var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion3);
+
+		this.$ = nuevo2;	
+
+	
+break;
+case 34:
+
+		var nuevo = new Nodo("LS1");
+		nuevo.ListaSentencias = $$[$0-1].ListaSentencias;
+		nuevo.ListaSentencias.push($$[$0]);
+		contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var nuevo2 = new Nodo("SENTENCIAS");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+			//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
+        	//Entorno1.direccion = ""; 
+			nuevo.NumeroDeNodo = contador;
+			this.$ = nuevo;
+	
+break;
+case 35:
+
+		var nuevo = new Nodo("LS1");
+		nuevo.ListaSentencias.push($$[$0]);
+		contador = contador + 1;
+			nuevo.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIA" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+
+			var nuevo2 = new Nodo("SENTENCIA");
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo2 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "SENTENCIAS" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo2);
+
+
+			var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0].NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion1);
+
+			var Conexion2 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + nuevo.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion2);
+			nuevo.NumeroDeNodo = contador;
+			this.$ = nuevo;
+	
+break;
+case 36:
+
+		
+		console.log("PASO POR IMPRIMIR");
+	
+		var nuevo = new Imprimir2("Imprimir");
+		nuevo.Hijos[0] = $$[$0-2];
+		
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IMP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo1);	
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + "EXP" + "\"]" +"\n";									
+        GraficasDOT.anadir(Hijo2);	
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1);
+
+		var Conexion2 = "node_" + contador + "->" + "node_" + $$[$0-2].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion2);
+		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
+        //entorno.direccion = ""; 
+		this.$ = nuevo;
+	
+break;
+case 37:
+
+		var nuevo = new ModificarVariables2 ("VARIABLES");
+		var identificador = new Nodo($$[$0-3]);
+		nuevo.Hijos[0] = identificador;
+		nuevo.Hijos[1] = $$[$0-1];
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "MOD_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $$[$0-3] + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $$[$0-1].NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		this.$ = nuevo; //.Ejecutar(Entorno1);
+	
+break;
+case 38:
+
 			Entorno1.ListaParametrosFuncion.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
 			
@@ -682,7 +1009,7 @@ case 26:
 			this.$ = nuevo;
 	
 break;
-case 27:
+case 39:
 
 			Entorno1.ListaParametrosFuncion.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
@@ -703,7 +1030,7 @@ case 27:
 			this.$ = nuevo;
 	
 break;
-case 28: case 37:
+case 40: case 49:
 
 			var nuevo = new Nodo ("lista_Expresiones");
 			
@@ -719,7 +1046,7 @@ case 28: case 37:
 			this.$ = nuevo;
 	
 break;
-case 29:
+case 41:
 
 		Entorno1.VariableVariables.push($$[$0]);
 			var nuevo = new Nodo("ID_LISTA");
@@ -743,7 +1070,7 @@ case 29:
 			this.$ = nuevo ;
 	
 break;
-case 30:
+case 42:
 
 			Entorno1.VariableVariables.push($$[$0]);
 			var nuevo = new Nodo("ID_LISTA");
@@ -766,7 +1093,7 @@ case 30:
 
 	
 break;
-case 35:
+case 47:
 
 			Entorno1.ListaParametrosFuncion2.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
@@ -790,7 +1117,7 @@ case 35:
 			this.$ = nuevo;
 	
 break;
-case 36:
+case 48:
 
 			Entorno1.ListaParametrosFuncion2.push($$[$0]);
 			var nuevo = new Nodo("lista_Expresiones");
@@ -811,7 +1138,7 @@ case 36:
 			this.$ = nuevo;
 	
 break;
-case 38:
+case 50:
  
 										//this.$ = $$[$0] *-1;
 										//var nuevo = Nodo("Hola");
@@ -835,7 +1162,7 @@ case 38:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 39:
+case 51:
  
 										var nuevo = new Aritmetica("Aritmetica");
 										var operador = new Nodo($$[$0-1]);
@@ -848,7 +1175,7 @@ case 39:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 40:
+case 52:
  
 										//this.$ = $$[$0-2] + $$[$0];										
 										var nuevo = new Aritmetica("Aritmetica");
@@ -872,7 +1199,7 @@ case 40:
 										
 									
 break;
-case 41:
+case 53:
  
 										//this.$ = $$[$0-2] - $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -896,7 +1223,7 @@ case 41:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 42:
+case 54:
  
 										//this.$ = $$[$0-2] * $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -920,7 +1247,7 @@ case 42:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 43:
+case 55:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -943,7 +1270,7 @@ case 43:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 44:
+case 56:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -967,7 +1294,7 @@ case 44:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 45:
+case 57:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -992,7 +1319,7 @@ case 45:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 									
 break;
-case 46: case 47: case 48: case 51:
+case 58: case 59: case 60: case 63:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -1017,7 +1344,7 @@ case 46: case 47: case 48: case 51:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
 break;
-case 49: case 50:
+case 61: case 62:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -1043,7 +1370,7 @@ case 49: case 50:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 								
 break;
-case 52: case 53: case 54:
+case 64: case 65: case 66:
  
 										//this.$ = $$[$0-2] / $$[$0]; 
 										var nuevo = new Aritmetica("Aritmetica");
@@ -1068,7 +1395,7 @@ case 52: case 53: case 54:
 										this.$ =  nuevo.Ejecutar(Entorno1);
 										
 break;
-case 55:
+case 67: case 93:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -1090,7 +1417,7 @@ case 55:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 56:
+case 68: case 94:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Entero");
@@ -1111,7 +1438,7 @@ case 56:
 									//	console.log("Leimos un Entero->" + $$[$0]);
 									
 break;
-case 57:
+case 69: case 95:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Caracter");
@@ -1132,7 +1459,7 @@ case 57:
 										console.log("Leimos un Caracter->" + $$[$0]);
 									
 break;
-case 58: case 59:
+case 70: case 71: case 96: case 97:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Booleano");
@@ -1153,7 +1480,7 @@ case 58: case 59:
 										console.log("Leimos un Booleano->" + $$[$0]);
 									
 break;
-case 60:
+case 72: case 98:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("Cadena");
@@ -1175,7 +1502,7 @@ case 60:
 										
 									
 break;
-case 61:
+case 73: case 99:
  
 										//this.$ = Number($$[$0]); 
 										var nuevo = new Nodo("ID");
@@ -1197,7 +1524,7 @@ case 61:
 										
 									
 break;
-case 62:
+case 74: case 100:
 
 											var nuevo = new Nodo("FuncionRetornoXD");
 											var nuevovalor = new Nodo($$[$0-3]);
@@ -1224,7 +1551,7 @@ case 62:
 
 											this.$ = nuevo.Ejecutar(Entorno1);
 break;
-case 63:
+case 75: case 101:
  
 										this.$ = $$[$0-1];  
 
@@ -1233,10 +1560,267 @@ case 63:
 										//console.log("DUA LIPA");
 									
 break;
+case 76:
+ 
+										//this.$ = $$[$0] *-1;
+										//var nuevo = Nodo("Hola");
+										//this.$ = nuevo;
+										//console.log("DUA LIPA");
+										//this.$ = $$[$0-1] * $$[$01]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo("*");
+
+										var nuevo2 = new Nodo("Entero");
+										var nuevovalor2 = new Nodo("-1");
+										nuevo2.Hijos[0] = nuevovalor2;
+										nuevo2.TipoDato = "Entero";
+										nuevo2.CadenaDe3D = "-1";
+
+										nuevo.Hijos[0] = $$[$0];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] =  nuevo2;
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 77:
+ 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+										nuevo.TipoDato = "Booleano";
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 78:
+ 
+										//this.$ = $$[$0-2] + $$[$0];										
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+										
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										this.$ =  nuevo.Ejecutar(Entorno1);
+										
+									
+break;
+case 79:
+ 
+										//this.$ = $$[$0-2] - $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 80:
+ 
+										//this.$ = $$[$0-2] * $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 81:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 82:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 83:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+									
+break;
+case 84: case 85: case 86: case 89:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+								
+break;
+case 87: case 88:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+								
+break;
+case 90: case 91: case 92:
+ 
+										//this.$ = $$[$0-2] / $$[$0]; 
+										var nuevo = new Aritmetica2("Aritmetica2");
+										var operador = new Nodo($$[$0-1]);
+										nuevo.Hijos[0] = $$[$0-2];
+										nuevo.Hijos[1] = operador;
+										nuevo.Hijos[2] = $$[$0];
+
+										contador = contador + 1;
+										nuevo.NumeroDeNodo = contador;
+										var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + $$[$0-1] + "\"]" +"\n";									
+										GraficasDOT.anadir(Hijo1);	
+
+										var Conexion1 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0-2].NumeroDeNodo + "\n";
+										var Conexion2 = "node_"+ nuevo.NumeroDeNodo + "->" + "node_"+ $$[$0].NumeroDeNodo +"\n";
+										GraficasDOT.anadir(Conexion1);	
+										GraficasDOT.anadir(Conexion2);	
+
+										nuevo.linea = this._$.first_line;
+										nuevo.columna = this._$.first_column;
+
+										this.$ =  nuevo.Ejecutar(Entorno1);
+										
+break;
 }
 },
-table: [{2:[1,4],3:1,4:2,8:3,9:5,10:$V0,17:6,22:$V1,23:$V2,24:$V3,25:$V4,26:$V5},{1:[3]},{5:[1,13],8:14,9:5,10:$V0,17:6,22:$V1,23:$V2,24:$V3,25:$V4,26:$V5},o($V6,[2,5]),o($V6,[2,6]),{10:[1,15]},{10:$V7,18:16},{10:[2,13]},{10:[2,14]},{10:[2,9]},{10:[2,10]},{10:[2,11]},{10:[2,12]},{1:[2,1]},o($V6,[2,4]),{10:[1,18]},{19:[1,19],27:$V8},o($V9,[2,30]),{11:[1,21]},{20:[1,22]},{10:[1,23]},o($Va,[2,17],{12:24,10:[1,25]}),{10:$Vb,11:$Vc,21:26,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($V9,[2,29]),{13:[1,37],27:[1,38]},{10:[1,39]},o($V6,$Vl,{6:40,7:$Vm,34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),{10:$Vb,11:$Vc,21:57,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:58,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($VC,[2,55]),o($VC,[2,56]),o($VC,[2,57]),o($VC,[2,58]),o($VC,[2,59]),o($VC,[2,60]),o($VC,[2,61],{11:[1,59]}),{10:$Vb,11:$Vc,21:60,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{14:[1,61]},{10:[1,62]},o($Va,[2,16]),o($V6,[2,8]),{10:$Vb,11:$Vc,21:63,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:64,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:65,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:66,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:67,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:68,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:69,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:70,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:71,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:72,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:73,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:74,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:75,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:76,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:$Vb,11:$Vc,21:77,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o([5,10,16,22,23,24,25,26,29,32],[2,2]),o($VC,[2,38]),o($VC,[2,39]),o($Va,[2,37],{33:78,21:79,10:$Vb,11:$Vc,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk}),{13:[1,80],34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB},{10:$VD,15:81,22:$VE,23:$VF,24:$VG,28:82,29:$VH,31:85,32:$VI},{10:[1,90]},o($VJ,[2,40],{37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VJ,[2,41],{37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VK,[2,42],{39:$Vr}),o($VK,[2,43],{39:$Vr}),o($VC,[2,44]),o($VK,[2,45],{39:$Vr}),o($VL,[2,46],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VL,[2,47],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VL,[2,48],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VL,[2,49],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs}),o($VM,[2,50],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,48:$VA,49:$VB}),o($VM,[2,51],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,48:$VA,49:$VB}),o($VM,[2,52],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,48:$VA,49:$VB}),o($VN,[2,53],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw}),o($VN,[2,54],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw}),{13:[1,91],27:[1,92]},o($Va,[2,36],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),o($VC,[2,63]),{10:$VD,16:[1,93],22:$VE,23:$VF,24:$VG,28:94,29:$VH,31:85,32:$VI},o($VO,[2,19]),{11:[1,95]},{10:[2,34],11:[1,96],20:[1,97]},{10:$V7,18:98},{10:$Vb,11:$Vc,21:99,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},{10:[2,31]},{10:[2,32]},{10:[2,33]},o($Va,[2,15]),o($VC,[2,62]),{10:$Vb,11:$Vc,21:100,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($V6,[2,7]),o($VO,[2,18]),{10:$Vb,11:$Vc,21:101,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($Va,[2,28],{30:102,21:103,10:$Vb,11:$Vc,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk}),{10:$Vb,11:$Vc,21:104,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($VO,$Vl,{6:106,7:$Vm,19:[1,105],27:$V8}),o($VO,$Vl,{6:107,7:$Vm,34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),o($Va,[2,35],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),{13:[1,108],34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB},{13:[1,109],27:[1,110]},o($Va,[2,27],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),o($VO,$Vl,{6:111,7:$Vm,34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),{20:[1,112]},o($VO,[2,23]),o($VO,[2,25]),o($VO,$Vl,{6:113,7:$Vm}),o($VO,$Vl,{6:114,7:$Vm}),{10:$Vb,11:$Vc,21:115,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($VO,[2,24]),{10:$Vb,11:$Vc,21:116,34:$Vd,35:$Ve,50:$Vf,51:$Vg,52:$Vh,53:$Vi,54:$Vj,55:$Vk},o($VO,[2,20]),o($VO,[2,21]),o($Va,[2,26],{34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),o($VO,$Vl,{6:117,7:$Vm,34:$Vn,36:$Vo,37:$Vp,38:$Vq,39:$Vr,40:$Vs,41:$Vt,42:$Vu,43:$Vv,44:$Vw,45:$Vx,46:$Vy,47:$Vz,48:$VA,49:$VB}),o($VO,[2,22])],
-defaultActions: {7:[2,13],8:[2,14],9:[2,9],10:[2,10],11:[2,11],12:[2,12],13:[2,1],87:[2,31],88:[2,32],89:[2,33]},
+table: [{2:[1,4],3:1,4:2,8:3,9:5,10:$V0,17:6,22:$V1,23:$V2,24:$V3,25:$V4,26:$V5},{1:[3]},{5:[1,13],8:14,9:5,10:$V0,17:6,22:$V1,23:$V2,24:$V3,25:$V4,26:$V5},o($V6,[2,5]),o($V6,[2,6]),{10:[1,15]},{10:$V7,18:16},{10:[2,13]},{10:[2,14]},{10:[2,9]},{10:[2,10]},{10:[2,11]},{10:[2,12]},{1:[2,1]},o($V6,[2,4]),{10:[1,18]},{19:[1,19],27:$V8},o($V9,[2,42]),{11:[1,21]},{20:[1,22]},{10:[1,23]},o($Va,[2,17],{12:24,10:[1,25]}),{10:$Vb,11:$Vc,21:26,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($V9,[2,41]),{13:[1,37],27:[1,38]},{10:[1,39]},o($V6,$Vl,{6:40,7:$Vm,42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),{10:$Vb,11:$Vc,21:57,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:58,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($VC,[2,67]),o($VC,[2,68]),o($VC,[2,69]),o($VC,[2,70]),o($VC,[2,71]),o($VC,[2,72]),o($VC,[2,73],{11:[1,59]}),{10:$Vb,11:$Vc,21:60,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{14:[1,61]},{10:[1,62]},o($Va,[2,16]),o($V6,[2,8]),{10:$Vb,11:$Vc,21:63,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:64,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:65,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:66,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:67,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:68,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:69,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:70,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:71,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:72,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:73,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:74,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:75,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:76,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vb,11:$Vc,21:77,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o([5,10,16,22,23,24,25,26,29,32,33,37],[2,2]),o($VC,[2,50]),o($VC,[2,51]),o($Va,[2,49],{41:78,21:79,10:$Vb,11:$Vc,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk}),{13:[1,80],42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB},{10:$VD,15:81,22:$VE,23:$VF,24:$VG,28:82,29:$VH,31:85,32:$VI,33:$VJ,37:$VK},{10:[1,92]},o($VL,[2,52],{45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VL,[2,53],{45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VM,[2,54],{47:$Vr}),o($VM,[2,55],{47:$Vr}),o($VC,[2,56]),o($VM,[2,57],{47:$Vr}),o($VN,[2,58],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VN,[2,59],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VN,[2,60],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VN,[2,61],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs}),o($VO,[2,62],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,56:$VA,57:$VB}),o($VO,[2,63],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,56:$VA,57:$VB}),o($VO,[2,64],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,56:$VA,57:$VB}),o($VP,[2,65],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw}),o($VP,[2,66],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw}),{13:[1,93],27:[1,94]},o($Va,[2,48],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),o($VC,[2,75]),{10:$VD,16:[1,95],22:$VE,23:$VF,24:$VG,28:96,29:$VH,31:85,32:$VI,33:$VJ,37:$VK},o($VQ,[2,19]),{11:[1,97]},{10:[2,46],11:[1,98],20:[1,99]},{10:$V7,18:100},{10:$Vb,11:$Vc,21:101,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{11:[1,102]},{11:[1,103]},{10:[2,43]},{10:[2,44]},{10:[2,45]},o($Va,[2,15]),o($VC,[2,74]),{10:$Vb,11:$Vc,21:104,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($V6,[2,7]),o($VQ,[2,18]),{10:$Vb,11:$Vc,21:105,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($Va,[2,40],{30:106,21:107,10:$Vb,11:$Vc,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk}),{10:$Vb,11:$Vc,21:108,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($VQ,$Vl,{6:110,7:$Vm,19:[1,109],27:$V8}),o($VQ,$Vl,{6:111,7:$Vm,42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),{10:$Vb,11:$Vc,21:112,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$VR,11:$VS,38:113,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},o($Va,[2,47],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),{13:[1,124],42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB},{13:[1,125],27:[1,126]},o($Va,[2,39],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),o($VQ,$Vl,{6:127,7:$Vm,42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),{20:[1,128]},o($VQ,[2,23]),o($VQ,[2,25]),{13:[1,129],42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB},{13:[1,130],42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,53:$V91,54:$Va1,55:$Vb1,56:$Vc1,57:$Vd1},{10:$VR,11:$VS,38:146,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:147,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},o($Ve1,[2,93]),o($Ve1,[2,94]),o($Ve1,[2,95]),o($Ve1,[2,96]),o($Ve1,[2,97]),o($Ve1,[2,98]),o($Ve1,[2,99],{11:[1,148]}),{10:$VR,11:$VS,38:149,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},o($VQ,$Vl,{6:150,7:$Vm}),o($VQ,$Vl,{6:151,7:$Vm}),{10:$Vb,11:$Vc,21:152,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},o($VQ,[2,24]),{10:$Vb,11:$Vc,21:153,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{14:[1,154]},{14:[1,155]},{10:$VR,11:$VS,38:156,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:157,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:158,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:159,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:160,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:161,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:162,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:163,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:164,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:165,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:166,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:167,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:168,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:169,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:170,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},o($Ve1,[2,76]),o($Ve1,[2,77]),{64:[1,171]},{13:[1,172],42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,53:$V91,54:$Va1,55:$Vb1,56:$Vc1,57:$Vd1},o($VQ,[2,20]),o($VQ,[2,21]),o($Va,[2,38],{42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),o($VQ,$Vl,{6:173,7:$Vm,42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB}),{10:$Vf1,29:$Vg1,34:174,40:175},{10:$Vf1,29:$Vg1,34:178,40:175},o($Vh1,[2,78],{45:$V11,46:$V21,47:$V31,48:$V41}),o($Vh1,[2,79],{45:$V11,46:$V21,47:$V31,48:$V41}),o($Vi1,[2,80],{47:$V31}),o($Vi1,[2,81],{47:$V31}),o($Ve1,[2,82]),o($Vi1,[2,83],{47:$V31}),o($Vj1,[2,84],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41}),o($Vj1,[2,85],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41}),o($Vj1,[2,86],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41}),o($Vj1,[2,87],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41}),o($Vk1,[2,88],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,56:$Vc1,57:$Vd1}),o($Vk1,[2,89],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,56:$Vc1,57:$Vd1}),o($Vk1,[2,90],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,56:$Vc1,57:$Vd1}),o($Vl1,[2,91],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81}),o($Vl1,[2,92],{42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81}),{13:[1,179]},o($Ve1,[2,101]),o($VQ,[2,22]),{10:$Vf1,16:[1,180],29:$Vg1,40:181},o($Vm1,[2,35]),{11:[1,182]},{20:[1,183]},{10:$Vf1,16:[1,184],29:$Vg1,40:181},o($Ve1,[2,100]),o($VQ,[2,29],{35:185,36:186,39:[1,187]}),o($Vm1,[2,34]),{10:$VR,11:$VS,38:188,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},{10:$VR,11:$VS,38:189,42:$VT,43:$VU,58:$VV,59:$VW,60:$VX,61:$VY,62:$VZ,63:$V_},o($VQ,[2,30]),o($VQ,[2,27],{36:190,39:[1,191]}),o($VQ,[2,28]),{14:$Vn1,33:[1,192]},{13:[1,194],42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,53:$V91,54:$Va1,55:$Vb1,56:$Vc1,57:$Vd1},o($Vm1,$Vl,{6:195,7:$Vm,42:$V$,44:$V01,45:$V11,46:$V21,47:$V31,48:$V41,49:$V51,50:$V61,51:$V71,52:$V81,53:$V91,54:$Va1,55:$Vb1,56:$Vc1,57:$Vd1}),o($VQ,[2,26]),{14:$Vn1,33:[1,196]},{11:[1,197]},{10:$Vf1,29:$Vg1,34:198,40:175},o($Vm1,$Vl,{6:199,7:$Vm}),o($Vm1,[2,37]),{11:[1,200]},{10:$Vb,11:$Vc,21:201,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{10:$Vf1,16:[1,202],29:$Vg1,40:181},o($Vm1,[2,36]),{10:$Vb,11:$Vc,21:203,42:$Vd,43:$Ve,58:$Vf,59:$Vg,60:$Vh,61:$Vi,62:$Vj,63:$Vk},{13:[1,204],42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB},o($VQ,[2,31]),{13:[1,205],42:$Vn,44:$Vo,45:$Vp,46:$Vq,47:$Vr,48:$Vs,49:$Vt,50:$Vu,51:$Vv,52:$Vw,53:$Vx,54:$Vy,55:$Vz,56:$VA,57:$VB},{14:[1,206]},{14:[1,207]},{10:$Vf1,29:$Vg1,34:208,40:175},{10:$Vf1,29:$Vg1,34:209,40:175},{10:$Vf1,16:[1,210],29:$Vg1,40:181},{10:$Vf1,16:[1,211],29:$Vg1,40:181},o($Vo1,[2,33]),o($Vo1,[2,32])],
+defaultActions: {7:[2,13],8:[2,14],9:[2,9],10:[2,10],11:[2,11],12:[2,12],13:[2,1],89:[2,43],90:[2,44],91:[2,45]},
 parseError: function parseError (str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -1842,41 +2426,41 @@ case 9:return 16;
 break;
 case 10:return 27;
 break;
-case 11:return 36;
+case 11:return 44;
 break;
-case 12:return 34;
+case 12:return 42;
 break;
-case 13:return 37;
+case 13:return 45;
 break;
-case 14:return 38;
+case 14:return 46;
 break;
-case 15:return 39;
+case 15:return 47;
 break;
-case 16:return 40;
+case 16:return 48;
 break;
-case 17:return 44;
+case 17:return 52;
 break;
-case 18:return 43;
+case 18:return 51;
 break;
-case 19:return 41;
+case 19:return 49;
 break;
-case 20:return 42;
+case 20:return 50;
 break;
-case 21:return 48;
+case 21:return 56;
 break;
-case 22:return 49;
+case 22:return 57;
 break;
-case 23:return 45;
+case 23:return 53;
 break;
-case 24:return 46;
+case 24:return 54;
 break;
-case 25:return 47;
+case 25:return 55;
 break;
-case 26:return 35;
+case 26:return 43;
 break;
-case 27:return 53;
+case 27:return 61;
 break;
-case 28:return 54;
+case 28:return 62;
 break;
 case 29:return 25;
 break;
@@ -1894,23 +2478,29 @@ case 35:return 19;
 break;
 case 36:return 20;
 break;
-case 37:
+case 37:return "ELIF";
 break;
-case 38:
+case 38:return "ELELSE";
 break;
-case 39:return 51;
+case 39:return "ELWHILE";
 break;
-case 40:return 50;
+case 40:
 break;
-case 41:return "CARACTER";
+case 41:
 break;
-case 42:return "CADENA";
+case 42:return 59;
 break;
-case 43:return "ID";
+case 43:return 58;
 break;
-case 44:return 5;
+case 44:return "CARACTER";
 break;
-case 45: 
+case 45:return "CADENA";
+break;
+case 46:return "ID";
+break;
+case 47:return 5;
+break;
+case 48: 
 					alert('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column);
        					console.error('Este es un error léxico: ' + yy_.yytext + ', en la linea: ' + yy_.yylloc.first_line + ', en la columna: ' + yy_.yylloc.first_column); 
 					Entorno1.LosErrores +="<tr>";
@@ -1923,8 +2513,8 @@ case 45:
 break;
 }
 },
-rules: [/^(?:\/\/.*)/i,/^(?:[\/][*][^*]*[*]+([^\/*][^*]*[*]+)*[\/])/i,/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:,)/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:private\b)/i,/^(?:var\b)/i,/^(?:const\b)/i,/^(?:global\b)/i,/^(?:return\b)/i,/^(?::)/i,/^(?:=)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:"([^\\\"]|\\"|\\t|\\n|\\r|\\)*")/i,/^(?:([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+)))/i,/^(?:$)/i,/^(?:.)/i],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45],"inclusive":true}}
+rules: [/^(?:\/\/.*)/i,/^(?:[\/][*][^*]*[*]+([^\/*][^*]*[*]+)*[\/])/i,/^(?:print\b)/i,/^(?:;)/i,/^(?:\()/i,/^(?:\))/i,/^(?:\[)/i,/^(?:\])/i,/^(?:\{)/i,/^(?:\})/i,/^(?:,)/i,/^(?:\+)/i,/^(?:-)/i,/^(?:\*)/i,/^(?:\/)/i,/^(?:\^\^)/i,/^(?:%)/i,/^(?:>=)/i,/^(?:<=)/i,/^(?:>)/i,/^(?:<)/i,/^(?:==)/i,/^(?:!=)/i,/^(?:&&)/i,/^(?:\|\|)/i,/^(?:\^)/i,/^(?:!)/i,/^(?:true\b)/i,/^(?:false\b)/i,/^(?:public\b)/i,/^(?:private\b)/i,/^(?:var\b)/i,/^(?:const\b)/i,/^(?:global\b)/i,/^(?:return\b)/i,/^(?::)/i,/^(?:=)/i,/^(?:if\b)/i,/^(?:else\b)/i,/^(?:while\b)/i,/^(?:[ \r\t]+)/i,/^(?:\n)/i,/^(?:[0-9]+(\.[0-9]+)\b)/i,/^(?:[0-9]+\b)/i,/^(?:('[a-zA-Z0-9_]'))/i,/^(?:"([^\\\"]|\\"|\\t|\\n|\\r|\\)*")/i,/^(?:([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+)))/i,/^(?:$)/i,/^(?:.)/i],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48],"inclusive":true}}
 });
 return lexer;
 })();

@@ -9,6 +9,7 @@ abstract class NodoAbstracto {
     public Hijos: Array<NodoAbstracto>;
     public NumeroDeNodo: number;
     public CadenaDot : string;
+    public ListaSentencias: Array<NodoAbstracto>;
     
     constructor(name : string){
         this.Nombre = name;
@@ -20,6 +21,7 @@ abstract class NodoAbstracto {
         this.CadenaDe3D = "";
         this.NumeroDeNodo = 0;
         this.CadenaDot = "";
+        this.ListaSentencias = new Array();
     }
     
    

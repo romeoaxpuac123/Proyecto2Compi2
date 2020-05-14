@@ -9,6 +9,7 @@ var NodoAbstracto = /** @class */ (function () {
         this.CadenaDe3D = "";
         this.NumeroDeNodo = 0;
         this.CadenaDot = "";
+        this.ListaSentencias = new Array();
     }
     return NodoAbstracto;
 }());
