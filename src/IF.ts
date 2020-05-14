@@ -63,9 +63,10 @@ class EL_IF extends NodoAbstracto{
             //
             for(var x = 0; x< this.Hijos[1].ListaSentencias.length;x++){
                 this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
             }
             //
-            entorno.direccion += entorno.direccionIF;
+            //entorno.direccion += entorno.direccionIF;
             entorno.direccionIF = "";
             entorno.direccion += "L" + Etiqueta1 + ":\n";
             //entorno.direccion = ""; 

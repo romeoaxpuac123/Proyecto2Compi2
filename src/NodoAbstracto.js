@@ -1,5 +1,6 @@
 var NodoAbstracto = /** @class */ (function () {
     function NodoAbstracto(name) {
+        this.MiCadena = "";
         this.Nombre = name;
         this.id = 0;
         this.linea = 0;

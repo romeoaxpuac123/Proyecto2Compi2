@@ -58,7 +58,7 @@ Aritmetica2(val : string){
             }
             if(don1 == "ERROR"){
                 alert('Este es un semantico: ' + this.Hijos[0].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                 entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[0].CadenaDe3D + "No Existe"  + " </td>";
@@ -76,7 +76,7 @@ Aritmetica2(val : string){
             }
             
             C3D1 = "t" + entorno.numero ;
-            entorno.direccionIF = entorno.direccionIF + "##ide2\n" + auxiliar ;
+            this.MiCadena = this.MiCadena + "##ide2\n" + auxiliar ;
             if(Tipo1.toUpperCase() == "INTEGER"){
                 Tipo1 = "Entero";
             }else if(Tipo1.toUpperCase() == "DOUBLE"){
@@ -128,7 +128,7 @@ Aritmetica2(val : string){
             }
             if(don2 == "ERROR"){
                 alert('Este es un semantico: ' + this.Hijos[2].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                 entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[2].CadenaDe3D + "No Existe"  + " </td>";
@@ -147,7 +147,7 @@ Aritmetica2(val : string){
 
             //var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3D2  + "];\n" ;
             C3D2 = "t" + entorno.numero ;
-            entorno.direccionIF = entorno.direccionIF + "##ide2\n" + auxiliar ;
+            this.MiCadena = this.MiCadena + "##ide2\n" + auxiliar ;
             if(Tipo2.toUpperCase() == "INTEGER"){
                 Tipo2 = "Entero";
             }else if(Tipo2.toUpperCase() == "DOUBLE"){
@@ -357,7 +357,7 @@ Aritmetica2(val : string){
                     var C3DFinal = C3D1 + " + "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break; 
                 } 
                 case "-": { 
@@ -365,7 +365,7 @@ Aritmetica2(val : string){
                     var C3DFinal = C3D1 + " - "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break; 
                 }
                 case "*": { 
@@ -373,7 +373,7 @@ Aritmetica2(val : string){
                     var C3DFinal = C3D1 + " * "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break; 
                 }
                 case "/": { 
@@ -382,7 +382,7 @@ Aritmetica2(val : string){
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Decimal";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break; 
                 }
                 case "%": { 
@@ -390,7 +390,7 @@ Aritmetica2(val : string){
                     var C3DFinal = C3D1 + " % "+ C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";"
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     //TipoFinal  = "Decimal";
                     break; 
                 }  
@@ -432,7 +432,7 @@ Aritmetica2(val : string){
                     var respuesta =  C3DFinal;
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     Total = Math.pow(+Valor1,+Valor2);
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break; 
                 }
                 case ">": { 
@@ -476,7 +476,7 @@ Aritmetica2(val : string){
                     respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                     respuesta = respuesta + "L" + Etiqueta5 + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                 } 
@@ -522,7 +522,7 @@ Aritmetica2(val : string){
                     //parte 4 = 
                     
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                 } 
@@ -568,7 +568,7 @@ Aritmetica2(val : string){
                     //parte 4 = 
                     
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                 }
@@ -614,7 +614,7 @@ Aritmetica2(val : string){
                     //parte 4 = 
                     
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                 } 
@@ -670,7 +670,7 @@ Aritmetica2(val : string){
                     //parte 4 = 
                     
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                 }
@@ -721,7 +721,7 @@ Aritmetica2(val : string){
                     //parte 4 = 
                     
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     TipoFinal  = "Booleano";
                     break; 
                     
@@ -818,7 +818,7 @@ Aritmetica2(val : string){
                 elid = 1;
                
                 //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";    
+                this.MiCadena = this.MiCadena  + respuesta + "\n";    
                 break;
                 }
                 case "==":{
@@ -912,7 +912,7 @@ Aritmetica2(val : string){
                     elid = 1;
                     Cadena3dxD = "t" + entorno.numero;
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                     
                 
@@ -1014,7 +1014,7 @@ Aritmetica2(val : string){
                     elid = 1;
                     Cadena3dxD = "t" + entorno.numero;
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                     
                 
@@ -1180,7 +1180,7 @@ Aritmetica2(val : string){
                
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
                 case "||":{
@@ -1336,7 +1336,7 @@ Aritmetica2(val : string){
                     respuesta = respuesta + "L" + (Etiqueta6) + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
                 case "^":{
@@ -1459,7 +1459,7 @@ Aritmetica2(val : string){
                     respuesta = respuesta + "L" + Etiqueta2 + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
                 case "!":{
@@ -1541,7 +1541,7 @@ Aritmetica2(val : string){
                     }
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
                 case "==":{
@@ -1710,7 +1710,7 @@ Aritmetica2(val : string){
                      //a comparar esa onda :( )
                    // document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
                 case "!=":{
@@ -1884,7 +1884,7 @@ Aritmetica2(val : string){
                      //a comparar esa onda :( )
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";
                     TipoFinal  = "Booleano";
-                    entorno.direccionIF = entorno.direccionIF  + respuesta + "\n";
+                    this.MiCadena = this.MiCadena  + respuesta + "\n";
                     break;
                 }
             }
@@ -1948,7 +1948,7 @@ Aritmetica2(val : string){
             
                 Total = "hola";
                 TipoFinal = "Cadena";
-                entorno.direccionIF = entorno.direccionIF  + respuesta + "\n"; 
+                this.MiCadena = this.MiCadena  + respuesta + "\n"; 
         }
         else if(TipoFinal == "DON" && Operador == "+"){
             EntroAUnaOperacion = "TRUE";
@@ -1985,14 +1985,14 @@ Aritmetica2(val : string){
             
                 Total = "hola";
                 TipoFinal = "Cadena";
-                entorno.direccionIF = entorno.direccionIF  + respuesta + "\n"; 
+                this.MiCadena = this.MiCadena  + respuesta + "\n"; 
         }
         console.log("RESULTADO FINAL:->" + Total);
         Total = 1;
 
         if(EntroAUnaOperacion == "FALSE"){
                 alert('Este es un semantico: ' + this.Hijos[2].CadenaDe3D + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                 entorno.LosErrores += "<td>" +  "Variable: "+ this.Hijos[2].CadenaDe3D + " y " + this.Hijos[2].CadenaDe3D + " Tipos no permitidos"  + " </td>";
@@ -2004,7 +2004,8 @@ Aritmetica2(val : string){
         var nuevo = new Nodo("Aritmetica");
         //nuevo.Nombre = "Aritmetica";
         var nuevovalor = new Nodo(Total.toString());
-		nuevo.Hijos[0] = nuevovalor;
+        nuevo.Hijos[0] = nuevovalor;
+        nuevo.MiCadena = this.Hijos[0].MiCadena + this.Hijos[2].MiCadena + this.MiCadena;
         nuevo.TipoDato = TipoFinal;
         nuevo.id = elid;
         nuevo.NumeroDeNodo = this.NumeroDeNodo;

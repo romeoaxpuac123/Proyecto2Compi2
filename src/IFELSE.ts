@@ -63,8 +63,9 @@ class IFELSE extends NodoAbstracto{
             //ejecutamos el primero hijo
             for(var x = 0; x< this.Hijos[1].ListaSentencias.length;x++){
                 this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
             }
-            entorno.direccion += entorno.direccionIF;
+            //entorno.direccion += entorno.direccionIF;
             entorno.direccion += "goto L" + Etiqueta2 + ";\n";
             entorno.direccion += "L" + Etiqueta1 + ":\n";
             entorno.direccionIF = "";
@@ -72,8 +73,9 @@ class IFELSE extends NodoAbstracto{
             for(var x = 0; x< this.Hijos[2].ListaSentencias.length;x++){
                 //alert("hola");
                 this.Hijos[2].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[2].ListaSentencias[x].MiCadena;
             }
-            entorno.direccion += entorno.direccionIF;
+            //entorno.direccion += entorno.direccionIF;
             entorno.direccion += "L" + Etiqueta2 + ":\n";
             entorno.direccionIF = "";
 

@@ -60,6 +60,7 @@
 "if"				return "ELIF";
 "else"				return "ELELSE";
 "while"				return "ELWHILE";
+"do"				return "ELDO";
 
 
 
@@ -75,7 +76,7 @@
 ("'"[a-zA-Z0-9_]"'")	return "CARACTER";
 //("\""([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
 \"([^\\\"]|\\\"|\\t|\\n|\\r|\\)*\"				return "CADENA";
-([a-zA-Z_]+([a-zA-Z0-9_ñÑ]+))	return "ID";
+([a-zA-Z])[a-zA-Z0-9_]*	return "ID";
 
 <<EOF>>				return 'EOF';
 
@@ -780,7 +781,7 @@ instruccion2
 		nuevo.Hijos[1] = $6;
 		//nuevo.Hijos[1].ListaSentencias = $6.ListaSentencias;
 		nuevo.Hijos[2] = $8;
-		nuevo.Hijos[2].ListaSentencias = $8.ListaSentencias;
+		//nuevo.Hijos[2].ListaSentencias = $8.ListaSentencias;
 		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
 		GraficasDOT.anadir(Hijo1);
 
@@ -827,7 +828,7 @@ instruccion2
 		nuevo.Hijos[0] = $3;
 		nuevo.Hijos[1] = $6;
 
-		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IF" + "\"]" +"\n";									
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "WHILE" + "\"]" +"\n";									
 		GraficasDOT.anadir(Hijo1);
 
 		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
@@ -835,6 +836,19 @@ instruccion2
 
 		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $6.NumeroDeNodo + "\n";
 		GraficasDOT.anadir(Conexion1xX);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ELDO LLAVIZQ lista_instrucciones3 LLAVDER ELWHILE PARIZQ expresion2 PARDER PTyCOMA{
+		var nuevo = new DO_WHILE("WHILE");
+		nuevo.TipoDato = $1;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $3;
+		nuevo.Hijos[1] = $7;
+		
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
@@ -862,13 +876,13 @@ EL_COSOELSE
 	};
 
 LISTA_ELSE
-	: LISTA_ELSE ELELSE ELIF PARIZQ expresion PARDER LLAVIZQ lista_instrucciones3 LLAVDER{
+	: LISTA_ELSE ELELSE ELIF PARIZQ expresion2 PARDER LLAVIZQ lista_instrucciones3 LLAVDER{
 			var nuevo = new Nodo("ELSE_IF");
-			var Hijo2 = new Nodo("Nodo");
-			Hijo2.ListaSentencias = $8.ListaSentencias;
+			//var Hijo2 = new Nodo("Nodo");
+			//Hijo2.ListaSentencias = $8.ListaSentencias;
 			nuevo.Hijos[0] = $5;
-			nuevo.Hijos[1] = Hijo2;
-
+			nuevo.Hijos[1] = $8;
+			nuevo.MiCadena = $5.MiCadena + $8.MiCadena;
 			var nuevo2 = new Nodo("ELSE_IF");
 			nuevo2.ListaSentencias = $1.ListaSentencias;
 			nuevo2.ListaSentencias.push(nuevo);
@@ -888,12 +902,13 @@ LISTA_ELSE
 			GraficasDOT.anadir(Conexion3);
 			$$ = nuevo2;	
 		}
-	| ELELSE ELIF PARIZQ expresion PARDER LLAVIZQ lista_instrucciones3 LLAVDER{
+	| ELELSE ELIF PARIZQ expresion2 PARDER LLAVIZQ lista_instrucciones3 LLAVDER{
 		var nuevo = new Nodo("ELSE_IF");
-		var Hijo2 = new Nodo("Nodo");
-		Hijo2.ListaSentencias = $7.ListaSentencias;
+		//var Hijo2 = new Nodo("Nodo");
+		nuevo.MiCadena = $4.MiCadena + $7.MiCadena;
+		//Hijo2.ListaSentencias = $7.ListaSentencias;
 		nuevo.Hijos[0] = $4;
-		nuevo.Hijos[1] = Hijo2;
+		nuevo.Hijos[1] = $7;
 
 		var nuevo2 = new Nodo("ELSE_IF");
 		nuevo2.ListaSentencias.push(nuevo);
@@ -974,6 +989,7 @@ instruccion3
 		console.log("PASO POR IMPRIMIR");
 	
 		var nuevo = new Imprimir2("Imprimir");
+		nuevo.MiCadena = $3.MiCadena;
 		nuevo.Hijos[0] = $3;
 		
 		contador = contador + 1;
@@ -996,6 +1012,7 @@ instruccion3
 	}
 	| ID IGUAL expresion2 PTCOMA {
 		var nuevo = new ModificarVariables2 ("VARIABLES");
+		nuevo.MiCadena = $3.MiCadena;
 		var identificador = new Nodo($1);
 		nuevo.Hijos[0] = identificador;
 		nuevo.Hijos[1] = $3;

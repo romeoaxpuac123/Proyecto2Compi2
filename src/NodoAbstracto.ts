@@ -10,8 +10,10 @@ abstract class NodoAbstracto {
     public NumeroDeNodo: number;
     public CadenaDot : string;
     public ListaSentencias: Array<NodoAbstracto>;
+    public MiCadena: string;
     
     constructor(name : string){
+        this.MiCadena = "";
         this.Nombre = name;
         this.id=0;
         this.linea=0;

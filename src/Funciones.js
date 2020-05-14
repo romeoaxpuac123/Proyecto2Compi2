@@ -28,7 +28,7 @@ var Funciones = /** @class */ (function (_super) {
         console.log("-----------ENTRO A FUNCIONES------");
         var nombre = this.Hijos[0].Nombre;
         var TParametros = entorno.Variable.length;
-        var totaltmanio = entorno.VariableVariablesFUNCION.length + entorno.Variable.length;
+        var totaltmanio = entorno.VariableVariablesFUNCION.length + entorno.VariableVariables.length;
         console.log("La funcion tiene nombre de:->" + nombre);
         //VERIFICANDO SI EL RETURN ES IGUAL A LA FUNCION Xd xd
         for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {

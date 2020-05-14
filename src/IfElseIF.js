@@ -81,19 +81,26 @@ var IfElseIF = /** @class */ (function (_super) {
             //
             for (var x = 0; x < this.Hijos[0].ListaSentencias.length; x++) {
                 this.Hijos[0].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
             }
             //
-            entorno.direccion += entorno.direccionIF;
+            //entorno.direccion += entorno.direccionIF;
             entorno.direccion += "goto L" + Etiqueta2 + ";\n";
             entorno.direccion += "L" + Etiqueta1 + ":\n";
             entorno.direccionIF = "";
             //EMPEZAMOS CON LA TRADUCCION xd DE LOS ELSE IF
             for (var x = 0; x < this.Hijos[1].ListaSentencias.length; x++) {
+                entorno.direccion += "##traduciendo EL ELSEIFxd\n";
+                this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+                alert(this.Hijos[1].ListaSentencias[x].MiCadena);
+                //cambiando el coso XD
                 TipoExpresion = this.Hijos[1].ListaSentencias[x].Hijos[0].TipoDato;
                 Cad3dExpresion = this.Hijos[1].ListaSentencias[x].Hijos[0].CadenaDe3D;
                 if (TipoExpresion.toUpperCase() == "BOOLEAN" || TipoExpresion.toUpperCase() == "BOOLEANO") {
-                    entorno.direccion += "##traduciendo EL ELSEIF\n";
-                    if (TipoExpresion.toUpperCase() == "BOOLEANO") {
+                    entorno.direccion += "##traduciendo EL ELSEIFxxd\n";
+                    //alert(TipoExpresion);
+                    if (this.Hijos[1].ListaSentencias[x].Hijos[0].Nombre == "BOOLEANO") {
                         if (Cad3dExpresion.toUpperCase() == "FALSE") {
                             Cad3dExpresion = "0";
                         }
@@ -150,12 +157,88 @@ var IfElseIF = /** @class */ (function (_super) {
                 for (var Y = 0; Y < this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias.length; Y++) {
                     //alert("hola");
                     this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].Ejecutar(entorno);
+                    entorno.direccion += this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].MiCadena;
+                    //entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+                }
+                // entorno.direccionIF = "";
+                entorno.direccion += "goto L" + Etiqueta2 + ";\n";
+                entorno.direccion += "L" + Etiqueta1x + ":\n";
+                entorno.direccion += "##fintraduciendo EL ELSEIFxd\n";
+            }
+            /*
+            for(var x = 0; x < this.Hijos[1].ListaSentencias.length;x++){
+                this.Hijos[1].ListaSentencias[x].Hijos[0].Ejecutar(entorno);
+                TipoExpresion = this.Hijos[1].ListaSentencias[x].Hijos[0].TipoDato;
+                Cad3dExpresion  = this.Hijos[1].ListaSentencias[x].Hijos[0].CadenaDe3D;
+                if(TipoExpresion.toUpperCase() == "BOOLEAN" || TipoExpresion.toUpperCase() == "BOOLEANO"){
+                    entorno.direccion += "##traduciendo EL ELSEIFxd\n";
+                    if(TipoExpresion.toUpperCase() == "BOOLEANO"){
+                        if(Cad3dExpresion.toUpperCase() == "FALSE"){
+                            Cad3dExpresion = "0";
+                        }else{
+                            Cad3dExpresion = "1";
+                        }
+                    }else{
+                        
+                        entorno.etiquetas +=1;
+                        var Etiqueta1q = entorno.etiquetas;
+                        entorno.etiquetas +=1;
+                        var Etiqueta2q = entorno.etiquetas;
+                        entorno.numero += 1;
+                        entorno.direccion += "t" + entorno.numero + " = " + Cad3dExpresion + ";\n";
+                        var auxi = "t" + entorno.numero;
+                        entorno.numero += 1;
+                        entorno.direccion += "t" + entorno.numero + " = " + 0 + ";\n";
+                        var auxi2 = "t" + entorno.numero;
+                            entorno.numero += 1;
+                            entorno.direccion += "L" + Etiqueta1q + ":\n";
+                            entorno.direccion += "t" +  entorno.numero + " = Heap["+ auxi + "];\n";
+                            entorno.direccion +=  "if(t" + entorno.numero + " == -1 ) goto L" + Etiqueta2q + ";\n";
+                            entorno.direccion += auxi + " = " + auxi + " + 1;\n";
+                            entorno.direccion += auxi2 + " = " + auxi2 + " + 1;\n";
+                            entorno.direccion += "goto L" + Etiqueta1q + ";\n";
+                            
+                            entorno.direccion += "L" + Etiqueta2q + ":\n";
+                            entorno.etiquetas +=1;
+                            var Etiqueta3q = entorno.etiquetas;
+                            entorno.etiquetas +=1;
+                            var Etiqueta4q = entorno.etiquetas;
+                            entorno.direccion += "if(" + auxi2 + "== 5) goto L" + Etiqueta4q + ";\n";
+                            entorno.direccion += auxi2 + " = 1;\n";
+                            entorno.direccion += "goto L" + Etiqueta3q + ";\n";
+                            entorno.direccion += "L" + Etiqueta4q + ":\n";
+                            entorno.direccion += auxi2 + " = 0;\n";
+                            entorno.direccion += "L" + Etiqueta3q + ":\n";
+                            Cad3dExpresion  = auxi2;
+                    }
+                    
+                }else{
+                    alert('Este es un semantico: ' + "EXP incorrecta" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                    entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "EXP incorrecta en el if"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                }
+                
+                entorno.etiquetas +=1;
+                var Etiqueta1x = entorno.etiquetas;
+                //entorno.direccion += "##traduciendo if\n";
+                entorno.direccion += "if(" + Cad3dExpresion + " == 0) goto L" + Etiqueta1x + ";\n";
+                for(var Y = 0;Y< this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias.length;Y++){
+                    //alert("hola");
+                    this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].Ejecutar(entorno);
                     entorno.direccion += entorno.direccionIF;
                 }
                 entorno.direccionIF = "";
                 entorno.direccion += "goto L" + Etiqueta2 + ";\n";
-                entorno.direccion += "L" + Etiqueta1x + ":\n";
+                entorno.direccion +=  "L" + Etiqueta1x + ":\n";
+                
             }
+        */
+            entorno.direccion += "#FIN IF ESLSE\n";
             entorno.direccion += "L" + Etiqueta2 + ":\n";
             //entorno.direccion = ""; 
         }
@@ -169,17 +252,6 @@ var IfElseIF = /** @class */ (function (_super) {
             entorno.LosErrores += "<td>" + this.columna + "</td>";
             entorno.LosErrores += "</tr>";
         }
-        /*
-        for(var x = 0; x < this.Hijos[1].ListaSentencias.length;x++){
-            entorno.direccion += "##traduciendo EL ELSEIF\n";
-            for(var Y = 0;Y< this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias.length;Y++){
-                //alert("hola");
-                this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].Ejecutar(entorno);
-                entorno.direccion += entorno.direccionIF;
-            }
-            entorno.direccionIF = "";
-        }
-        */
         var nuevo = new Nodo("IF");
         nuevo.Hijos[0] = this.Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;

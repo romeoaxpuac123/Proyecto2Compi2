@@ -66,20 +66,27 @@ class IFELSEIFELSE extends NodoAbstracto{
             //
             for(var x = 0; x< this.Hijos[0].ListaSentencias.length;x++){
                 this.Hijos[0].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
             }
             
             //
-            entorno.direccion += entorno.direccionIF;
+            //entorno.direccion += entorno.direccionIF;
             entorno.direccion += "goto L" + Etiqueta2 + ";\n";
             entorno.direccion += "L" + Etiqueta1 + ":\n";
             entorno.direccionIF = "";
             //EMPEZAMOS CON LA TRADUCCION xd DE LOS ELSE IF
             for(var x = 0; x < this.Hijos[1].ListaSentencias.length;x++){
+                entorno.direccion += "##traduciendo EL ELSEIFxd\n";
+                this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+                //alert(this.Hijos[1].ListaSentencias[x].MiCadena);
+                //cambiando el coso XD
                 TipoExpresion = this.Hijos[1].ListaSentencias[x].Hijos[0].TipoDato;
                 Cad3dExpresion  = this.Hijos[1].ListaSentencias[x].Hijos[0].CadenaDe3D;
                 if(TipoExpresion.toUpperCase() == "BOOLEAN" || TipoExpresion.toUpperCase() == "BOOLEANO"){
-                    entorno.direccion += "##traduciendo EL ELSEIF\n";
-                    if(TipoExpresion.toUpperCase() == "BOOLEANO"){
+                    entorno.direccion += "##traduciendo EL ELSEIFxxd\n";
+                    //alert(TipoExpresion);
+                    if(this.Hijos[1].ListaSentencias[x].Hijos[0].Nombre == "BOOLEANO"){
                         if(Cad3dExpresion.toUpperCase() == "FALSE"){
                             Cad3dExpresion = "0";
                         }else{
@@ -129,7 +136,6 @@ class IFELSEIFELSE extends NodoAbstracto{
                     entorno.LosErrores += "<td>" + this.columna + "</td>";
                     entorno.LosErrores += "</tr>";
                 }
-                
                 entorno.etiquetas +=1;
                 var Etiqueta1x = entorno.etiquetas;
                 //entorno.direccion += "##traduciendo if\n";
@@ -137,26 +143,26 @@ class IFELSEIFELSE extends NodoAbstracto{
                 for(var Y = 0;Y< this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias.length;Y++){
                     //alert("hola");
                     this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].Ejecutar(entorno);
-                    entorno.direccion += entorno.direccionIF;
+                    entorno.direccion += this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].MiCadena;
+                    //entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
                 }
-                entorno.direccionIF = "";
+               // entorno.direccionIF = "";
                 entorno.direccion += "goto L" + Etiqueta2 + ";\n";
                 entorno.direccion +=  "L" + Etiqueta1x + ":\n";
-            }
+                
 
-            entorno.direccion += entorno.direccionIF;
-            //entorno.direccion += "goto L" + Etiqueta2 + ";\n";
-            //entorno.direccion += "L" + Etiqueta1 + ":\n";
-            entorno.direccionIF = "";
-            entorno.direccion += "##traduciendo if -else2\n";
+                entorno.direccion += "##fintraduciendo EL ELSEIFxd\n";
+            }
+           
+            
+            entorno.direccion += "#el ESLSE\n"
             for(var x = 0; x< this.Hijos[3].ListaSentencias.length;x++){
                 //alert("hola");
                 this.Hijos[3].ListaSentencias[x].Ejecutar(entorno);
+                entorno.direccion += this.Hijos[3].ListaSentencias[x].MiCadena;
             }
-            entorno.direccion += entorno.direccionIF;
-           // entorno.direccion += "L" + Etiqueta2 + ":\n";
-            entorno.direccionIF = "";
 
+            entorno.direccion += "#FIN IF ESLSE\n"
             entorno.direccion += "L" + Etiqueta2 + ":\n";
             //entorno.direccion = ""; 
             
@@ -172,17 +178,7 @@ class IFELSEIFELSE extends NodoAbstracto{
                 entorno.LosErrores += "</tr>";
         }
 
-        /*
-        for(var x = 0; x < this.Hijos[1].ListaSentencias.length;x++){
-            entorno.direccion += "##traduciendo EL ELSEIF\n";
-            for(var Y = 0;Y< this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias.length;Y++){
-                //alert("hola");
-                this.Hijos[1].ListaSentencias[x].Hijos[1].ListaSentencias[Y].Ejecutar(entorno);
-                entorno.direccion += entorno.direccionIF;
-            }
-            entorno.direccionIF = "";
-        }
-        */
+        
         var nuevo = new Nodo("IF");
         nuevo.Hijos[0] = this.Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;

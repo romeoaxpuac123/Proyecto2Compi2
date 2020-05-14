@@ -79,13 +79,13 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "Heap[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
             }
             else if (TipoAImprimir.toUpperCase() == "DOUBLE") {
@@ -95,7 +95,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "Heap[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else {
                     TipoAImprimir = "\"%d\", ";
@@ -103,18 +103,18 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
             }
             else if (TipoAImprimir.toUpperCase() == "CHAR") {
-                entorno.direccionIF = entorno.direccionIF + "##imprimiendo cahr\n";
+                this.MiCadena = this.MiCadena + "##imprimiendo cahr\n";
                 if (BanderaX == "true") {
                     TipoAImprimir = "\"%c\", ";
                     entorno.numero += 1;
                     var auxiliar = "t" + entorno.numero + " = " + "Heap[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else {
                     TipoAImprimir = "\"%c\", ";
@@ -122,7 +122,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
             }
             else if (TipoAImprimir.toUpperCase() == "BOOLEAN") {
@@ -163,7 +163,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                         ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2x + ";\n";
                         ResuladoSalida = ResuladoSalida + "L" + Etiqueta1x + ":\n";
                         //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                        entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                        this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                     }
                     else {
                         entorno.etiquetas += 1;
@@ -183,7 +183,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                         ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
                         ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
                         //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                        entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                        this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                     }
                 }
                 else {
@@ -223,7 +223,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                         ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2x + ";\n";
                         ResuladoSalida = ResuladoSalida + "L" + Etiqueta1x + ":\n";
                         //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                        entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                        this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                     }
                     else {
                         entorno.etiquetas += 1;
@@ -243,7 +243,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                         ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
                         ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
                         //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                        entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                        this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                     }
                 }
             }
@@ -266,7 +266,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
                     ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                 }
                 else {
                     entorno.etiquetas += 1;
@@ -286,7 +286,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
                     ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                 }
             }
             else {
@@ -297,7 +297,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     }
                 }
                 //entorno.numero += 1;
-                //entorno.direccionIF = entorno.direccionIF + "t" + entorno.numero + " = stack[" + C3dT + "];\n"; ;
+                //this.MiCadena = this.MiCadena + "t" + entorno.numero + " = stack[" + C3dT + "];\n"; ;
                 //C3dT = "t" + entorno.numero ;
                 if (TipoAImprimir.toUpperCase() == "INTEGER") {
                     TipoAImprimir = "\"%i\", ";
@@ -305,7 +305,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else if (TipoAImprimir.toUpperCase() == "DOUBLE") {
                     TipoAImprimir = "\"%d\", ";
@@ -313,7 +313,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else if (TipoAImprimir.toUpperCase() == "CHAR") {
                     TipoAImprimir = "\"%c\", ";
@@ -321,7 +321,7 @@ var Imprimir2 = /** @class */ (function (_super) {
                     var auxiliar = "t" + entorno.numero + " = " + "stack[" + C3dT + "]";
                     //TipoAImprimir = "\"%i\", ";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + auxiliar + ";\n" + "print( " + TipoAImprimir + "t" + entorno.numero + " );\n" + "print( \"%c\",10);" + "\n";
                 }
                 else if (TipoAImprimir.toUpperCase() == "BOOLEAN") {
                     entorno.etiquetas += 1;
@@ -329,35 +329,35 @@ var Imprimir2 = /** @class */ (function (_super) {
                     entorno.etiquetas += 1;
                     var Etiqueta2 = entorno.etiquetas;
                     entorno.numero += 1;
-                    entorno.direccionIF += "t" + entorno.numero + " = " + "stack[" + C3dT + "];\n";
+                    this.MiCadena += "t" + entorno.numero + " = " + "stack[" + C3dT + "];\n";
                     var el_aux = "t" + entorno.numero;
-                    entorno.direccionIF += "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
+                    this.MiCadena += "if(t" + (entorno.numero) + " == 1" + ") goto L" + Etiqueta1 + ";\n";
                     entorno.numero += 1;
-                    entorno.direccionIF += "t" + entorno.numero + " = H;\n";
+                    this.MiCadena += "t" + entorno.numero + " = H;\n";
                     //var C3D1 = "t" +  entorno.numero;
-                    entorno.direccionIF += "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
-                    entorno.direccionIF += "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
-                    entorno.direccionIF += "Heap[H] = -1;\nH = H + 1;\n";
+                    this.MiCadena += "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                    this.MiCadena += "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                    this.MiCadena += "Heap[H] = -1;\nH = H + 1;\n";
                     //parte 3
-                    entorno.direccionIF += "goto L" + Etiqueta2 + ";\n";
-                    entorno.direccionIF += "L" + Etiqueta1 + ":\n";
-                    entorno.direccionIF += "t" + entorno.numero + " = H;\n";
-                    entorno.direccionIF += "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
-                    entorno.direccionIF += "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
-                    entorno.direccionIF += "L" + Etiqueta2 + ":\n";
+                    this.MiCadena += "goto L" + Etiqueta2 + ";\n";
+                    this.MiCadena += "L" + Etiqueta1 + ":\n";
+                    this.MiCadena += "t" + entorno.numero + " = H;\n";
+                    this.MiCadena += "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                    this.MiCadena += "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                    this.MiCadena += "L" + Etiqueta2 + ":\n";
                     entorno.etiquetas += 1;
                     var Etiqueta1x = entorno.etiquetas;
                     entorno.etiquetas += 1;
                     var Etiqueta2x = entorno.etiquetas;
-                    entorno.direccionIF += "L" + Etiqueta2x + ":\n";
+                    this.MiCadena += "L" + Etiqueta2x + ":\n";
                     entorno.numero += 1;
-                    entorno.direccionIF += "t" + entorno.numero + " = Heap[t" + (entorno.numero - 1) + "];\n";
-                    entorno.direccionIF += "if( t" + entorno.numero + " ==  -1)" + " goto L" + Etiqueta1x + ";\n";
-                    entorno.direccionIF += "print( \"%c\",t" + entorno.numero + ");\n";
-                    entorno.direccionIF += "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
-                    entorno.direccionIF += "goto L" + Etiqueta2x + ";\n";
-                    entorno.direccionIF += "L" + Etiqueta1x + ":\n";
-                    entorno.direccionIF = entorno.direccionIF + "print( \"%c\",10);" + "\n";
+                    this.MiCadena += "t" + entorno.numero + " = Heap[t" + (entorno.numero - 1) + "];\n";
+                    this.MiCadena += "if( t" + entorno.numero + " ==  -1)" + " goto L" + Etiqueta1x + ";\n";
+                    this.MiCadena += "print( \"%c\",t" + entorno.numero + ");\n";
+                    this.MiCadena += "t" + (entorno.numero - 1) + " = t" + (entorno.numero - 1) + " + 1;\n";
+                    this.MiCadena += "goto L" + Etiqueta2x + ";\n";
+                    this.MiCadena += "L" + Etiqueta1x + ":\n";
+                    this.MiCadena = this.MiCadena + "print( \"%c\",10);" + "\n";
                 }
                 else if (TipoAImprimir.toUpperCase() == "STRING") {
                     entorno.etiquetas += 1;
@@ -377,38 +377,38 @@ var Imprimir2 = /** @class */ (function (_super) {
                     ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
                     ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-                    entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+                    this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
                 }
             }
         }
         else if (this.Hijos[0].TipoDato == "Entero") {
             TipoAImprimir = "\"%i\", ";
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-            entorno.direccionIF = entorno.direccionIF + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
+            this.MiCadena = this.MiCadena + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
         }
         else if (this.Hijos[0].TipoDato == "Decimal") {
             TipoAImprimir = "\"%d\", ";
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-            entorno.direccionIF = entorno.direccionIF + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
+            this.MiCadena = this.MiCadena + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
         }
         else if (this.Hijos[0].TipoDato == "Caracter") {
             TipoAImprimir = "\"%c\", ";
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
-            entorno.direccionIF = entorno.direccionIF + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D.charCodeAt(1).toString() + " );\n" + "print( \"%c\",10);" + "\n";
+            this.MiCadena = this.MiCadena + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D.charCodeAt(1).toString() + " );\n" + "print( \"%c\",10);" + "\n";
         }
         else if (this.Hijos[0].TipoDato == "Cadena") {
             if (this.Hijos[0].Nombre == "Cadena") {
                 console.log("ENTRO A IMPGIMIR CADANEA :(");
                 this.Hijos[0].CadenaDe3D = this.Hijos[0].CadenaDe3D.substring(1, this.Hijos[0].CadenaDe3D.length - 1);
                 entorno.numero += 1;
-                entorno.direccionIF = entorno.direccionIF + "t" + entorno.numero + " = H;\n";
+                this.MiCadena = this.MiCadena + "t" + entorno.numero + " = H;\n";
                 var Romeaxu = "t" + entorno.numero;
                 for (var i = 0; i < this.Hijos[0].CadenaDe3D.length; i++) {
                     console.log("fin caden1");
-                    entorno.direccionIF = entorno.direccionIF + "Heap[H] = " + this.Hijos[0].CadenaDe3D.charCodeAt(i).toString() + ";\n";
-                    entorno.direccionIF = entorno.direccionIF + "H = H + 1;\n";
+                    this.MiCadena = this.MiCadena + "Heap[H] = " + this.Hijos[0].CadenaDe3D.charCodeAt(i).toString() + ";\n";
+                    this.MiCadena = this.MiCadena + "H = H + 1;\n";
                 }
-                entorno.direccionIF = entorno.direccionIF + "Heap[H] = -1;\nH = H + 1;\n\n\n";
+                this.MiCadena = this.MiCadena + "Heap[H] = -1;\nH = H + 1;\n\n\n";
                 this.Hijos[0].CadenaDe3D = Romeaxu;
             }
             entorno.etiquetas += 1;
@@ -424,11 +424,11 @@ var Imprimir2 = /** @class */ (function (_super) {
             ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
             ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-            entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+            this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
         else if (this.Hijos[0].TipoDato == "Booleano") {
             var C3D1 = "";
-            entorno.direccionIF = entorno.direccionIF + "##IMPRIMIENDO BOOLEN\n";
+            this.MiCadena = this.MiCadena + "##IMPRIMIENDO BOOLEN\n";
             if (this.Hijos[0].Nombre == "Booleano") {
                 if (this.Hijos[0].CadenaDe3D == "true") {
                     C3D1 = "1";
@@ -437,27 +437,27 @@ var Imprimir2 = /** @class */ (function (_super) {
                     C3D1 = "0";
                 }
                 entorno.numero += 1;
-                entorno.direccionIF = entorno.direccionIF + "t" + entorno.numero + " = " + C3D1 + ";\n";
+                this.MiCadena = this.MiCadena + "t" + entorno.numero + " = " + C3D1 + ";\n";
                 entorno.numero += 1;
                 entorno.etiquetas += 1;
                 var Etiqueta1 = entorno.etiquetas;
                 entorno.etiquetas += 1;
                 var Etiqueta2 = entorno.etiquetas;
-                entorno.direccionIF = entorno.direccionIF + "if(t" + (entorno.numero - 1) + " == 0" + ") goto L" + Etiqueta1 + ";\n";
+                this.MiCadena = this.MiCadena + "if(t" + (entorno.numero - 1) + " == 0" + ") goto L" + Etiqueta1 + ";\n";
                 //parte 2
                 entorno.numero += 1;
-                entorno.direccionIF = entorno.direccionIF + "t" + entorno.numero + " = H;\n";
+                this.MiCadena = this.MiCadena + "t" + entorno.numero + " = H;\n";
                 this.Hijos[0].CadenaDe3D = "t" + entorno.numero;
-                entorno.direccionIF = entorno.direccionIF + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
-                entorno.direccionIF = entorno.direccionIF + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+                this.MiCadena = this.MiCadena + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+                this.MiCadena = this.MiCadena + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
                 //parte 3
-                entorno.direccionIF = entorno.direccionIF + "goto L" + Etiqueta2 + ";\n";
-                entorno.direccionIF = entorno.direccionIF + "L" + Etiqueta1 + ":\n";
-                entorno.direccionIF = entorno.direccionIF + "t" + entorno.numero + " = H;\n";
-                entorno.direccionIF = entorno.direccionIF + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
-                entorno.direccionIF = entorno.direccionIF + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
-                entorno.direccionIF = entorno.direccionIF + "Heap[H] = -1;\nH = H + 1;\n";
-                entorno.direccionIF = entorno.direccionIF + "L" + Etiqueta2 + ":\n";
+                this.MiCadena = this.MiCadena + "goto L" + Etiqueta2 + ";\n";
+                this.MiCadena = this.MiCadena + "L" + Etiqueta1 + ":\n";
+                this.MiCadena = this.MiCadena + "t" + entorno.numero + " = H;\n";
+                this.MiCadena = this.MiCadena + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+                this.MiCadena = this.MiCadena + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+                this.MiCadena = this.MiCadena + "Heap[H] = -1;\nH = H + 1;\n";
+                this.MiCadena = this.MiCadena + "L" + Etiqueta2 + ":\n";
             }
             entorno.etiquetas += 1;
             var Etiqueta1 = entorno.etiquetas;
@@ -472,12 +472,12 @@ var Imprimir2 = /** @class */ (function (_super) {
             ResuladoSalida = ResuladoSalida + "goto L" + Etiqueta2 + ";\n";
             ResuladoSalida = ResuladoSalida + "L" + Etiqueta1 + ":\n";
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
-            entorno.direccionIF = entorno.direccionIF + ResuladoSalida + "print( \"%c\",10);" + "\n";
+            this.MiCadena = this.MiCadena + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
-        //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccionIF + "\n";
-        //entorno.direccionIF = ""; 
+        //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +this.MiCadena + "\n";
+        //this.MiCadena = ""; 
         document.getElementById("salida").innerHTML = document.getElementById("salida").value + respuesta + "\n";
-        //entorno.direccionIF = entorno.direccionIF + respuesta + "\n";
+        //this.MiCadena = this.MiCadena + respuesta + "\n";
         var nuevo = new Nodo("Imprimir");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         return nuevo;

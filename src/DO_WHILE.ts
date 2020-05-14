@@ -1,7 +1,7 @@
-class EL_WHILE extends NodoAbstracto{
+class DO_WHILE extends NodoAbstracto{
 
     
-    EL_WHILE(val : string){
+    DO_WHILE(val : string){
         this.Nombre = val;
         this.id=0;
         this.linea=0;
@@ -14,15 +14,21 @@ class EL_WHILE extends NodoAbstracto{
 
         entorno.etiquetas += 1;
         var EtiquetaCiclo = entorno.etiquetas;
-        entorno.direccion += "##EXPRESIÓN DEL WHILE->\n";
+        entorno.direccion += "##SENTENCIAS DO WHILE->\n";
         entorno.direccion += "L" + EtiquetaCiclo + ":\n";
-        this.Hijos[0].Ejecutar(entorno);
-        entorno.direccion += this.Hijos[0].MiCadena;
+        for(var x = 0; x< this.Hijos[0].ListaSentencias.length;x++){
+            this.Hijos[0].ListaSentencias[x].Ejecutar(entorno);
+            entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
+        }
+        //this.Hijos[0].Ejecutar(entorno);
+        //entorno.direccion += this.Hijos[0].MiCadena;
         //entorno.direccion += entorno.direccionIF;
         //entorno.direccionIF  = "";
-        entorno.direccion += "##fin EXPRESIÓN DEL WHILE->\n";
-        var Cad3dExpresion = this.Hijos[0].CadenaDe3D;
-        var TipoExpresion = this.Hijos[0].TipoDato;
+        entorno.direccion += "##fin SENTENCIAS DO WHILE->\n";
+        this.Hijos[1].Ejecutar(entorno);
+        entorno.direccion += this.Hijos[1].MiCadena
+        var Cad3dExpresion = this.Hijos[1].CadenaDe3D;
+        var TipoExpresion = this.Hijos[1].TipoDato;
         
         entorno.direccion += "## TRADUCIENDO WHIELE\n"
         if(TipoExpresion.toUpperCase() == "BOOLEAN" || TipoExpresion.toUpperCase() == "BOOLEANO"){
@@ -72,10 +78,10 @@ class EL_WHILE extends NodoAbstracto{
             entorno.direccion += "##traduciendo if\n";
             entorno.direccion += "if(" + Cad3dExpresion + " == 0) goto L" + Etiqueta1 + ";\n";
             //
-            for(var x = 0; x< this.Hijos[1].ListaSentencias.length;x++){
-                this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
-                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
-            }
+           // for(var x = 0; x< this.Hijos[1].ListaSentencias.length;x++){
+           //     this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+           //     entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+           // }
             //
             
             //entorno.direccion += entorno.direccionIF;

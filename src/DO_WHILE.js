@@ -11,12 +11,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var IFELSE = /** @class */ (function (_super) {
-    __extends(IFELSE, _super);
-    function IFELSE() {
+var DO_WHILE = /** @class */ (function (_super) {
+    __extends(DO_WHILE, _super);
+    function DO_WHILE() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    IFELSE.prototype.IFELSE = function (val) {
+    DO_WHILE.prototype.DO_WHILE = function (val) {
         this.Nombre = val;
         this.id = 0;
         this.linea = 0;
@@ -24,10 +24,26 @@ var IFELSE = /** @class */ (function (_super) {
         this.Hijos = new Array();
         this.TipoDato = "";
     };
-    IFELSE.prototype.Ejecutar = function (entorno) {
-        console.log("ENTROOOOOOO AL IF-->");
-        var Cad3dExpresion = this.Hijos[0].CadenaDe3D;
-        var TipoExpresion = this.Hijos[0].TipoDato;
+    DO_WHILE.prototype.Ejecutar = function (entorno) {
+        console.log("ENTROOOOOOO AL WHILE-->");
+        entorno.etiquetas += 1;
+        var EtiquetaCiclo = entorno.etiquetas;
+        entorno.direccion += "##SENTENCIAS DO WHILE->\n";
+        entorno.direccion += "L" + EtiquetaCiclo + ":\n";
+        for (var x = 0; x < this.Hijos[0].ListaSentencias.length; x++) {
+            this.Hijos[0].ListaSentencias[x].Ejecutar(entorno);
+            entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
+        }
+        //this.Hijos[0].Ejecutar(entorno);
+        //entorno.direccion += this.Hijos[0].MiCadena;
+        //entorno.direccion += entorno.direccionIF;
+        //entorno.direccionIF  = "";
+        entorno.direccion += "##fin SENTENCIAS DO WHILE->\n";
+        this.Hijos[1].Ejecutar(entorno);
+        entorno.direccion += this.Hijos[1].MiCadena;
+        var Cad3dExpresion = this.Hijos[1].CadenaDe3D;
+        var TipoExpresion = this.Hijos[1].TipoDato;
+        entorno.direccion += "## TRADUCIENDO WHIELE\n";
         if (TipoExpresion.toUpperCase() == "BOOLEAN" || TipoExpresion.toUpperCase() == "BOOLEANO") {
             if (this.Hijos[0].Nombre.toUpperCase() == "BOOLEANO") {
                 if (Cad3dExpresion.toUpperCase() == "FALSE") {
@@ -72,26 +88,19 @@ var IFELSE = /** @class */ (function (_super) {
             var Etiqueta1 = entorno.etiquetas;
             entorno.etiquetas += 1;
             var Etiqueta2 = entorno.etiquetas;
-            entorno.direccion += "##traduciendo if -else\n";
+            entorno.direccion += "##traduciendo if\n";
             entorno.direccion += "if(" + Cad3dExpresion + " == 0) goto L" + Etiqueta1 + ";\n";
-            //ejecutamos el primero hijo
-            for (var x = 0; x < this.Hijos[1].ListaSentencias.length; x++) {
-                this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
-                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
-            }
+            //
+            // for(var x = 0; x< this.Hijos[1].ListaSentencias.length;x++){
+            //     this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
+            //     entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+            // }
+            //
             //entorno.direccion += entorno.direccionIF;
-            entorno.direccion += "goto L" + Etiqueta2 + ";\n";
+            //entorno.direccionIF = "";
+            entorno.direccion += "goto L" + EtiquetaCiclo + ";\n";
             entorno.direccion += "L" + Etiqueta1 + ":\n";
-            entorno.direccionIF = "";
-            entorno.direccion += "##traduciendo if -else2\n";
-            for (var x = 0; x < this.Hijos[2].ListaSentencias.length; x++) {
-                //alert("hola");
-                this.Hijos[2].ListaSentencias[x].Ejecutar(entorno);
-                entorno.direccion += this.Hijos[2].ListaSentencias[x].MiCadena;
-            }
-            //entorno.direccion += entorno.direccionIF;
-            entorno.direccion += "L" + Etiqueta2 + ":\n";
-            entorno.direccionIF = "";
+            //entorno.direccion = ""; 
         }
         else {
             alert('Este es un semantico: ' + "EXP incorrecta" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
@@ -108,5 +117,5 @@ var IFELSE = /** @class */ (function (_super) {
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     };
-    return IFELSE;
+    return DO_WHILE;
 }(NodoAbstracto));

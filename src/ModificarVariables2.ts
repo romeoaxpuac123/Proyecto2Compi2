@@ -21,12 +21,12 @@ class ModificarVariables2 extends NodoAbstracto{
             for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
                 if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
                 entorno.VariableVariablesFUNCION[x].toUpperCase() ){
-                    entorno.direccionIF += "##modificando var\n";
+                    this.MiCadena += "##modificando var\n";
                     TipoRespuesta = entorno.TipoVariablesFUNCION[x];
                     
                     C3DExpresion =  entorno.TesVariablesFUNCION[x];
                     entorno.numero += 1;
-                    entorno.direccionIF += "t" + entorno.numero + " = stack["+ C3DExpresion + "];\n";
+                    this.MiCadena += "t" + entorno.numero + " = stack["+ C3DExpresion + "];\n";
                     C3DExpresion = "t" + entorno.numero;
                     bandera1 = "true";
                 }
@@ -35,12 +35,12 @@ class ModificarVariables2 extends NodoAbstracto{
                 for(var x = 0; x < entorno.VariableVariablesFUNCIONGLOBAL.length;x++){
                     if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
                     entorno.VariableVariablesFUNCIONGLOBAL[x].toUpperCase() ){
-                        entorno.direccionIF += "##modificando var\n";
+                        this.MiCadena += "##modificando var\n";
                         TipoRespuesta = entorno.TipoVariablesFUNCIONGLOBAL[x];
                         
                         C3DExpresion =  entorno.TesVariablesFUNCIONGLOBAL[x];
                         entorno.numero += 1;
-                        entorno.direccionIF += "t" + entorno.numero + " = Heap["+ C3DExpresion + "];\n";
+                        this.MiCadena += "t" + entorno.numero + " = Heap["+ C3DExpresion + "];\n";
                         C3DExpresion = "t" + entorno.numero;
                         bandera1 = "true";
                     }
@@ -48,7 +48,7 @@ class ModificarVariables2 extends NodoAbstracto{
             }
             if( bandera1 == "false"){
                 alert('Este es un semantico: ' + this.Hijos[1].Hijos[0].Nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
 
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
@@ -106,7 +106,7 @@ class ModificarVariables2 extends NodoAbstracto{
         {
             if(!(TipoRespuesta.toUpperCase() == "CADENA" || TipoRespuesta.toUpperCase() == "STRING")){
                     alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                    entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                    this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                     entorno.LosErrores +="<tr>";
                     entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                     entorno.LosErrores += "<td>" +  "Variables de Diferentes tipos "   + " </td>";
@@ -120,7 +120,7 @@ class ModificarVariables2 extends NodoAbstracto{
                 ||TipoRespuesta.toUpperCase() == "CARACTER" || TipoRespuesta.toUpperCase() == "CHAR"
                 )){
                 alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                 entorno.LosErrores += "<td>" +  "Variables de Diferentes tipos "   + " </td>";
@@ -132,7 +132,7 @@ class ModificarVariables2 extends NodoAbstracto{
         {
             if(!(TipoRespuesta.toUpperCase() == "CHAR" || TipoRespuesta.toUpperCase() == "CARACTER")){
                     alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                    entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                    this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                     entorno.LosErrores +="<tr>";
                     entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                     entorno.LosErrores += "<td>" +  "Variables de Diferentes tipos "   + " </td>";
@@ -147,7 +147,7 @@ class ModificarVariables2 extends NodoAbstracto{
                 ||TipoRespuesta.toUpperCase() == "DOUBLE" || TipoRespuesta.toUpperCase() == "DECIMAL"
                 )){
                 alert('Este es un semantico: ' + "Diferentes tipos" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-                entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+                this.MiCadena = "ERROR NO SE GENERO C3D;\n"
                 entorno.LosErrores +="<tr>";
                 entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
                 entorno.LosErrores += "<td>" +  "Variables de Diferentes tipos "   + " </td>";
@@ -196,10 +196,10 @@ class ModificarVariables2 extends NodoAbstracto{
             //var nuevosimbolo = LaViejaT.replace("t","");
             //var hola = +nuevosimbolo - 1;
             if(bandera12 == "TRUE"){
-                entorno.direccionIF += "Heap[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
+                this.MiCadena += "Heap[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
 
             }else{
-                entorno.direccionIF += "stack[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
+                this.MiCadena += "stack[" + LaViejaT  + "] = " + LaNuevaT + ";\n"; //:"t" + hola + " = " + LaNuevaT + ";\n";
 
             }
            
@@ -210,7 +210,7 @@ class ModificarVariables2 extends NodoAbstracto{
            // }
         }else{
             alert('Este es un semantico: ' + LaVariable + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
-            entorno.direccionIF = "ERROR NO SE GENERO C3D;\n"
+            this.MiCadena = "ERROR NO SE GENERO C3D;\n"
             entorno.LosErrores +="<tr>";
             entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
             entorno.LosErrores += "<td>" +  "Variable: "+ LaVariable+ "No Existe"  + " </td>";
@@ -228,6 +228,7 @@ class ModificarVariables2 extends NodoAbstracto{
         entorno.mostrarSimboos();
         var nuevo = new Nodo("VARIALBES"); 
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
+        nuevo.MiCadena = this.MiCadena;
         nuevo.CadenaDe3D = LaNuevaT;
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
