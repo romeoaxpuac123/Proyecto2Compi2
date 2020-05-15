@@ -27,12 +27,19 @@ var DO_WHILE = /** @class */ (function (_super) {
     DO_WHILE.prototype.Ejecutar = function (entorno) {
         console.log("ENTROOOOOOO AL WHILE-->");
         entorno.etiquetas += 1;
+        var NUMEROFINAL = entorno.etiquetas;
+        entorno.etiquetas += 1;
         var EtiquetaCiclo = entorno.etiquetas;
         entorno.direccion += "##SENTENCIAS DO WHILE->\n";
         entorno.direccion += "L" + EtiquetaCiclo + ":\n";
         for (var x = 0; x < this.Hijos[0].ListaSentencias.length; x++) {
             this.Hijos[0].ListaSentencias[x].Ejecutar(entorno);
-            entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
+            if (this.Hijos[0].ListaSentencias[x].MiCadena == "break;") {
+                entorno.direccion += "goto L" + NUMEROFINAL + ";\n";
+            }
+            else {
+                entorno.direccion += this.Hijos[0].ListaSentencias[x].MiCadena;
+            }
         }
         //this.Hijos[0].Ejecutar(entorno);
         //entorno.direccion += this.Hijos[0].MiCadena;
@@ -112,6 +119,7 @@ var DO_WHILE = /** @class */ (function (_super) {
             entorno.LosErrores += "<td>" + this.columna + "</td>";
             entorno.LosErrores += "</tr>";
         }
+        entorno.direccion += "L" + NUMEROFINAL + ":\n";
         var nuevo = new Nodo("IF");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;

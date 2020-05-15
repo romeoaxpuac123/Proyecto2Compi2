@@ -27,6 +27,8 @@ var EL_WHILE = /** @class */ (function (_super) {
     EL_WHILE.prototype.Ejecutar = function (entorno) {
         console.log("ENTROOOOOOO AL WHILE-->");
         entorno.etiquetas += 1;
+        var NUMEROFINAL = entorno.etiquetas;
+        entorno.etiquetas += 1;
         var EtiquetaCiclo = entorno.etiquetas;
         entorno.direccion += "##EXPRESIÓN DEL WHILE->\n";
         entorno.direccion += "L" + EtiquetaCiclo + ":\n";
@@ -87,7 +89,12 @@ var EL_WHILE = /** @class */ (function (_super) {
             //
             for (var x = 0; x < this.Hijos[1].ListaSentencias.length; x++) {
                 this.Hijos[1].ListaSentencias[x].Ejecutar(entorno);
-                entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+                if (this.Hijos[1].ListaSentencias[x].MiCadena == "break;") {
+                    entorno.direccion += "goto L" + NUMEROFINAL + ";\n";
+                }
+                else {
+                    entorno.direccion += this.Hijos[1].ListaSentencias[x].MiCadena;
+                }
             }
             //
             //entorno.direccion += entorno.direccionIF;
@@ -106,6 +113,7 @@ var EL_WHILE = /** @class */ (function (_super) {
             entorno.LosErrores += "<td>" + this.columna + "</td>";
             entorno.LosErrores += "</tr>";
         }
+        entorno.direccion += "L" + NUMEROFINAL + ":\n";
         var nuevo = new Nodo("IF");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;

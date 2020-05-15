@@ -1,5 +1,5 @@
 /**
- * PRIMERA EVALUACION DE OLC2
+ * SEGUNDO PROYECTO DE OLC2
  BAYRON ROMEO AXPUAC YOC 
  201314474
  */
@@ -61,6 +61,10 @@
 "else"				return "ELELSE";
 "while"				return "ELWHILE";
 "do"				return "ELDO";
+"switch"			return "BIFURCACION";
+"case"				return "CASO";
+"default"			return "DEFECTO";
+"break"				return "EL_BREAK";
 
 
 
@@ -238,42 +242,6 @@ instrucciones
 ;
 
 instruccion
-	/*:   PUBLIC ID ID PARIZQ PARDER LLAVIZQ lista_instrucciones LLAVDER {
-				//declaramos una funcion de la forma public void nombre(){}
-				Entorno1.nombreentorno = $3;
-				console.log("VAMOS A DECLARAR UNA FUNCION xd, PUBLIC VOID");
-				var nuevo = new Funciones("Funciones");
-				var NombreFuncion = new Nodo($3);
-				nuevo.Hijos[0] = NombreFuncion;
-				contador = contador + 1;
-				nuevo.NumeroDeNodo = contador;
-
-				nuevo.linea = this._$.first_line;
-				nuevo.columna = this._$.first_column;
-
-				var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_FUNCION" + "\"]" +"\n";									
-				GraficasDOT.anadir(Hijo1);
-
-				
-
-				
-				contador = contador + 1;
-				var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + $3 + "\"]" +"\n";									
-				GraficasDOT.anadir(Hijo3);
-
-				var Conexion2 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
-				GraficasDOT.anadir(Conexion2);
-
-				var Conexion1 = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $7.NumeroDeNodo + "\n";
-				GraficasDOT.anadir(Conexion1);
-
-				
-
-				$$ =  nuevo.Ejecutar(Entorno1);
-				document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +Entorno1.direccion + "\n";
-        		Entorno1.direccion = ""; 
-				Entorno1.direccion = ""; 
-		} */
 	:   
 	VISIBILIDAD ID ID PARIZQ lista_Parametros PARDER LLAVIZQ lista_instrucciones LLAVDER {
 				Entorno1.nombreentorno = $3;
@@ -849,10 +817,132 @@ instruccion2
 		nuevo.Hijos[0] = $3;
 		nuevo.Hijos[1] = $7;
 		
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DO-WHILE" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $7.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
+	|BIFURCACION  PARIZQ expresion2 PARDER LLAVIZQ  LISTA_CASES LLAVDER{
+		var nuevo = new SWITCH("WHILE");
+		nuevo.TipoDato = $1;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $3;
+		nuevo.Hijos[1] = $6;
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SWITCH" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $6.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|BIFURCACION  PARIZQ expresion2 PARDER LLAVIZQ  LISTA_CASES DEFECTO DOSP lista_instrucciones3 LLAVDER {
+		var nuevo = new SWITCHD("WHILE");
+		nuevo.TipoDato = $1;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		nuevo.Hijos[0] = $3;
+		nuevo.Hijos[1] = $6;
+		nuevo.Hijos[2] = $9;
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "SWITCH" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $6.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "DEFAULT" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + contador + "->" + "node_" + $9.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + contador + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+
+
 	;
+
+LISTA_CASES:		
+		LISTA_CASES CASO expresion2 DOSP lista_instrucciones3{
+			var nuevo = new Nodo("CASO");
+			nuevo.Hijos[0] = $3;
+			nuevo.Hijos[1] = $5;
+			//nuevo.MiCadena = $3.MiCadena + $5.MiCadena;
+			var nuevo2 = new Nodo("CASO");
+			nuevo2.ListaSentencias = $1.ListaSentencias;
+			nuevo2.ListaSentencias.push(nuevo);
+			
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "CASE" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $5.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			
+
+
+			$$ = nuevo2;
+
+		}
+	| CASO expresion2 DOSP lista_instrucciones3{
+		var nuevo = new Nodo("CASO");
+		
+		//nuevo.MiCadena = $2.MiCadena + $4.MiCadena;
+		
+		nuevo.Hijos[0] = $2;
+		nuevo.Hijos[1] = $4;
+
+		var nuevo2 = new Nodo("ELSE_IF");
+		nuevo2.ListaSentencias.push(nuevo);
+
+			contador = contador + 1;
+			nuevo2.NumeroDeNodo = contador;
+			var Hijo1 = "node_"+ nuevo2.NumeroDeNodo + "[shape=circle label=\"" + "CASE" + "\"]" +"\n";									
+			GraficasDOT.anadir(Hijo1);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+			var Conexion3 = "node_" + nuevo2.NumeroDeNodo + "->" + "node_" + $4.NumeroDeNodo + "\n";
+			GraficasDOT.anadir(Conexion3);
+
+		$$ = nuevo2;	
+
+			
+	}
+;
+
+
 EL_COSOELSE
 	:ELELSE  LLAVIZQ lista_instrucciones3 LLAVDER{
 		Entorno1.direccionIF += "##ELSE\n";
@@ -1035,7 +1125,19 @@ instruccion3
 		GraficasDOT.anadir(Conexion1x);
 
 		$$ = nuevo; //.Ejecutar(Entorno1);
-	};
+	}
+	|EL_BREAK PTCOMA{
+		var nuevo = new BREAKXD("Break");
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "BREAK" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	;
 	
 
 
