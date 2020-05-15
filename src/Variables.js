@@ -31,6 +31,9 @@ var Variables = /** @class */ (function (_super) {
         var TipoRespuesta = this.Hijos[1].TipoDato;
         var ElvalordeP = "P"; // + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
+        var banderaconstante = 0;
+        //alert(this.Hijos[0].Nombre);
+        //alert(TipoRespuesta);
         //alert("ENTRO A BUSCAR un id" + TipoRespuesta);
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
         //console.log("La T A LA QUE HACE REF->" + LaTRespuesta);
@@ -39,9 +42,6 @@ var Variables = /** @class */ (function (_super) {
         //public 
         //alert('Anhelo->' + this.Hijos[1].Nombre);
         if (ElTipo.toUpperCase() == "GLOBAL") {
-            //entorno.TesVariablesFUNCIONGLOBAL.push
-            //entorno.TipoVariablesFUNCIONGLOBAL.push(TipoRespuesta)
-            //entorno.VariableVariablesFUNCIONGLOBAL.push();
             for (var i = 0; i < entorno.VariableVariables.length; i++) {
                 if (LaTRespuesta.toUpperCase() == "TRUE" && ElTipo.toUpperCase() == "GLOBAL") {
                     LaTRespuesta = "1";
@@ -130,6 +130,37 @@ var Variables = /** @class */ (function (_super) {
             nuevo.NumeroDeNodo = this.NumeroDeNodo;
             return nuevo;
         }
+        if (ElTipo.toUpperCase() == "VAR") {
+            ElTipo = TipoRespuesta;
+            if (ElTipo.toUpperCase() == "CADENA") {
+                ElTipo = "STRING";
+            }
+            else if (ElTipo.toUpperCase() == "BOOLEANO") {
+                ElTipo = "BOOLEAN";
+            }
+            else if (ElTipo.toUpperCase() == "DECIMAL") {
+                ElTipo = "DOUBLE";
+            }
+            else if (ElTipo.toUpperCase() == "ENTERO") {
+                ElTipo = "INTEGER";
+            }
+        }
+        if (ElTipo.toUpperCase() == "CONST") {
+            banderaconstante = 1;
+            ElTipo = TipoRespuesta;
+            if (ElTipo.toUpperCase() == "CADENA") {
+                ElTipo = "STRING";
+            }
+            else if (ElTipo.toUpperCase() == "BOOLEANO") {
+                ElTipo = "BOOLEAN";
+            }
+            else if (ElTipo.toUpperCase() == "DECIMAL") {
+                ElTipo = "DOUBLE";
+            }
+            else if (ElTipo.toUpperCase() == "ENTERO") {
+                ElTipo = "INTEGER";
+            }
+        }
         if (TipoRespuesta == "ID") {
             // alert("ENTRO A BUSCAR un id");
             var bandera1 = "false";
@@ -185,13 +216,6 @@ var Variables = /** @class */ (function (_super) {
             || ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "BOOLEAN"
             || ElTipo.toUpperCase() == "VAR" || ElTipo.toUpperCase() == "CONST"
             || ElTipo.toUpperCase() == "STRING") {
-            //entorno.Tipo.push(this.TipoDato);
-            //entorno.Variable.push(nombre);
-            //entorno.numero += 1;
-            //var Tex = "t" + entorno.numero;
-            //entorno.Tes.push(Tex);
-            //entorno.tamanioentorno += 1;
-            //entorno.anadirSimbolo(nombre,"local",entorno.nombreentorno,0,entorno.Tes.length,this.TipoDato,Tex,0);
         }
         else {
             alert('Este es un semantico: ' + ElTipo + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
@@ -297,13 +321,6 @@ var Variables = /** @class */ (function (_super) {
                     break;
                 }
             }
-            //entorno.TipoVariables.push(ElTipo);
-            //console.log("-----------");
-            //console.log("La variable tiene Tipoe de:->" + ElTipo);
-            //console.log("La T A LA QUE HACE REF->" + LaTRespuesta);
-            //console.log("El valor de P-> " + ElvalordeP);
-            //console.log("Posición en la funcion->" + (Tamanio+i+1));
-            //console.log("------------");--
             entorno.numero += 1;
             entorno.direccion = entorno.direccion + "## ASIGANDNO VARIABLE->" + entorno.VariableVariables[i] + "\n";
             entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + LaTRespuesta + ";\n";
@@ -329,21 +346,21 @@ var Variables = /** @class */ (function (_super) {
                 entorno.direccion = entorno.direccion + ResuladoSalida;
                 entorno.numero += 1;
                 entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + ElvalordeP + " + " + (Tamanio) + ";\n";
-                //entorno.TesVariables.push("t" + entorno.numero );
                 entorno.direccion = entorno.direccion + "stack[t" + entorno.numero + "] = t" + (entorno.numero - 1) + ";\n";
                 entorno.TesVariablesFUNCION.push("t" + entorno.numero);
                 entorno.TipoVariablesFUNCION.push(ElTipo);
                 entorno.VariableVariablesFUNCION.push(entorno.VariableVariables[i]);
+                entorno.EsConstante.push(banderaconstante);
                 entorno.tamanioentorno += 1;
             }
             else {
                 entorno.numero += 1;
                 entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + ElvalordeP + " + " + (Tamanio) + ";\n";
-                //entorno.TesVariables.push("t" + entorno.numero );
                 entorno.direccion = entorno.direccion + "stack[t" + entorno.numero + "] = t" + (entorno.numero - 1) + ";\n";
                 entorno.TesVariablesFUNCION.push("t" + entorno.numero);
                 entorno.TipoVariablesFUNCION.push(ElTipo);
                 entorno.VariableVariablesFUNCION.push(entorno.VariableVariables[i]);
+                entorno.EsConstante.push(banderaconstante);
                 entorno.tamanioentorno += 1;
             }
         }

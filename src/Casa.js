@@ -12,12 +12,14 @@ var Casa = /** @class */ (function () {
         this.TipoVariablesFUNCION = new Array();
         this.VariableVariablesFUNCION = new Array();
         this.TesVariablesFUNCION = new Array();
+        this.EsConstante = new Array();
         this.tamanioentorno = 0;
         this.LosErrores = "";
         //public ListaSentencias: Array<NodoAbstracto>;
         this.TipoVariablesFUNCIONGLOBAL = new Array();
         this.VariableVariablesFUNCIONGLOBAL = new Array();
         this.TesVariablesFUNCIONGLOBAL = new Array();
+        this.SonConstanteGlobales = new Array();
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
         this.ListaParametrosFuncion2 = new Array();
@@ -48,7 +50,8 @@ var Casa = /** @class */ (function () {
                 " Nombre_Funcion->" + this.SIMBOLOS[i].funcion +
                 " Tamanio_Funcion->" + this.SIMBOLOS[i].tamanio +
                 " Valor_T->" + this.SIMBOLOS[i].posicionT +
-                " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion);
+                " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion +
+                " es constante-> " + this.SIMBOLOS[i].constante);
             var Rol = "VARIABLE";
             if (this.SIMBOLOS[i].posicionT == "NO TIENE") {
                 Rol = "FUNCION";
@@ -87,6 +90,13 @@ var Casa = /** @class */ (function () {
             }
         }
         return "NOP";
+    };
+    Casa.prototype.agregarconstante = function (nombre, nombrefuncion, par3) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].funcion) {
+                this.SIMBOLOS[i].constante = par3;
+            }
+        }
     };
     Casa.prototype.existefuncion = function (nombre) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {

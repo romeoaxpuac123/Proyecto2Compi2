@@ -19,6 +19,7 @@ class Casa {
     public TipoVariablesFUNCION =  new Array();
     public VariableVariablesFUNCION = new Array();
     public TesVariablesFUNCION = new Array();
+    public EsConstante = new Array();
 
     public tamanioentorno = 0;
 
@@ -31,6 +32,8 @@ class Casa {
     public TipoVariablesFUNCIONGLOBAL =  new Array();
     public VariableVariablesFUNCIONGLOBAL = new Array();
     public TesVariablesFUNCIONGLOBAL = new Array();
+    public SonConstanteGlobales = new Array();
+    
 
     constructor() {
         // Le doy un valor
@@ -63,7 +66,8 @@ class Casa {
                         " Nombre_Funcion->" + this.SIMBOLOS[i].funcion + 
                         " Tamanio_Funcion->" + this.SIMBOLOS[i].tamanio +
                         " Valor_T->" + this.SIMBOLOS[i].posicionT +
-                        " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion
+                        " posicion_en_funcion-> " + this.SIMBOLOS[i].posicion+
+                        " es constante-> " + this.SIMBOLOS[i].constante
                         );
                         var Rol ="VARIABLE";
                         if(this.SIMBOLOS[i].posicionT == "NO TIENE"){
@@ -108,7 +112,14 @@ class Casa {
         }
         return "NOP";
     }
-    
+    agregarconstante(nombre:string,nombrefuncion:string,par3:number){
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre && this.SIMBOLOS[i].funcion){
+                 this.SIMBOLOS[i].constante = par3;
+
+            }
+        }
+    }
     existefuncion(nombre:string):boolean{
         for(var i = 0; i < this.SIMBOLOS.length;i++){
             if(this.SIMBOLOS[i].nombre == nombre){

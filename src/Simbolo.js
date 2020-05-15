@@ -1,15 +1,6 @@
 var simbolo = /** @class */ (function () {
-    /*
-    constructor(){
-        this.nombre = "";
-        this.ambito = "";
-        this.funcion = "";
-        this.tamanio = 0;
-        this.posicion = 0;
-        this.tipo = "";
-        this.posicionT = "";
-    }*/
     function simbolo(nombre1, ambito1, funcion1, tamanio1, posicion1, tipo1, posicionT1, parametros) {
+        this.constante = 0;
         this.nombre = nombre1;
         this.ambito = ambito1;
         this.funcion = funcion1;

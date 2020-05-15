@@ -21,6 +21,9 @@ class ModificarVariables2 extends NodoAbstracto{
             for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
                 if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
                 entorno.VariableVariablesFUNCION[x].toUpperCase() ){
+                   
+
+
                     this.MiCadena += "##modificando var\n";
                     TipoRespuesta = entorno.TipoVariablesFUNCION[x];
                     
@@ -63,6 +66,44 @@ class ModificarVariables2 extends NodoAbstracto{
 
         var ElTipo = "";
         var don1 = "ERROR";
+
+    for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
+                //alert(entorno.EsConstante[i]);
+            if(LaVariable== entorno.VariableVariablesFUNCION[i]){
+                if(entorno.EsConstante[i] == 1){
+
+                    alert("ERROR: se intenta modificar una constante" + entorno.VariableVariablesFUNCION[i]);
+                    this.MiCadena = "ERROR NO SE GENERO C3D;\n"
+                    entorno.LosErrores +="<tr>";
+                    entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                    entorno.LosErrores += "<td>" +  "Variable: "+ entorno.VariableVariablesFUNCION[i]+ "No Existe"  + " </td>";
+                    entorno.LosErrores += "<td>" + this.linea + "</td>";
+                    entorno.LosErrores += "<td>" + this.columna + "</td>";
+                    entorno.LosErrores += "</tr>";
+                    break;
+                }
+            }
+
+    }
+    for(var i = 0; i < entorno.VariableVariablesFUNCIONGLOBAL.length;i++){
+        //alert(entorno.EsConstante[i]);
+    if(LaVariable== entorno.VariableVariablesFUNCIONGLOBAL[i]){
+        if(entorno.SonConstanteGlobales[i] == 1){
+
+            alert("ERROR: se intenta modificar una constante " + entorno.VariableVariablesFUNCIONGLOBAL[i]);
+            this.MiCadena = "ERROR NO SE GENERO C3D;\n"
+            entorno.LosErrores +="<tr>";
+            entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+            entorno.LosErrores += "<td>" +  "Variable: "+ entorno.VariableVariablesFUNCIONGLOBAL[i] + "No Existe"  + " </td>";
+            entorno.LosErrores += "<td>" + this.linea + "</td>";
+            entorno.LosErrores += "<td>" + this.columna + "</td>";
+            entorno.LosErrores += "</tr>";
+            break;
+        }
+    }
+
+    }
+
         for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
             if(LaVariable== entorno.VariableVariablesFUNCION[i]){
                 don1 = "TRUE";

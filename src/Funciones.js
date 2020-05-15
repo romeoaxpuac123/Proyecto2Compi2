@@ -107,6 +107,7 @@ var Funciones = /** @class */ (function (_super) {
                     }
                     else {
                         entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                        entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                     }
                 }
                 console.log("SIMBOLOS--->");
@@ -124,6 +125,7 @@ var Funciones = /** @class */ (function (_super) {
                 entorno.TipoVariablesFUNCION.splice(0, entorno.TipoVariablesFUNCION.length);
                 entorno.VariableVariablesFUNCION.splice(0, entorno.VariableVariablesFUNCION.length);
                 entorno.TesVariablesFUNCION.splice(0, entorno.TesVariablesFUNCION.length);
+                entorno.EsConstante.splice(0, entorno.EsConstante.length);
             }
             else {
                 console.log("TIENE ESTOS PARAMETROAS->");
@@ -154,6 +156,7 @@ var Funciones = /** @class */ (function (_super) {
                     }
                     else {
                         entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                        entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                     }
                 }
                 console.log("FIN TIENE ESTOS PARAMETROAS->");
@@ -170,6 +173,7 @@ var Funciones = /** @class */ (function (_super) {
                 entorno.TipoVariablesFUNCION.splice(0, entorno.TipoVariablesFUNCION.length);
                 entorno.VariableVariablesFUNCION.splice(0, entorno.VariableVariablesFUNCION.length);
                 entorno.TesVariablesFUNCION.splice(0, entorno.TesVariablesFUNCION.length);
+                entorno.EsConstante.splice(0, entorno.EsConstante.length);
                 console.log("VALORES VACIOS->");
                 console.log("->" + entorno.Tipo.length);
                 console.log("->" + entorno.Variable.length);
@@ -210,6 +214,7 @@ var Funciones = /** @class */ (function (_super) {
                         }
                         else {
                             entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                            entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                         }
                     }
                     console.log("SIMBOLOS--->");
@@ -226,6 +231,7 @@ var Funciones = /** @class */ (function (_super) {
                     entorno.TipoVariablesFUNCION.splice(0, entorno.TipoVariablesFUNCION.length);
                     entorno.VariableVariablesFUNCION.splice(0, entorno.VariableVariablesFUNCION.length);
                     entorno.TesVariablesFUNCION.splice(0, entorno.TesVariablesFUNCION.length);
+                    entorno.EsConstante.splice(0, entorno.EsConstante.length);
                 }
                 else {
                     console.log("TIENE ESTOS PARAMETROAS->");
@@ -256,6 +262,7 @@ var Funciones = /** @class */ (function (_super) {
                         }
                         else {
                             entorno.anadirSimbolo(entorno.VariableVariablesFUNCION[i], "local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, 0, (entorno.Variable.length + i), entorno.TipoVariablesFUNCION[i], entorno.TesVariablesFUNCION[i], 0);
+                            entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                         }
                     }
                     console.log("FIN TIENE ESTOS PARAMETROAS->");
@@ -272,6 +279,7 @@ var Funciones = /** @class */ (function (_super) {
                     entorno.TipoVariablesFUNCION.splice(0, entorno.TipoVariablesFUNCION.length);
                     entorno.VariableVariablesFUNCION.splice(0, entorno.VariableVariablesFUNCION.length);
                     entorno.TesVariablesFUNCION.splice(0, entorno.TesVariablesFUNCION.length);
+                    entorno.EsConstante.splice(0, entorno.EsConstante.length);
                     console.log("VALORES VACIOS->");
                     console.log("->" + entorno.Tipo.length);
                     console.log("->" + entorno.Variable.length);

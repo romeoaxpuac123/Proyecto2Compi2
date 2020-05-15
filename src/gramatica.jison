@@ -24,6 +24,8 @@
 [/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]		{}		// comentario multiple líneas
 "print"			return 'IMPRMIR';
 ";"					return 'PTyCOMA';
+"++"				return 'INCREMENTO';
+"--"				return 'DECINCREMENTO';
 "("					return 'PARIZQ';
 ")"					return 'PARDER';
 "["					return 'CORIZQ';
@@ -100,10 +102,10 @@
 
 /* Asociación de operadores y precedencia */
 %left 'AND' 'OR' 'XOR'
-%left 'IGUALDAD' 'DESIGUALDAD'
+%left 'IGUALDAD' 'DESIGUALDAD' 
 %left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
 
-%left 'MAS' 'MENOS'
+%left 'MAS' 'MENOS' 'INCREMENTO' 'DECINCREMENTO'
 %left 'POR' 'DIVIDIDO' 'MODULO'
 %left 'POTENCIA' 
 %left 'NOT'
@@ -880,6 +882,66 @@ instruccion2
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
+	|ID INCREMENTO PTCOMA{
+		var nuevo = new DECREMENTO("WHILE");
+
+		var variable = new Nodo($1);
+		nuevo.Hijos[0] = variable;
+
+		var simbolo = new Nodo("+");
+		nuevo.Hijos[1] = simbolo;
+
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "++" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ID DECINCREMENTO PTCOMA{
+		var nuevo = new DECREMENTO("WHILE");
+
+		var variable = new Nodo($1);
+		nuevo.Hijos[0] = variable;
+
+		var simbolo = new Nodo("-");
+		nuevo.Hijos[1] = simbolo;
+
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "--" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+		$$ = nuevo.Ejecutar(Entorno1);
+		
+	}
 
 
 	;
@@ -1137,6 +1199,63 @@ instruccion3
 
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
+	|ID INCREMENTO PTCOMA{
+		var nuevo = new DECREMENTO2("WHILE");
+
+		var variable = new Nodo($1);
+		nuevo.Hijos[0] = variable;
+
+		var simbolo = new Nodo("+");
+		nuevo.Hijos[1] = simbolo;
+
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "++" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ID DECINCREMENTO PTCOMA{
+		var nuevo = new DECREMENTO2("WHILE");
+
+		var variable = new Nodo($1);
+		nuevo.Hijos[0] = variable;
+
+		var simbolo = new Nodo("-");
+		nuevo.Hijos[1] = simbolo;
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "--" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
 	;
 	
 
@@ -1345,7 +1464,121 @@ lista_Expresiones2
 	};
 
 expresion
-	: MENOS expresion %prec UMENOS	{ 
+	: ID INCREMENTO {
+
+				var nuevo = new Nodo("ID");
+				var nuevovalor = new Nodo($1);
+				nuevo.Hijos[0] = nuevovalor;
+				nuevo.TipoDato = "ID";
+				nuevo.CadenaDe3D = $1;
+
+				var nuevoX = new Nodo("Entero");
+				var nuevovalorX = new Nodo("0");
+				nuevoX.Hijos[0] = nuevovalorX;
+				nuevoX.TipoDato = "Entero";
+				nuevoX.CadenaDe3D = "0";
+
+
+				var nuevoy = new Aritmetica("Aritmetica");
+				var operador = new Nodo("+");
+				
+				nuevoy.Hijos[0] = nuevo;
+				nuevoy.Hijos[1] = operador;
+				nuevoy.Hijos[2] =  nuevoX;
+
+				nuevoy.linea = this._$.first_line;
+				nuevoy.columna = this._$.first_column;
+
+								contador += 1;
+				nuevoy.NumeroDeNodo = contador;
+				var Hijo1 = "node_"+ nuevoy.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador += 1;
+				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador += 1;
+				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "++" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+				GraficasDOT.anadir(Conexion1xX);
+
+				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+				GraficasDOT.anadir(Conexion1xX);
+				
+				$$ =  nuevoy.Ejecutar(Entorno1);
+
+				var nuevoDEC = new DECREMENTO("WHILE");
+				var variable = new Nodo($1);
+				nuevoDEC.Hijos[0] = variable;
+				var simbolo = new Nodo("+");
+				nuevoDEC.Hijos[1] = simbolo;
+				nuevoDEC.Ejecutar(Entorno1);
+
+
+				
+				
+	}
+	| ID DECINCREMENTO {
+		var nuevo = new Nodo("ID");
+				var nuevovalor = new Nodo($1);
+				nuevo.Hijos[0] = nuevovalor;
+				nuevo.TipoDato = "ID";
+				nuevo.CadenaDe3D = $1;
+
+				var nuevoX = new Nodo("Entero");
+				var nuevovalorX = new Nodo("0");
+				nuevoX.Hijos[0] = nuevovalorX;
+				nuevoX.TipoDato = "Entero";
+				nuevoX.CadenaDe3D = "0";
+
+
+				var nuevoy = new Aritmetica("Aritmetica");
+				var operador = new Nodo("-");
+				
+				nuevoy.Hijos[0] = nuevo;
+				nuevoy.Hijos[1] = operador;
+				nuevoy.Hijos[2] =  nuevoX;
+
+				nuevoy.linea = this._$.first_line;
+				nuevoy.columna = this._$.first_column;
+
+					contador += 1;
+				nuevoy.NumeroDeNodo = contador;
+				var Hijo1 = "node_"+ nuevoy.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador += 1;
+				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				contador += 1;
+				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "--" + "\"]" +"\n";									
+				GraficasDOT.anadir(Hijo1);
+
+				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+				GraficasDOT.anadir(Conexion1xX);
+
+				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+				GraficasDOT.anadir(Conexion1xX);
+
+				$$ = nuevoy.Ejecutar(Entorno1);
+				
+
+				var nuevoDEC = new DECREMENTO("WHILE");
+				var variable = new Nodo($1);
+				nuevoDEC.Hijos[0] = variable;
+				var simbolo = new Nodo("-");
+				nuevoDEC.Hijos[1] = simbolo;
+				nuevoDEC.Ejecutar(Entorno1);
+			
+				
+
+				
+	}
+	|MENOS expresion %prec UMENOS	{ 
 										//$$ = $2 *-1;
 										//var nuevo = Nodo("Hola");
 										//$$ = nuevo;
@@ -1891,7 +2124,80 @@ expresion
 
 
 expresion2
-	: MENOS expresion2 %prec UMENOS	{ 
+	
+	: ID INCREMENTO {
+
+				var nuevo = new Nodo("ID");
+				var nuevovalor = new Nodo($1);
+				nuevo.Hijos[0] = nuevovalor;
+				nuevo.TipoDato = "ID";
+				nuevo.CadenaDe3D = $1;
+
+				var nuevoX = new Nodo("Entero");
+				var nuevovalorX = new Nodo("0");
+				nuevoX.Hijos[0] = nuevovalorX;
+				nuevoX.TipoDato = "Entero";
+				nuevoX.CadenaDe3D = "0";
+
+
+				var nuevoy = new Aritmetica2("Aritmetica");
+				var operador = new Nodo("+");
+				
+				nuevoy.Hijos[0] = nuevo;
+				nuevoy.Hijos[1] = operador;
+				nuevoy.Hijos[2] =  nuevoX;
+
+				nuevoy.linea = this._$.first_line;
+				nuevoy.columna = this._$.first_column;
+				
+				$$ =  nuevoy.Ejecutar(Entorno1);
+
+				var nuevoDEC = new DECREMENTO2("WHILE");
+				var variable = new Nodo($1);
+				nuevoDEC.Hijos[0] = variable;
+				var simbolo = new Nodo("+");
+				nuevoDEC.Hijos[1] = simbolo;
+				nuevoDEC.Ejecutar(Entorno1);
+
+				
+	}
+	| ID DECINCREMENTO {
+		var nuevo = new Nodo("ID");
+				var nuevovalor = new Nodo($1);
+				nuevo.Hijos[0] = nuevovalor;
+				nuevo.TipoDato = "ID";
+				nuevo.CadenaDe3D = $1;
+
+				var nuevoX = new Nodo("Entero");
+				var nuevovalorX = new Nodo("0");
+				nuevoX.Hijos[0] = nuevovalorX;
+				nuevoX.TipoDato = "Entero";
+				nuevoX.CadenaDe3D = "0";
+
+
+				var nuevoy = new Aritmetica2("Aritmetica");
+				var operador = new Nodo("-");
+				
+				nuevoy.Hijos[0] = nuevo;
+				nuevoy.Hijos[1] = operador;
+				nuevoy.Hijos[2] =  nuevoX;
+
+				nuevoy.linea = this._$.first_line;
+				nuevoy.columna = this._$.first_column;
+
+				$$ =  nuevoy.Ejecutar(Entorno1);
+
+				var nuevoDEC = new DECREMENTO2("WHILE");
+				var variable = new Nodo($1);
+				nuevoDEC.Hijos[0] = variable;
+				var simbolo = new Nodo("-");
+				nuevoDEC.Hijos[1] = simbolo;
+				nuevoDEC.Ejecutar(Entorno1);
+
+
+				
+	}
+	|MENOS expresion2 %prec UMENOS	{ 
 										//$$ = $2 *-1;
 										//var nuevo = Nodo("Hola");
 										//$$ = nuevo;

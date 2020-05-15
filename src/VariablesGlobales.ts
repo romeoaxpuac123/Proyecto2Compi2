@@ -15,6 +15,36 @@ class VariablesGlobales extends NodoAbstracto{
         var TipoRespuesta = this.Hijos[1].TipoDato;
         var ElvalordeP = "P"; // + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
+        var banderaconstante = 0;
+        if(ElTipo.toUpperCase() =="VAR"){
+            ElTipo = TipoRespuesta;
+            if(ElTipo.toUpperCase() == "CADENA"){
+                ElTipo = "STRING";
+            }else if(ElTipo.toUpperCase() == "BOOLEANO"){
+                ElTipo = "BOOLEAN";
+            } 
+            else if(ElTipo.toUpperCase() == "DECIMAL"){
+                ElTipo = "DOUBLE";
+            } 
+            else if(ElTipo.toUpperCase() == "ENTERO"){
+                ElTipo = "INTEGER";
+            } 
+        }
+        if(ElTipo.toUpperCase() =="CONST"){
+            banderaconstante = 1;
+            ElTipo = TipoRespuesta;
+            if(ElTipo.toUpperCase() == "CADENA"){
+                ElTipo = "STRING";
+            }else if(ElTipo.toUpperCase() == "BOOLEANO"){
+                ElTipo = "BOOLEAN";
+            } 
+            else if(ElTipo.toUpperCase() == "DECIMAL"){
+                ElTipo = "DOUBLE";
+            } 
+            else if(ElTipo.toUpperCase() == "ENTERO"){
+                ElTipo = "INTEGER";
+            } 
+        }
         //console.log("La variable tiene Tipoe de:->" + ElTipo);
         //console.log("La T A LA QUE HACE REF->" + LaTRespuesta);
         if(ElTipo.toUpperCase() != "GLOBAL"){
@@ -142,6 +172,7 @@ class VariablesGlobales extends NodoAbstracto{
                     entorno.TesVariablesFUNCIONGLOBAL.push("t" + entorno.numero);
                     entorno.TipoVariablesFUNCIONGLOBAL.push(TipoRespuesta);
                     entorno.VariableVariablesFUNCIONGLOBAL.push(entorno.VariableVariables[i]);
+                    entorno.SonConstanteGlobales.push(banderaconstante);
                     entorno.tamanioentorno += 1;
     
                 }else{
@@ -155,6 +186,7 @@ class VariablesGlobales extends NodoAbstracto{
                     entorno.TesVariablesFUNCIONGLOBAL.push("t" + entorno.numero);
                     entorno.TipoVariablesFUNCIONGLOBAL.push(TipoRespuesta);
                     entorno.VariableVariablesFUNCIONGLOBAL.push(entorno.VariableVariables[i]);
+                    entorno.SonConstanteGlobales.push(banderaconstante);
                     entorno.tamanioentorno += 1;
                 }
                 
@@ -167,6 +199,7 @@ class VariablesGlobales extends NodoAbstracto{
             console.log(entorno.VariableVariablesFUNCIONGLOBAL[x]);
             console.log(entorno.TipoVariablesFUNCIONGLOBAL [x]);
             console.log(entorno.TesVariablesFUNCIONGLOBAL[x]);
+            console.log(entorno.SonConstanteGlobales[x])
         }
         console.log("fin XD");
             var nuevo = new Nodo("VARIALBES");

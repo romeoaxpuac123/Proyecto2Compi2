@@ -7,17 +7,9 @@ class simbolo{
     tipo: string;
     posicionT: string;
     parametros: number;
-    /*
-    constructor(){
-        this.nombre = "";
-        this.ambito = "";
-        this.funcion = "";
-        this.tamanio = 0;
-        this.posicion = 0;
-        this.tipo = "";
-        this.posicionT = "";
-    }*/
+    constante: number;
     constructor(nombre1:string,ambito1:string,funcion1:string,tamanio1:number,posicion1:number,tipo1:string,posicionT1:string,parametros:number){
+        this.constante = 0;
         this.nombre = nombre1;
         this.ambito = ambito1;
         this.funcion = funcion1;
@@ -28,6 +20,7 @@ class simbolo{
         this.parametros = parametros;
 
     }
+    
     simbolo_nombre(){
         return this.nombre;
     }
