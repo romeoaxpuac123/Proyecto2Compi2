@@ -1983,15 +1983,16 @@ case 88:
 				nuevoy.linea = this._$.first_line;
 				nuevoy.columna = this._$.first_column;
 				
-				this.$ =  nuevoy.Ejecutar(Entorno1);
-
+				var nuevoyx =  nuevoy.Ejecutar(Entorno1);
+				nuevoy.Ejecutar(Entorno1);
 				var nuevoDEC = new DECREMENTO2("WHILE");
 				var variable = new Nodo($$[$0-1]);
 				nuevoDEC.Hijos[0] = variable;
 				var simbolo = new Nodo("+");
 				nuevoDEC.Hijos[1] = simbolo;
 				nuevoDEC.Ejecutar(Entorno1);
-
+				nuevoyx.MiCadena = nuevoyx.MiCadena +  nuevoDEC.MiCadena;
+				this.$ = nuevoyx;
 				
 	
 break;
@@ -2020,15 +2021,16 @@ case 89:
 				nuevoy.linea = this._$.first_line;
 				nuevoy.columna = this._$.first_column;
 
-				this.$ =  nuevoy.Ejecutar(Entorno1);
-
+				//this.$ =  nuevoy.Ejecutar(Entorno1);
+				var nuevoyx = nuevoy.Ejecutar(Entorno1);
 				var nuevoDEC = new DECREMENTO2("WHILE");
 				var variable = new Nodo($$[$0-1]);
 				nuevoDEC.Hijos[0] = variable;
 				var simbolo = new Nodo("-");
 				nuevoDEC.Hijos[1] = simbolo;
 				nuevoDEC.Ejecutar(Entorno1);
-
+				nuevoyx.MiCadena = nuevoyx.MiCadena +  nuevoDEC.MiCadena;
+				this.$ = nuevoyx;
 
 				
 	

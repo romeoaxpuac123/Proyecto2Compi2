@@ -84,7 +84,7 @@ class DECREMENTO2 extends NodoAbstracto{
         var nuevo = new Nodo("DECREMENTO");
         //nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
-        
+        nuevo.MiCadena = this.MiCadena;
         return nuevo;
 
     }
