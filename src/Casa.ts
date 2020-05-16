@@ -33,6 +33,7 @@ class Casa {
     public VariableVariablesFUNCIONGLOBAL = new Array();
     public TesVariablesFUNCIONGLOBAL = new Array();
     public SonConstanteGlobales = new Array();
+    public ListaArchivos = new Array();
     
 
     constructor() {

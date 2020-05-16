@@ -67,6 +67,7 @@
 "case"				return "CASO";
 "default"			return "DEFECTO";
 "break"				return "EL_BREAK";
+"import"			return "IMPORTAR";
 
 
 
@@ -82,7 +83,9 @@
 ("'"[a-zA-Z0-9_]"'")	return "CARACTER";
 //("\""([a-zA-Z0-9_" "]+)"\"")	return "CADENA";
 \"([^\\\"]|\\\"|\\t|\\n|\\r|\\)*\"				return "CADENA";
+([a-zA-Z])[a-zA-Z0-9_]*["."][j]	return "ARCHIVO";
 ([a-zA-Z])[a-zA-Z0-9_]*	return "ID";
+
 
 <<EOF>>				return 'EOF';
 
@@ -104,6 +107,7 @@
 %left 'AND' 'OR' 'XOR'
 %left 'IGUALDAD' 'DESIGUALDAD' 
 %left 'MAYOR' 'MENOR' 'MAYORIGUAL' 'MENORIGUAL'
+
 
 %left 'MAS' 'MENOS' 'INCREMENTO' 'DECINCREMENTO'
 %left 'POR' 'DIVIDIDO' 'MODULO'
@@ -309,7 +313,50 @@ instruccion
 			
 	}
 
+	|TIPOS2 ID_LISTA  IGUAL expresion PTCOMA{
+		
+		console.log("DEC1 globales");
+		var nuevo = new VariablesGlobales("VARIABLES");
+		//var Tipo = new Nodo($1);
+		nuevo.Hijos[0] = $1;
+		nuevo.Hijos[1] = $4;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+			
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZ);
+
+		var Conexion1xZx = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $4.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZx);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+			
+	}
+	|IMPORTAR LISTA_ARCHIVOS PTCOMA{
+		var nuevo = new Importar("Importar");
+		$$ = nuevo.Ejecutar(Entorno1);
+		//hola
+	}
 ;
+
+LISTA_ARCHIVOS :
+	 LISTA_ARCHIVOS  COMA  ARCHIVO{
+		Entorno1.ListaArchivos.push($3);
+	}
+	|ARCHIVO{
+		Entorno1.ListaArchivos.push($1);
+	};
 TIPOS2:
 	VAR{
 			var nuevo = new Nodo($1);
@@ -608,6 +655,35 @@ instruccion2
 		GraficasDOT.anadir(Conexion1xZ);
 
 		var Conexion1xZx = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $5.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZx);
+
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+
+	|TIPOS ID_LISTA  IGUAL expresion PTCOMA	{
+		console.log("DEC1");
+		var nuevo = new Variables ("VARIABLES");
+		//var Tipo = new Nodo($1);
+		nuevo.Hijos[0] = $1;
+		nuevo.Hijos[1] = $4;
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+			
+
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $1.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1xZ = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $2.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xZ);
+
+		var Conexion1xZx = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $4.NumeroDeNodo + "\n";
 		GraficasDOT.anadir(Conexion1xZx);
 
 		$$ = nuevo.Ejecutar(Entorno1);
@@ -942,7 +1018,7 @@ instruccion2
 		$$ = nuevo.Ejecutar(Entorno1);
 		
 	}
-
+	
 
 	;
 
@@ -2116,10 +2192,11 @@ expresion
 	| PARIZQ expresion PARDER		{ 
 										$$ = $2;  
 
-										nuevo.linea = this._$.first_line;
-										nuevo.columna = this._$.first_column;
+										//nuevo.linea = this._$.first_line;
+										//nuevo.columna = this._$.first_column;
 										//console.log("DUA LIPA");
 									}
+
 ;
 
 
@@ -2737,8 +2814,8 @@ expresion2
 	| PARIZQ expresion2 PARDER		{ 
 										$$ = $2;  
 
-										nuevo.linea = this._$.first_line;
-										nuevo.columna = this._$.first_column;
+										//nuevo.linea = this._$.first_line;
+										//nuevo.columna = this._$.first_column;
 										//console.log("DUA LIPA");
 									}
 ;

@@ -20,6 +20,7 @@ var Casa = /** @class */ (function () {
         this.VariableVariablesFUNCIONGLOBAL = new Array();
         this.TesVariablesFUNCIONGLOBAL = new Array();
         this.SonConstanteGlobales = new Array();
+        this.ListaArchivos = new Array();
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
         this.ListaParametrosFuncion2 = new Array();

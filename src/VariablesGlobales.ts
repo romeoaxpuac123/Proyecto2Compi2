@@ -137,7 +137,7 @@ class VariablesGlobales extends NodoAbstracto{
                 //entorno.numero +=1;
                 entorno.direccion = entorno.direccion + "## ASIGANDNO VARIABLE Global->" +  entorno.VariableVariables[i] + "\n";
                 //entorno.direccion = entorno.direccion + "t" + entorno.numero + " = " + LaTRespuesta + ";\n";
-                if(LaTRespuesta == "0" || LaTRespuesta == "1" ){
+                if((LaTRespuesta == "0" || LaTRespuesta == "1") && (TipoRespuesta.toUpperCase() == "BOOLEANO" ||TipoRespuesta.toUpperCase() == "BOOLEAN")  ){
                     entorno.numero += 1;
                    
                     var ResuladoSalida =  "";

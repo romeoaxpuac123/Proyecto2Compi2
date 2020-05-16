@@ -33,7 +33,8 @@
   
   <script src="Main.js "></script>
   <script src="gramatica.js"></script>
- 
+  <script src="gramaticaC3D.js"></script>
+
   <script src="Simbolo.js"></script>
 <script src="Entorno.js"></script>
 <script src="NodoAbstracto.js"></script>
@@ -63,7 +64,8 @@
 <script src="SWITCHD.js"></script>
 <script src="Decremento.js"></script>
 <script src="Decremento2.js"></script>
-
+<script src="Optimizar.js"></script>
+<script src="Importar.js"></script>
   <script type="text/javascript">
  
     function pestana(grupo_pesta, id_pesta){
@@ -152,13 +154,67 @@
   </script>
 
 <script type="text/javascript">
+
+    
   
       function pegarTexto(input) {
+        var Entrada = "";
+        var arrayDeCadenas = input.split('\n');
+        for (var i=0; i < arrayDeCadenas.length; i++) {
+           //alert(arrayDeCadenas[i]);
+           if(arrayDeCadenas[i].toUpperCase().includes("IMPORT")){
+            
+            var arrayDeCadenasArchivos = arrayDeCadenas[i].split(',');
+            for (var ix=0; ix < arrayDeCadenasArchivos.length; ix++) {
+              var NombreArchivo = arrayDeCadenasArchivos[ix].replace("import ","");
+              NombreArchivo = NombreArchivo.replace(" ","");
+              NombreArchivo = NombreArchivo.replace(";","");
+              //alert(NombreArchivo);
+              var rawFile = new XMLHttpRequest();
+              rawFile.open("GET", NombreArchivo, false);
+              rawFile.onreadystatechange = function ()
+              {
+                  if(rawFile.readyState === 4)
+                  {
+                      if(rawFile.status === 200 || rawFile.status == 0)
+                      {
+                          var allText = rawFile.responseText;
+                          //alert(allText);
+                          Entrada +=  allText;//gramatica.parse(allText);
+                      }
+                  }
+              }
+              rawFile.send(null);
+
+
+
+
+
+
+
+              //leyendo el arhivo XD;
+            }
+           }else{
+            Entrada +=  arrayDeCadenas[i];
+           }
+        }
+
         document.getElementById("texto1C3D").innerHTML = "";
         document.getElementById("salida").innerHTML = "";
-          gramatica.parse(input);
+          gramatica.parse(Entrada);
           Salida.setValue(document.getElementById("texto1C3D").value);
           SalidaAT.setValue(document.getElementById("salida").value);
+          //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
+          //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
+      }  
+
+      function pegarTexto2(input) {
+          document.getElementById("texto1C3D").innerHTML = "";
+          document.getElementById("salida").innerHTML = "";
+          gramaticaC3D.parse(input);
+          OPTIMIZADO.setValue(document.getElementById("texto1C3D").value);
+          //Salida.setValue(document.getElementById("texto1C3D").value);
+          //SalidaAT.setValue(document.getElementById("salida").value);
           //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
           //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
       }  
@@ -445,7 +501,7 @@ function cambiarPestanna(pestannas,pestanna) {
      Salida.setSize("500","250"); 
      
   </script>
-
+ <input type="button" class="boton_2"  onclick="pegarTexto2(Salida.getValue());" Value = "OPTIMIZAR" id = "OPTIMIZARxd" style="position:absolute;top:270px;left:200px;z-index:1; width:100px; height: 50px; ">
 </div>
 <div id = "Bontoesmenu1P" style="position:absolute;top:150px;left:80px;z-index:1; width:100px; height: 250px; background-color:black">
    <input type="button" class="boton_2" value="Descargar"  id = "CompilarA"  onclick="saveDynamicDataToFile();">
@@ -466,11 +522,31 @@ function cambiarPestanna(pestannas,pestanna) {
 
   
 </div>
+<div id = "C3CCuadroOPTIMIZACION" style="position:absolute;top:480px;left:705px;z-index:1; width:500px;">
+ 
+  <textarea name="texto1C3D2OPTIMIZACION" id = "texto1C3D2OPTIMIZACION" >CODIGO TRES DIRECCIONES OPTIMIZADO</textarea>
+  <script>
+    var OPTIMIZADO = CodeMirror.fromTextArea(
+         document.getElementById('texto1C3D2OPTIMIZACION'),{
+         mode: "javascript",
+         theme: "dracula",
+         lineNumbers: true,
+         undoDepth : 200
+       }
+     );
+     OPTIMIZADO.setSize("500","200"); 
+     
+  </script>
+
+</div>
+
+
+
 <div id = "Bontoesmenu2" style="position:absolute;top:430px;left:80px;z-index:1; width:580px; height: 50px; ">
   <div class="wrap" >
     <ul class="tabs">
       <li><a href="#tab1"><span ></span><span class="tab-text">Consola</span></a></li>
-      <li><a href="#tab2"><span ></span><span class="tab-text">R. Stack</span></a></li>
+      <li><a href="#tab2"><span ></span><span class="tab-text">R Opti.</span></a></li>
       <li><a href="#tab3"><span ></span><span class="tab-text">R. Heap</span></a></li>
       <li><a href="#tab4"><span ></span><span class="tab-text">Errores</span></a></li>
       <li><a href="#tab5"><span ></span><span class="tab-text">Simbolos</span></a></li>
@@ -494,7 +570,10 @@ function cambiarPestanna(pestannas,pestanna) {
       </article>
 
       <article id="tab2">
-        <textarea name="stack" id = "stack" rows="5" cols="67">Stack</textarea>     
+        <div id="Reporte_Optimizacion">
+
+         
+        </div>    
       </article>
 
       <article id="tab3">
@@ -525,157 +604,4 @@ function cambiarPestanna(pestannas,pestanna) {
 
 
 
-<!--
-  <body background="fondo.jpg" bgcolor="0000000">
-  <img src="titulo.png">
-   <textarea name="texto1C3D" id = "texto1C3D" rows="18" cols="73"   style="position:absolute;top:128px;left:705px;z-index:1;">CODIGO TRES DIRECCIONES</textarea>
-
-  <div id="botones">
-    <input type="button"class="boton_personalizado"  onClick="showDiv1()" value="pestaña1" style="position:absolute;top:80px;left:125px;z-index:1;"  />
-   <input type="button"class="boton_personalizado"  onClick="showDiv2()" value="pestaña2" style="position:absolute;top:80px;left:225px;z-index:1;"  />
-   <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:50px;left:25px;z-index:1;">
-   
-  </div>
-
- <div>
-
- </div>
- 
-  <div id="welcomeDiv1" style=" position:absolute;  top:-10;   right:-10;  width:-600px;">
-     
-  <textarea name="texto1" id = "texto1">Ingresa tu codigo 1</textarea>
-  <script>
-    var Editor = CodeMirror.fromTextArea(
-         document.getElementById('texto1'),{
-         mode: "javascript",
-         theme: "dracula",
-         lineNumbers: true,
-         undoDepth : 200
-       }
-     );
-     Editor.setSize("500","250"); 
-     
-  </script>
-
-</div>
-
--->
-
-<!--
-<div id="pestanas">
-    <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta1')" value="pestaña1" style="position:absolute;top:80px;left:125px;z-index:1;"  />
-    <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta2')" value="pestaña2" style="position:absolute;top:80px;left:225px;z-index:1;" />
-    <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta3')" value="pestaña3" style="position:absolute;top:80px;left:325px;z-index:1;"/>
-    <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta4')" value="pestaña4" style="position:absolute;top:80px;left:425px;z-index:1;"/>
-    <input type="button"class="boton_personalizado"  onClick="pestana('pestanas', 'pesta5')" value="pestaña5" style="position:absolute;top:80px;left:525px;z-index:1;"/>
-    <div id="pesta1" style="z-index:1000; visibility:hidden; position:absolute">
-      <p></p>
-      <textarea name="texto1" id = "texto1" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu codigo 1</textarea>
-     <script>
-      /* var Editor = CodeMirror.fromTextArea(
-            document.getElementById('texto1'),{
-            mode: "javascript",
-            theme: "dracula",
-            lineNumbers: true,
-            undoDepth : 200
-          }
-        );
-        Editor.setSize("260","250"); 
-        */
-     </script>
-      <input type="button" class="boton_2" value="Compilar"  id = "CompilarA"  onclick="Compilar()"style="position:absolute;top:50px;left:25px;z-index:1;">
-          
-      <input type="button" class="boton_2" onclick="pegarTexto(Editor.getValue());" Value = "Ejec. C3D" id = "C3DA" style="position:absolute;top:113px;left:22px;z-index:1;">
-      <input type="button" class="boton_2" Value = "Reportes" id = "ReportesA" style="position:absolute;top:178px;left:25px;z-index:1;">
-
-      <input type="file"   class="custom-input-file2"  onclick="Compilar()" id="archivo" style="position:absolute;top:245px;left:26px;z-index:1;">
-      <p id="datos"></p>
-    </div>
-
-    <div id="pesta2" style="z-index:-1000; visibility:hidden; position:absolute">
-      <p></p>
-      <textarea name="texto2" id = "texto2" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu Codigo 2</textarea>
-      <a href="" class="boton_2" id = "CompilarB" style="position:absolute;top:50px;left:25px;z-index:1;">Compilar</a>
-      <a href="" class="boton_2" id = "ArchivoB" style="position:absolute;top:110px;left:26px;z-index:1;">Archivos </a>
-      <a href="" class="boton_2" id = "C3DB" style="position:absolute;top:170px;left:22px;z-index:1;">Ejecucion 3D</a>
-      <a href="" class="boton_2" id = "ReportesB" style="position:absolute;top:245px;left:25px;z-index:1;">Reportes</a>
-    </div>
-
-    <div id="pesta3" style="z-index:-1000; visibility:hidden; position:absolute">
-      <p></p>
-      <textarea name="texto3" id = "texto3" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu Codigo 3</textarea>
-      <a href="" class="boton_2" id = "CompilarC" style="position:absolute;top:10px;left:25px;z-index:1;">Compilar</a>
-      <a href="" class="boton_2" id = "ArchivoC" style="position:absolute;top:70px;left:26px;z-index:1;">Archivos </a>
-      <a href="" class="boton_2" id = "C3DC" style="position:absolute;top:130px;left:22px;z-index:1;">Ejecucion 3D</a>
-      <a href="" class="boton_2" id = "ReportesC" style="position:absolute;top:205px;left:25px;z-index:1;">Reportes</a>
-    
-    </div>
-
-    <div id="pesta4" style="z-index:-1000; visibility:hidden; position:absolute">
-      <p></p>
-      <textarea name="texto4" id = "texto4" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu Codigo 4</textarea>
-      <a href="" class="boton_2" id = "CompilarD" style="position:absolute;top:10px;left:25px;z-index:1;">Compilar</a>
-      <a href="" class="boton_2" id = "ArchivoD" style="position:absolute;top:70px;left:26px;z-index:1;">Archivos </a>
-      <a href="" class="boton_2" id = "C3DD" style="position:absolute;top:130px;left:22px;z-index:1;">Ejecucion 3D</a>
-      <a href="" class="boton_2" id = "ReportesD" style="position:absolute;top:205px;left:25px;z-index:1;">Reportes</a>
-    
-    </div>
-
-    <div id="pesta5" style="z-index:-1000; visibility:hidden; position:absolute">
-      <p></p>
-      <textarea name="texto5" id = "texto5" rows="18" cols="73"   style="position:absolute;top:40px;left:105px;z-index:1;">Ingresa tu Codigo 5</textarea>
-      <a href="" class="boton_2" id = "CompilarE" style="position:absolute;top:10px;left:25px;z-index:1;">Compilar</a>
-      <a href="" class="boton_2" id = "ArchivoE" style="position:absolute;top:70px;left:26px;z-index:1;">Archivos </a>
-      <a href="" class="boton_2" id = "C3DE" style="position:absolute;top:130px;left:22px;z-index:1;">Ejecucion 3D</a>
-      <a href="" class="boton_2" id = "ReportesE" style="position:absolute;top:205px;left:25px;z-index:1;">Reportes</a>
-        
-    </div>
-    
-</div>
-  
-
-
-
-
-  </body>
-
-
--->
-
-<!--
-  <body>
-    <div class="wrap" style="position:absolute;top:380px;left:105px;z-index:1;">
-      <ul class="tabs">
-        <li><a href="#tab1"><span ></span><span class="tab-text">Consola</span></a></li>
-        <li><a href="#tab2"><span ></span><span class="tab-text">R. Stack</span></a></li>
-        <li><a href="#tab3"><span ></span><span class="tab-text">R. Heap</span></a></li>
-        <li><a href="#tab4"><span ></span><span class="tab-text">Errores</span></a></li>
-        <li><a href="#tab5"><span ></span><span class="tab-text">Simbolos</span></a></li>
-      </ul>
-  
-      <div class="secciones">
-        <article id="tab1">
-          <textarea name="salida" id = "salida" rows="5" cols="70">Salida</textarea>
-        </article>
-
-        <article id="tab2">
-          <textarea name="stack" id = "stack" rows="5" cols="70">Stack</textarea>     
-        </article>
-
-        <article id="tab3">
-          <textarea name="heap" id = "heap" rows="5" cols="70">Heap</textarea>     
-        </article>
-
-
-        <article id="tab4">
-         <textarea name="Errores" id = "Errores" rows="5" cols="70">Errores</textarea>  
-        </article>
-
-        <article id="tab5">
-          <textarea name="Simbolos" id = "Simbolos" rows="5" cols="70">Errores</textarea>  
-         </article>
-      </div>
-    </div>
-  </body>
--->
 </html>
