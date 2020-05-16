@@ -1018,7 +1018,12 @@ instruccion2
 		$$ = nuevo.Ejecutar(Entorno1);
 		
 	}
-	
+	|ID CORIZQ CORDER ID_LISTA IGUAL LLAVIZQ lista_Expresiones LLAVDER PTCOMA{
+		var nuevo = new Vectores("Vectores");
+		var TipoVector = new Nodo($1);
+		nuevo.Hijos[0] = TipoVector;
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
 
 	;
 
@@ -1592,66 +1597,59 @@ expresion
 				var simbolo = new Nodo("+");
 				nuevoDEC.Hijos[1] = simbolo;
 				nuevoDEC.Ejecutar(Entorno1);
-
-
-				
-				
+	
 	}
 	| ID DECINCREMENTO {
 		var nuevo = new Nodo("ID");
-				var nuevovalor = new Nodo($1);
-				nuevo.Hijos[0] = nuevovalor;
-				nuevo.TipoDato = "ID";
-				nuevo.CadenaDe3D = $1;
+		var nuevovalor = new Nodo($1);
+		nuevo.Hijos[0] = nuevovalor;
+		nuevo.TipoDato = "ID";
+		nuevo.CadenaDe3D = $1;
 
-				var nuevoX = new Nodo("Entero");
-				var nuevovalorX = new Nodo("0");
-				nuevoX.Hijos[0] = nuevovalorX;
-				nuevoX.TipoDato = "Entero";
-				nuevoX.CadenaDe3D = "0";
+		var nuevoX = new Nodo("Entero");
+		var nuevovalorX = new Nodo("0");
+		nuevoX.Hijos[0] = nuevovalorX;
+		nuevoX.TipoDato = "Entero";
+		nuevoX.CadenaDe3D = "0";
 
 
-				var nuevoy = new Aritmetica("Aritmetica");
-				var operador = new Nodo("-");
+		var nuevoy = new Aritmetica("Aritmetica");
+		var operador = new Nodo("-");
 				
-				nuevoy.Hijos[0] = nuevo;
-				nuevoy.Hijos[1] = operador;
-				nuevoy.Hijos[2] =  nuevoX;
+		nuevoy.Hijos[0] = nuevo;
+		nuevoy.Hijos[1] = operador;
+		nuevoy.Hijos[2] =  nuevoX;
 
-				nuevoy.linea = this._$.first_line;
-				nuevoy.columna = this._$.first_column;
+		nuevoy.linea = this._$.first_line;
+		nuevoy.columna = this._$.first_column;
 
-					contador += 1;
-				nuevoy.NumeroDeNodo = contador;
-				var Hijo1 = "node_"+ nuevoy.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
-				GraficasDOT.anadir(Hijo1);
+		contador += 1;
+		nuevoy.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevoy.NumeroDeNodo + "[shape=circle label=\"" + "DECREMENTO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
 
-				contador += 1;
-				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
-				GraficasDOT.anadir(Hijo1);
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "--" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
 
-				contador += 1;
-				var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + "--" + "\"]" +"\n";									
-				GraficasDOT.anadir(Hijo1);
+		var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
 
-				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador-1) + "\n";
-				GraficasDOT.anadir(Conexion1xX);
+		var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
 
-				var Conexion1xX = "node_" + nuevoy.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
-				GraficasDOT.anadir(Conexion1xX);
-
-				$$ = nuevoy.Ejecutar(Entorno1);
-				
-
-				var nuevoDEC = new DECREMENTO("WHILE");
-				var variable = new Nodo($1);
-				nuevoDEC.Hijos[0] = variable;
-				var simbolo = new Nodo("-");
-				nuevoDEC.Hijos[1] = simbolo;
-				nuevoDEC.Ejecutar(Entorno1);
-			
+		$$ = nuevoy.Ejecutar(Entorno1);
 				
 
+		var nuevoDEC = new DECREMENTO("WHILE");
+		var variable = new Nodo($1);
+		nuevoDEC.Hijos[0] = variable;
+		var simbolo = new Nodo("-");
+		nuevoDEC.Hijos[1] = simbolo;
+		nuevoDEC.Ejecutar(Entorno1);
 				
 	}
 	|MENOS expresion %prec UMENOS	{ 
@@ -2196,7 +2194,13 @@ expresion
 										//nuevo.columna = this._$.first_column;
 										//console.log("DUA LIPA");
 									}
-
+	| ID CORIZQ expresion CORDER{
+		var nuevo = new AccesoV("ACCEDER");
+		var Arreglo = new Nodo($1);
+		nuevo.Hijos[0] = Arreglo;
+		nuevo.Hijos[1] = $3;
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
 ;
 
 

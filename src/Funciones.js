@@ -30,6 +30,7 @@ var Funciones = /** @class */ (function (_super) {
         var TParametros = entorno.Variable.length;
         var totaltmanio = entorno.VariableVariablesFUNCION.length + entorno.VariableVariables.length;
         console.log("La funcion tiene nombre de:->" + nombre);
+        //alert(entorno.VariableVariablesFUNCIONVECTOR.length);
         //VERIFICANDO SI EL RETURN ES IGUAL A LA FUNCION Xd xd
         for (var i = 0; i < entorno.VariableVariablesFUNCION.length; i++) {
             if (entorno.VariableVariablesFUNCION[i].toUpperCase() == "RETURN") {
@@ -110,6 +111,16 @@ var Funciones = /** @class */ (function (_super) {
                         entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                     }
                 }
+                //añadiendo los vectores a la tabla de Simbolos
+                var holis = entorno.Variable.length + totaltmanio;
+                for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
+                    entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i], "Vector: local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.TamanioVECTOR[i], (holis + i), entorno.TipoVariablesFUNCIONVECTOR[i], entorno.TesVariablesFUNCIONVECTOR[i], 0);
+                    //holis += 1;
+                }
+                entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                entorno.TesVariablesFUNCIONVECTOR.splice(0, entorno.TesVariablesFUNCIONVECTOR.length);
+                entorno.TamanioVECTOR.splice(0, entorno.TamanioVECTOR.length);
                 console.log("SIMBOLOS--->");
                 entorno.mostrarSimboos();
                 console.log("fin simbolos");
@@ -159,6 +170,16 @@ var Funciones = /** @class */ (function (_super) {
                         entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                     }
                 }
+                //añadiendo los vectores a la tabla de Simbolos
+                var holis = entorno.Variable.length + totaltmanio;
+                for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
+                    entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i], "Vector: local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.TamanioVECTOR[i], (holis + i), entorno.TipoVariablesFUNCIONVECTOR[i], entorno.TesVariablesFUNCIONVECTOR[i], 0);
+                    //holis += 1;
+                }
+                entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                entorno.TesVariablesFUNCIONVECTOR.splice(0, entorno.TesVariablesFUNCIONVECTOR.length);
+                entorno.TamanioVECTOR.splice(0, entorno.TamanioVECTOR.length);
                 console.log("FIN TIENE ESTOS PARAMETROAS->");
                 Parametrosc3d = Parametrosc3d.replace(/\n/g, '\n\t') + "\n\n";
                 var esomero = "goto L" + Etiqueta1x + ";\n";
@@ -217,6 +238,16 @@ var Funciones = /** @class */ (function (_super) {
                             entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                         }
                     }
+                    //añadiendo los vectores a la tabla de Simbolos
+                    var holis = entorno.Variable.length + totaltmanio;
+                    for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
+                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i], "Vector: local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.TamanioVECTOR[i], (holis + i), entorno.TipoVariablesFUNCIONVECTOR[i], entorno.TesVariablesFUNCIONVECTOR[i], 0);
+                        //holis += 1;
+                    }
+                    entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                    entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                    entorno.TesVariablesFUNCIONVECTOR.splice(0, entorno.TesVariablesFUNCIONVECTOR.length);
+                    entorno.TamanioVECTOR.splice(0, entorno.TamanioVECTOR.length);
                     console.log("SIMBOLOS--->");
                     entorno.mostrarSimboos();
                     console.log("fin simbolos");
@@ -265,6 +296,16 @@ var Funciones = /** @class */ (function (_super) {
                             entorno.agregarconstante(entorno.VariableVariablesFUNCION[i], "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.EsConstante[i]);
                         }
                     }
+                    //añadiendo los vectores a la tabla de Simbolos
+                    var holis = entorno.Variable.length + totaltmanio;
+                    for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
+                        entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i], "Vector: local", "funcionbayron_" + nombre + "_" + this.TipoDato + "_" + TParametros, entorno.TamanioVECTOR[i], (holis + i), entorno.TipoVariablesFUNCIONVECTOR[i], entorno.TesVariablesFUNCIONVECTOR[i], 0);
+                        //holis += 1;
+                    }
+                    entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                    entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                    entorno.TesVariablesFUNCIONVECTOR.splice(0, entorno.TesVariablesFUNCIONVECTOR.length);
+                    entorno.TamanioVECTOR.splice(0, entorno.TamanioVECTOR.length);
                     console.log("FIN TIENE ESTOS PARAMETROAS->");
                     Parametrosc3d = Parametrosc3d.replace(/\n/g, '\n\t') + "\n\n";
                     var esomero = "goto L" + Etiqueta1x + ";\n";

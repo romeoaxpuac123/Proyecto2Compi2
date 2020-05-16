@@ -14,7 +14,7 @@ class Funciones extends NodoAbstracto{
         var TParametros = entorno.Variable.length;
         var totaltmanio = entorno.VariableVariablesFUNCION.length + entorno.VariableVariables.length;
         console.log("La funcion tiene nombre de:->" + nombre);
-        
+        //alert(entorno.VariableVariablesFUNCIONVECTOR.length);
         //VERIFICANDO SI EL RETURN ES IGUAL A LA FUNCION Xd xd
         for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
             if(entorno.VariableVariablesFUNCION[i].toUpperCase() == "RETURN"){
@@ -92,6 +92,10 @@ class Funciones extends NodoAbstracto{
             if(TParametros == 0){
                 entorno.anadirSimbolo(nombre,"global","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,0,0,this.TipoDato,"NO TIENE",TParametros);
                 console.log("salida de variables->");
+               
+
+
+
                 //añadiendo las variables a la tabla de simbolos
                 for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
                     
@@ -107,6 +111,19 @@ class Funciones extends NodoAbstracto{
                     }
                       
                 }
+
+                 //añadiendo los vectores a la tabla de Simbolos
+                 var holis = entorno.Variable.length + totaltmanio;
+                 for(var i = 0; i< entorno.VariableVariablesFUNCIONVECTOR.length;i++){
+                     entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i],"Vector: local","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,entorno.TamanioVECTOR[i],(holis+i),
+                     entorno.TipoVariablesFUNCIONVECTOR[i],entorno.TesVariablesFUNCIONVECTOR[i],0);
+                     //holis += 1;
+                 }
+                 entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                 entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                 entorno.TesVariablesFUNCIONVECTOR.splice(0,entorno.TesVariablesFUNCIONVECTOR.length);
+                 entorno.TamanioVECTOR.splice(0,entorno.TamanioVECTOR.length);
+
                 console.log("SIMBOLOS--->");
                 entorno.mostrarSimboos();
                 console.log("fin simbolos");
@@ -125,6 +142,8 @@ class Funciones extends NodoAbstracto{
                 entorno.VariableVariablesFUNCION.splice(0, entorno.VariableVariablesFUNCION.length);
                 entorno.TesVariablesFUNCION.splice(0,entorno.TesVariablesFUNCION.length);
                 entorno.EsConstante.splice(0,entorno.EsConstante.length);
+
+                
             }else{
 
                 console.log("TIENE ESTOS PARAMETROAS->");
@@ -135,6 +154,10 @@ class Funciones extends NodoAbstracto{
                 console.log("->" + entorno.Tes.length)
                 console.log("fin vacios");
                 entorno.anadirSimbolo(nombre,"global","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,totaltmanio ,0,this.TipoDato,"NO TIENE",TParametros);
+
+  
+
+
 
                 var Auxiliar = "P"; // + entorno.valordep;
                 var Parametrosc3d = "";
@@ -165,6 +188,20 @@ class Funciones extends NodoAbstracto{
                     }
                       
                 }
+
+
+                 //añadiendo los vectores a la tabla de Simbolos
+                 var holis = entorno.Variable.length + totaltmanio;
+                 for(var i = 0; i< entorno.VariableVariablesFUNCIONVECTOR.length;i++){
+                     entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i],"Vector: local","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,entorno.TamanioVECTOR[i],(holis+i),
+                     entorno.TipoVariablesFUNCIONVECTOR[i],entorno.TesVariablesFUNCIONVECTOR[i],0);
+                     //holis += 1;
+                 }
+                 entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                 entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                 entorno.TesVariablesFUNCIONVECTOR.splice(0,entorno.TesVariablesFUNCIONVECTOR.length);
+                 entorno.TamanioVECTOR.splice(0,entorno.TamanioVECTOR.length);
+
 
                 console.log("FIN TIENE ESTOS PARAMETROAS->");
                 Parametrosc3d = Parametrosc3d.replace(/\n/g, '\n\t') + "\n\n";
@@ -225,6 +262,9 @@ class Funciones extends NodoAbstracto{
                 if(TParametros == 0){
                     entorno.anadirSimbolo(nombre,"global","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,0,0,this.TipoDato,"NO TIENE",TParametros);
                     console.log("salida de variables->");
+
+
+
                     //añadiendo las variables a la tabla de simbolos
                     for(var i = 0; i < entorno.VariableVariablesFUNCION.length;i++){
                         
@@ -240,6 +280,20 @@ class Funciones extends NodoAbstracto{
                         }
                           
                     }
+
+                     //añadiendo los vectores a la tabla de Simbolos
+                 var holis = entorno.Variable.length + totaltmanio;
+                 for(var i = 0; i< entorno.VariableVariablesFUNCIONVECTOR.length;i++){
+                     entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i],"Vector: local","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,entorno.TamanioVECTOR[i],(holis+i),
+                     entorno.TipoVariablesFUNCIONVECTOR[i],entorno.TesVariablesFUNCIONVECTOR[i],0);
+                     //holis += 1;
+                 }
+                 entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                 entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                 entorno.TesVariablesFUNCIONVECTOR.splice(0,entorno.TesVariablesFUNCIONVECTOR.length);
+                 entorno.TamanioVECTOR.splice(0,entorno.TamanioVECTOR.length);
+
+
                     console.log("SIMBOLOS--->");
                     entorno.mostrarSimboos();
                     console.log("fin simbolos");
@@ -268,6 +322,10 @@ class Funciones extends NodoAbstracto{
                     console.log("fin vacios");
                     entorno.anadirSimbolo(nombre,"global","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,totaltmanio ,0,this.TipoDato,"NO TIENE",TParametros);
     
+
+
+
+
                     var Auxiliar = "P";// + entorno.valordep;
                     var Parametrosc3d = ""; //Auxiliar + " = P;\n";""
                     for(var i = 0; i < entorno.Variable.length; i++){
@@ -298,6 +356,20 @@ class Funciones extends NodoAbstracto{
                           
                     }
     
+
+                     //añadiendo los vectores a la tabla de Simbolos
+                 var holis = entorno.Variable.length + totaltmanio;
+                 for(var i = 0; i< entorno.VariableVariablesFUNCIONVECTOR.length;i++){
+                     entorno.anadirSimbolo(entorno.VariableVariablesFUNCIONVECTOR[i],"Vector: local","funcionbayron_"+ nombre + "_" + this.TipoDato + "_" +TParametros,entorno.TamanioVECTOR[i],(holis+i),
+                     entorno.TipoVariablesFUNCIONVECTOR[i],entorno.TesVariablesFUNCIONVECTOR[i],0);
+                     //holis += 1;
+                 }
+                 entorno.TipoVariablesFUNCIONVECTOR.splice(0, entorno.TipoVariablesFUNCIONVECTOR.length);
+                 entorno.VariableVariablesFUNCIONVECTOR.splice(0, entorno.VariableVariablesFUNCIONVECTOR.length);
+                 entorno.TesVariablesFUNCIONVECTOR.splice(0,entorno.TesVariablesFUNCIONVECTOR.length);
+                 entorno.TamanioVECTOR.splice(0,entorno.TamanioVECTOR.length);
+                 
+
                     console.log("FIN TIENE ESTOS PARAMETROAS->");
                     Parametrosc3d = Parametrosc3d.replace(/\n/g, '\n\t') + "\n\n";
                     var esomero = "goto L" + Etiqueta1x + ";\n";

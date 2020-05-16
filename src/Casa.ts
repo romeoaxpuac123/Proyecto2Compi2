@@ -35,7 +35,10 @@ class Casa {
     public SonConstanteGlobales = new Array();
     public ListaArchivos = new Array();
     
-
+    public TipoVariablesFUNCIONVECTOR =  new Array();
+    public VariableVariablesFUNCIONVECTOR = new Array();
+    public TesVariablesFUNCIONVECTOR = new Array();
+    public TamanioVECTOR = new Array();
     constructor() {
         // Le doy un valor
         this.ListaParametrosFuncion = new Array();
