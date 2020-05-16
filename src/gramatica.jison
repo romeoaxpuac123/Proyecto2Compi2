@@ -68,6 +68,8 @@
 "default"			return "DEFECTO";
 "break"				return "EL_BREAK";
 "import"			return "IMPORTAR";
+".linealize"		return "LINEALIZAR";
+".length"			return "LARGO";
 
 
 
@@ -581,8 +583,9 @@ instruccion2
         //document.getElementById("salida").innerHTML = respuesta;
 		var nuevo = new Imprimir("Imprimir");
 		nuevo.Hijos[0] = $3;
-		nuevo.Ejecutar(Entorno1);
 		
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
 		contador = contador + 1;
 		nuevo.NumeroDeNodo = contador;
 		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "IMP" + "\"]" +"\n";									
@@ -599,6 +602,7 @@ instruccion2
 		GraficasDOT.anadir(Conexion2);
 		//document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
         //entorno.direccion = ""; 
+		nuevo.Ejecutar(Entorno1);
 		$$ = nuevo;
 	}
 	
@@ -960,7 +964,8 @@ instruccion2
 	}
 	|ID INCREMENTO PTCOMA{
 		var nuevo = new DECREMENTO("WHILE");
-
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
 		var variable = new Nodo($1);
 		nuevo.Hijos[0] = variable;
 
@@ -990,7 +995,8 @@ instruccion2
 	}
 	|ID DECINCREMENTO PTCOMA{
 		var nuevo = new DECREMENTO("WHILE");
-
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
 		var variable = new Nodo($1);
 		nuevo.Hijos[0] = variable;
 
@@ -1020,11 +1026,13 @@ instruccion2
 	}
 	|ID CORIZQ CORDER ID_LISTA IGUAL LLAVIZQ lista_Expresiones LLAVDER PTCOMA{
 		var nuevo = new Vectores("Vectores");
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
 		var TipoVector = new Nodo($1);
 		nuevo.Hijos[0] = TipoVector;
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
-
+	
 	;
 
 LISTA_CASES:		
@@ -2196,10 +2204,27 @@ expresion
 									}
 	| ID CORIZQ expresion CORDER{
 		var nuevo = new AccesoV("ACCEDER");
+		nuevo.linea = this._$.first_line;
+		nuevo.columna = this._$.first_column;
 		var Arreglo = new Nodo($1);
 		nuevo.Hijos[0] = Arreglo;
 		nuevo.Hijos[1] = $3;
 		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	| ID LINEALIZAR PARIZQ PARDER{
+			var nuevo = new Nodo("LINEAR");
+			var Vector = new Nodo($1);
+			nuevo.Hijos[0] = Vector;
+			nuevo.TipoDato = "VectorRomeo";
+			$$ = nuevo;
+	}
+
+	|ID LARGO{
+			var nuevo = new LineaVector("LINEAR");
+			var Vector = new Nodo($1);
+			nuevo.Hijos[0] = Vector;
+			nuevo.TipoDato = "VectorRomeo";
+			$$ = nuevo.Ejecutar(Entorno1);
 	}
 ;
 

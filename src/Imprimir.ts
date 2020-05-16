@@ -53,7 +53,41 @@ class Imprimir extends NodoAbstracto{
                     }
                 }
             }
-            
+            if(Bandera1 == "false"){
+                for(var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length;i++){
+                    if(this.Hijos[0].CadenaDe3D == entorno.VariableVariablesFUNCIONVECTOR[i]){
+                        TipoAImprimir =  entorno.TipoVariablesFUNCIONVECTOR[i];
+                        if(TipoAImprimir.toUpperCase() == "ENTERO"){
+                            TipoAImprimir = "INTEGER";
+                            BanderaX = "true";
+                        }else if(TipoAImprimir.toUpperCase() == "DECIMAL"){
+                            TipoAImprimir = "DOUBLE";
+                            BanderaX = "true";
+                        }else if(TipoAImprimir.toUpperCase() == "CHAR"){
+                            TipoAImprimir = "CHAR";
+                            BanderaX = "true";
+                        }else if(TipoAImprimir.toUpperCase() == "BOOLEANO"){
+                            TipoAImprimir = "BOOLEAN";
+                            BanderaX = "true";
+                        }else if(TipoAImprimir.toUpperCase() == "CADENA"){
+                            TipoAImprimir = "STRING";
+                            BanderaX = "true";
+                        }
+                        C3dT = entorno.TesVariablesFUNCIONVECTOR[i];
+                        Bandera1 = "true";
+                    }
+                }
+            }
+            if(Bandera1 == "false"){
+                alert('Este es un semantico: ' + "No Existe el id " + this.Hijos[0].CadenaDe3D+ ' en la linea '+ this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +  "No Existe el id " + this.Hijos[0].CadenaDe3D    + " </td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
             console.log("imprmir tipo->" + TipoAImprimir);
             if(TipoAImprimir.toUpperCase() == "INTEGER"){
                 TipoAImprimir = "\"%i\", ";
@@ -504,6 +538,8 @@ class Imprimir extends NodoAbstracto{
        
         var nuevo = new Nodo("Imprimir");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
+        nuevo.linea = this.linea;
+		nuevo.columna = this.columna;
         return nuevo;
     }
 }

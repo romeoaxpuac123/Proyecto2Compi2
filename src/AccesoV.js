@@ -29,11 +29,23 @@ var AccesoV = /** @class */ (function (_super) {
         var LaT = "";
         var Elvector = this.Hijos[0].Nombre;
         var ElTipo = "";
+        var bandera = "false";
         for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
             if (Elvector.toUpperCase() == entorno.VariableVariablesFUNCIONVECTOR[i].toUpperCase()) {
                 LaT = entorno.TesVariablesFUNCIONVECTOR[i];
                 ElTipo = entorno.TipoVariablesFUNCIONVECTOR[i];
+                bandera = "true";
             }
+        }
+        if (bandera == "false") {
+            alert('Este es un semantico: ' + "No Existe El vector" + Elvector + this.linea + ', en la columna: ' + this.columna);
+            entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+            entorno.LosErrores += "<tr>";
+            entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+            entorno.LosErrores += "<td>" + "No Existe El vector " + Elvector + " </td>";
+            entorno.LosErrores += "<td>" + this.linea + "</td>";
+            entorno.LosErrores += "<td>" + this.columna + "</td>";
+            entorno.LosErrores += "</tr>";
         }
         entorno.numero += 1;
         entorno.direccion += "t" + entorno.numero + " = " + LaT + ";\n";

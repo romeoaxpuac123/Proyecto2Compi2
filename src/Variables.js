@@ -32,6 +32,24 @@ var Variables = /** @class */ (function (_super) {
         var ElvalordeP = "P"; // + entorno.valordep;
         var Tamanio = entorno.tamanioentorno;
         var banderaconstante = 0;
+        if (TipoRespuesta == "VectorRomeo") {
+            for (var i = 0; i < entorno.VariableVariables.length; i++) {
+                //alert("RomeoXD" + entorno.VariableVariables[i] + this.Hijos[1].Hijos[0].Nombre);
+                for (var x = 0; x < entorno.VariableVariablesFUNCIONVECTOR.length; x++) {
+                    if (this.Hijos[1].Hijos[0].Nombre == entorno.VariableVariablesFUNCIONVECTOR[x]) {
+                        entorno.VariableVariablesFUNCIONVECTOR.push(entorno.VariableVariables[i]);
+                        entorno.TesVariablesFUNCIONVECTOR.push(entorno.TesVariablesFUNCIONVECTOR[x]);
+                        entorno.TamanioVECTOR.push(entorno.TamanioVECTOR[x]);
+                        entorno.TipoVariablesFUNCIONVECTOR.push(entorno.TipoVariablesFUNCIONVECTOR[x]);
+                    }
+                }
+            }
+            var nuevo = new Nodo("VARIALBES");
+            nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
+            nuevo.NumeroDeNodo = this.NumeroDeNodo;
+            return nuevo;
+        }
+        //alert("RomeoXDx");
         //alert(this.Hijos[0].Nombre);
         //alert(TipoRespuesta);
         //alert("ENTRO A BUSCAR un id" + TipoRespuesta);
