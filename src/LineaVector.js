@@ -29,13 +29,17 @@ var LineaVector = /** @class */ (function (_super) {
         var Elvector = this.Hijos[0].Nombre;
         var ElTipo = "";
         var bandera = "false";
-        var tamanio = 0;
+        var tamanio = "";
         for (var i = 0; i < entorno.VariableVariablesFUNCIONVECTOR.length; i++) {
             if (Elvector.toUpperCase() == entorno.VariableVariablesFUNCIONVECTOR[i].toUpperCase()) {
                 LaT = entorno.TesVariablesFUNCIONVECTOR[i];
                 ElTipo = entorno.TipoVariablesFUNCIONVECTOR[i];
                 bandera = "true";
-                tamanio = entorno.TamanioVECTOR[i];
+                //tamanio = entorno.TamanioVECTOR[i];
+                //tamanio = entorno.
+                entorno.numero += 1;
+                entorno.direccion += "t" + entorno.numero + " = " + "Heap[" + entorno.TesVariablesFUNCIONVECTOR[i] + "];\n";
+                tamanio = "t" + entorno.numero;
             }
         }
         var nuevo = new Nodo("Entero");

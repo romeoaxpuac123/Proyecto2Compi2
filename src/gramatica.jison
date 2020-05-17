@@ -69,7 +69,12 @@
 "break"				return "EL_BREAK";
 "import"			return "IMPORTAR";
 ".linealize"		return "LINEALIZAR";
+".length()"			return "LARGO2";
 ".length"			return "LARGO";
+".toUpperCase()"	return "MAYUSCULAS";
+".tuLowerCase()"	return "MINUSCULAS";
+".charAt("			return "UNCARACTER";
+".toCharArray()"	return "ARREGLOxD";
 
 
 
@@ -1032,7 +1037,14 @@ instruccion2
 		nuevo.Hijos[0] = TipoVector;
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
-	
+	| ID CORIZQ CORDER ID_LISTA IGUAL ID ARREGLOxD PTCOMA{
+		var nuevo = new VectorString("Vector");
+		var variable = new Nodo($1);
+		nuevo.Hijos[0] = variable;
+		var variable2 = new Nodo($6);
+		nuevo.Hijos[1] = variable2;
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
 	;
 
 LISTA_CASES:		
@@ -2226,6 +2238,36 @@ expresion
 			nuevo.TipoDato = "VectorRomeo";
 			$$ = nuevo.Ejecutar(Entorno1);
 	}
+	|ID LARGO2{
+		var nuevo = new LargoID("LINEAR");
+		var Vector = new Nodo($1);
+		nuevo.Hijos[0] = Vector;
+		nuevo.TipoDato = "VectorRomeoxd";
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ID MAYUSCULAS{
+		var nuevo = new Mayusculas("LINEAR");
+		var Vector = new Nodo($1);
+		nuevo.Hijos[0] = Vector;
+		nuevo.TipoDato = "VectorRomeoxd";
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ID MINUSCULAS{
+		var nuevo = new Minusculas("LINEAR");
+		var Vector = new Nodo($1);
+		nuevo.Hijos[0] = Vector;
+		nuevo.TipoDato = "VectorRomeoxd";
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	|ID UNCARACTER expresion PARDER{
+		var nuevo = new UnCaracter("LINEAR");
+		var Vector = new Nodo($1);
+		nuevo.Hijos[0] = Vector;
+		nuevo.Hijos[1] = $3;
+		nuevo.TipoDato = "VectorRomeoxd";
+		$$ = nuevo.Ejecutar(Entorno1);
+	}
+	
 ;
 
 

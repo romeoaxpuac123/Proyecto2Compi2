@@ -10,7 +10,9 @@
 	var Entorno1 = new Casa();
 	var GraficasDOT = new Graficas();
 	var contador = 0;
-	
+	var Parametro1 = "Romeo";
+	var Parametro2 = "Axpuac";
+
 	
 	
 %}
@@ -145,137 +147,236 @@ instrucciones
 instruccion
 	:   
 	ID IGUAL expresionC3D PTyCOMA{
-        var nuevo = new Optimizar("Optimizar");
-		var IDS = new Nodo($1);
-		nuevo.Hijos[0] = IDS;
-		nuevo.Hijos[1] = $3;
-		nuevo.linea = this._$.first_line;
-		nuevo.columna = this._$.first_column;
-		$$ = nuevo.Ejecutar(Entorno1);
+		if(contador == 0){
+			var nuevo = new Optimizar("Optimizar");
+			var IDS = new Nodo($1);
+			nuevo.Hijos[0] = IDS;
+			nuevo.Hijos[1] = $3;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			$$ = nuevo.Ejecutar(Entorno1);
+		}
     }
 	|ID IGUAL expresion PTyCOMA{
-       	var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " = " + $3.Nombre + ";\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		//alert("hola1->" + Parametro1);
+		//alert("hola2->" + Parametro2);
+		
+		
+		if($1 == Parametro2 && $3.Nombre == Parametro1){
+			Entorno1.LosErrores +="<tr>";
+			Entorno1.LosErrores += "<td>" +  "Eliminación de instrucciones redundantes de carga y  almacenamiento : Se optimizó por regla 1 "   + " </td>";
+			Entorno1.LosErrores += "<td>" + this._$.first_line; + "</td>";
+			Entorno1.LosErrores += "</tr>";
+		}else{
+			
+			if(contador == 0){
+			
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " = " + $3.Nombre + ";\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+			}
+		}
+		Parametro1 = $1;
+			Parametro2 = $3.Nombre;
+		
+		
     }
 	|ETIQUETAS DOSP{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + ":"+ "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(respuesta == $1){
+			contador = 0;
+		}else{
+			contador = 1;
+		}
+		
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + ":"+ "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|GOTO ETIQUETAS PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + ";"+ "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + ";"+ "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|VAR LISTA_TES PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + ";\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + ";\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|VAR STACK CORIZQ CORDER PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + "var Stack[];\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + "var Stack[];\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|VAR HEAP CORIZQ CORDER PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + "var Heap[];\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + "var Heap[];\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|VAR LA_P IGUAL expresion PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + "var P = 0;\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + "var P = 0;\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|VAR LA_H IGUAL expresion PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + "var H = 0;\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + "var H = 0;\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|PROCX IDENTIFICADOC3D BEGINX{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + " " + $3 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + " " + $3 + "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|HEAP CORIZQ LA_H CORDER IGUAL expresion PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5 + " " + $6.Nombre + "" + $7+"\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5 + " " + $6.Nombre + "" + $7+"\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
+	}
+	|HEAP CORIZQ ID CORDER IGUAL expresion PTyCOMA{
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5 + " " + $6.Nombre + "" + $7+"\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	| LA_H IGUAL expresionC3D PTyCOMA{
-		var nuevo = new Optimizar("Optimizar");
-		var IDS = new Nodo($1);
-		nuevo.Hijos[0] = IDS;
-		nuevo.Hijos[1] = $3;
-		nuevo.linea = this._$.first_line;
-		nuevo.columna = this._$.first_column;
-		$$ = nuevo.Ejecutar(Entorno1);
+		if(contador == 0){
+			var nuevo = new Optimizar("Optimizar");
+			var IDS = new Nodo($1);
+			nuevo.Hijos[0] = IDS;
+			nuevo.Hijos[1] = $3;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			$$ = nuevo.Ejecutar(Entorno1);
+		}
 	}
 	|HEAP CORIZQ LA_H CORDER IGUAL MENOS expresion PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5 + " " + $6 + "" + $7.Nombre+";\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5 + " " + $6 + "" + $7.Nombre+";\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|ID IGUAL HEAP CORIZQ ID CORDER PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + " " + $3 +  " " + $4 + "" + $5 + "" + $6 + "" + $7+"\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + " " + $3 +  " " + $4 + "" + $5 + "" + $6 + "" + $7+"\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 
 	}
 	|ELIF PARIZQ expresionC3D PARDER GOTO ETIQUETAS  PTyCOMA{
-		
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + $2 + $3.Hijos[0].Nombre + " " +  $3.Hijos[1].Nombre + " " + $3.Hijos[2].Nombre  + " " + $4 + " " + $5 + " " + $6 + $7 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			if(($3.Hijos[0].Nombre == $3.Hijos[2].Nombre) && $3.Hijos[1].Nombre == "=="){
+					contador = 1;
+					respuesta = $6;
+					var Cadena1 = document.getElementById("texto1C3D").value;
+					var Salida = Cadena1 + $5 + " " + $6 + $7 + "\n";
+					document.getElementById("texto1C3D").innerHTML = Salida;
+					Entorno1.LosErrores +="<tr>";
+					Entorno1.LosErrores += "<td>" +  "Eliminación de código inalcanzable : Se optimizó por regla 4 "   + " </td>";
+					Entorno1.LosErrores += "<td>" + this._$.first_line; + "</td>";
+					Entorno1.LosErrores += "</tr>";
+			}
+			else if(($3.Hijos[0].Nombre != $3.Hijos[2].Nombre) && $3.Hijos[1].Nombre == "==" && 
+				$3.Hijos[0].TipoDato == "ENTERO"  && $3.Hijos[2].TipoDato == "ENTERO"
+				){
+					//var Cadena1 = document.getElementById("texto1C3D").value;
+					//var Salida = Cadena1 + $1 + $2 + $3.Hijos[0].Nombre + " " +  $3.Hijos[1].Nombre + " " + $3.Hijos[2].Nombre  + " " + $4 + " " + $5 + " " + $6 + $7 + "\n";
+					//document.getElementById("texto1C3D").innerHTML = Salida;
+
+					Entorno1.LosErrores +="<tr>";
+					Entorno1.LosErrores += "<td>" +  "Eliminación de código inalcanzable : Se optimizó por regla 5 "   + " </td>";
+					Entorno1.LosErrores += "<td>" + this._$.first_line; + "</td>";
+					Entorno1.LosErrores += "</tr>";
+			}
+			
+			else{
+				var Cadena1 = document.getElementById("texto1C3D").value;
+				var Salida = Cadena1 + $1 + $2 + $3.Hijos[0].Nombre + " " +  $3.Hijos[1].Nombre + " " + $3.Hijos[2].Nombre  + " " + $4 + " " + $5 + " " + $6 + $7 + "\n";
+				document.getElementById("texto1C3D").innerHTML = Salida;
+			}
+		}
 		
 	}
 	|IMPRMIR PARIZQ IMPRIMIRCARACTER COMA expresion PARDER PTyCOMA{
-				
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){		
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|IMPRMIR PARIZQ IMPRIMIRDECIMAL COMA expresion PARDER PTyCOMA{
-				
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){		
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|IMPRMIR PARIZQ IMPRIMIRENTERO COMA expresion PARDER PTyCOMA{
-				
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){	
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + $2 + $3 + $4 + $5.Nombre + $6 + $7 + "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|ELFINAL{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + "end"+ "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + "end"+ "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|STACK CORIZQ expresion CORDER IGUAL  expresion PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + "" + $3.Nombre +  "" + $4 + " " + $5 + " " + $6.Nombre + ";\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + "" + $3.Nombre +  "" + $4 + " " + $5 + " " + $6.Nombre + ";\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	|ID IGUAL STACK CORIZQ expresion CORDER PTyCOMA{
-		var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5.Nombre + " " + $6 + ";\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+		if(contador == 0){
+			var Cadena1 = document.getElementById("texto1C3D").value;
+			var Salida = Cadena1 + $1 + " " + $2 + "" + $3 +  "" + $4 + " " + $5.Nombre + " " + $6 + ";\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 	| LA_P IGUAL expresionC3D PTyCOMA{
-		var nuevo = new Optimizar("Optimizar");
-		var IDS = new Nodo($1);
-		nuevo.Hijos[0] = IDS;
-		nuevo.Hijos[1] = $3;
-		nuevo.linea = this._$.first_line;
-		nuevo.columna = this._$.first_column;
-		$$ = nuevo.Ejecutar(Entorno1);
+		if(contador == 0){
+			var nuevo = new Optimizar("Optimizar");
+			var IDS = new Nodo($1);
+			nuevo.Hijos[0] = IDS;
+			nuevo.Hijos[1] = $3;
+			nuevo.linea = this._$.first_line;
+			nuevo.columna = this._$.first_column;
+			$$ = nuevo.Ejecutar(Entorno1);
+		}
 	}
 	|LLAMADA IDENTIFICADOC3D PTyCOMA{
+		if(contador == 0){
 			var Cadena1 = document.getElementById("texto1C3D").value;
-    	var Salida = Cadena1 + $1 + " " + $2 + " " + $3 + "\n";
-        document.getElementById("texto1C3D").innerHTML = Salida;
+			var Salida = Cadena1 + $1 + " " + $2 + " " + $3 + "\n";
+			document.getElementById("texto1C3D").innerHTML = Salida;
+		}
 	}
 ;
 LISTA_TES:

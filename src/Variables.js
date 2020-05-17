@@ -71,6 +71,10 @@ var Variables = /** @class */ (function (_super) {
                     LaTRespuesta = LaTRespuesta.charCodeAt(1).toString();
                     TipoRespuesta = "CHAR";
                 }
+                if (TipoRespuesta.toUpperCase() == "CHAR2" || TipoRespuesta.toUpperCase() == "CARACTER2") {
+                    LaTRespuesta = LaTRespuesta;
+                    TipoRespuesta = "CHAR";
+                }
                 if (this.Hijos[1].Nombre.toUpperCase() == "CADENA") {
                     entorno.numero += 1;
                     entorno.direccion = entorno.direccion + "t" + entorno.numero + " = H;\n";
@@ -229,6 +233,10 @@ var Variables = /** @class */ (function (_super) {
         if (this.Hijos[1].TipoDato == "Caracter") {
             //alert("pos si hay caracter");
             LaTRespuesta = LaTRespuesta.charCodeAt(1).toString();
+        }
+        if (TipoRespuesta.toUpperCase() == "CHAR2" || TipoRespuesta.toUpperCase() == "CARACTER2") {
+            LaTRespuesta = LaTRespuesta;
+            TipoRespuesta = "CHAR";
         }
         if (ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "DOUBLE"
             || ElTipo.toUpperCase() == "CHAR" || ElTipo.toUpperCase() == "BOOLEAN"

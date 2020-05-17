@@ -59,6 +59,10 @@ class Variables extends NodoAbstracto{
                     LaTRespuesta = LaTRespuesta.charCodeAt(1).toString(); 
                     TipoRespuesta = "CHAR";
                 }
+                if(TipoRespuesta.toUpperCase() == "CHAR2" || TipoRespuesta.toUpperCase() == "CARACTER2" ){
+                    LaTRespuesta = LaTRespuesta; 
+                    TipoRespuesta = "CHAR";
+                }
                 if(this.Hijos[1].Nombre.toUpperCase() == "CADENA"){
                     entorno.numero +=1;
                     entorno.direccion = entorno.direccion + "t" + entorno.numero + " = H;\n";
@@ -227,6 +231,10 @@ class Variables extends NodoAbstracto{
             //alert("pos si hay caracter");
           
             LaTRespuesta = LaTRespuesta.charCodeAt(1).toString(); 
+        }
+        if(TipoRespuesta.toUpperCase() == "CHAR2" || TipoRespuesta.toUpperCase() == "CARACTER2" ){
+            LaTRespuesta = LaTRespuesta; 
+            TipoRespuesta = "CHAR";
         }
 
         if(ElTipo.toUpperCase() == "INTEGER" || ElTipo.toUpperCase() == "DOUBLE"

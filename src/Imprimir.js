@@ -513,6 +513,11 @@ var Imprimir = /** @class */ (function (_super) {
             //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + ResuladoSalida+ "print( \"%c\",10);"+ "\n";
             entorno.direccion = entorno.direccion + ResuladoSalida + "print( \"%c\",10);" + "\n";
         }
+        else if (this.Hijos[0].TipoDato == "Caracter2") {
+            TipoAImprimir = "\"%c\", ";
+            //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +  "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n"+ "print( \"%c\",10);"+ "\n";
+            entorno.direccion = entorno.direccion + "print( " + TipoAImprimir + this.Hijos[0].CadenaDe3D + " );\n" + "print( \"%c\",10);" + "\n";
+        }
         //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value +entorno.direccion + "\n";
         //entorno.direccion = ""; 
         document.getElementById("salida").innerHTML = document.getElementById("salida").value + respuesta + "\n";

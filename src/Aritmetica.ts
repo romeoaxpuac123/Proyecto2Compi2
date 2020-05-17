@@ -25,7 +25,19 @@ Aritmetica(val : string){
 
         var C3D1 = this.Hijos[0].CadenaDe3D;
         var C3D2 = this.Hijos[2].CadenaDe3D
-      
+    
+        var banderaChar1 = 0;
+        var banderaChar2 = 0;
+
+        if(Tipo1 == "Caracter2"){
+            banderaChar1 = 1;
+            Tipo1 = "Caracter";
+        }
+        if(Tipo2 == "Caracter2"){
+            banderaChar2 = 1;
+            Tipo2 = "Caracter";
+        }
+
         if(Tipo1 == "ID"){
             //alert("el valor 1 es un id");
             var don1 = "ERROR";
@@ -173,83 +185,115 @@ Aritmetica(val : string){
             TipoFinal = "Decimal";
         }else if( (Tipo1 == "Entero") && (Tipo2 == "Caracter")){
             TipoFinal = "Entero";
-            Valor2 = Valor2.charCodeAt(1).toString();
+            if(banderaChar2 == 0){
+                Valor2 = Valor2.charCodeAt(1).toString();
+            }           
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Entero")){
             TipoFinal = "Entero";
-            Valor1 = Valor1.charCodeAt(1).toString(); 
+            if(banderaChar1 == 0){
+                Valor1 = Valor1.charCodeAt(1).toString();
+            }  
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
         }else if( (Tipo1 == "Decimal") && (Tipo2 == "Caracter")){
             TipoFinal = "Decimal";
-            Valor2 = Valor2.charCodeAt(1).toString();
+            if(banderaChar2 == 0){
+                Valor2 = Valor2.charCodeAt(1).toString();
+            }
+            //Valor2 = Valor2.charCodeAt(1).toString();
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Decimal")){
             TipoFinal = "Decimal";
-            Valor1 = Valor1.charCodeAt(1).toString(); 
+            if(banderaChar1 == 0){
+                Valor1 = Valor1.charCodeAt(1).toString();
+            }
+            //Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "+")){
             TipoFinal = "Cadena";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charAt(1);
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charAt(1);
             //console.log("<->>>>>>>>>> don dliabox B1->" + Valor1);
             //console.log("<->>>>>>>>>> don dliabox B2->" + Valor2);
      
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "-")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
-            C3D1 = Valor1; 
+            C3D1 = Valor1;
+            if(banderaChar2 == 0) 
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "*")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
-            C3D1 = Valor1; 
+            C3D1 = Valor1;
+            if(banderaChar2 == 0) 
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "/")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
-            C3D1 = Valor1; 
+            C3D1 = Valor1;
+            if(banderaChar2 == 0) 
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == ">")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
-            C3D1 = Valor1; 
+            C3D1 = Valor1;
+            if(banderaChar2 == 0) 
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == ">=")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "<=")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "==")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "!=")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Caracter") && (Operador == "<")){
             TipoFinal = "Entero";
+            if(banderaChar1 == 0)
             Valor1 = Valor1.charCodeAt(1).toString(); 
             C3D1 = Valor1; 
+            if(banderaChar2 == 0)
             Valor2 = Valor2.charCodeAt(1).toString(); 
             C3D2 = Valor2; 
         }else if( (Tipo1 == "Caracter") && (Tipo2 == "Cadena")){
             TipoFinal = "Cadena";
+            
             Valor1 = Valor1.charAt(1);
               Valor2 = Valor2.replace("\"","");
             Valor2 = Valor2.replace("\"","");
@@ -259,6 +303,7 @@ Aritmetica(val : string){
             //C3D2 = Valor2;
         }else if( (Tipo1 == "Cadena") && (Tipo2 == "Caracter") && (Operador == "+")){
             TipoFinal = "Cadena";
+           
             Valor2 = Valor2.charAt(1);
             Valor1 = Valor1.replace("\"","");
             Valor1 = Valor1.replace("\"","");

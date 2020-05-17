@@ -96,7 +96,7 @@ class Vectores extends NodoAbstracto{
             entorno.direccion += "H = H + 1;\n"
             entorno.direccion +=  "Heap[H] = " + entorno.ListaParametrosFuncion[x].CadenaDe3D + ";\n"
         }
-
+        entorno.direccion += "H = H + 1;\n"
         entorno.ListaParametrosFuncion.splice(0,entorno.ListaParametrosFuncion.length);
         entorno.VariableVariables.splice(0,entorno.VariableVariables.length);
         
