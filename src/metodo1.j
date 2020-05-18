@@ -1,5 +1,7 @@
-public void metodo1(integer var1xd){
-  switch(1+2+3+4){
+public void metodo1(integer varxx){
+  integer variableprueba = 0;
+  variableprueba = variableprueba + varxx;
+  switch(variableprueba){
     case 1+2+3:
       print("caso x1");
       print("caso x2");

@@ -440,6 +440,16 @@ var Aritmetica = /** @class */ (function (_super) {
                 }
                 case "/": {
                     Total = +Valor1 / +Valor2;
+                    if (Valor2 == "0") {
+                        alert('Este es un semantico: ' + "EXP incorrecta" + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        entorno.LosErrores += "<tr>";
+                        entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
+                        entorno.LosErrores += "<td>" + "se divide 0" + " </td>";
+                        entorno.LosErrores += "<td>" + this.linea + "</td>";
+                        entorno.LosErrores += "<td>" + this.columna + "</td>";
+                        entorno.LosErrores += "</tr>";
+                    }
                     var C3DFinal = C3D1 + " / " + C3D2;
                     var respuesta = "t" + entorno.numero + " = " + C3DFinal + ";";
                     //document.getElementById("texto1C3D").innerHTML = document.getElementById("texto1C3D").value + respuesta + "\n";

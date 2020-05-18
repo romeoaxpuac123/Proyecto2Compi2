@@ -19,7 +19,7 @@ class Variables extends NodoAbstracto{
         var banderaconstante = 0;
 
         if(TipoRespuesta == "VectorRomeo"){
-           
+           var XDRomeo = "false";
             for(var i = 0; i < entorno.VariableVariables.length; i++){
                 //alert("RomeoXD" + entorno.VariableVariables[i] + this.Hijos[1].Hijos[0].Nombre);
                 for(var x = 0; x < entorno.VariableVariablesFUNCIONVECTOR.length;x++){
@@ -28,10 +28,22 @@ class Variables extends NodoAbstracto{
                         entorno.TesVariablesFUNCIONVECTOR.push(entorno.TesVariablesFUNCIONVECTOR[x]);
                         entorno.TamanioVECTOR.push(entorno.TamanioVECTOR[x]);
                         entorno.TipoVariablesFUNCIONVECTOR.push(entorno.TipoVariablesFUNCIONVECTOR[x]);
+                        XDRomeo = "TRUE";
                     }
                 }
             }
             
+            if(XDRomeo== "false"){
+                alert('Este es un semantico: ' + "no existe el vector " + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+                entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+                entorno.LosErrores +="<tr>";
+                entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+                entorno.LosErrores += "<td>" +   "no existe el vector  " + "</td>";
+                entorno.LosErrores += "<td>" + this.linea + "</td>";
+                entorno.LosErrores += "<td>" + this.columna + "</td>";
+                entorno.LosErrores += "</tr>";
+            }
+
             var nuevo = new Nodo("VARIALBES");
             nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
             nuevo.NumeroDeNodo = this.NumeroDeNodo;

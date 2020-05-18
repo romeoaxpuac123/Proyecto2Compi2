@@ -95,6 +95,7 @@ var Minusculas = /** @class */ (function (_super) {
         nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = "Cadena";
         nuevo.CadenaDe3D = tamanio.toString();
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     };
     return Minusculas;

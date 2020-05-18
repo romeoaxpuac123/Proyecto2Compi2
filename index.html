@@ -25,7 +25,8 @@
   <script src = "codemirror/mode/javascript/javascript.js"></script>
   <link href="codemirror/theme/dracula.css" rel = "stylesheet">
 
-
+  
+  
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="pestania.js"></script>
   <script src="Graficas.js"></script>
@@ -160,7 +161,16 @@
 
     
   </script>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="http://viz-js.com/bower_components/viz.js/viz-lite.js"></script>
+<script src="https://github.com/magjac/d3-graphviz/releases/download/v0.0.4/d3-graphviz.min.js"></script>
 
+<script>
+	function GraficadorGV(input) {
+	d3.select("#graph").graphviz()
+    .renderDot(input);
+  }
+</script>
 <script type="text/javascript">
 
     
@@ -203,7 +213,7 @@
               //leyendo el arhivo XD;
             }
            }else{
-            Entrada +=  arrayDeCadenas[i];
+            Entrada +=  arrayDeCadenas[i]+"\n";
            }
         }
 
@@ -555,7 +565,7 @@ function cambiarPestanna(pestannas,pestanna) {
     <ul class="tabs">
       <li><a href="#tab1"><span ></span><span class="tab-text">Consola</span></a></li>
       <li><a href="#tab2"><span ></span><span class="tab-text">R Opti.</span></a></li>
-      <li><a href="#tab3"><span ></span><span class="tab-text">R. Heap</span></a></li>
+      <li><a href="#tab3" onclick="GraficadorGV(document.getElementById('numero1x').value);"><span ></span><span class="tab-text">Arbol</span></a></li>
       <li><a href="#tab4"><span ></span><span class="tab-text">Errores</span></a></li>
       <li><a href="#tab5"><span ></span><span class="tab-text">Simbolos</span></a></li>
     </ul>
@@ -585,7 +595,7 @@ function cambiarPestanna(pestannas,pestanna) {
       </article>
 
       <article id="tab3">
-        <textarea name="heap" id = "heap" rows="5" cols="67">Heap</textarea>     
+        <div id="graph" style="text-align: center;"></div> 
       </article>
 
 

@@ -74,6 +74,7 @@ var AccesoV = /** @class */ (function (_super) {
         nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = TipoResultante;
         nuevo.CadenaDe3D = "t" + entorno.numero;
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     };
     return AccesoV;

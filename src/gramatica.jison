@@ -72,7 +72,7 @@
 ".length()"			return "LARGO2";
 ".length"			return "LARGO";
 ".toUpperCase()"	return "MAYUSCULAS";
-".tuLowerCase()"	return "MINUSCULAS";
+".toLowerCase()"	return "MINUSCULAS";
 ".charAt("			return "UNCARACTER";
 ".toCharArray()"	return "ARREGLOxD";
 
@@ -132,6 +132,7 @@
 ini
 	: instrucciones EOF{{
 			document.getElementById("Reporte_Errores").innerHTML = "";
+			document.getElementById("Reporte_Errores").innerHTML = "";
 			var ReporteErrores = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Dando estilo a tablas</title>";
 			ReporteErrores += "<link rel=\"stylesheet\" type=\"text/css\" href=\"tablas.css\"></head><body><div id=\"main-container\">";
 			ReporteErrores += "<table><thead><tr><th>TIPO</th><th>DESCRIPCION</th><th>LINEA</th><th>COLUMNA</th></tr></thead>";
@@ -175,6 +176,7 @@ ini
 		console.log(GraficasDOT.ResultCadena());
 		console.log("fin DOT");
 		document.getElementById("numero1x").innerHTML = GraficasDOT.ResultCadena();
+			
 		GraficasDOT.Renovar();
 		Entorno1.direccion = "";
 		Entorno1.SIMBOLOS.splice(0, Entorno1.SIMBOLOS.length);
@@ -1035,6 +1037,26 @@ instruccion2
 		nuevo.columna = this._$.first_column;
 		var TipoVector = new Nodo($1);
 		nuevo.Hijos[0] = TipoVector;
+
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VECTOR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $4.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $7.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	| ID CORIZQ CORDER ID_LISTA IGUAL ID ARREGLOxD PTCOMA{
@@ -1043,6 +1065,42 @@ instruccion2
 		nuevo.Hijos[0] = variable;
 		var variable2 = new Nodo($6);
 		nuevo.Hijos[1] = variable2;
+
+
+		contador += 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "DEC_VECTOR2" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $4.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" +  $6 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+
+		contador += 1;
+		var Hijo1 = "node_"+ contador + "[shape=circle label=\"" +  $7 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		var Conexion1xX = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1xX);
+
+
+		$$ = nuevo.Ejecutar(Entorno1);
+
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	;
@@ -2221,6 +2279,33 @@ expresion
 		var Arreglo = new Nodo($1);
 		nuevo.Hijos[0] = Arreglo;
 		nuevo.Hijos[1] = $3;
+		/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "Elemento_Vector" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+		contador = contador + 1;
+		var Hijo3 = "node_"+ contador + "[shape=circle label=\"" + "INDICE" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo3);
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		var Conexion1x = "node_" + (contador - 1)+ "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		/*fin Grafica*/
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	| ID LINEALIZAR PARIZQ PARDER{
@@ -2228,6 +2313,36 @@ expresion
 			var Vector = new Nodo($1);
 			nuevo.Hijos[0] = Vector;
 			nuevo.TipoDato = "VectorRomeo";
+
+			/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LINEALIZAR" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
+
+
 			$$ = nuevo;
 	}
 
@@ -2236,6 +2351,35 @@ expresion
 			var Vector = new Nodo($1);
 			nuevo.Hijos[0] = Vector;
 			nuevo.TipoDato = "VectorRomeo";
+
+
+					/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LARGO" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
 			$$ = nuevo.Ejecutar(Entorno1);
 	}
 	|ID LARGO2{
@@ -2243,6 +2387,34 @@ expresion
 		var Vector = new Nodo($1);
 		nuevo.Hijos[0] = Vector;
 		nuevo.TipoDato = "VectorRomeoxd";
+
+							/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "LARGO2" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	|ID MAYUSCULAS{
@@ -2250,6 +2422,35 @@ expresion
 		var Vector = new Nodo($1);
 		nuevo.Hijos[0] = Vector;
 		nuevo.TipoDato = "VectorRomeoxd";
+
+		/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "MAYUSCULAS" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	|ID MINUSCULAS{
@@ -2257,6 +2458,34 @@ expresion
 		var Vector = new Nodo($1);
 		nuevo.Hijos[0] = Vector;
 		nuevo.TipoDato = "VectorRomeoxd";
+
+		/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "MINUSCULAS" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	|ID UNCARACTER expresion PARDER{
@@ -2265,6 +2494,39 @@ expresion
 		nuevo.Hijos[0] = Vector;
 		nuevo.Hijos[1] = $3;
 		nuevo.TipoDato = "VectorRomeoxd";
+
+		/*GRafica*/
+		contador = contador + 1;
+		nuevo.NumeroDeNodo = contador;
+		var Hijo1 = "node_"+ nuevo.NumeroDeNodo + "[shape=circle label=\"" + "UN_CARACTER" + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo1);
+
+
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $1 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		contador = contador + 1;
+		var Hijo2 = "node_"+ contador + "[shape=circle label=\"" + $2 + "\"]" +"\n";									
+		GraficasDOT.anadir(Hijo2);
+
+		
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador - 1) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + (contador) + "\n";
+		GraficasDOT.anadir(Conexion1x);
+
+		var Conexion1x = "node_" + nuevo.NumeroDeNodo + "->" + "node_" + $3.NumeroDeNodo + "\n";
+		GraficasDOT.anadir(Conexion1x);
+		
+		
+		/*fin Grafica*/
+
+
+
 		$$ = nuevo.Ejecutar(Entorno1);
 	}
 	

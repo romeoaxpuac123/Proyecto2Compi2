@@ -80,6 +80,7 @@ var LargoID = /** @class */ (function (_super) {
         nuevo.Hijos[0] = nuevovalor;
         nuevo.TipoDato = "Entero";
         nuevo.CadenaDe3D = tamanio.toString();
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     };
     return LargoID;

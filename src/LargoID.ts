@@ -71,6 +71,7 @@ class LargoID extends NodoAbstracto{
 		nuevo.Hijos[0] = nuevovalor;
 		nuevo.TipoDato = "Entero";
         nuevo.CadenaDe3D = tamanio.toString();
+        nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
     }
 }

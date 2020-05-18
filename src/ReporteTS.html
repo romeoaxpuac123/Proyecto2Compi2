@@ -1,35 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Dando estilo a tablas</title>
-
-	<link rel="stylesheet" type="text/css" href="tablas.css">
-</head>
+<meta charset="utf-8">
 <body>
-	<div id="main-container">
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="http://viz-js.com/bower_components/viz.js/viz-lite.js"></script>
+<script src="https://github.com/magjac/d3-graphviz/releases/download/v0.0.4/d3-graphviz.min.js"></script>
+<div id="graph" style="text-align: center;"></div>
+<script>
+	
+	d3.select("#graph").graphviz()
+    .renderDot('digraph  {a -> b}');
 
-		<table>
-			<thead>
-				<tr>
-					<th>TIPO</th><th>DESCRIPCION</th><th>LINEA</th><th>COLUMNA</th>
-				</tr>
-			</thead>
-
-			<tr>
-				<td>Agua</td><td>Enero</td><td>$ 3,000</td><td>disfraz</td>
-			</tr>
-			
-			<tr>
-				<td>Luz</td><td>Febrero</td><td>$ 5,500</td><td>disfraz2</td>
-			</tr>
-			<tr>
-				<td>Coche</td><td>Marzo</td><td>$ 10,100</td>
-			</tr>
-			<tr>
-				<td>Internet</td><td>Abril</td><td>$ 450</td>
-			</tr>
-		</table>
-	</div>
+</script>
 </body>
-</html>
