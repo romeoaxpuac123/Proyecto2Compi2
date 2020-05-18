@@ -172,6 +172,13 @@
     .renderDot(input);
   }
 </script>
+
+<script>
+	function GraficadorGV2(input) {
+	d3.select("#graph2").graphviz()
+    .renderDot(input);
+  }
+</script>
 <script type="text/javascript">
 
     
@@ -233,15 +240,15 @@
           gramaticaC3D.parse(input);
           OPTIMIZADO.setValue(document.getElementById("texto1C3D").value);
           var BloquesXDs = new BloquesXD();
-          BloquesXDs.creandoBloques(input);
+          GraficadorGV2(BloquesXDs.creandoBloques(input));
           //Salida.setValue(document.getElementById("texto1C3D").value);
           //SalidaAT.setValue(document.getElementById("salida").value);
           //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
           //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
       }  
-     
+      
   </script>
-
+<div id="graph2" style="position:absolute;top:700px;left:365px;z-index:1; width:900px; text-align: center;"></div>
 <script type="text/javascript">
 // Dadas la division que contiene todas las pestañas y la de la pestaña que se 
 // quiere mostrar, la funcion oculta todas las pestañas a excepcion de esa.
@@ -585,9 +592,10 @@ function cambiarPestanna(pestannas,pestanna) {
                undoDepth : 200
              }
            );
-           SalidaAT.setSize("500","85"); 
+           SalidaAT.setSize("0","0"); 
            
         </script>
+         
       </article>
 
       <article id="tab2">
