@@ -32,7 +32,7 @@ var DECREMENTO2 = /** @class */ (function (_super) {
             if (Variable.toUpperCase() == entorno.VariableVariablesFUNCION[i].toUpperCase()) {
                 if (entorno.EsConstante[i] == 1) {
                     alert("ERROR: se intenta modificar una constante" + entorno.VariableVariablesFUNCION[i]);
-                    entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                    this.MiCadena = "ERROR NO SE GENERO C3D;\n";
                     entorno.LosErrores += "<tr>";
                     entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
                     entorno.LosErrores += "<td>" + "Variable: " + entorno.VariableVariablesFUNCION[i] + "No Existe" + " </td>";
@@ -68,7 +68,7 @@ var DECREMENTO2 = /** @class */ (function (_super) {
                 if (Variable.toUpperCase() == entorno.VariableVariablesFUNCIONGLOBAL[i].toUpperCase()) {
                     if (entorno.SonConstanteGlobales[i] == 1) {
                         alert("ERROR: se intenta modificar una constante" + entorno.VariableVariablesFUNCIONGLOBAL[i]);
-                        entorno.direccion = "ERROR NO SE GENERO C3D;\n";
+                        this.MiCadena = "ERROR NO SE GENERO C3D;\n";
                         entorno.LosErrores += "<tr>";
                         entorno.LosErrores += "<td>" + "Semantico" + "  </td>";
                         entorno.LosErrores += "<td>" + "Variable: " + entorno.VariableVariablesFUNCIONGLOBAL[i] + "No Existe" + " </td>";
@@ -103,7 +103,6 @@ var DECREMENTO2 = /** @class */ (function (_super) {
         var nuevo = new Nodo("DECREMENTO");
         //nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
-        nuevo.MiCadena = this.MiCadena;
         return nuevo;
     };
     return DECREMENTO2;

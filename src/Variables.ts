@@ -196,7 +196,7 @@ class Variables extends NodoAbstracto{
             for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
                 if(this.Hijos[1].Hijos[0].Nombre.toUpperCase() == 
                 entorno.VariableVariablesFUNCION[x].toUpperCase() ){
-                    alert("ENTRO A BUSCAR un id locales");
+                    //alert("ENTRO A BUSCAR un id locales");
                     TipoRespuesta = entorno.TipoVariablesFUNCION[x];
                     
                     LaTRespuesta =  entorno.TesVariablesFUNCION[x];

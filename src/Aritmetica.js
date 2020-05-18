@@ -1867,6 +1867,38 @@ var Aritmetica = /** @class */ (function (_super) {
             TipoFinal = "Cadena";
             entorno.direccion = entorno.direccion + respuesta + "\n";
         }
+        else if (TipoFinal == "Celular" && Operador == "==") {
+            EntroAUnaOperacion = "TRUE";
+            var respuesta = "##comparando dos vids\n";
+            entorno.etiquetas += 1;
+            var Etiqueta1 = entorno.etiquetas;
+            entorno.etiquetas += 1;
+            var Etiqueta2 = entorno.etiquetas;
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D1 + "];\n";
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = Heap[" + C3D2 + "];\n";
+            respuesta = respuesta + "if(t" + (entorno.numero - 1) + " == t" + entorno.numero + ") goto L" + Etiqueta1 + ";\n";
+            entorno.numero += 1;
+            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+            C3D2 = "t" + entorno.numero;
+            //aca
+            respuesta = respuesta + "Heap[H] = 116;\nH = H + 1;\nHeap[H] = 114;\nH = H + 1;\nHeap[H] = 117;\n";
+            respuesta = respuesta + "H = H + 1;\nHeap[H] = 101;\nH = H + 1;\nHeap[H] = -1;\nH = H + 1;\n";
+            //FIN
+            //parte 3
+            respuesta = respuesta + "goto L" + Etiqueta2 + ";\n";
+            respuesta = respuesta + "L" + Etiqueta1 + ":\n";
+            respuesta = respuesta + "t" + entorno.numero + " = H;\n";
+            //aca
+            respuesta = respuesta + "Heap[H] = 102;\nH = H + 1;\nHeap[H] = 97;\nH = H + 1;\nHeap[H] = 108;\n";
+            respuesta = respuesta + "H = H + 1;\nHeap[H] = 115;\nH = H + 1;\nHeap[H] = 101;\nH = H + 1;\n";
+            respuesta = respuesta + "Heap[H] = -1;\nH = H + 1;\n";
+            //fin
+            respuesta = respuesta + "L" + Etiqueta2 + ":\n";
+            TipoFinal = "Booleano";
+            entorno.direccion = entorno.direccion + respuesta + "\n";
+        }
         else if (TipoFinal == "DON" && Operador == "+") {
             EntroAUnaOperacion = "TRUE";
             var respuesta = "##carid chard\n";

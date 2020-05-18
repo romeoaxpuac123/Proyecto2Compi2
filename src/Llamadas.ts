@@ -84,13 +84,18 @@ class LLamadas extends NodoAbstracto{
                     entorno.LosErrores += "<td>" + this.linea + "</td>";
                     entorno.LosErrores += "<td>" + this.columna + "</td>";
                     entorno.LosErrores += "</tr>";
-                }
+            }
             
+            }
         }
-    }
         console.log("Sus parametros: fin" + totalparametros);
         if(entorno.existefuncion2(nombre,totalparametros)== true){
+                //alert(totalparametros);
                 var NombreCall = entorno.existefuncion3(nombre,totalparametros);
+                //alert(NombreCall);
+                if(NombreCall == "error"){
+                    NombreCall = nombre +"_" + entorno.Tipofuncion(nombre)+ "_0";
+                }
                 entorno.numero += 1;
                 entorno.direccion +=  "## CAMBIO DE AMBITO SIMULADO\n";
                 //entorno.direccion += "t" + entorno.numero +  " = P" + " + " + entorno.tamaniofuncion(nombre,totalparametros)+ ";\n\n"
@@ -159,6 +164,17 @@ class LLamadas extends NodoAbstracto{
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];
         nuevo.NumeroDeNodo = this.NumeroDeNodo;
         return nuevo;
+    }else{
+        alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+        entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+        //alert('Este es un semantico: ' + nombre + ', en la linea: ' + this.linea + ', en la columna: ' + this.columna);
+        //entorno.direccion = "ERROR NO SE GENERO C3D;\n"
+        entorno.LosErrores +="<tr>";
+        entorno.LosErrores += "<td>" + "Semantico" + "  </td>" ;
+        entorno.LosErrores += "<td>" +  "Funcion: "+ nombre + " NO Existe"  + " </td>";
+        entorno.LosErrores += "<td>" + this.linea + "</td>";
+        entorno.LosErrores += "<td>" + this.columna + "</td>";
+        entorno.LosErrores += "</tr>";
     }
     var nuevo = new Nodo("LLamada_Funciones");
         nuevo.Hijos[0] = this.Hijos[0].Hijos[0];

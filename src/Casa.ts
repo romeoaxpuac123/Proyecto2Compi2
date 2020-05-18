@@ -164,7 +164,16 @@ class Casa {
                 return this.SIMBOLOS[i].funcion;
             }
         }
-        return "";
+        return "error";
+    }
+
+    Tipo3(nombre:string):string{
+        for(var i = 0; i < this.SIMBOLOS.length;i++){
+            if(this.SIMBOLOS[i].nombre == nombre ){
+                return this.SIMBOLOS[i].tipo;
+            }
+        }
+        return "error";
     }
    
     totalparametros(nombre:string, parametros:number):boolean{

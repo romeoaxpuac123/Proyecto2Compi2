@@ -220,8 +220,8 @@
         document.getElementById("texto1C3D").innerHTML = "";
         document.getElementById("salida").innerHTML = "";
           gramatica.parse(Entrada);
-          Salida.setValue(document.getElementById("texto1C3D").value);
-          SalidaAT.setValue(document.getElementById("salida").value);
+          Salida.setValue(document.getElementById("texto1C3D").value + "call principal_void_0;\n");
+          SalidaAT.setValue(document.getElementById("salida").value + " call principal_void_0;\n");
           //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();
           //document.getElementById("numero2").innerHTML = gramatica.GraficasDOT.ResultCadena();
       }  

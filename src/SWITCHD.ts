@@ -17,6 +17,33 @@ class SWITCHD extends NodoAbstracto{
         var TipoExpresion = this.Hijos[0].TipoDato;
         entorno.direccion += this.Hijos[0].MiCadena;
         
+        if(TipoExpresion.toUpperCase() == "ID"){
+            for(var x = 0; x < entorno.VariableVariables.length;x++){
+                if( Cad3dExpresion == entorno.VariableVariables[x] ){
+                    entorno.numero+=1;
+                    Cad3dExpresion = "Heap[" + entorno.TesVariables[x] + "]";
+                    entorno.direccion += "t" +  entorno.numero + " = stack[" + entorno.TesVariables[x] + "];\n";
+                    Cad3dExpresion = "t" +  entorno.numero;
+                }
+            }
+            for(var x = 0; x < entorno.VariableVariablesFUNCION.length;x++){
+                if( Cad3dExpresion == entorno.VariableVariablesFUNCION[x] ){
+                    entorno.numero+=1;
+                    Cad3dExpresion = "Heap[" + entorno.TesVariablesFUNCION[x]+ "]";
+                    entorno.direccion += "t" +  entorno.numero + " = stack[" + entorno.TesVariablesFUNCION[x] + "];\n";
+                    Cad3dExpresion = "t" +  entorno.numero;
+                }
+            }
+            for(var x = 0; x < entorno.VariableVariablesFUNCIONGLOBAL.length;x++){
+                if( Cad3dExpresion == entorno.VariableVariablesFUNCIONGLOBAL[x] ){
+                    entorno.numero+=1;
+                    Cad3dExpresion = "Stack[" +  entorno.TesVariablesFUNCIONGLOBAL[x] + "]";
+                    entorno.direccion +=  "t" +  entorno.numero + "= Heap[" + entorno.TesVariablesFUNCION[x] + "];\n";
+                    Cad3dExpresion = "t" +  entorno.numero;
+                }
+            }
+        }
+        //alert(Cad3dExpresion);
         entorno.etiquetas +=1;
         var NUMEROFINAL =  entorno.etiquetas;
 

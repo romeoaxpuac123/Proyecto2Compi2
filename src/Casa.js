@@ -142,7 +142,15 @@ var Casa = /** @class */ (function () {
                 return this.SIMBOLOS[i].funcion;
             }
         }
-        return "";
+        return "error";
+    };
+    Casa.prototype.Tipo3 = function (nombre) {
+        for (var i = 0; i < this.SIMBOLOS.length; i++) {
+            if (this.SIMBOLOS[i].nombre == nombre) {
+                return this.SIMBOLOS[i].tipo;
+            }
+        }
+        return "error";
     };
     Casa.prototype.totalparametros = function (nombre, parametros) {
         for (var i = 0; i < this.SIMBOLOS.length; i++) {

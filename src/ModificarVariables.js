@@ -31,6 +31,9 @@ var ModificarVariables = /** @class */ (function (_super) {
         var TipoRespuesta = this.Hijos[1].TipoDato;
         var LaViejaT = "";
         var LaNuevaT = "";
+        if (TipoRespuesta == "Caracter") {
+            C3DExpresion = this.Hijos[1].CadenaDe3D.charCodeAt(1).toString();
+        }
         if (TipoRespuesta == "ID") {
             var bandera1 = "false";
             for (var x = 0; x < entorno.VariableVariablesFUNCION.length; x++) {

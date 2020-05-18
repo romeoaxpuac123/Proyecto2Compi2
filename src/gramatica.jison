@@ -1293,7 +1293,7 @@ lista_instrucciones3:
 			nuevo.NumeroDeNodo = contador;
 			$$ = nuevo;
 	};
-
+ 
 instruccion3
 	: IMPRMIR PARIZQ expresion2 PARDER PTCOMA {
 		
