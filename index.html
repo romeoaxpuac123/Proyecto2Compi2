@@ -75,6 +75,7 @@
 <script src="Minusculas.js"></script>
 <script src="UnCaracter.js"></script>
 <script src="VectorString.js"></script>
+<script src="BloquesXD.js"></script>
   <script type="text/javascript">
  
     function pestana(grupo_pesta, id_pesta){
@@ -231,6 +232,8 @@
           document.getElementById("salida").innerHTML = "";
           gramaticaC3D.parse(input);
           OPTIMIZADO.setValue(document.getElementById("texto1C3D").value);
+          var BloquesXDs = new BloquesXD();
+          BloquesXDs.creandoBloques(input);
           //Salida.setValue(document.getElementById("texto1C3D").value);
           //SalidaAT.setValue(document.getElementById("salida").value);
           //document.getElementById("numero1").innerHTML = gramatica.GraficasDOT.ResultCadena();

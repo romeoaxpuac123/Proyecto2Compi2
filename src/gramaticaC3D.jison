@@ -12,6 +12,7 @@
 	var contador = 0;
 	var Parametro1 = "Romeo";
 	var Parametro2 = "Axpuac";
+	var Textos = "";
 
 	
 	
@@ -147,6 +148,7 @@ instrucciones
 instruccion
 	:   
 	ID IGUAL expresionC3D PTyCOMA{
+		//Textos += $1 + " " + $2 + + " " + $3.Hjos[0].Nombre + " " + $3.Hjos[1].Nombre + " " + $3.Hjos[2].Nombre + ";\n";
 		if(contador == 0){
 			var nuevo = new Optimizar("Optimizar");
 			var IDS = new Nodo($1);
@@ -160,7 +162,8 @@ instruccion
 	|ID IGUAL expresion PTyCOMA{
 		//alert("hola1->" + Parametro1);
 		//alert("hola2->" + Parametro2);
-		
+		//Textos += $1 + " " + $2 + $3.Nombre + " " + ";\n";
+	
 		
 		if($1 == Parametro2 && $3.Nombre == Parametro1){
 			Entorno1.LosErrores +="<tr>";
@@ -195,7 +198,7 @@ instruccion
 		}
 	}
 	|GOTO ETIQUETAS PTyCOMA{
-		
+		//alert(Textos);
 		if(contador == 0){
 			var Cadena1 = document.getElementById("texto1C3D").value;
 			var Salida = Cadena1 + $1 + " " + $2 + ";"+ "\n";

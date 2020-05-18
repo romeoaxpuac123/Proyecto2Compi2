@@ -110,6 +110,7 @@ case 4:
 break;
 case 5:
 
+		//Textos += $$[$0-3] + " " + $$[$0-2] + + " " + $$[$0-1].Hjos[0].Nombre + " " + $$[$0-1].Hjos[1].Nombre + " " + $$[$0-1].Hjos[2].Nombre + ";\n";
 		if(contador == 0){
 			var nuevo = new Optimizar("Optimizar");
 			var IDS = new Nodo($$[$0-3]);
@@ -125,7 +126,8 @@ case 6:
 
 		//alert("hola1->" + Parametro1);
 		//alert("hola2->" + Parametro2);
-		
+		//Textos += $$[$0-3] + " " + $$[$0-2] + $$[$0-1].Nombre + " " + ";\n";
+	
 		
 		if($$[$0-3] == Parametro2 && $$[$0-1].Nombre == Parametro1){
 			Entorno1.LosErrores +="<tr>";
@@ -164,7 +166,7 @@ case 7:
 break;
 case 8:
 
-		
+		//alert(Textos);
 		if(contador == 0){
 			var Cadena1 = document.getElementById("texto1C3D").value;
 			var Salida = Cadena1 + $$[$0-2] + " " + $$[$0-1] + ";"+ "\n";
@@ -969,6 +971,7 @@ _handle_error:
 	var contador = 0;
 	var Parametro1 = "Romeo";
 	var Parametro2 = "Axpuac";
+	var Textos = "";
 
 	
 	
